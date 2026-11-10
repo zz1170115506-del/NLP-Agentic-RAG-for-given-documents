@@ -1,0 +1,7 @@
+mode: demo
+store_path: data/demo.sqlite
+index_dir: indexes/demo
+skills_dir: skills
+method: sparse
+max_steps: 12
+max_tool_calls: 24

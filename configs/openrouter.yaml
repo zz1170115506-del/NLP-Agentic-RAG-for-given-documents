@@ -1,0 +1,7 @@
+# Provider catalogue checked 2026-11-10; API end-to-end still requires a key.
+mode: live
+llm_base_url: https://openrouter.ai/api/v1
+llm_model: deepseek/deepseek-v4-flash-0731
+model_verified: true
+model_verification_note: '2026-11-10: https://openrouter.ai/api/v1/models and https://openrouter.ai/deepseek/deepseek-v4-flash-0731 identify GA DeepSeek V4 Flash 0731 and tools/tool_choice support.'
+method: hybrid

@@ -1,0 +1,5 @@
+# Explicit small real-corpus import; separate from synthetic demo and full indexes.
+mode: live
+store_path: data/corpus-smoke.sqlite
+index_dir: indexes/corpus-smoke
+method: sparse

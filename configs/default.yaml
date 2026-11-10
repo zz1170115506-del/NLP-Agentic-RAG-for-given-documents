@@ -1,0 +1,27 @@
+mode: live
+store_path: data/documents.sqlite
+index_dir: indexes/default
+skills_dir: skills
+method: hybrid
+chunk_size: 900
+chunk_overlap: 150
+batch_size: 16
+top_k: 5
+rrf_k: 60
+encoder_model: intfloat/e5-small-v2
+encoder_revision: main
+instruction_model: Qwen/Qwen3-Embedding-0.6B
+instruction_revision: main
+retrieval_instruction: Given a factual question, retrieve passages that contain evidence to answer it.
+device: cpu
+max_seq_length: 512
+max_steps: 12
+max_tool_calls: 24
+max_output_tokens: 1024
+max_total_tokens: 30000
+context_chars: 24000
+timeout_seconds: 60
+run_timeout_seconds: 300
+use_skills: true
+manage_context: true
+iterative: true

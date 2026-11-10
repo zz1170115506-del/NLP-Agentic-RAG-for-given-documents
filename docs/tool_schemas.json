@@ -1,0 +1,482 @@
+{
+  "search": {
+    "description": "Search only the supplied fixed document collection. This is the sole retrieval tool. Returns ranked exact passages with doc_id, score, offset, URL, method and metadata.",
+    "input": {
+      "additionalProperties": false,
+      "properties": {
+        "query": {
+          "maxLength": 2000,
+          "minLength": 1,
+          "title": "Query",
+          "type": "string"
+        },
+        "top_k": {
+          "default": 5,
+          "maximum": 20,
+          "minimum": 1,
+          "title": "Top K",
+          "type": "integer"
+        },
+        "method": {
+          "default": "hybrid",
+          "enum": [
+            "sparse",
+            "encoder",
+            "instruction",
+            "hybrid"
+          ],
+          "title": "Method",
+          "type": "string"
+        }
+      },
+      "required": [
+        "query"
+      ],
+      "title": "SearchInput",
+      "type": "object"
+    },
+    "envelope": {
+      "properties": {
+        "ok": {
+          "title": "Ok",
+          "type": "boolean"
+        },
+        "data": {
+          "anyOf": [
+            {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Data"
+        },
+        "error": {
+          "anyOf": [
+            {
+              "additionalProperties": {
+                "type": "string"
+              },
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Error"
+        }
+      },
+      "required": [
+        "ok"
+      ],
+      "title": "ToolOutput",
+      "type": "object"
+    },
+    "data": {
+      "$defs": {
+        "HitOutput": {
+          "properties": {
+            "doc_id": {
+              "title": "Doc Id",
+              "type": "string"
+            },
+            "offset": {
+              "title": "Offset",
+              "type": "integer"
+            },
+            "text": {
+              "title": "Text",
+              "type": "string"
+            },
+            "url": {
+              "title": "Url",
+              "type": "string"
+            },
+            "chunk_id": {
+              "title": "Chunk Id",
+              "type": "string"
+            },
+            "score": {
+              "title": "Score",
+              "type": "number"
+            },
+            "method": {
+              "title": "Method",
+              "type": "string"
+            },
+            "snippet": {
+              "title": "Snippet",
+              "type": "string"
+            },
+            "metadata": {
+              "additionalProperties": true,
+              "title": "Metadata",
+              "type": "object"
+            }
+          },
+          "required": [
+            "doc_id",
+            "offset",
+            "text",
+            "url",
+            "chunk_id",
+            "score",
+            "method",
+            "snippet",
+            "metadata"
+          ],
+          "title": "HitOutput",
+          "type": "object"
+        }
+      },
+      "properties": {
+        "query": {
+          "title": "Query",
+          "type": "string"
+        },
+        "results": {
+          "items": {
+            "$ref": "#/$defs/HitOutput"
+          },
+          "title": "Results",
+          "type": "array"
+        }
+      },
+      "required": [
+        "query",
+        "results"
+      ],
+      "title": "SearchOutput",
+      "type": "object"
+    }
+  },
+  "open_document": {
+    "description": "Open a bounded page of one corpus document using Python Unicode-character offsets. Returns text and next_offset.",
+    "input": {
+      "additionalProperties": false,
+      "properties": {
+        "doc_id": {
+          "minLength": 1,
+          "title": "Doc Id",
+          "type": "string"
+        },
+        "offset": {
+          "default": 0,
+          "minimum": 0,
+          "title": "Offset",
+          "type": "integer"
+        },
+        "limit": {
+          "default": 1600,
+          "maximum": 2400,
+          "minimum": 1,
+          "title": "Limit",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "doc_id"
+      ],
+      "title": "OpenInput",
+      "type": "object"
+    },
+    "envelope": {
+      "properties": {
+        "ok": {
+          "title": "Ok",
+          "type": "boolean"
+        },
+        "data": {
+          "anyOf": [
+            {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Data"
+        },
+        "error": {
+          "anyOf": [
+            {
+              "additionalProperties": {
+                "type": "string"
+              },
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Error"
+        }
+      },
+      "required": [
+        "ok"
+      ],
+      "title": "ToolOutput",
+      "type": "object"
+    },
+    "data": {
+      "properties": {
+        "doc_id": {
+          "title": "Doc Id",
+          "type": "string"
+        },
+        "offset": {
+          "title": "Offset",
+          "type": "integer"
+        },
+        "text": {
+          "title": "Text",
+          "type": "string"
+        },
+        "url": {
+          "title": "Url",
+          "type": "string"
+        },
+        "next_offset": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Next Offset"
+        },
+        "document_length": {
+          "title": "Document Length",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "doc_id",
+        "offset",
+        "text",
+        "url",
+        "next_offset",
+        "document_length"
+      ],
+      "title": "OpenOutput",
+      "type": "object"
+    }
+  },
+  "find_in_document": {
+    "description": "Find a literal phrase within one corpus document, case-insensitively, returning bounded exact windows and offsets.",
+    "input": {
+      "additionalProperties": false,
+      "properties": {
+        "doc_id": {
+          "minLength": 1,
+          "title": "Doc Id",
+          "type": "string"
+        },
+        "text": {
+          "maxLength": 500,
+          "minLength": 1,
+          "title": "Text",
+          "type": "string"
+        },
+        "offset": {
+          "default": 0,
+          "minimum": 0,
+          "title": "Offset",
+          "type": "integer"
+        },
+        "max_matches": {
+          "default": 3,
+          "maximum": 5,
+          "minimum": 1,
+          "title": "Max Matches",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "doc_id",
+        "text"
+      ],
+      "title": "FindInput",
+      "type": "object"
+    },
+    "envelope": {
+      "properties": {
+        "ok": {
+          "title": "Ok",
+          "type": "boolean"
+        },
+        "data": {
+          "anyOf": [
+            {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Data"
+        },
+        "error": {
+          "anyOf": [
+            {
+              "additionalProperties": {
+                "type": "string"
+              },
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Error"
+        }
+      },
+      "required": [
+        "ok"
+      ],
+      "title": "ToolOutput",
+      "type": "object"
+    },
+    "data": {
+      "$defs": {
+        "MatchOutput": {
+          "properties": {
+            "doc_id": {
+              "title": "Doc Id",
+              "type": "string"
+            },
+            "offset": {
+              "title": "Offset",
+              "type": "integer"
+            },
+            "text": {
+              "title": "Text",
+              "type": "string"
+            },
+            "url": {
+              "title": "Url",
+              "type": "string"
+            },
+            "match_offset": {
+              "title": "Match Offset",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "doc_id",
+            "offset",
+            "text",
+            "url",
+            "match_offset"
+          ],
+          "title": "MatchOutput",
+          "type": "object"
+        }
+      },
+      "properties": {
+        "matches": {
+          "items": {
+            "$ref": "#/$defs/MatchOutput"
+          },
+          "title": "Matches",
+          "type": "array"
+        }
+      },
+      "required": [
+        "matches"
+      ],
+      "title": "FindOutput",
+      "type": "object"
+    }
+  },
+  "load_skill": {
+    "description": "Load one discovered procedure on demand. Use its returned instructions on subsequent actions; already active skills cannot be loaded twice.",
+    "input": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "maxLength": 64,
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "title": "SkillInput",
+      "type": "object"
+    },
+    "envelope": {
+      "properties": {
+        "ok": {
+          "title": "Ok",
+          "type": "boolean"
+        },
+        "data": {
+          "anyOf": [
+            {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Data"
+        },
+        "error": {
+          "anyOf": [
+            {
+              "additionalProperties": {
+                "type": "string"
+              },
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Error"
+        }
+      },
+      "required": [
+        "ok"
+      ],
+      "title": "ToolOutput",
+      "type": "object"
+    },
+    "data": {
+      "properties": {
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "instructions": {
+          "title": "Instructions",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "instructions"
+      ],
+      "title": "SkillOutput",
+      "type": "object"
+    }
+  }
+}

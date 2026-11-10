@@ -1,0 +1,2 @@
+# Dependencies are defined once in pyproject.toml. Run from the project root.
+.[retrieval,dev]
