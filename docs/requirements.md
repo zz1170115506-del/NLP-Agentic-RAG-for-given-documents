@@ -15,7 +15,7 @@ PDF 第 2 页允许至少一类检索；实现一、二、三类对应不同分�
 | 固定 100,195 文档，字段 ID/text/URL；PDF 第 1 页 | `data/prepare.py`、`data/store.py`；限制为指定 Hugging Face corpus，记录不可变版本和实际数量 | `test_mapping_offsets_resume_and_mutation_guard`；全量导入与索引仍待完成 |
 | 三类检索；PDF 第 2 页加本轮用户范围 | `retrieval/sparse.py` 的 FTS5 BM25；`retrieval/embedding.py` 的 E5 与 Qwen3；`retrieval/dense.py` 的持久化向量分片 | `tests/test_retrieval.py`；真实神经检索以 `scripts/smoke_retrieval.py` 和验证记录为准 |
 | 长文档完整覆盖与原文溯源；本轮用户范围 | `chunk_document`、`TransformerEmbedder.segments`；字符 offset，模型 token 长度检查 | `test_token_budget_segments_preserve_all_characters`，索引结果片段与原文一致性检查 |
-| 索引持久化、兼容检查和恢复；本轮用户范围 | SQLite 完成标记；`dense.py` 的 manifest、SHA256、分片复用和内存映射 | `test_dense_shards_resume_compatibility_and_corruption`、`test_dense_multiple_shards_resume_and_global_doc_dedup` |
+| 索引持久化、兼容检查和恢复；本轮用户范围 | SQLite 完成标记；`dense.py` 的 manifest、SHA256、分片复用和内存映射 | `test_dense_shards_resume_compatibility_and_corruption`、`test_dense_merges_passages_across_shards_and_resumes` |
 | 恰好一个检索工具；PDF 第 2 页 | `tools/registry.py` 仅暴露 `search`；method 在同一个工具中选择 | `test_registry_exactly_one_search_and_support_tools`、`test_configured_retrieval_method_and_defaults_are_enforced` |
 | 至少一个支持工具；PDF 第 2 页 | `open_document`、`find_in_document`，另有 `load_skill`；默认共四种工具 | 同一注册表生成 API schema、输入/输出校验和工具协议文档；上述工具测试 |
 | 指定 DeepSeek-V4-Flash API；PDF 第 1、2 页 | `llm/provider.py`、`config.py`；`configs/openrouter.yaml` 提供核对过的具体模型配置 | 服务商目录核对与真实 API 调用分开；密钥缺失时不会降级成 demo，真实调用状态见验证记录 |

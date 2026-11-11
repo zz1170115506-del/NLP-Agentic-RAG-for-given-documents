@@ -65,16 +65,11 @@ class SparseRetriever:
             return []
         expression = " OR ".join('"' + token.replace('"', '""') + '"' for token in tokens)
         cursor = self.conn.execute("""SELECT r.doc_id,r.chunk_id,r.offset,r.text,r.url,bm25(fts) AS score
-            FROM fts JOIN records r ON r.seq=fts.rowid WHERE fts MATCH ? ORDER BY score,r.seq""", (expression,))
+            FROM fts JOIN records r ON r.seq=fts.rowid WHERE fts MATCH ? ORDER BY score,r.seq LIMIT ?""",
+            (expression, top_k))
         found = []
-        seen = set()
         for row in cursor:
-            if row["doc_id"] in seen:
-                continue
-            seen.add(row["doc_id"])
             data = dict(row)
             data["score"] = -float(data["score"])
             found.append(SearchHit(**data, method="sparse"))
-            if len(found) >= top_k:
-                break
         return found

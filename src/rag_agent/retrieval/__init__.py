@@ -11,24 +11,31 @@ METHODS = ("sparse", "encoder", "instruction")
 
 
 def rrf_fuse(rankings: list[list[SearchHit]], top_k: int, rrf_k: int = 60) -> list[SearchHit]:
-    """Reciprocal-rank fusion after per-retriever document deduplication."""
+    """Fuse rankings of exact passages, preserving distinct passages in one document."""
     best = {}
     scores = {}
     sources = {}
     for hits in rankings:
         seen = set()
         for hit in hits:
-            if hit.doc_id in seen:
+            key = (hit.doc_id, hit.chunk_id)
+            if key in seen:
                 continue
-            seen.add(hit.doc_id)
+            seen.add(key)
             rank = len(seen)
-            scores[hit.doc_id] = scores.get(hit.doc_id, 0.0) + 1.0 / (rrf_k + rank)
-            sources.setdefault(hit.doc_id, []).append({"method":hit.method,"rank":rank,"raw_score":hit.score,
-                                                      "chunk_id":hit.chunk_id,"offset":hit.offset})
-            best.setdefault(hit.doc_id, hit)
-    return [best[doc].model_copy(update={"score":scores[doc],"method":"hybrid",
-            "metadata":{**best[doc].metadata,"rrf_sources":sources[doc]}})
-            for doc in sorted(scores, key=lambda d:(-scores[d],d))[:top_k]]
+            scores[key] = scores.get(key, 0.0) + 1.0 / (rrf_k + rank)
+            sources.setdefault(key, []).append({"method": hit.method, "rank": rank, "raw_score": hit.score,
+                                                "chunk_id": hit.chunk_id, "offset": hit.offset})
+            best.setdefault(key, hit)
+    ordered = sorted(scores, key=lambda key: (-scores[key], key))[:top_k]
+    return [
+        best[key].model_copy(update={
+            "score": scores[key],
+            "method": "hybrid",
+            "metadata": {**best[key].metadata, "rrf_sources": sources[key]},
+        })
+        for key in ordered
+    ]
 
 
 def build_indexes(settings: Settings, methods: list[str], progress=None) -> dict:

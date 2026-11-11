@@ -161,7 +161,7 @@ class DenseRetriever:
         if not np.isfinite(q).all() or norm <= 0:
             raise ValueError("Invalid query embedding")
         q /= norm
-        best: dict[str, SearchHit] = {}
+        best: dict[tuple[str, str], SearchHit] = {}
         for shard in self.manifest["shards"]:
             vector_path, meta_path = self.target / shard["vectors"], self.target / shard["metadata"]
             if not self._validated:
@@ -177,16 +177,19 @@ class DenseRetriever:
                     if row >= len(scores):
                         raise ValueError("Dense shard metadata has extra rows")
                     c = Chunk.model_validate_json(line)
+                    count += 1
+                    if not c.text.strip():
+                        continue
                     score = float(scores[row])
-                    prior = best.get(c.doc_id)
+                    key = (c.doc_id, c.chunk_id)
+                    prior = best.get(key)
                     if prior is None or score > prior.score:
-                        best[c.doc_id] = SearchHit(**c.model_dump(), score=score, method=self.method,
+                        best[key] = SearchHit(**c.model_dump(), score=score, method=self.method,
                             metadata={"model_id":self.manifest["model_id"], "revision":self.manifest["resolved_revision"]})
                     if len(best) > top_k * 2:
                         best = dict(sorted(best.items(), key=lambda x:(-x[1].score,x[0]))[:top_k])
-                    count += 1
             if count != shard["rows"]:
                 raise ValueError("Dense shard metadata missing rows")
             del vectors
         self._validated = True
-        return sorted(best.values(), key=lambda x:(-x.score,x.doc_id))[:top_k]
+        return sorted(best.values(), key=lambda hit: (-hit.score, hit.doc_id, hit.chunk_id))[:top_k]

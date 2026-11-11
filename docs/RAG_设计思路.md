@@ -80,7 +80,7 @@ SQLite BM25 的原始排序方向是数值越小越好，接口返回时取负�
 
 Sparse 索引保存在 `index_dir/sparse.sqlite`。向量索引分别保存在 `index_dir/encoder/` 和 `index_dir/instruction/`，每 256 个原始片段形成一个可恢复分片，实际编码按 `batch_size` 分批进行。
 
-每个向量分片由 `.npy` 数值文件和 `.jsonl` 片段信息文件组成。NumPy 的内存映射让程序按需要访问磁盘上的数组；查询时逐分片计算相似度，只保留少量最佳文档候选，不把全部向量及原文复制进内存。
+每个向量分片由 `.npy` 数值文件和 `.jsonl` 片段信息文件组成。NumPy 的内存映射让程序按需要访问磁盘上的数组。查询时逐分片计算相似度，只保留少量最佳片段候选。
 
 `manifest.json` 是索引说明文件，记录语料指纹、分块方式、模型 ID、版本、维度、池化、归一化、查询 instruction 和分片校验和。程序先解析一次不可变模型版本，再让 tokenizer 和模型权重都使用该版本。恢复构建时检查已完成分片的校验和、形状、行数和片段顺序，跳过已完成编码；未完成分片重新计算。
 
@@ -88,9 +88,9 @@ Sparse 索引保存在 `index_dir/sparse.sqlite`。向量索引分别保存在 `
 
 ## 6. 融合后的证据怎样交给 Agent
 
-每个检索方法先按文档 ID 去重，保留该文档得分最高的命中片段。Hybrid 模式把三份文档排名交给 RRF（倒数排名融合）：一个文档在多个列表中靠前，就得到更多排名分；不同检索器的原始分数不直接相加。默认参数为 `rrf_k=60`。
+每个检索方法按片段排序，保留同一文档的不同片段。Hybrid 模式把三份片段排名交给 RRF（倒数排名融合）。同一片段在多个列表中靠前，就得到更多排名分。默认参数为 `rrf_k=60`。
 
-具体计算中，每个方法为排名为 `rank` 的文档贡献 `1 / (60 + rank)`；`rank` 从 1 开始。参数 60 越大，第一名和后续名次之间的差距越温和。去重后同一方法对同一文档只贡献一次。融合元信息还保留各方法的名次、原始分数和片段位置，便于查错与比较。
+每个方法为排名为 `rank` 的片段贡献 `1 / (60 + rank)`，`rank` 从 1 开始。参数 60 越大，第一名和后续名次之间的差距越温和。每个方法对同一片段只贡献一次。融合元信息还保留各方法的名次、原始分数和片段位置。
 
 ```mermaid
 flowchart TD
@@ -99,12 +99,12 @@ flowchart TD
     C --> D[SQLite BM25]
     C --> E[E5 查询编码与向量分片]
     C --> F[Qwen 指令查询编码与向量分片]
-    D --> G[各方法按文档去重]
+    D --> G[各方法返回片段排名]
     E --> G
     F --> G
     G --> H{单方法还是 hybrid}
     H -->|单方法| I[返回该方法排名]
-    H -->|hybrid| J[RRF 合并文档排名]
+    H -->|hybrid| J[RRF 合并相同片段的排名]
     I --> K[doc_id、片段、offset、URL、分数]
     J --> K
     K --> L[工具输出校验]
@@ -115,6 +115,8 @@ flowchart TD
 [`retrieval/__init__.py`](../src/rag_agent/retrieval/__init__.py) 的 `SearchService.search()` 是检索公共接口。Agent 只看到 [`tools/registry.py`](../src/rag_agent/tools/registry.py) 中一个 `search(query, top_k, method)`，其余可调用工具为 `open_document`、`find_in_document`、`load_skill`，共四种。一次 hybrid 搜索内部运行三个检索器，仍是一次 Agent 工具调用。
 
 工具返回经 schema（字段和类型规则）校验的结构化结果，片段最多返回 1600 个字符；需要更多上下文时通过 `open_document` 分页读取。Agent 把片段与原文位置重新核对后才加入 `Evidence`。这种核对证明“引用确实来自已查看的文本”，不自动证明“引用逻辑上足以回答问题”。`url` 只作来源标识，程序不会抓取 URL 扩充语料。
+
+同僚 Agent 使用 [同步后端](peer_backend.md)，接收带 `chunk_id/start/end/source_url` 的片段。 `top_k` 按片段计数，多个结果可来自同一篇文档。
 
 ## 7. 组员怎样运行和接续修改
 
@@ -148,7 +150,7 @@ rag-agent index --config configs/default.yaml --methods sparse encoder instructi
 
 | 范围 | 当前证据 |
 |---|---|
-| 9 个检索风险测试 | 已运行通过；覆盖 ID、offset、真实 BM25 持久化/去重、融合、分片恢复、损坏与配置检查、多分片文档汇聚 |
+| 检索与接入测试 | 覆盖 ID、原文位置、BM25 持久化、片段级融合、向量分片恢复和同僚后端契约 |
 | 合成语料上的 BM25 检索 | 已真实运行，不依赖 API 或神经模型 |
 | 向量索引协议与恢复 | 显式测试替身验证；manifest 标记测试来源，真实入口拒绝当作模型索引 |
 | E5 与 Qwen 的真实模型 smoke | 已在 CPU 上用 3 篇合成文档完成真实编码、持久化、重新加载和查询；E5 384 维、Qwen3 1024 维，详见 [`validation.md`](validation.md) |

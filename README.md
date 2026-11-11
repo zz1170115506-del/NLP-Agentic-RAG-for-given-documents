@@ -106,7 +106,7 @@ rag-agent search --config configs/openrouter.yaml 'your factual question' --meth
 | sparse | SQLite FTS5 BM25，磁盘倒排索引 | unicode61；查询词用 OR 匹配，分数取负后越大越好 |
 | encoder | intfloat/e5-small-v2 | query/passage 前缀，attention-mask 均值池化，L2 归一化 |
 | instruction | Qwen/Qwen3-Embedding-0.6B | Instruct + Query 查询模板，左侧 padding，最后有效 token 池化，L2 归一化 |
-| hybrid | 文档级 RRF 排名融合 | 每路先去重，按排名融合，不直接相加原始分数 |
+| hybrid | 片段级 RRF 排名融合 | 每路同一片段只计一次，同一文档的不同片段可分别返回 |
 
 E5 文档前缀的实际字符串是 `passage: `。向量索引采用 NumPy 分片与内存映射，避免一次加载所有向量。代价是查询仍需精确扫描全部分片；本轮未测全量延迟，后续可在保留相同协议的基础上换成近似向量索引。
 
@@ -117,6 +117,8 @@ E5 文档前缀的实际字符串是 `passage: `。向量索引采用 NumPy 分�
 ```bash
 python scripts/smoke_retrieval.py --methods sparse encoder instruction --device cpu
 ```
+
+组内 Agent 可使用 [同步检索后端接入说明](docs/peer_backend.md)。检索的 `top_k` 按原文片段计数，结果可以包含相同的 `doc_id`。
 
 ## 5. 从原始题目生成预测与评测
 

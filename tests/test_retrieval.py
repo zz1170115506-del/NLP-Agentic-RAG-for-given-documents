@@ -5,6 +5,7 @@ import numpy as np
 import pytest
 from rag_agent.config import Settings
 from rag_agent.data import DocumentStore, adapt_document, iter_jsonl
+from rag_agent.peer_backend import create_backend
 from rag_agent.retrieval import SearchService, build_indexes, rrf_fuse
 from rag_agent.retrieval.dense import DenseRetriever, build_dense
 from rag_agent.retrieval.embedding import TransformerEmbedder
@@ -49,14 +50,14 @@ def test_mapping_offsets_resume_and_mutation_guard(corpus, tmp_path):
     assert next(iter_jsonl(path)).doc_id == "0007"
 
 
-def test_bm25_save_reload_dedup_and_safe_query(corpus):
+def test_bm25_save_reload_keeps_same_document_passages(corpus):
     settings, store, _ = corpus
     result = build_indexes(settings, ["sparse"])
     assert result["sparse"]["manifest"]["chunk_count"] == store.chunk_count
     service = SearchService(settings)
-    hits = service.search("copper", 3, "sparse")
-    assert {h.doc_id for h in hits} == {"001", "003"}
-    assert len(hits) == len({h.doc_id for h in hits})
+    hits = service.search("Orion", 3, "sparse")
+    assert [h.doc_id for h in hits] == ["001", "001", "001"]
+    assert len({h.chunk_id for h in hits}) == 3
     assert service.search('" OR NOT ; copper', 3, "sparse")
     assert service.search("zzzznonexistent", 3, "sparse") == []
     service.close()
@@ -65,13 +66,63 @@ def test_bm25_save_reload_dedup_and_safe_query(corpus):
 
 
 def test_fusion_uses_ranks_not_raw_scores():
-    def hit(doc, score, method):
-        return SearchHit(doc_id=doc, chunk_id=doc, offset=0, text=doc, score=score, method=method)
-    fused = rrf_fuse([[hit("a", 9999, "sparse"),hit("a", 9998, "sparse"),hit("b", 1, "sparse")],
-                      [hit("b", .6, "encoder"),hit("c", .59, "encoder")]], 3)
-    assert fused[0].doc_id == "b"
-    assert fused[0].score == pytest.approx(1/62 + 1/61)
-    assert len(fused) == 3
+    def hit(doc, chunk, offset, score, method):
+        return SearchHit(doc_id=doc, chunk_id=chunk, offset=offset, text=chunk, score=score, method=method)
+
+    a1 = hit("a", "a1", 0, 9999, "sparse")
+    a2_sparse = hit("a", "a2", 80, 9998, "sparse")
+    a2_encoder = hit("a", "a2", 80, .6, "encoder")
+    b1 = hit("b", "b1", 0, .59, "encoder")
+    fused = rrf_fuse([[a1, a1, a2_sparse], [a2_encoder, b1]], 3)
+    assert [item.chunk_id for item in fused] == ["a2", "a1", "b1"]
+    assert fused[0].score == pytest.approx(1 / 62 + 1 / 61)
+    assert fused[1].score == pytest.approx(1 / 61)
+    assert [entry["method"] for entry in fused[0].metadata["rrf_sources"]] == ["sparse", "encoder"]
+
+
+def test_peer_factory_preserves_distinct_exact_passages_and_document_ranges(tmp_path, monkeypatch):
+    import math
+
+    settings = Settings(store_path=str(tmp_path / "peer.sqlite"), index_dir=str(tmp_path / "index"),
+                        chunk_size=64, chunk_overlap=0, method="sparse")
+    text = "🌙 Orion built lens A. ".ljust(64) + "Orion tested lens B. [literal] 尾字"
+    document = Document(doc_id="0007", text=text, url="https://example.invalid/lab")
+    store = DocumentStore(settings.store_path)
+    try:
+        store.import_documents([document], 64, 0)
+    finally:
+        store.close()
+    build_indexes(settings, ["sparse"])
+    config = tmp_path / "peer.yaml"
+    config.write_text(settings.model_dump_json(), encoding="utf-8")
+    monkeypatch.setenv("RAG_BACKEND_CONFIG", str(config))
+
+    backend = create_backend()
+    try:
+        hits = backend.search("Orion", top_k=2)
+        assert len(hits) == 2 and {hit["doc_id"] for hit in hits} == {"0007"}
+        assert len({hit["chunk_id"] for hit in hits}) == 2
+        assert {hit["start"] for hit in hits} == {0, 64}
+        assert hits[0]["score"] >= hits[1]["score"]
+        for hit in hits:
+            assert math.isfinite(hit["score"])
+            assert hit["source_url"] == document.url
+            assert text[hit["start"]:hit["end"]] == hit["snippet"]
+        assert backend.search("nonexistent") == []
+        assert backend.open_document("0007", len(text) - 2, 20) == {
+            "doc_id": "0007", "source_url": document.url, "text": "尾字",
+            "start": len(text) - 2, "end": len(text),
+        }
+        literal = backend.find_in_document("0007", "[LITERAL]", window=0)["matches"]
+        start = text.index("[literal]")
+        assert literal == [{"text": "[literal]", "start": start, "end": start + len("[literal]")}]
+        assert backend.find_in_document("0007", "not in this document")["matches"] == []
+        with pytest.raises(KeyError):
+            backend.open_document("missing")
+        with pytest.raises(ValueError):
+            backend.search("Orion", top_k=True)
+    finally:
+        backend.close()
 
 
 class SyntheticEmbedder:
@@ -99,7 +150,7 @@ def test_dense_shards_resume_compatibility_and_corruption(corpus):
     retriever = DenseRetriever(settings, store, target, "encoder", embedder=stub)
     hits = retriever.search("blue telescope", 3)
     assert hits[0].doc_id == "002"
-    assert len({h.doc_id for h in hits}) == len(hits)
+    assert len({h.chunk_id for h in hits}) == len(hits)
     with pytest.raises(ValueError, match="Test stub"):
         DenseRetriever(settings, store, target, "encoder")
     changed = settings.model_copy(update={"max_seq_length":256})
@@ -139,7 +190,8 @@ def test_instruction_and_e5_format_are_distinct():
     assert model._format("hello", False) == "hello"
 
 
-def test_dense_multiple_shards_resume_and_global_doc_dedup(tmp_path, monkeypatch):
+@pytest.mark.parametrize("method", ["encoder", "instruction"])
+def test_dense_merges_passages_across_shards_and_resumes(tmp_path, monkeypatch, method):
     # Force many shards without a heavyweight fixture; scores must merge globally.
     import rag_agent.retrieval.dense as dense_module
     monkeypatch.setattr(dense_module, "SHARD_CHUNKS", 2)
@@ -151,17 +203,17 @@ def test_dense_multiple_shards_resume_and_global_doc_dedup(tmp_path, monkeypatch
         Document(doc_id="b", text="blue telescope " * 25),
         Document(doc_id="c", text="plain unrelated text " * 20)], 64, 8)
     stub = SyntheticEmbedder()
-    target = Path(settings.index_dir) / "encoder"
-    manifest = build_dense(settings, store, target, "encoder", embedder=stub)
+    target = Path(settings.index_dir) / method
+    manifest = build_dense(settings, store, target, method, embedder=stub)
     assert len(manifest["shards"]) > 3
-    found = DenseRetriever(settings, store, target, "encoder", embedder=stub).search("blue telescope", 2)
-    assert len(found) == len({hit.doc_id for hit in found}) == 2
-    assert found[0].doc_id == "b"
+    found = DenseRetriever(settings, store, target, method, embedder=stub).search("blue telescope", 2)
+    assert [hit.doc_id for hit in found] == ["b", "b"]
+    assert len({hit.chunk_id for hit in found}) == 2
     # Simulate interruption after complete shards; resume must do zero re-encoding.
     manifest["ready"] = False
     (target / "manifest.json").write_text(json.dumps(manifest))
     before = stub.calls
-    rebuilt = build_dense(settings, store, target, "encoder", embedder=stub)
+    rebuilt = build_dense(settings, store, target, method, embedder=stub)
     assert rebuilt["ready"] is True and stub.calls == before
     store.close()
 
