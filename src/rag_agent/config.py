@@ -22,6 +22,17 @@ class Settings(BaseModel):
     batch_size: int = Field(default=16, ge=1, le=1024)
     top_k: int = Field(default=5, ge=1, le=20)
     rrf_k: int = Field(default=60, ge=1)
+    # None retains the original min(top_k * 3, 60) depth independently per route.
+    candidate_depth: int | None = Field(default=None, ge=1, le=1000)
+    rerank_enabled: bool = False
+    rerank_model: str = "cross-encoder/ms-marco-MiniLM-L6-v2"
+    rerank_revision: str = "main"
+    rerank_device: Literal["cpu", "mps", "cuda", "auto"] = "cpu"
+    rerank_depth: int = Field(default=30, ge=1, le=3000)
+    rerank_batch_size: int = Field(default=8, ge=1, le=256)
+    rerank_max_length: int = Field(default=512, ge=8, le=512)
+    rerank_max_windows: int = Field(default=4, ge=1, le=32)
+    rerank_on_error: Literal["raise", "rrf"] = "raise"
     encoder_model: str = "intfloat/e5-small-v2"
     encoder_revision: str = "main"
     instruction_model: str = "Qwen/Qwen3-Embedding-0.6B"

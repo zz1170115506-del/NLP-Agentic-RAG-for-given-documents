@@ -8,6 +8,13 @@ COMP5423 2026 Fall **Skill-Augmented Search Agent**：从指定固定文档集�
 - [Agent 设计思路（中文，可分享给组员）](docs/Agent_设计思路.md)
 - [实际验证记录](docs/validation.md) · [要求与代码映射](docs/requirements.md)
 - [模型服务配置与核对依据](docs/provider.md) · [协作边界](docs/collaboration.md)
+- [本地重排与真实语料两轮评估](docs/2026-11-11--local-rerank--r02--round-review.md)：97 篇真实文档、20 道冻结诊断题；默认仍关闭重排。
+
+可选本地重排由 `rerank_enabled` 控制，在 hybrid 的片段 RRF 之后执行。`candidate_depth: null`
+保持旧候选深度；`configs/rerank-eval-b.yaml` 是本次小样本建议配置（每路 50，关闭重排），
+`configs/rerank-eval-d.yaml` 是每路 50、重排前 10 的可选配置。它们指向独立的小样本索引，
+不能代替全量配置。安装后可先执行 `python scripts/smoke_rerank.py` 验证接口与排序逻辑，
+该入口无需模型或 API，并明确标记神经检索/评分测试替身。
 
 ## 1. 安装
 
@@ -66,7 +73,7 @@ rag-agent validate --config configs/demo.yaml \
 - model ID：`deepseek/deepseek-v4-flash-0731`
 - 目录显示 GA DeepSeek V4 Flash 0731，并提供 `tools` / `tool_choice`。
 
-目录核对不等于 API 实测；本轮没有推理密钥，未发起真实 LLM 调用。运行前复核服务的当前映射。详见 [provider.md](docs/provider.md)。
+2026-11-11 已完成真实小语料上的 5 题 B/C 配对，共 74 次 HTTP 200，响应模型 ID 匹配；最终答案仍受 JSON/引用坐标校验失败影响。API 与检索实际范围见 [provider.md](docs/provider.md) 和[两轮实验报告](docs/2026-11-11--local-rerank--r02--round-review.md)。
 
 ```bash
 cp .env.example .env
@@ -197,4 +204,4 @@ python scripts/package_course.py --group Group-X --output outputs/Group-X.zip \
 
 包内包含 `Group-X/test_prediction.jsonl`、可安装的 `code/`、报告及视频。打包检查文件存在、扩展名及预测完整性；页数、视频时长、内容质量和个人签名需组员最终核对。不会制造缺失报告、视频或预测。不要把源码草稿包当正式作业上传。
 
-下一阶段：真实 API 小样例 → 全量索引与验证集对比 → 参数调优 → 测试集预测 → 官方 [Overleaf 模板](https://www.overleaf.com/read/wdbsnbtqwcrv#5382c5) 报告 → 演示视频。报告至少四页（不含参考文献及声明），真实贡献合计 100%，各人签名；截止为 2026-11-26 23:59 香港时间。
+下一阶段：先修复真实轨迹中的 Agent 最终 JSON/引用 offset 正确性，再做更完整语料与官方验证集对照 → 测试集预测 → 官方 [Overleaf 模板](https://www.overleaf.com/read/wdbsnbtqwcrv#5382c5) 报告 → 演示视频。报告至少四页（不含参考文献及声明），真实贡献合计 100%，各人签名；截止为 2026-11-26 23:59 香港时间。

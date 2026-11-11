@@ -1,0 +1,1103 @@
+{
+  "format_version": 1,
+  "scoring": "normalized exact match; failed or mechanically invalid runs score zero",
+  "semantic_policy": "optional independent manual judgments; never change normalized EM",
+  "tool_policy": "Agent-requested calls count even if blocked; result/success/blocked counts reported separately",
+  "evidence_rule": "any frozen sufficient span fully contained with exact text hash in one of first five delivered search hits",
+  "attribution_limit": "observed delivery supports downstream attribution, not proof the model used the evidence",
+  "labels_sha256": "4f342bb01908fe61f0c5bf675ade3b431dedee891e58b70cf1d3dc4c658b7f08",
+  "provenance": [
+    {
+      "run": "api-pilot",
+      "manifest_sha256": "4d21522053b4d521583d87fac954b934835c8f1a86a229ec852ea117d84fa384",
+      "git_sha": "7c4efa4b0acb6b8dc177165985a25f33c1324e9a",
+      "source_digest": "4f9dd91a250629dab0072101798ab816e8c108336cb92d70efdb6e0a179df3c1",
+      "questions_sha256": "958628685c58c6af4fc0416a51b8c6d567723321ba368c4002b37b43c83689d9",
+      "config_ids": [
+        "a2fb1a1e829e3bc6",
+        "4b66f5325d7f7257"
+      ]
+    },
+    {
+      "run": "api-main",
+      "manifest_sha256": "2618e9e69681460dc69db897c60f81c35ed9a11ad76c0768f2d23d928d97d6ca",
+      "git_sha": "7c4efa4b0acb6b8dc177165985a25f33c1324e9a",
+      "source_digest": "4f9dd91a250629dab0072101798ab816e8c108336cb92d70efdb6e0a179df3c1",
+      "questions_sha256": "e7ca05e60567ef7662fa8e1ebe86b689d14a2047c85eb6f96a87b268117dfa6a",
+      "config_ids": [
+        "a2fb1a1e829e3bc6",
+        "4b66f5325d7f7257"
+      ]
+    }
+  ],
+  "totals": {
+    "attempts": 10,
+    "sample_ids": [
+      "real-001",
+      "real-001",
+      "real-002",
+      "real-004",
+      "real-005",
+      "real-003",
+      "real-002",
+      "real-004",
+      "real-005",
+      "real-003"
+    ],
+    "completed": 1,
+    "failed": 9,
+    "eligible": 1,
+    "normalized_em_correct": 1,
+    "normalized_em": 0.1,
+    "actual_reported_tokens": 317360,
+    "actual_requested_tool_calls": 43,
+    "actual_tool_result_events": 43,
+    "blocked_tool_results": 5,
+    "usage_complete_attempts": 10,
+    "accounting_unknown_attempts": 0,
+    "token_accounting_mismatches": 0,
+    "tool_accounting_mismatches": 0,
+    "tool_result_count_mismatches": 0,
+    "model_mismatch_attempts": 0,
+    "median_wall_seconds": 37.57268943700183,
+    "api_attempts": 74,
+    "http_error_attempts": 0,
+    "transport_error_attempts": 0,
+    "returned_model_ids": [
+      "deepseek/deepseek-v4-flash-0731"
+    ],
+    "status_counts": {
+      "token_budget": 9,
+      "completed": 1
+    },
+    "attribution_counts": {
+      "downstream_final_validation_failure_after_search_evidence": 9,
+      "completed_exact_match": 1
+    },
+    "http_status_counts": {
+      "200": 74
+    },
+    "error_codes": {
+      "invalid_final": 29
+    },
+    "final_validation_errors": {
+      "citation_text_or_offset_mismatch": 13,
+      "invalid_json": 16
+    },
+    "search_method_counts": {
+      "hybrid": 15
+    },
+    "search_status_counts": {
+      "success": 15
+    },
+    "rerank_status_counts": {
+      "disabled": 10,
+      "success": 5
+    },
+    "tool_result_names": {
+      "find_in_document": 10,
+      "open_document": 18,
+      "search": 15
+    },
+    "semantic_reviewed": 0,
+    "semantic_matches_among_reviewed": 0
+  },
+  "groups": [
+    {
+      "group": "rerank-eval-b",
+      "config_id": "a2fb1a1e829e3bc6",
+      "attempts": 5,
+      "sample_ids": [
+        "real-001",
+        "real-002",
+        "real-004",
+        "real-005",
+        "real-003"
+      ],
+      "completed": 0,
+      "failed": 5,
+      "eligible": 0,
+      "normalized_em_correct": 0,
+      "normalized_em": 0,
+      "actual_reported_tokens": 160294,
+      "actual_requested_tool_calls": 25,
+      "actual_tool_result_events": 25,
+      "blocked_tool_results": 3,
+      "usage_complete_attempts": 5,
+      "accounting_unknown_attempts": 0,
+      "token_accounting_mismatches": 0,
+      "tool_accounting_mismatches": 0,
+      "tool_result_count_mismatches": 0,
+      "model_mismatch_attempts": 0,
+      "median_wall_seconds": 37.222441290999996,
+      "api_attempts": 36,
+      "http_error_attempts": 0,
+      "transport_error_attempts": 0,
+      "returned_model_ids": [
+        "deepseek/deepseek-v4-flash-0731"
+      ],
+      "status_counts": {
+        "token_budget": 5
+      },
+      "attribution_counts": {
+        "downstream_final_validation_failure_after_search_evidence": 5
+      },
+      "http_status_counts": {
+        "200": 36
+      },
+      "error_codes": {
+        "invalid_final": 12
+      },
+      "final_validation_errors": {
+        "citation_text_or_offset_mismatch": 6,
+        "invalid_json": 6
+      },
+      "search_method_counts": {
+        "hybrid": 10
+      },
+      "search_status_counts": {
+        "success": 10
+      },
+      "rerank_status_counts": {
+        "disabled": 10
+      },
+      "tool_result_names": {
+        "find_in_document": 5,
+        "open_document": 10,
+        "search": 10
+      },
+      "semantic_reviewed": 0,
+      "semantic_matches_among_reviewed": 0
+    },
+    {
+      "group": "rerank-eval-c",
+      "config_id": "4b66f5325d7f7257",
+      "attempts": 5,
+      "sample_ids": [
+        "real-001",
+        "real-002",
+        "real-004",
+        "real-005",
+        "real-003"
+      ],
+      "completed": 1,
+      "failed": 4,
+      "eligible": 1,
+      "normalized_em_correct": 1,
+      "normalized_em": 0.2,
+      "actual_reported_tokens": 157066,
+      "actual_requested_tool_calls": 18,
+      "actual_tool_result_events": 18,
+      "blocked_tool_results": 2,
+      "usage_complete_attempts": 5,
+      "accounting_unknown_attempts": 0,
+      "token_accounting_mismatches": 0,
+      "tool_accounting_mismatches": 0,
+      "tool_result_count_mismatches": 0,
+      "model_mismatch_attempts": 0,
+      "median_wall_seconds": 40.72705033401144,
+      "api_attempts": 38,
+      "http_error_attempts": 0,
+      "transport_error_attempts": 0,
+      "returned_model_ids": [
+        "deepseek/deepseek-v4-flash-0731"
+      ],
+      "status_counts": {
+        "token_budget": 4,
+        "completed": 1
+      },
+      "attribution_counts": {
+        "downstream_final_validation_failure_after_search_evidence": 4,
+        "completed_exact_match": 1
+      },
+      "http_status_counts": {
+        "200": 38
+      },
+      "error_codes": {
+        "invalid_final": 17
+      },
+      "final_validation_errors": {
+        "citation_text_or_offset_mismatch": 7,
+        "invalid_json": 10
+      },
+      "search_method_counts": {
+        "hybrid": 5
+      },
+      "search_status_counts": {
+        "success": 5
+      },
+      "rerank_status_counts": {
+        "success": 5
+      },
+      "tool_result_names": {
+        "find_in_document": 5,
+        "open_document": 8,
+        "search": 5
+      },
+      "semantic_reviewed": 0,
+      "semantic_matches_among_reviewed": 0
+    }
+  ],
+  "pairing": {
+    "planned_pairs": 5,
+    "both_attempted_pairs": 5,
+    "both_completed_pairs": 0,
+    "both_usage_complete_pairs": 5,
+    "improved_em_pairs": 1,
+    "tied_em_pairs": 4,
+    "regressed_em_pairs": 0,
+    "rows": [
+      {
+        "run": "api-pilot",
+        "id": "real-001",
+        "left_config_id": "a2fb1a1e829e3bc6",
+        "right_config_id": "4b66f5325d7f7257",
+        "both_attempted": true,
+        "both_completed": false,
+        "both_usage_complete": true,
+        "left_group": "rerank-eval-b",
+        "right_group": "rerank-eval-c",
+        "em_delta": 0,
+        "token_delta": 87,
+        "tool_call_delta": -2
+      },
+      {
+        "run": "api-main",
+        "id": "real-002",
+        "left_config_id": "a2fb1a1e829e3bc6",
+        "right_config_id": "4b66f5325d7f7257",
+        "both_attempted": true,
+        "both_completed": false,
+        "both_usage_complete": true,
+        "left_group": "rerank-eval-b",
+        "right_group": "rerank-eval-c",
+        "em_delta": 0,
+        "token_delta": 2404,
+        "tool_call_delta": -2
+      },
+      {
+        "run": "api-main",
+        "id": "real-003",
+        "left_config_id": "a2fb1a1e829e3bc6",
+        "right_config_id": "4b66f5325d7f7257",
+        "both_attempted": true,
+        "both_completed": false,
+        "both_usage_complete": true,
+        "left_group": "rerank-eval-b",
+        "right_group": "rerank-eval-c",
+        "em_delta": 0,
+        "token_delta": -2603,
+        "tool_call_delta": -3
+      },
+      {
+        "run": "api-main",
+        "id": "real-004",
+        "left_config_id": "a2fb1a1e829e3bc6",
+        "right_config_id": "4b66f5325d7f7257",
+        "both_attempted": true,
+        "both_completed": false,
+        "both_usage_complete": true,
+        "left_group": "rerank-eval-b",
+        "right_group": "rerank-eval-c",
+        "em_delta": 1,
+        "token_delta": -3659,
+        "tool_call_delta": 0
+      },
+      {
+        "run": "api-main",
+        "id": "real-005",
+        "left_config_id": "a2fb1a1e829e3bc6",
+        "right_config_id": "4b66f5325d7f7257",
+        "both_attempted": true,
+        "both_completed": false,
+        "both_usage_complete": true,
+        "left_group": "rerank-eval-b",
+        "right_group": "rerank-eval-c",
+        "em_delta": 0,
+        "token_delta": 543,
+        "tool_call_delta": 0
+      }
+    ]
+  },
+  "attempts": [
+    {
+      "run": "api-pilot",
+      "id": "real-001",
+      "group": "rerank-eval-b",
+      "config_id": "a2fb1a1e829e3bc6",
+      "raw_sha256": "058b6bf46d4db43a888145ec5eeb77adc334329a5431491a98746f5bb4706787",
+      "record": "rerank-eval-b/a09e35e0ec6576a4.json",
+      "seconds": 15.253956416010624,
+      "semantic_review": null,
+      "status": "token_budget",
+      "completed": false,
+      "eligible": false,
+      "normalized_em": 0,
+      "validation_error_count": 0,
+      "usage_complete": true,
+      "all_usage_events_complete": true,
+      "declared_total_tokens": 32047,
+      "observed_usage_total_tokens": 32047,
+      "token_accounting_matches": true,
+      "usage_event_count": 8,
+      "configured_model": "deepseek/deepseek-v4-flash-0731",
+      "returned_model_ids": [
+        "deepseek/deepseek-v4-flash-0731"
+      ],
+      "returned_models_match": true,
+      "configured_max_total_tokens": 30000,
+      "declared_tool_calls": 5,
+      "assistant_requested_calls": 5,
+      "tool_result_events": 5,
+      "tool_accounting_matches": true,
+      "tool_result_count_matches": true,
+      "successful_tool_results": 4,
+      "failed_tool_results": 1,
+      "blocked_tool_results": 1,
+      "tool_error_codes": {
+        "run_stopping": 1
+      },
+      "tool_result_names": {
+        "search": 3,
+        "open_document": 1,
+        "find_in_document": 1
+      },
+      "api_attempts": 8,
+      "http_status_counts": {
+        "200": 8
+      },
+      "http_error_attempts": 0,
+      "transport_error_attempts": 0,
+      "api_attempts_with_unknown_usage": 0,
+      "error_codes": {
+        "invalid_final": 4
+      },
+      "final_validation_errors": {
+        "invalid_json": 2,
+        "citation_text_or_offset_mismatch": 2
+      },
+      "searches": 3,
+      "search_method_counts": {
+        "hybrid": 3
+      },
+      "search_status_counts": {
+        "success": 3
+      },
+      "rerank_status_counts": {
+        "disabled": 3
+      },
+      "observed_evidence_in_top5": true,
+      "observed_evidence_search_numbers": [
+        1,
+        2,
+        3
+      ],
+      "delivered_evidence_in_top5": true,
+      "delivered_evidence_search_numbers": [
+        1,
+        2,
+        3
+      ],
+      "document_tools_delivered_evidence": [],
+      "attribution": "downstream_final_validation_failure_after_search_evidence"
+    },
+    {
+      "run": "api-pilot",
+      "id": "real-001",
+      "group": "rerank-eval-c",
+      "config_id": "4b66f5325d7f7257",
+      "raw_sha256": "8e2fe4f373eda501f7e961c1e9458232f447c48e5e100648be09e4acb8124ba6",
+      "record": "rerank-eval-c/a09e35e0ec6576a4.json",
+      "seconds": 12.477976958994986,
+      "semantic_review": null,
+      "status": "token_budget",
+      "completed": false,
+      "eligible": false,
+      "normalized_em": 0,
+      "validation_error_count": 0,
+      "usage_complete": true,
+      "all_usage_events_complete": true,
+      "declared_total_tokens": 32134,
+      "observed_usage_total_tokens": 32134,
+      "token_accounting_matches": true,
+      "usage_event_count": 7,
+      "configured_model": "deepseek/deepseek-v4-flash-0731",
+      "returned_model_ids": [
+        "deepseek/deepseek-v4-flash-0731"
+      ],
+      "returned_models_match": true,
+      "configured_max_total_tokens": 30000,
+      "declared_tool_calls": 3,
+      "assistant_requested_calls": 3,
+      "tool_result_events": 3,
+      "tool_accounting_matches": true,
+      "tool_result_count_matches": true,
+      "successful_tool_results": 3,
+      "failed_tool_results": 0,
+      "blocked_tool_results": 0,
+      "tool_error_codes": {},
+      "tool_result_names": {
+        "search": 1,
+        "open_document": 1,
+        "find_in_document": 1
+      },
+      "api_attempts": 7,
+      "http_status_counts": {
+        "200": 7
+      },
+      "http_error_attempts": 0,
+      "transport_error_attempts": 0,
+      "api_attempts_with_unknown_usage": 0,
+      "error_codes": {
+        "invalid_final": 3
+      },
+      "final_validation_errors": {
+        "invalid_json": 2,
+        "citation_text_or_offset_mismatch": 1
+      },
+      "searches": 1,
+      "search_method_counts": {
+        "hybrid": 1
+      },
+      "search_status_counts": {
+        "success": 1
+      },
+      "rerank_status_counts": {
+        "success": 1
+      },
+      "observed_evidence_in_top5": true,
+      "observed_evidence_search_numbers": [
+        1
+      ],
+      "delivered_evidence_in_top5": true,
+      "delivered_evidence_search_numbers": [
+        1
+      ],
+      "document_tools_delivered_evidence": [
+        "find_in_document",
+        "open_document"
+      ],
+      "attribution": "downstream_final_validation_failure_after_search_evidence"
+    },
+    {
+      "run": "api-main",
+      "id": "real-002",
+      "group": "rerank-eval-b",
+      "config_id": "a2fb1a1e829e3bc6",
+      "raw_sha256": "cf1d9cd15766774f9964dc7e95caaeeee59a4c264edd4bce197ba9f11b9b923b",
+      "record": "rerank-eval-b/36397767d6ec1a7b.json",
+      "seconds": 37.222441290999996,
+      "semantic_review": null,
+      "status": "token_budget",
+      "completed": false,
+      "eligible": false,
+      "normalized_em": 0,
+      "validation_error_count": 0,
+      "usage_complete": true,
+      "all_usage_events_complete": true,
+      "declared_total_tokens": 31067,
+      "observed_usage_total_tokens": 31067,
+      "token_accounting_matches": true,
+      "usage_event_count": 7,
+      "configured_model": "deepseek/deepseek-v4-flash-0731",
+      "returned_model_ids": [
+        "deepseek/deepseek-v4-flash-0731"
+      ],
+      "returned_models_match": true,
+      "configured_max_total_tokens": 30000,
+      "declared_tool_calls": 6,
+      "assistant_requested_calls": 6,
+      "tool_result_events": 6,
+      "tool_accounting_matches": true,
+      "tool_result_count_matches": true,
+      "successful_tool_results": 5,
+      "failed_tool_results": 1,
+      "blocked_tool_results": 1,
+      "tool_error_codes": {
+        "run_stopping": 1
+      },
+      "tool_result_names": {
+        "search": 1,
+        "open_document": 4,
+        "find_in_document": 1
+      },
+      "api_attempts": 7,
+      "http_status_counts": {
+        "200": 7
+      },
+      "http_error_attempts": 0,
+      "transport_error_attempts": 0,
+      "api_attempts_with_unknown_usage": 0,
+      "error_codes": {
+        "invalid_final": 2
+      },
+      "final_validation_errors": {
+        "invalid_json": 1,
+        "citation_text_or_offset_mismatch": 1
+      },
+      "searches": 1,
+      "search_method_counts": {
+        "hybrid": 1
+      },
+      "search_status_counts": {
+        "success": 1
+      },
+      "rerank_status_counts": {
+        "disabled": 1
+      },
+      "observed_evidence_in_top5": true,
+      "observed_evidence_search_numbers": [
+        1
+      ],
+      "delivered_evidence_in_top5": true,
+      "delivered_evidence_search_numbers": [
+        1
+      ],
+      "document_tools_delivered_evidence": [
+        "find_in_document"
+      ],
+      "attribution": "downstream_final_validation_failure_after_search_evidence"
+    },
+    {
+      "run": "api-main",
+      "id": "real-004",
+      "group": "rerank-eval-b",
+      "config_id": "a2fb1a1e829e3bc6",
+      "raw_sha256": "64668e0e96b56e4fdb9017614a9e9cd6d27a16a80ddfa36f46a94ba43e183a7c",
+      "record": "rerank-eval-b/3760b0bde347394f.json",
+      "seconds": 15.210054334020242,
+      "semantic_review": null,
+      "status": "token_budget",
+      "completed": false,
+      "eligible": false,
+      "normalized_em": 0,
+      "validation_error_count": 0,
+      "usage_complete": true,
+      "all_usage_events_complete": true,
+      "declared_total_tokens": 30677,
+      "observed_usage_total_tokens": 30677,
+      "token_accounting_matches": true,
+      "usage_event_count": 6,
+      "configured_model": "deepseek/deepseek-v4-flash-0731",
+      "returned_model_ids": [
+        "deepseek/deepseek-v4-flash-0731"
+      ],
+      "returned_models_match": true,
+      "configured_max_total_tokens": 30000,
+      "declared_tool_calls": 3,
+      "assistant_requested_calls": 3,
+      "tool_result_events": 3,
+      "tool_accounting_matches": true,
+      "tool_result_count_matches": true,
+      "successful_tool_results": 3,
+      "failed_tool_results": 0,
+      "blocked_tool_results": 0,
+      "tool_error_codes": {},
+      "tool_result_names": {
+        "search": 1,
+        "open_document": 1,
+        "find_in_document": 1
+      },
+      "api_attempts": 6,
+      "http_status_counts": {
+        "200": 6
+      },
+      "http_error_attempts": 0,
+      "transport_error_attempts": 0,
+      "api_attempts_with_unknown_usage": 0,
+      "error_codes": {
+        "invalid_final": 2
+      },
+      "final_validation_errors": {
+        "invalid_json": 1,
+        "citation_text_or_offset_mismatch": 1
+      },
+      "searches": 1,
+      "search_method_counts": {
+        "hybrid": 1
+      },
+      "search_status_counts": {
+        "success": 1
+      },
+      "rerank_status_counts": {
+        "disabled": 1
+      },
+      "observed_evidence_in_top5": true,
+      "observed_evidence_search_numbers": [
+        1
+      ],
+      "delivered_evidence_in_top5": true,
+      "delivered_evidence_search_numbers": [
+        1
+      ],
+      "document_tools_delivered_evidence": [
+        "find_in_document"
+      ],
+      "attribution": "downstream_final_validation_failure_after_search_evidence"
+    },
+    {
+      "run": "api-main",
+      "id": "real-005",
+      "group": "rerank-eval-b",
+      "config_id": "a2fb1a1e829e3bc6",
+      "raw_sha256": "5f7bc081f727a86d26c20e429350442d6613d6e740b9e0bbdc1ce976b26eb7c1",
+      "record": "rerank-eval-b/952c604d8c2e5feb.json",
+      "seconds": 37.92293758300366,
+      "semantic_review": null,
+      "status": "token_budget",
+      "completed": false,
+      "eligible": false,
+      "normalized_em": 0,
+      "validation_error_count": 0,
+      "usage_complete": true,
+      "all_usage_events_complete": true,
+      "declared_total_tokens": 32597,
+      "observed_usage_total_tokens": 32597,
+      "token_accounting_matches": true,
+      "usage_event_count": 7,
+      "configured_model": "deepseek/deepseek-v4-flash-0731",
+      "returned_model_ids": [
+        "deepseek/deepseek-v4-flash-0731"
+      ],
+      "returned_models_match": true,
+      "configured_max_total_tokens": 30000,
+      "declared_tool_calls": 4,
+      "assistant_requested_calls": 4,
+      "tool_result_events": 4,
+      "tool_accounting_matches": true,
+      "tool_result_count_matches": true,
+      "successful_tool_results": 4,
+      "failed_tool_results": 0,
+      "blocked_tool_results": 0,
+      "tool_error_codes": {},
+      "tool_result_names": {
+        "search": 1,
+        "open_document": 2,
+        "find_in_document": 1
+      },
+      "api_attempts": 7,
+      "http_status_counts": {
+        "200": 7
+      },
+      "http_error_attempts": 0,
+      "transport_error_attempts": 0,
+      "api_attempts_with_unknown_usage": 0,
+      "error_codes": {
+        "invalid_final": 2
+      },
+      "final_validation_errors": {
+        "invalid_json": 1,
+        "citation_text_or_offset_mismatch": 1
+      },
+      "searches": 1,
+      "search_method_counts": {
+        "hybrid": 1
+      },
+      "search_status_counts": {
+        "success": 1
+      },
+      "rerank_status_counts": {
+        "disabled": 1
+      },
+      "observed_evidence_in_top5": true,
+      "observed_evidence_search_numbers": [
+        1
+      ],
+      "delivered_evidence_in_top5": true,
+      "delivered_evidence_search_numbers": [
+        1
+      ],
+      "document_tools_delivered_evidence": [
+        "find_in_document"
+      ],
+      "attribution": "downstream_final_validation_failure_after_search_evidence"
+    },
+    {
+      "run": "api-main",
+      "id": "real-003",
+      "group": "rerank-eval-b",
+      "config_id": "a2fb1a1e829e3bc6",
+      "raw_sha256": "61085e940b8f8b494b7b650661e71b3464804c5e19039bb1099117aa9fa97bc4",
+      "record": "rerank-eval-b/ac7abfcc9c3e1ec1.json",
+      "seconds": 42.987682792008854,
+      "semantic_review": null,
+      "status": "token_budget",
+      "completed": false,
+      "eligible": false,
+      "normalized_em": 0,
+      "validation_error_count": 0,
+      "usage_complete": true,
+      "all_usage_events_complete": true,
+      "declared_total_tokens": 33906,
+      "observed_usage_total_tokens": 33906,
+      "token_accounting_matches": true,
+      "usage_event_count": 8,
+      "configured_model": "deepseek/deepseek-v4-flash-0731",
+      "returned_model_ids": [
+        "deepseek/deepseek-v4-flash-0731"
+      ],
+      "returned_models_match": true,
+      "configured_max_total_tokens": 30000,
+      "declared_tool_calls": 7,
+      "assistant_requested_calls": 7,
+      "tool_result_events": 7,
+      "tool_accounting_matches": true,
+      "tool_result_count_matches": true,
+      "successful_tool_results": 6,
+      "failed_tool_results": 1,
+      "blocked_tool_results": 1,
+      "tool_error_codes": {
+        "run_stopping": 1
+      },
+      "tool_result_names": {
+        "search": 4,
+        "open_document": 2,
+        "find_in_document": 1
+      },
+      "api_attempts": 8,
+      "http_status_counts": {
+        "200": 8
+      },
+      "http_error_attempts": 0,
+      "transport_error_attempts": 0,
+      "api_attempts_with_unknown_usage": 0,
+      "error_codes": {
+        "invalid_final": 2
+      },
+      "final_validation_errors": {
+        "invalid_json": 1,
+        "citation_text_or_offset_mismatch": 1
+      },
+      "searches": 4,
+      "search_method_counts": {
+        "hybrid": 4
+      },
+      "search_status_counts": {
+        "success": 4
+      },
+      "rerank_status_counts": {
+        "disabled": 4
+      },
+      "observed_evidence_in_top5": true,
+      "observed_evidence_search_numbers": [
+        3
+      ],
+      "delivered_evidence_in_top5": true,
+      "delivered_evidence_search_numbers": [
+        3
+      ],
+      "document_tools_delivered_evidence": [],
+      "attribution": "downstream_final_validation_failure_after_search_evidence"
+    },
+    {
+      "run": "api-main",
+      "id": "real-002",
+      "group": "rerank-eval-c",
+      "config_id": "4b66f5325d7f7257",
+      "raw_sha256": "99c2aecb328fc991312291c482e7ce52a9fa528e4161e71c8477fdd4ceac2433",
+      "record": "rerank-eval-c/36397767d6ec1a7b.json",
+      "seconds": 41.532531125005335,
+      "semantic_review": null,
+      "status": "token_budget",
+      "completed": false,
+      "eligible": false,
+      "normalized_em": 0,
+      "validation_error_count": 0,
+      "usage_complete": true,
+      "all_usage_events_complete": true,
+      "declared_total_tokens": 33471,
+      "observed_usage_total_tokens": 33471,
+      "token_accounting_matches": true,
+      "usage_event_count": 9,
+      "configured_model": "deepseek/deepseek-v4-flash-0731",
+      "returned_model_ids": [
+        "deepseek/deepseek-v4-flash-0731"
+      ],
+      "returned_models_match": true,
+      "configured_max_total_tokens": 30000,
+      "declared_tool_calls": 4,
+      "assistant_requested_calls": 4,
+      "tool_result_events": 4,
+      "tool_accounting_matches": true,
+      "tool_result_count_matches": true,
+      "successful_tool_results": 3,
+      "failed_tool_results": 1,
+      "blocked_tool_results": 1,
+      "tool_error_codes": {
+        "run_stopping": 1
+      },
+      "tool_result_names": {
+        "search": 1,
+        "open_document": 2,
+        "find_in_document": 1
+      },
+      "api_attempts": 9,
+      "http_status_counts": {
+        "200": 9
+      },
+      "http_error_attempts": 0,
+      "transport_error_attempts": 0,
+      "api_attempts_with_unknown_usage": 0,
+      "error_codes": {
+        "invalid_final": 5
+      },
+      "final_validation_errors": {
+        "invalid_json": 3,
+        "citation_text_or_offset_mismatch": 2
+      },
+      "searches": 1,
+      "search_method_counts": {
+        "hybrid": 1
+      },
+      "search_status_counts": {
+        "success": 1
+      },
+      "rerank_status_counts": {
+        "success": 1
+      },
+      "observed_evidence_in_top5": true,
+      "observed_evidence_search_numbers": [
+        1
+      ],
+      "delivered_evidence_in_top5": true,
+      "delivered_evidence_search_numbers": [
+        1
+      ],
+      "document_tools_delivered_evidence": [
+        "find_in_document"
+      ],
+      "attribution": "downstream_final_validation_failure_after_search_evidence"
+    },
+    {
+      "run": "api-main",
+      "id": "real-004",
+      "group": "rerank-eval-c",
+      "config_id": "4b66f5325d7f7257",
+      "raw_sha256": "67f897f4f1efb85d45243f2cbecd4436768c5841d77f9d051f69263e1d0c831f",
+      "record": "rerank-eval-c/3760b0bde347394f.json",
+      "seconds": 21.40373137500137,
+      "semantic_review": null,
+      "status": "completed",
+      "completed": true,
+      "eligible": true,
+      "normalized_em": 1,
+      "validation_error_count": 0,
+      "usage_complete": true,
+      "all_usage_events_complete": true,
+      "declared_total_tokens": 27018,
+      "observed_usage_total_tokens": 27018,
+      "token_accounting_matches": true,
+      "usage_event_count": 7,
+      "configured_model": "deepseek/deepseek-v4-flash-0731",
+      "returned_model_ids": [
+        "deepseek/deepseek-v4-flash-0731"
+      ],
+      "returned_models_match": true,
+      "configured_max_total_tokens": 30000,
+      "declared_tool_calls": 3,
+      "assistant_requested_calls": 3,
+      "tool_result_events": 3,
+      "tool_accounting_matches": true,
+      "tool_result_count_matches": true,
+      "successful_tool_results": 3,
+      "failed_tool_results": 0,
+      "blocked_tool_results": 0,
+      "tool_error_codes": {},
+      "tool_result_names": {
+        "search": 1,
+        "open_document": 1,
+        "find_in_document": 1
+      },
+      "api_attempts": 7,
+      "http_status_counts": {
+        "200": 7
+      },
+      "http_error_attempts": 0,
+      "transport_error_attempts": 0,
+      "api_attempts_with_unknown_usage": 0,
+      "error_codes": {
+        "invalid_final": 3
+      },
+      "final_validation_errors": {
+        "invalid_json": 2,
+        "citation_text_or_offset_mismatch": 1
+      },
+      "searches": 1,
+      "search_method_counts": {
+        "hybrid": 1
+      },
+      "search_status_counts": {
+        "success": 1
+      },
+      "rerank_status_counts": {
+        "success": 1
+      },
+      "observed_evidence_in_top5": true,
+      "observed_evidence_search_numbers": [
+        1
+      ],
+      "delivered_evidence_in_top5": true,
+      "delivered_evidence_search_numbers": [
+        1
+      ],
+      "document_tools_delivered_evidence": [
+        "find_in_document"
+      ],
+      "attribution": "completed_exact_match"
+    },
+    {
+      "run": "api-main",
+      "id": "real-005",
+      "group": "rerank-eval-c",
+      "config_id": "4b66f5325d7f7257",
+      "raw_sha256": "3be07e059d58e112fe1db42c1ccd585e7fb8dc4e700c17a40fe78156252a1722",
+      "record": "rerank-eval-c/952c604d8c2e5feb.json",
+      "seconds": 40.72705033401144,
+      "semantic_review": null,
+      "status": "token_budget",
+      "completed": false,
+      "eligible": false,
+      "normalized_em": 0,
+      "validation_error_count": 0,
+      "usage_complete": true,
+      "all_usage_events_complete": true,
+      "declared_total_tokens": 33140,
+      "observed_usage_total_tokens": 33140,
+      "token_accounting_matches": true,
+      "usage_event_count": 8,
+      "configured_model": "deepseek/deepseek-v4-flash-0731",
+      "returned_model_ids": [
+        "deepseek/deepseek-v4-flash-0731"
+      ],
+      "returned_models_match": true,
+      "configured_max_total_tokens": 30000,
+      "declared_tool_calls": 4,
+      "assistant_requested_calls": 4,
+      "tool_result_events": 4,
+      "tool_accounting_matches": true,
+      "tool_result_count_matches": true,
+      "successful_tool_results": 3,
+      "failed_tool_results": 1,
+      "blocked_tool_results": 1,
+      "tool_error_codes": {
+        "run_stopping": 1
+      },
+      "tool_result_names": {
+        "search": 1,
+        "open_document": 2,
+        "find_in_document": 1
+      },
+      "api_attempts": 8,
+      "http_status_counts": {
+        "200": 8
+      },
+      "http_error_attempts": 0,
+      "transport_error_attempts": 0,
+      "api_attempts_with_unknown_usage": 0,
+      "error_codes": {
+        "invalid_final": 4
+      },
+      "final_validation_errors": {
+        "invalid_json": 2,
+        "citation_text_or_offset_mismatch": 2
+      },
+      "searches": 1,
+      "search_method_counts": {
+        "hybrid": 1
+      },
+      "search_status_counts": {
+        "success": 1
+      },
+      "rerank_status_counts": {
+        "success": 1
+      },
+      "observed_evidence_in_top5": true,
+      "observed_evidence_search_numbers": [
+        1
+      ],
+      "delivered_evidence_in_top5": true,
+      "delivered_evidence_search_numbers": [
+        1
+      ],
+      "document_tools_delivered_evidence": [
+        "find_in_document"
+      ],
+      "attribution": "downstream_final_validation_failure_after_search_evidence"
+    },
+    {
+      "run": "api-main",
+      "id": "real-003",
+      "group": "rerank-eval-c",
+      "config_id": "4b66f5325d7f7257",
+      "raw_sha256": "5c0299228be01ec2836e7a59425233a73a4cd398b3a27459985298cdd54774be",
+      "record": "rerank-eval-c/ac7abfcc9c3e1ec1.json",
+      "seconds": 45.55855516702286,
+      "semantic_review": null,
+      "status": "token_budget",
+      "completed": false,
+      "eligible": false,
+      "normalized_em": 0,
+      "validation_error_count": 0,
+      "usage_complete": true,
+      "all_usage_events_complete": true,
+      "declared_total_tokens": 31303,
+      "observed_usage_total_tokens": 31303,
+      "token_accounting_matches": true,
+      "usage_event_count": 7,
+      "configured_model": "deepseek/deepseek-v4-flash-0731",
+      "returned_model_ids": [
+        "deepseek/deepseek-v4-flash-0731"
+      ],
+      "returned_models_match": true,
+      "configured_max_total_tokens": 30000,
+      "declared_tool_calls": 4,
+      "assistant_requested_calls": 4,
+      "tool_result_events": 4,
+      "tool_accounting_matches": true,
+      "tool_result_count_matches": true,
+      "successful_tool_results": 4,
+      "failed_tool_results": 0,
+      "blocked_tool_results": 0,
+      "tool_error_codes": {},
+      "tool_result_names": {
+        "search": 1,
+        "open_document": 2,
+        "find_in_document": 1
+      },
+      "api_attempts": 7,
+      "http_status_counts": {
+        "200": 7
+      },
+      "http_error_attempts": 0,
+      "transport_error_attempts": 0,
+      "api_attempts_with_unknown_usage": 0,
+      "error_codes": {
+        "invalid_final": 2
+      },
+      "final_validation_errors": {
+        "invalid_json": 1,
+        "citation_text_or_offset_mismatch": 1
+      },
+      "searches": 1,
+      "search_method_counts": {
+        "hybrid": 1
+      },
+      "search_status_counts": {
+        "success": 1
+      },
+      "rerank_status_counts": {
+        "success": 1
+      },
+      "observed_evidence_in_top5": true,
+      "observed_evidence_search_numbers": [
+        1
+      ],
+      "delivered_evidence_in_top5": true,
+      "delivered_evidence_search_numbers": [
+        1
+      ],
+      "document_tools_delivered_evidence": [],
+      "attribution": "downstream_final_validation_failure_after_search_evidence"
+    }
+  ]
+}

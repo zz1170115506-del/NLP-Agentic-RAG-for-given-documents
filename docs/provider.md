@@ -1,5 +1,15 @@
 # 指定模型与服务映射
 
+## 2026-11-11 真实调用更新
+
+已使用显式加载的本地 `.env.openrouter-smoke` 对真实小语料执行 5 题 B/C 配对，共 10 次 Agent 尝试、74 次 HTTP 200。所有响应 model ID 与 `deepseek/deepseek-v4-flash-0731` 一致；累计服务报告 317,360 tokens，未发现模型 ID、usage 或工具计数不一致。此结论来自真实协议响应，不等于独立鉴定服务端权重。
+
+B/C normalized EM 分别为 0/5、1/5；仅一次完成，另外九次在证据送达后发生最终 JSON/引用坐标问题并耗尽 token 预算。API 可达与模型 ID 匹配不能代替答题质量验证。详见[两轮实验报告](2026-11-11--local-rerank--r02--round-review.md)，原始轨迹保留于忽略目录。
+
+配对入口 `python scripts/run_rerank_agent.py --help` 使用 `load_dotenv(..., override=True)` 显式覆盖既有 `LLM_*`；共享账本最多保留 20 次尝试、10 个题目 ID，失败和中断尝试亦占名额。密钥只在运行进程使用。本次原微信临时文件因系统权限不可读，使用作业目录同名本地配置，端点和模型符合任务规定。
+
+以下为 2026-11-10 的历史核对；其中“尚未真实调用”仅描述当时状态。
+
 核对日期：2026-11-10。课程 PDF 指定 **DeepSeek-V4-Flash**；不能自动升级成 V4.1、改用其他推理模型，或把检索 embedding 模型当作 backbone。
 
 ## 本次核对

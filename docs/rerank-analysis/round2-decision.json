@@ -1,0 +1,35 @@
+{
+  "selected_before_heldout": true,
+  "first_round_path": "outputs/rerank-eval/round1",
+  "observations": {
+    "B_hit": 9,
+    "C_hit": 10,
+    "n": 10,
+    "C_median_seconds": 0.41024447898962535,
+    "B_median_seconds": 0.11983814598352183,
+    "mean_windowing_seconds": 0.012562274999800139,
+    "mean_scoring_seconds": 0.2713401207030984
+  },
+  "hypothesis": "Dominant rerank scoring cost can be reduced by scoring only first10 RRF candidates while preserving the observed evidence gain (the rescued evidence was B rank6).",
+  "primary_variable": "rerank_depth 30->10",
+  "fixed": [
+    "candidate_depth50",
+    "top_k5",
+    "query",
+    "corpus",
+    "chunking",
+    "model_revisions",
+    "device_cpu",
+    "rerank_batch_size8",
+    "window_policy",
+    "Agent"
+  ],
+  "development_selection": "Replay dev snapshots once at depth10; choose only if no observed hit@5 regression. Then compare depth30 vs10 on untouched heldout10. No alternate parameter search.",
+  "time_utc": "2026-11-11T10:59:52.481579+00:00",
+  "dev_result": {
+    "C30_hit": 10,
+    "D10_hit": 10,
+    "n": 10,
+    "proceed_to_heldout": true
+  }
+}

@@ -8,6 +8,11 @@ chunk_overlap: 150
 batch_size: 16
 top_k: 5
 rrf_k: 60
+# None keeps the original min(top_k * 3, 60) depth per retrieval route.
+candidate_depth: null
+rerank_enabled: false
+rerank_depth: 30
+rerank_batch_size: 8
 encoder_model: intfloat/e5-small-v2
 encoder_revision: main
 instruction_model: Qwen/Qwen3-Embedding-0.6B

@@ -1,0 +1,38 @@
+{
+  "date_hkt": "2026-11-11",
+  "base_sha": "7c4efa4b0acb6b8dc177165985a25f33c1324e9a",
+  "baseline_tests_passed": 50,
+  "final_tests_passed": 65,
+  "ruff": "passed",
+  "pip_check": "passed",
+  "frozen_source_digest": "e3e98c6c05e2cb4e235f07ae0b43a06b6c8b643950bc9528d8e6f07dce255588",
+  "baseline_disabled_equal": true,
+  "checks": {
+    "minimum-dependency-installed/result.json": {
+      "status": "passed",
+      "sha256": "bf22a7c6ec5c12f5c112f589c011a366ee6de0b2cf909861c5867d7ecfae249a",
+      "scope": [
+        "SQLite FTS5 BM25",
+        "create_backend",
+        "SearchService",
+        "RRF",
+        "LocalCrossEncoder orchestration"
+      ]
+    },
+    "installed-factory-real.json": {
+      "status": "passed",
+      "sha256": "164be8dbb0078c531d1cd38380f47faadbd5aea19ca1d4f0cb5cf3a298a8af82",
+      "scope": "installed package factory with real three-route indexes and real reranker"
+    },
+    "real-model-smoke.json": {
+      "status": "passed",
+      "sha256": "050ce17a8f5e12514d110cab9264e8d797a19708e0ae126d2ccaed53c4ba00d1",
+      "scope": "real model on synthetic query/passage probes"
+    },
+    "minimum-clean-smoke/result.json": {
+      "status": "passed",
+      "sha256": "bf22a7c6ec5c12f5c112f589c011a366ee6de0b2cf909861c5867d7ecfae249a",
+      "scope": "fresh base-only installation; torch and transformers absent; installed factory and true SQLite with explicit neural test doubles"
+    }
+  }
+}

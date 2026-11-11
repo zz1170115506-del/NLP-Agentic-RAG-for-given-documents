@@ -1,0 +1,548 @@
+{
+  "status": "passed",
+  "scope": "read-only experiment audit; no model/API execution",
+  "run_names": [
+    "round1",
+    "depth10-dev",
+    "round2-control",
+    "round2-depth10"
+  ],
+  "checks": {
+    "B_C_candidate_identity_all_40_queries": true,
+    "C30_D10_only_rerank_depth_changes": true,
+    "dev_heldout_ids_disjoint": true,
+    "dev_heldout_annotated_documents_disjoint": true,
+    "all_retrieval_model_and_tokenizer_revisions_pinned": true,
+    "actual_source_digest_matches_all_runs": "e3e98c6c05e2cb4e235f07ae0b43a06b6c8b643950bc9528d8e6f07dce255588",
+    "all_label_hashes_and_raw_coordinates_match": true,
+    "RRF_independently_recomputed_from_route_ranks": true,
+    "rerank_stable_sort_and_public_reciprocal_rank_scores_checked": true,
+    "all_metrics_independently_recomputed": true,
+    "decision_file_precedes_heldout_artifacts": true,
+    "all_measured_C_queries_warm": true,
+    "default_rerank_disabled_and_legacy_depth_retained": true,
+    "baseline_exact_sqlite_snapshots_unchanged_on_current_code": true
+  },
+  "runs": {
+    "round1": {
+      "n": 10,
+      "all_success": true,
+      "fallbacks": 0,
+      "questions_file": "data/rerank-eval/questions.jsonl",
+      "labels_file": "data/rerank-eval/labels.jsonl",
+      "pool_count_range": [
+        68,
+        123
+      ],
+      "B_route_count_ranges": {
+        "sparse": [
+          50,
+          50
+        ],
+        "encoder": [
+          50,
+          50
+        ],
+        "instruction": [
+          50,
+          50
+        ]
+      },
+      "scored_window_count": 301,
+      "windows_per_scored_chunk_range": [
+        1,
+        2
+      ],
+      "omitted_windows": 0,
+      "pair_token_range": [
+        60,
+        512
+      ],
+      "timings_seconds": {
+        "A": {
+          "n": 10,
+          "min": 0.1034804999944754,
+          "median": 0.11567602099967189,
+          "max": 0.1674434170126915
+        },
+        "B": {
+          "n": 10,
+          "min": 0.10875416599446908,
+          "median": 0.11983814598352183,
+          "max": 0.292054333986016
+        },
+        "C": {
+          "n": 10,
+          "min": 0.3171201240038499,
+          "median": 0.41024447898962535,
+          "max": 0.5498905000276864
+        },
+        "rerank_only": {
+          "n": 10,
+          "min": 0.20643708301940933,
+          "median": 0.26598908349114936,
+          "max": 0.4091667500033509
+        },
+        "scoring_only": {
+          "n": 10,
+          "min": 0.19424137499299832,
+          "median": 0.2530814790079603,
+          "max": 0.38665920798666775
+        }
+      },
+      "hit_counts": {
+        "A": 9,
+        "B": 9,
+        "C": 10
+      },
+      "mrr": {
+        "A": 0.7916666666666666,
+        "B": 0.8666666666666667,
+        "C": 0.8333333333333334
+      }
+    },
+    "depth10-dev": {
+      "n": 10,
+      "all_success": true,
+      "fallbacks": 0,
+      "questions_file": "data/rerank-eval/questions.jsonl",
+      "labels_file": "data/rerank-eval/labels.jsonl",
+      "pool_count_range": [
+        68,
+        123
+      ],
+      "B_route_count_ranges": {
+        "sparse": [
+          50,
+          50
+        ],
+        "encoder": [
+          50,
+          50
+        ],
+        "instruction": [
+          50,
+          50
+        ]
+      },
+      "scored_window_count": 100,
+      "windows_per_scored_chunk_range": [
+        1,
+        1
+      ],
+      "omitted_windows": 0,
+      "pair_token_range": [
+        60,
+        309
+      ],
+      "timings_seconds": {
+        "A": {
+          "n": 10,
+          "min": 0.1034804999944754,
+          "median": 0.11567602099967189,
+          "max": 0.1674434170126915
+        },
+        "B": {
+          "n": 10,
+          "min": 0.10875416599446908,
+          "median": 0.11983814598352183,
+          "max": 0.292054333986016
+        },
+        "C": {
+          "n": 10,
+          "min": 0.1770250409899745,
+          "median": 0.2026755409897305,
+          "max": 0.362960000988096
+        },
+        "rerank_only": {
+          "n": 10,
+          "min": 0.06414991698693484,
+          "median": 0.06922127099824138,
+          "max": 0.08846041699871421
+        },
+        "scoring_only": {
+          "n": 10,
+          "min": 0.059881458000745624,
+          "median": 0.0648461040109396,
+          "max": 0.08381879099761136
+        }
+      },
+      "hit_counts": {
+        "A": 9,
+        "B": 9,
+        "C": 10
+      },
+      "mrr": {
+        "A": 0.7916666666666666,
+        "B": 0.8666666666666667,
+        "C": 0.8333333333333334
+      }
+    },
+    "round2-control": {
+      "n": 10,
+      "all_success": true,
+      "fallbacks": 0,
+      "questions_file": "data/rerank-eval/questions.jsonl",
+      "labels_file": "data/rerank-eval/labels.jsonl",
+      "pool_count_range": [
+        70,
+        126
+      ],
+      "B_route_count_ranges": {
+        "sparse": [
+          50,
+          50
+        ],
+        "encoder": [
+          50,
+          50
+        ],
+        "instruction": [
+          50,
+          50
+        ]
+      },
+      "scored_window_count": 300,
+      "windows_per_scored_chunk_range": [
+        1,
+        1
+      ],
+      "omitted_windows": 0,
+      "pair_token_range": [
+        47,
+        340
+      ],
+      "timings_seconds": {
+        "A": {
+          "n": 10,
+          "min": 0.09445154201239347,
+          "median": 0.1036006665090099,
+          "max": 0.12116687500383705
+        },
+        "B": {
+          "n": 10,
+          "min": 0.0962685410049744,
+          "median": 0.11494816701451782,
+          "max": 0.1367882920021657
+        },
+        "C": {
+          "n": 10,
+          "min": 0.3035145420290064,
+          "median": 0.34763847952126525,
+          "max": 0.3870900839974638
+        },
+        "rerank_only": {
+          "n": 10,
+          "min": 0.19951416700496338,
+          "median": 0.2328505835030228,
+          "max": 0.2639875420136377
+        },
+        "scoring_only": {
+          "n": 10,
+          "min": 0.18776966602308676,
+          "median": 0.2216795624990482,
+          "max": 0.25248954197741114
+        }
+      },
+      "hit_counts": {
+        "A": 9,
+        "B": 10,
+        "C": 9
+      },
+      "mrr": {
+        "A": 0.7944444444444444,
+        "B": 0.8083333333333333,
+        "C": 0.8043478260869565
+      }
+    },
+    "round2-depth10": {
+      "n": 10,
+      "all_success": true,
+      "fallbacks": 0,
+      "questions_file": "data/rerank-eval/questions.jsonl",
+      "labels_file": "data/rerank-eval/labels.jsonl",
+      "pool_count_range": [
+        70,
+        126
+      ],
+      "B_route_count_ranges": {
+        "sparse": [
+          50,
+          50
+        ],
+        "encoder": [
+          50,
+          50
+        ],
+        "instruction": [
+          50,
+          50
+        ]
+      },
+      "scored_window_count": 100,
+      "windows_per_scored_chunk_range": [
+        1,
+        1
+      ],
+      "omitted_windows": 0,
+      "pair_token_range": [
+        78,
+        339
+      ],
+      "timings_seconds": {
+        "A": {
+          "n": 10,
+          "min": 0.09445154201239347,
+          "median": 0.1036006665090099,
+          "max": 0.12116687500383705
+        },
+        "B": {
+          "n": 10,
+          "min": 0.0962685410049744,
+          "median": 0.11494816701451782,
+          "max": 0.1367882920021657
+        },
+        "C": {
+          "n": 10,
+          "min": 0.16515579199767672,
+          "median": 0.19841804150200915,
+          "max": 0.2136930420238059
+        },
+        "rerank_only": {
+          "n": 10,
+          "min": 0.06544379200204276,
+          "median": 0.07786693751404528,
+          "max": 0.1020739590167068
+        },
+        "scoring_only": {
+          "n": 10,
+          "min": 0.06090304197277874,
+          "median": 0.07360849950055126,
+          "max": 0.09755541599588469
+        }
+      },
+      "hit_counts": {
+        "A": 9,
+        "B": 10,
+        "C": 9
+      },
+      "mrr": {
+        "A": 0.7944444444444444,
+        "B": 0.8083333333333333,
+        "C": 0.81
+      }
+    }
+  },
+  "comparisons": {
+    "depth10-dev_vs_round1": {
+      "config_changes": {
+        "rerank_depth": [
+          30,
+          10
+        ]
+      },
+      "exact_A_B_snapshot_reuse": true,
+      "improved": 0,
+      "tied": 10,
+      "regressed": 0,
+      "identical_top5": 8,
+      "rows": [
+        {
+          "id": "real-010",
+          "C30_rank": 1,
+          "D10_rank": 1,
+          "rerank_seconds_delta": -0.1400950830138754
+        },
+        {
+          "id": "real-002",
+          "C30_rank": 2,
+          "D10_rank": 2,
+          "rerank_seconds_delta": -0.16697716698399745
+        },
+        {
+          "id": "real-004",
+          "C30_rank": 1,
+          "D10_rank": 1,
+          "rerank_seconds_delta": -0.21070616698125377
+        },
+        {
+          "id": "real-003",
+          "C30_rank": 3,
+          "D10_rank": 3,
+          "rerank_seconds_delta": -0.19462741698953323
+        },
+        {
+          "id": "real-001",
+          "C30_rank": 1,
+          "D10_rank": 1,
+          "rerank_seconds_delta": -0.3258575420186389
+        },
+        {
+          "id": "real-005",
+          "C30_rank": 1,
+          "D10_rank": 1,
+          "rerank_seconds_delta": -0.21895866698469035
+        },
+        {
+          "id": "real-008",
+          "C30_rank": 1,
+          "D10_rank": 1,
+          "rerank_seconds_delta": -0.18123274997924455
+        },
+        {
+          "id": "real-006",
+          "C30_rank": 2,
+          "D10_rank": 2,
+          "rerank_seconds_delta": -0.15758604303118773
+        },
+        {
+          "id": "real-009",
+          "C30_rank": 1,
+          "D10_rank": 1,
+          "rerank_seconds_delta": -0.17595912498654798
+        },
+        {
+          "id": "real-007",
+          "C30_rank": 1,
+          "D10_rank": 1,
+          "rerank_seconds_delta": -0.34173808302148245
+        }
+      ],
+      "median_paired_rerank_seconds_delta": -0.1879300834843889
+    },
+    "round2-depth10_vs_round2-control": {
+      "config_changes": {
+        "rerank_depth": [
+          30,
+          10
+        ]
+      },
+      "exact_A_B_snapshot_reuse": true,
+      "improved": 0,
+      "tied": 10,
+      "regressed": 0,
+      "identical_top5": 7,
+      "rows": [
+        {
+          "id": "real-012",
+          "C30_rank": 23,
+          "D10_rank": 10,
+          "rerank_seconds_delta": -0.17846345898578875
+        },
+        {
+          "id": "real-016",
+          "C30_rank": 1,
+          "D10_rank": 1,
+          "rerank_seconds_delta": -0.15941312501672655
+        },
+        {
+          "id": "real-013",
+          "C30_rank": 2,
+          "D10_rank": 2,
+          "rerank_seconds_delta": -0.1361901260097511
+        },
+        {
+          "id": "real-020",
+          "C30_rank": 1,
+          "D10_rank": 1,
+          "rerank_seconds_delta": -0.15512099998886697
+        },
+        {
+          "id": "real-017",
+          "C30_rank": 1,
+          "D10_rank": 1,
+          "rerank_seconds_delta": -0.15252087500994094
+        },
+        {
+          "id": "real-011",
+          "C30_rank": 2,
+          "D10_rank": 2,
+          "rerank_seconds_delta": -0.12938504200428724
+        },
+        {
+          "id": "real-019",
+          "C30_rank": 1,
+          "D10_rank": 1,
+          "rerank_seconds_delta": -0.1529836239933502
+        },
+        {
+          "id": "real-015",
+          "C30_rank": 1,
+          "D10_rank": 1,
+          "rerank_seconds_delta": -0.15042749998974614
+        },
+        {
+          "id": "real-014",
+          "C30_rank": 1,
+          "D10_rank": 1,
+          "rerank_seconds_delta": -0.17415854200953618
+        },
+        {
+          "id": "real-018",
+          "C30_rank": 1,
+          "D10_rank": 1,
+          "rerank_seconds_delta": -0.14560362498741597
+        }
+      ],
+      "median_paired_rerank_seconds_delta": -0.15275224950164557
+    }
+  },
+  "limitations": [
+    "97 bounded real documents / 1069 source chunks, drawn from first100 and excluding three long documents; no full-corpus quality claim.",
+    "20 manually authored factual queries and partial sufficient-span labels, 10 development/10 heldout; not official course validation questions.",
+    "Recall is annotated sufficient-span containment, not exhaustive relevance recall. No failed corpus-coverage cases in this deliberately covered sample.",
+    "One warmed measured run per query/config; no repeated-run variance estimate, no reliable high-percentile latency or statistically established superiority.",
+    "D replay total time is reused B retrieval duration plus newly measured rerank time, not an independently timed complete search request.",
+    "D10 preserves hit@5 versus C30 on these20 queries but top5 rankings are not always identical; report same hit count rather than identical results.",
+    "The heldout adverse span is fully scored at256 paired tokens; truncation/window omission does not explain it.",
+    "B recommendation is a provisional operational choice from this sample, not a general or statistically proven ranking winner.",
+    "Artifact mtimes support separation of this task retrieval/API jobs; absence of all unrelated background system workload was not monitored.",
+    "Current peer Agent integration unavailable; own Agent managed Evidence strips chunk_id as noted baseline audit."
+  ],
+  "artifact_mtime_intervals_utc": {
+    "round1": [
+      "2026-11-11T10:58:31.830320+00:00",
+      "2026-11-11T10:58:42.049883+00:00"
+    ],
+    "depth10-dev": [
+      "2026-11-11T11:00:05.912729+00:00",
+      "2026-11-11T11:00:09.424755+00:00"
+    ],
+    "round2-control": [
+      "2026-11-11T11:00:20.958388+00:00",
+      "2026-11-11T11:00:30.268390+00:00"
+    ],
+    "round2-depth10": [
+      "2026-11-11T11:01:02.910266+00:00",
+      "2026-11-11T11:01:06.094292+00:00"
+    ],
+    "api-pilot": [
+      "2026-11-11T10:59:00.430931+00:00",
+      "2026-11-11T10:59:32.883835+00:00"
+    ],
+    "api-main": [
+      "2026-11-11T11:01:35.233281+00:00",
+      "2026-11-11T11:05:44.666244+00:00"
+    ]
+  },
+  "adverse_case": {
+    "id": "real-012",
+    "doc_id": "18690",
+    "evidence_chunk_id": "18690:5250:730",
+    "A_rank": 9,
+    "B_rank": 4,
+    "C30_rank": 23,
+    "D10_rank": 10,
+    "raw_rerank_score": -5.593477249145508,
+    "scoring_windows": [
+      {
+        "start": 5250,
+        "end": 5980,
+        "pair_tokens": 256,
+        "score": -5.593477249145508
+      }
+    ],
+    "evidence_fully_in_scoring_window": true,
+    "diagnosis": "candidate present and fully scored; ranking-model mismatch rather than candidate miss or token truncation"
+  }
+}
