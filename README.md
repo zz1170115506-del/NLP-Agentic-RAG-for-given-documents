@@ -9,6 +9,21 @@ COMP5423 2026 Fall **Skill-Augmented Search Agent**：从指定固定文档集�
 - [实际验证记录](docs/validation.md) · [要求与代码映射](docs/requirements.md)
 - [模型服务配置与核对依据](docs/provider.md) · [协作边界](docs/collaboration.md)
 
+## 1.2 Agent 接入版
+
+负责 1.2 的实现位于 [`agent12/`](agent12/)，通过统一 `search(query, top_k)` 调用本仓库的 1.1 检索。支持结果驱动的多轮搜索、空结果恢复、片段级引用和保留工具配对的上下文压缩。`top_k` 按片段计数，同文档不同片段分别保留。
+
+从仓库根目录运行无需 API 的 70 项 Agent/接入测试，并建立合成 BM25 样例：
+
+```bash
+cd agent12
+python -m pip install -r requirements-peer.txt
+python -m unittest discover -s tests -v
+python scripts/prepare_peer12.py --peer-project ..
+```
+
+真实模型开发入口、索引配置与完整步骤见 [1.2 运行说明](agent12/PEER_INTEGRATION.md)。已使用真实 DeepSeek Flash API 和本仓库 BM25 验证四类合成案例，记录见 [验证摘要](agent12/verification/peer-summary.json)。这些是开发联调，正式课程模型与全量语料的评测仍待完成。
+
 ## 1. 安装
 
 在项目根目录执行。支持 Python **3.11–3.13**，本次验证环境是 macOS arm64 / Python 3.12.14。
