@@ -1,0 +1,1 @@
+Independent section 1.2 implementation and synthetic integration evidence. Not a complete group submission or official benchmark result.
