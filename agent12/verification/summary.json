@@ -1,0 +1,74 @@
+{
+  "verified_at": "2026-11-10T11:09:54.098015+00:00",
+  "component": "COMP5423 section 1.2",
+  "development_only": true,
+  "backend": "synthetic fixtures, not the final section 1.1 retriever",
+  "scope": "Real configured DeepSeek API integration; not course benchmark accuracy",
+  "scenarios": [
+    {
+      "scenario": "multi-hop",
+      "passed": true,
+      "model": [
+        "deepseek-flash"
+      ],
+      "api_requests": 4,
+      "tool_calls": 10,
+      "api_total_tokens": 8265,
+      "answer": "Elara Venn",
+      "pruned_history_turns": 0,
+      "checks": [
+        "chronological events",
+        "real API usage sum",
+        "tool call/result pairing",
+        "known evidence citations",
+        "explicit development label",
+        "later query uses newly observed candidate"
+      ],
+      "trace": "live_multihop.json"
+    },
+    {
+      "scenario": "recovery",
+      "passed": true,
+      "model": [
+        "deepseek-flash"
+      ],
+      "api_requests": 4,
+      "tool_calls": 5,
+      "api_total_tokens": 7491,
+      "answer": "Elara Venn",
+      "pruned_history_turns": 0,
+      "checks": [
+        "chronological events",
+        "real API usage sum",
+        "tool call/result pairing",
+        "known evidence citations",
+        "explicit development label",
+        "empty first search followed by successful reformulation"
+      ],
+      "trace": "live_recovery.json"
+    },
+    {
+      "scenario": "context",
+      "passed": true,
+      "model": [
+        "deepseek-flash"
+      ],
+      "api_requests": 2,
+      "tool_calls": 1,
+      "api_total_tokens": 2446,
+      "answer": "Elara Venn",
+      "pruned_history_turns": 1,
+      "checks": [
+        "chronological events",
+        "real API usage sum",
+        "tool call/result pairing",
+        "known evidence citations",
+        "explicit development label",
+        "12000-character raw document retained while context stays below 6000"
+      ],
+      "trace": "live_context.json"
+    }
+  ],
+  "api_requests_total": 10,
+  "api_tokens_total": 18202
+}
