@@ -5,11 +5,11 @@ import json
 from pathlib import Path
 
 from rag_agent.evaluation.io import read_predictions, read_questions, iter_jsonl
-from rag_agent.evaluation.metrics import evaluate
-from rag_agent.evaluation.validate import run_metadata, validate_predictions, validate_record
+from rag_agent.evaluation.metrics import evaluate, normalize_answer
+from rag_agent.evaluation.validate import is_completed, run_metadata, validate_predictions, validate_record
 
 
-def audit(input_path, predictions_path, *, score=False):
+def audit(input_path, predictions_path, *, score=False, allow_partial=False):
     questions, rows = read_questions(input_path), read_predictions(predictions_path)
     normal = validate_predictions(input_path, predictions_path)
     formal = validate_predictions(input_path, predictions_path, formal=True)
@@ -47,8 +47,28 @@ def audit(input_path, predictions_path, *, score=False):
                "all_attempts_total_tokens": normal["total_tokens"] + sum(x["total_tokens"] for x in archived),
                "all_attempts_tool_calls": normal["tool_calls"] + sum(x["tool_calls"] for x in archived)}
     if score:
-        result = evaluate(input_path, predictions_path)
-        summary.update(correct=result["correct"], em=result["em"], em_percent=result["em_percent"])
+        if allow_partial:
+            # A diagnostic only: missing records stay absent, count as incorrect,
+            # and still fail the unchanged formal 100-record coverage check.
+            expected = {question.id: question.question for question in questions}
+            seen = set()
+            for row in rows:
+                if row.id in seen or expected.get(row.id) != row.question or validate_record(row):
+                    raise ValueError("Partial scoring requires unique, matching, structurally valid records")
+                seen.add(row.id)
+            references = {}
+            for row in iter_jsonl(input_path):
+                if not isinstance(row.get("answer"), str):
+                    raise ValueError("Scoring requires evaluator-only string reference answers")
+                references[row["id"]] = row["answer"]
+            correct = sum(is_completed(row) and normalize_answer(row.answer) == normalize_answer(references[row.id])
+                          for row in rows)
+            summary.update(correct=correct, em=correct / len(questions), em_percent=100 * correct / len(questions),
+                           evaluation_denominator=len(questions), missing_records=len(questions) - len(rows),
+                           provisional_missing_as_incorrect=len(rows) < len(questions))
+        else:
+            result = evaluate(input_path, predictions_path)
+            summary.update(correct=result["correct"], em=result["em"], em_percent=result["em_percent"])
     return summary
 
 
@@ -57,9 +77,10 @@ def main():
     parser.add_argument("--input", required=True)
     parser.add_argument("--predictions", required=True)
     parser.add_argument("--evaluate", action="store_true", help="Read evaluator-only answer labels AFTER prediction")
+    parser.add_argument("--allow-partial", action="store_true", help="Diagnostic EM only: missing records count as incorrect; formal coverage still fails")
     parser.add_argument("--output")
     args = parser.parse_args()
-    summary = audit(args.input, args.predictions, score=args.evaluate)
+    summary = audit(args.input, args.predictions, score=args.evaluate, allow_partial=args.allow_partial)
     text = json.dumps(summary, indent=2, ensure_ascii=False) + "\n"
     if args.output:
         Path(args.output).parent.mkdir(parents=True, exist_ok=True)

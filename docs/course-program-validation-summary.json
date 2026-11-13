@@ -1,0 +1,477 @@
+{
+  "execution_date_hong_kong": "2026-11-14T00:42:21.987886+08:00",
+  "base_sha": "1162703f5ca920ca8a16947ea7a10cbb7cd85bbd",
+  "program_sha": "7855fe8c341917b657c4e3d3286d061830694db6",
+  "branch": "codex/course-program-validation",
+  "all_in_scope_requirements_met": false,
+  "environment": {
+    "python": "3.12.14",
+    "platform": "macOS-27.0.1-arm64-arm-64bit",
+    "memory_gib": 24,
+    "embedding_device": "MPS; E5 extension resumed on CPU after device-memory failure",
+    "clean_environment_install": true
+  },
+  "guide": {
+    "version": "August 2026 v1.0",
+    "pages": 6,
+    "sha256": "1826731f2cba92f0c03a13888e2b2938174342bab468f68a1e3ac3eb6d54f13a"
+  },
+  "corpus": {
+    "documents": 100195,
+    "chunks": 4345592,
+    "fingerprint": "ea8764233b0d4a76d050842e290805a0f154858084dfd0430ba8c0d9c555025f",
+    "chunking": {
+      "size": 900,
+      "overlap": 150,
+      "unit": "python_unicode_characters"
+    },
+    "source": {
+      "type": "huggingface",
+      "dataset": "Tevatron/browsecomp-plus-corpus",
+      "split": "train",
+      "revision": "b27b02bc3e45511b8b82a13e6f90ce761df726f6",
+      "fields": [
+        "docid",
+        "text",
+        "url"
+      ],
+      "limit": null
+    }
+  },
+  "neural_full_corpus_checkpoints": {
+    "encoder": {
+      "method": "encoder",
+      "model_id": "intfloat/e5-small-v2",
+      "resolved_revision": "ffb93f3bd4047442299a41ebb6fa998a38507c52",
+      "dimension": 384,
+      "format_version": 1,
+      "source_chunk_count": 33536,
+      "vector_count": 34424,
+      "ready": false,
+      "fingerprint": "ea8764233b0d4a76d050842e290805a0f154858084dfd0430ba8c0d9c555025f",
+      "tokenizer_revision": "ffb93f3bd4047442299a41ebb6fa998a38507c52",
+      "dtype": "float32",
+      "pooling": "attention_mask_mean",
+      "build_devices": [
+        "mps",
+        "cpu"
+      ],
+      "coverage_percent": 0.7717245429391438
+    },
+    "instruction": {
+      "method": "instruction",
+      "model_id": "Qwen/Qwen3-Embedding-0.6B",
+      "resolved_revision": "97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3",
+      "dimension": 1024,
+      "format_version": 1,
+      "source_chunk_count": 9216,
+      "vector_count": 9466,
+      "ready": false,
+      "fingerprint": "ea8764233b0d4a76d050842e290805a0f154858084dfd0430ba8c0d9c555025f",
+      "tokenizer_revision": "97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3",
+      "dtype": "float32",
+      "pooling": "last_nonpadding_token",
+      "build_devices": [
+        "mps"
+      ],
+      "coverage_percent": 0.21207697363213113
+    }
+  },
+  "neural_checkpoint_directory": "indexes/course-full-vectors",
+  "safe_resume_throughput": {
+    "encoder_cpu_source_chunks_per_second": 34.382186230362116,
+    "instruction_shard_process_source_chunks_per_second": 6.579338218240318
+  },
+  "extended_index_stages": {
+    "encoder": {
+      "method": "encoder",
+      "new_shard_limit": 113,
+      "seconds": 841.3659272909863,
+      "resume_device": "cpu",
+      "resume_batch_size": 8,
+      "prior_completed_source_chunks": 4608,
+      "prior_device": "mps",
+      "peak_rss_bytes": 860635136
+    },
+    "instruction": {
+      "method": "instruction",
+      "new_shard_limit": 1,
+      "seconds": 35.4751094999956,
+      "peak_rss_bytes": 4007362560
+    }
+  },
+  "sparse_full_corpus": {
+    "ready": true,
+    "chunks": 4345592,
+    "seconds": 137.5375386250089,
+    "bytes": 6670352384
+  },
+  "tests": {
+    "pytest_passed": 90,
+    "agent12_unittest_passed": 70,
+    "ruff_passed": true,
+    "pip_check_passed": true
+  },
+  "real_diagnostic_pair_r2": {
+    "baseline": {
+      "samples": 5,
+      "correct": 5,
+      "em": 1.0,
+      "tool_calls": 11,
+      "total_tokens": 31170,
+      "formal_record_passed": 5,
+      "strict_grounding_passed": 5,
+      "reported_cost_usd": 0.002393202256
+    },
+    "agent12": {
+      "samples": 5,
+      "correct": 5,
+      "em": 1.0,
+      "tool_calls": 19,
+      "total_tokens": 49049,
+      "formal_record_passed": 5,
+      "strict_grounding_passed": 5,
+      "reported_cost_usd": 0.00257866604
+    }
+  },
+  "retrieval_comparison_97_documents": {
+    "sparse": {
+      "samples": 10,
+      "hit_at_5": 10,
+      "mrr": 0.7916666666666667,
+      "median_seconds": 0.0008781870128586888
+    },
+    "encoder": {
+      "samples": 10,
+      "hit_at_5": 9,
+      "mrr": 0.7333333333333333,
+      "median_seconds": 0.013523062982130796
+    },
+    "instruction": {
+      "samples": 10,
+      "hit_at_5": 10,
+      "mrr": 0.75,
+      "median_seconds": 0.11113627103623003
+    },
+    "hybrid": {
+      "samples": 10,
+      "hit_at_5": 10,
+      "mrr": 0.8083333333333333,
+      "median_seconds": 0.0973979584814515
+    }
+  },
+  "mechanism_ablations_5_questions": {
+    "single-search": {
+      "expected": 5,
+      "records": 5,
+      "coverage": 1.0,
+      "ordinary_valid": true,
+      "ordinary_error_count": 0,
+      "formal_batch_valid": false,
+      "formal_batch_error_count": 9,
+      "live_record_passed": 1,
+      "citation_passed": 1,
+      "statuses": {
+        "single_step_limit": 4,
+        "completed": 1
+      },
+      "tool_types": {
+        "search": 9
+      },
+      "tool_calls": 9,
+      "total_tokens": 12719,
+      "http_attempts": 6,
+      "response_models": [
+        "deepseek/deepseek-v4-flash-0731"
+      ],
+      "reported_cost_usd": 0.0007922636159999999,
+      "responses_with_cost": 6,
+      "responses_without_cost": 0,
+      "archived_attempts": 0,
+      "all_attempts_total_tokens": 12719,
+      "all_attempts_tool_calls": 9,
+      "correct": 1,
+      "em": 0.2,
+      "em_percent": 20.0,
+      "seconds": 19.48611045803409
+    },
+    "no-skills": {
+      "expected": 5,
+      "records": 5,
+      "coverage": 1.0,
+      "ordinary_valid": true,
+      "ordinary_error_count": 0,
+      "formal_batch_valid": false,
+      "formal_batch_error_count": 1,
+      "live_record_passed": 5,
+      "citation_passed": 5,
+      "statuses": {
+        "completed": 5
+      },
+      "tool_types": {
+        "search": 11
+      },
+      "tool_calls": 11,
+      "total_tokens": 35927,
+      "http_attempts": 12,
+      "response_models": [
+        "deepseek/deepseek-v4-flash-0731"
+      ],
+      "reported_cost_usd": 0.002416289152,
+      "responses_with_cost": 12,
+      "responses_without_cost": 0,
+      "archived_attempts": 0,
+      "all_attempts_total_tokens": 35927,
+      "all_attempts_tool_calls": 11,
+      "correct": 5,
+      "em": 1.0,
+      "em_percent": 100.0,
+      "seconds": 30.800897416018415
+    },
+    "no-context": {
+      "expected": 5,
+      "records": 5,
+      "coverage": 1.0,
+      "ordinary_valid": true,
+      "ordinary_error_count": 0,
+      "formal_batch_valid": false,
+      "formal_batch_error_count": 1,
+      "live_record_passed": 5,
+      "citation_passed": 5,
+      "statuses": {
+        "completed": 5
+      },
+      "tool_types": {
+        "search": 6
+      },
+      "tool_calls": 6,
+      "total_tokens": 34756,
+      "http_attempts": 10,
+      "response_models": [
+        "deepseek/deepseek-v4-flash-0731"
+      ],
+      "reported_cost_usd": 0.0023870962560000003,
+      "responses_with_cost": 10,
+      "responses_without_cost": 0,
+      "archived_attempts": 0,
+      "all_attempts_total_tokens": 34756,
+      "all_attempts_tool_calls": 6,
+      "correct": 5,
+      "em": 1.0,
+      "em_percent": 100.0,
+      "seconds": 20.942637915955856
+    }
+  },
+  "long_context_synthetic_real_model": {
+    "status": "completed",
+    "tool_calls": 2,
+    "tokens": 5775,
+    "formal_errors": [],
+    "max_request_chars": 7426,
+    "context_chars": 8000,
+    "truncated_view_observed": true,
+    "raw_long_text_preserved": true
+  },
+  "full_sparse_probe": {
+    "corpus_documents": 100195,
+    "corpus_chunks": 4345592,
+    "samples": 10,
+    "hit_at_5": 9,
+    "mrr": 0.6783333333333333,
+    "cold_median_seconds": 3.138629833003506,
+    "warm_median_seconds": 3.236796270502964,
+    "warm_max_seconds": 4.106986417027656,
+    "all_offsets_verified": true,
+    "stable_repeat_rankings": true,
+    "timing_scope": "Full real corpus, BM25 standard service; official API batch may run concurrently; no full neural latency claim"
+  },
+  "rejected_native_rank_probe": [
+    {
+      "same_ids_and_scores": true,
+      "old_seconds": 2.756074915989302,
+      "native_rank_seconds": 3.3871725000208244,
+      "fetched_candidates": 10
+    },
+    {
+      "same_ids_and_scores": true,
+      "old_seconds": 2.739875583036337,
+      "native_rank_seconds": 3.4238323339959607,
+      "fetched_candidates": 10
+    },
+    {
+      "same_ids_and_scores": true,
+      "old_seconds": 2.9206824590219185,
+      "native_rank_seconds": 3.591558874992188,
+      "fetched_candidates": 10
+    }
+  ],
+  "official_validation": {
+    "expected": 100,
+    "records": 90,
+    "coverage": 0.9,
+    "ordinary_valid": false,
+    "ordinary_error_count": 1,
+    "formal_batch_valid": false,
+    "formal_batch_error_count": 22,
+    "live_record_passed": 86,
+    "citation_passed": 86,
+    "statuses": {
+      "insufficient_evidence": 60,
+      "completed": 26,
+      "provider_error": 4
+    },
+    "tool_types": {
+      "search": 622,
+      "open_document": 28,
+      "find_in_document": 7
+    },
+    "tool_calls": 657,
+    "total_tokens": 1516813,
+    "http_attempts": 420,
+    "response_models": [
+      "deepseek/deepseek-v4-flash-0731"
+    ],
+    "reported_cost_usd": 0.11847578085599993,
+    "responses_with_cost": 416,
+    "responses_without_cost": 0,
+    "archived_attempts": 0,
+    "all_attempts_total_tokens": 1516813,
+    "all_attempts_tool_calls": 657,
+    "correct": 19,
+    "em": 0.19,
+    "em_percent": 19.0,
+    "evaluation_denominator": 100,
+    "missing_records": 10,
+    "provisional_missing_as_incorrect": true
+  },
+  "official_validation_segments": {
+    "debug_first_15": {
+      "expected": 15,
+      "records": 15,
+      "missing": 0,
+      "correct": 4,
+      "em_percent": 26.666666666666668,
+      "provisional": false,
+      "record_passed": 15
+    },
+    "independent_remaining_85": {
+      "expected": 85,
+      "records": 75,
+      "missing": 10,
+      "correct": 15,
+      "em_percent": 17.647058823529413,
+      "provisional": true,
+      "record_passed": 71
+    }
+  },
+  "official_failure_audit": {
+    "scope": "Post-prediction evaluator-only diagnostic on 90 actual records; no API; reference labels never re-enter inference",
+    "missing": 10,
+    "total_recorded_question_elapsed_seconds": 2465.4998,
+    "groups": {
+      "insufficient_evidence": {
+        "records": 60,
+        "finalization_reasons": {
+          "search_stalled": 46,
+          "repeated_action": 1,
+          "reserve_final_usage": 13
+        },
+        "sum_question_elapsed_seconds": 1594.400068,
+        "median_question_elapsed_seconds": 16.3731545,
+        "total_tokens": 975777,
+        "median_tokens": 14795.0,
+        "tool_calls": 426
+      },
+      "correct": {
+        "records": 19,
+        "finalization_reasons": {
+          "search_stalled": 7,
+          "repeated_action": 1,
+          "reserve_final_usage": 10
+        },
+        "sum_question_elapsed_seconds": 430.026548,
+        "median_question_elapsed_seconds": 22.410815,
+        "total_tokens": 407085,
+        "median_tokens": 23449,
+        "tool_calls": 168
+      },
+      "incorrect": {
+        "records": 7,
+        "finalization_reasons": {
+          "reserve_final_usage": 2,
+          "search_stalled": 4
+        },
+        "sum_question_elapsed_seconds": 423.575653,
+        "median_question_elapsed_seconds": 50.927631,
+        "total_tokens": 130357,
+        "median_tokens": 18215,
+        "tool_calls": 59
+      },
+      "provider_error": {
+        "records": 4,
+        "finalization_reasons": {},
+        "sum_question_elapsed_seconds": 17.497531,
+        "median_question_elapsed_seconds": 3.453067,
+        "total_tokens": 3594,
+        "median_tokens": 893.5,
+        "tool_calls": 4
+      }
+    }
+  },
+  "historical_replay": {
+    "scope": "Offline replay of ten original 2026-11-11 real API artifacts; zero new inference requests; original predictions remain untouched",
+    "historical_records": 10,
+    "historical_statuses": {
+      "token_budget": 9,
+      "completed": 1
+    },
+    "historical_total_tokens": 317360,
+    "historical_total_tool_calls": 43,
+    "original_invalid_final_events": 29,
+    "model_final_candidates": 34,
+    "strict_json_candidates": 15,
+    "unambiguous_object_parseable": 34,
+    "syntax_only_recovered": 19,
+    "current_formal_record_passed": 1,
+    "new_api_requests": 0,
+    "interpretation": "Syntax extraction alone does not repair unsupported coordinates or turn budget failures into valid predictions; real reruns establish the new behavior."
+  },
+  "public_shard_driver_real_verification": {
+    "checkpoint": {
+      "method": "instruction",
+      "ready": false,
+      "source_chunks": 9216,
+      "total_source_chunks": 4345592,
+      "shards": 36,
+      "fingerprint": "ea8764233b0d4a76d050842e290805a0f154858084dfd0430ba8c0d9c555025f"
+    },
+    "elapsed_seconds": 40.17672595899785,
+    "attempts": [
+      {
+        "before": 8960,
+        "after": 9216,
+        "exit_code": 0,
+        "log": "outputs/index-shards-verification/instruction-000035-1794586914888174000.log"
+      }
+    ]
+  },
+  "all_saved_live_execution_ledger": {
+    "scope": "Distinct live six-field records saved under outputs; identical copies deduplicated; includes archived attempts; excludes historical replay and requests not saved as six-field records",
+    "identical_copies_ignored": 0,
+    "archived_predictions_included": 0,
+    "saved_live_runs": 158,
+    "saved_http_attempts": 652,
+    "saved_total_tokens": 2236866,
+    "saved_tool_calls": 964,
+    "reported_cost_usd": 0.16677907359200006,
+    "usage_records_without_cost": 0,
+    "unknown_usage_attempts": 4
+  },
+  "remaining": [
+    "Official validation: 10 missing and 4 HTTP 402 provider failures; original-service quota required for 14 targeted recoveries",
+    "Full 100195-document E5 index",
+    "Full 100195-document Qwen3 embedding index",
+    "Full-scale hybrid latency and end-to-end validation",
+    "Official test file and final course deliverables are explicitly later-stage"
+  ]
+}

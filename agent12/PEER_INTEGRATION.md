@@ -1,6 +1,10 @@
 # 1.2 Agent 与同学 1.1 检索的接入说明
 
-本目录是接入本仓库 1.1 检索的 1.2 Agent 实现。运行时使用我们的 `SearchAgent` 决策循环，检索排序使用同学的 `PeerBackend → SearchService`。同学源码保持原样。新增的 `search_agent/peer.py` 负责路径处理、来源记录和有界文档查词。
+本目录是接入本仓库 1.1 检索的 1.2 Agent 实现。运行时使用`SearchAgent`决策循环，检索排序使用`PeerBackend → SearchService`；`search_agent/peer.py`负责路径处理、来源记录和有界文档查词。
+
+**2026-11-14集成入口：** 从仓库根目录安装项目后，使用`rag-agent ask/predict --config configs/course-synthetic-agent12.yaml ...`或网页选择Agent 1.2配置。此路径读取根目录`.env`，通过共同HTTP provider保留原始响应/用量和服务调用ID，自动选择skills、按实际可见证据ID生成六字段记录。两端同题诊断均5/5记录及引用通过；当前完整BM25可用，完整神经索引未完成。官方验证为基线运行90/100题，尚未完成。范围、正式校验、额度阻碍及复现入口见[最新回传](../docs/task_NLP-Agentic-RAG-for-given-documents_全项目程序验收与缺口补齐_prompt_1return.md)。
+
+下列`python -m search_agent.agent12`为独立组件开发入口；其模型、`.env`位置和输出不同于根目录的课程集成入口。
 
 仓库根目录的 `src/rag_agent/` 提供 1.1，`agent12/search_agent/` 提供本次 1.2。没有提交密钥、模型权重和课程全文索引。
 
@@ -54,7 +58,7 @@ Agent 密钥读取位置是 `agent12/.env`，也可用环境变量覆盖；不�
 }
 ```
 
-相对的 `store_path/index_dir/skills_dir` 都以 peer 项目为基准。配置中的分块参数必须填同学建库时的实际值。当前仓库没有课程原文库和完整索引，所以本次没有进行全课程语料评测。
+相对的 `store_path/index_dir/skills_dir` 都以peer项目为基准。配置中的分块参数必须填建库时的实际值。语料/索引不提交Git；本轮执行机忽略目录已完成全语料BM25，完整神经索引和正式100题验收状态见顶部更新。
 
 可用 `--retrieval-method sparse|encoder|instruction|hybrid` 覆盖配置中的检索方式。模型只看到一个 `search(query, top_k)`，方法由后端配置决定。**同学的 hybrid 要求 sparse、encoder、instruction 三套索引均已建好**；缺失时不会自动降级。当前合成库只建 sparse，切换向量方式前需由 1.1 提供相应依赖、权重和索引。
 

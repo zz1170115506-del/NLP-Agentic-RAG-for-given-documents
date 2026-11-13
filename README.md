@@ -2,7 +2,7 @@
 
 COMP5423 2026 Fall **Skill-Augmented Search Agent**：从指定固定文档集合检索证据，由 DeepSeek-V4-Flash 通过工具进行多轮问答。现有代码包含三类真实检索实现、独立状态和上下文管理、两个原创 skills、Streamlit 网页、批处理、评测与打包入口。
 
-这是一份可继续协作的功能基线。离线演示可直接运行；真实模型调用需要密钥。完整语料索引、100 题真实验证、最终报告和视频尚未完成，不能把本仓库等同于已完成课程最终提交。
+当前已导入固定语料100,195篇并完成全量BM25。两路神经索引保留可恢复检查点；官方验证因服务HTTP 402停止于90/100题，其中86条通过单条记录校验、4条服务失败、10题未运行。主测试90项及Agent 1.2测试70项通过。完整神经索引、完整100题验收和课程最终交付仍未完成，详见[本轮验收回传](docs/task_NLP-Agentic-RAG-for-given-documents_全项目程序验收与缺口补齐_prompt_1return.md)。
 
 - [RAG 设计思路（中文，可分享给组员）](docs/RAG_设计思路.md)
 - [Agent 设计思路（中文，可分享给组员）](docs/Agent_设计思路.md)
@@ -29,7 +29,7 @@ python -m unittest discover -s tests -v
 python scripts/prepare_peer12.py --peer-project ..
 ```
 
-真实模型开发入口、索引配置与完整步骤见 [1.2 运行说明](agent12/PEER_INTEGRATION.md)。已使用真实 DeepSeek Flash API 和本仓库 BM25 验证四类合成案例，记录见 [验证摘要](agent12/verification/peer-summary.json)。这些是开发联调，正式课程模型与全量语料的评测仍待完成。
+真实模型开发入口、索引配置与完整步骤见 [1.2 运行说明](agent12/PEER_INTEGRATION.md)。此前四类合成案例见 [验证摘要](agent12/verification/peer-summary.json)；本轮指定原版模型的两种Agent同题对照、真实上下文与网页测试见[验收回传](docs/task_NLP-Agentic-RAG-for-given-documents_全项目程序验收与缺口补齐_prompt_1return.md)。这些小样本不代表完整100题或全量三路评测。
 
 安装本项目并按下文建立演示索引后，可在网页选择 `configs/agent12-demo.yaml`，或运行 `rag-agent ask --config configs/agent12-demo.yaml 'When did the Copper Museum open?'`。批处理同样支持该配置，请使用独立的输出文件。已有配置默认使用基线 Agent。使用 Agent 1.2 时加入 `agent_engine: agent12`，保留模型验证设置。两种 Agent 现在共用六字段正式记录、HTTP 对账和证据编号校验；Agent 1.2 保留服务原始调用 ID、完整原始事件及实际模型请求。当前能力与数据范围见[程序验收回传文档](docs/task_NLP-Agentic-RAG-for-given-documents_全项目程序验收与缺口补齐_prompt_1return.md)。
 
@@ -81,6 +81,16 @@ rag-agent validate --config configs/demo.yaml \
 重复执行 predict 会跳过已保存题目；加 `--rerun-failed` 仅重跑失败题并保存旧尝试。恢复清单绑定输入、配置、程序代码、实际语料及索引身份；任一变化应使用新的输出路径。旧 schema_version=1 清单不会自动升级混跑。
 
 `predict --limit 5` 每次只处理最多五个尚未保存的问题，清单仍绑定完整原输入，适合分批续跑同一个 100 题文件。`index --max-new-shards 2` 可以按分片停止两种向量构建以测量资源；部分索引始终标记 `ready: false`，搜索会拒绝加载；后续去掉该参数即可恢复全量构建。
+
+本轮90条验证记录中的60条诚实弃答已通过单条正式校验，普通`--rerun-failed`也会重跑这些未作答记录。如只需恢复缺失或不符合正式条件的记录，使用定向恢复脚本。它不读取参考答案，核对同一身份、保留有效弃答、原样归档旧失败；新结果先落盘再替换，中断后不重复已存结果，遇基础设施错误停止。先运行不会调用API的检查，当前结果为86条保留、14条待处理：
+
+```bash
+python scripts/recover_predictions.py --config configs/course-full-sparse.yaml \
+  --input data/validation.jsonl --predictions outputs/official-validation-r3/predictions.jsonl --dry-run
+# 仅在原服务额度恢复后移除 --dry-run，并可加 --limit 5 分批执行。
+```
+
+部分覆盖可用`python scripts/audit_predictions.py --input ... --predictions ... --evaluate --allow-partial`作临时诊断；分母仍为输入总数，缺失暂计错，正式覆盖检查仍失败。完整课程评测须补齐100条后通过标准validate/evaluate。
 
 ## 3. 正式模型配置
 
@@ -135,6 +145,15 @@ rag-agent search --config configs/openrouter.yaml 'your factual question' --meth
 | hybrid | 片段级 RRF 排名融合 | 每路同一片段只计一次，同一文档的不同片段可分别返回 |
 
 E5 文档前缀的实际字符串是 `passage: `。向量索引采用 NumPy 分片与内存映射，避免一次加载所有向量。代价是查询仍需精确扫描全部分片；本轮未测全量延迟，后续可在保留相同协议的基础上换成近似向量索引。
+
+本机全量语料有 4,345,592 个源片段。长时间 MPS 构建已实测触发内存上限，可用独立进程逐片恢复来释放设备缓存；仍使用同一真实模型和生产构建器，不关闭内存保护。完整状态以回传文档和 manifest 为准，部分索引不能查询：
+
+```bash
+python scripts/index_in_shards.py --config configs/course-full-vectors.yaml --method instruction --status
+python scripts/index_in_shards.py --config configs/course-full-vectors.yaml --method instruction
+# 只推进有限批次时加 --max-processes 1；E5 可用 CPU 配置避开 MPS 争用：
+rag-agent index --config configs/course-full-vectors-cpu.yaml --methods encoder
+```
 
 长文档先按 Unicode 字符分块，保留 `doc_id/chunk_id/offset/url`；超出模型 token 长度的片段继续拆开，保留精确原文位置，不静默丢弃尾部。默认 E5/Qwen 模型约 33M/0.6B 参数；Qwen 的 CPU float32 权重内存约 2.4 GB，另需激活和框架内存。全语料索引可能占用数十 GB，应先评估存储空间。`device` 支持 cpu/mps/cuda/auto。
 

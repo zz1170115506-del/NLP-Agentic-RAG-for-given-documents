@@ -1,6 +1,6 @@
 # 课程要求与实现位置
 
-2026-11-13 的正式链路、真实实测与全量状态以[程序验收回传文档](task_NLP-Agentic-RAG-for-given-documents_全项目程序验收与缺口补齐_prompt_1return.md)为准。`--formal` 检查课程记录有效性，`--strict-grounding` 独立检查引用质量，Normalized EM 独立检查答案正确性。下表历史“正式门槛”中的引用和非空答案要求已据原指南分层调整。
+2026-11-14 的正式链路、真实实测与全量状态以[程序验收回传文档](task_NLP-Agentic-RAG-for-given-documents_全项目程序验收与缺口补齐_prompt_1return.md)为准。`--formal` 检查课程记录有效性，`--strict-grounding` 独立检查引用质量，Normalized EM 独立检查答案正确性；真实诚实弃答可通过单条有效性校验。完整语料及BM25已完成，完整两路神经索引未完成；官方验证86条单条合格、4条服务失败、10条缺失，未通过100题门槛。
 
 依据用户提供的 `COMP5423_26Fall_Project.pdf`（August 2026 v1.0，共 6 页）及本轮明确选择的完整功能范围。课程最低要求与本项目目标分开列出；实现对应关系不是教师评分承诺。实际执行命令及验证结果统一见 [`validation.md`](validation.md)。
 
@@ -14,7 +14,7 @@ PDF 第 2 页允许至少一类检索；实现一、二、三类对应不同分�
 
 | 要求与来源 | 当前实现位置 | 验证入口与边界 |
 |---|---|---|
-| 固定 100,195 文档，字段 ID/text/URL；PDF 第 1 页 | `data/prepare.py`、`data/store.py`；限制为指定 Hugging Face corpus，记录不可变版本和实际数量 | `test_mapping_offsets_resume_and_mutation_guard`；全量导入与索引仍待完成 |
+| 固定 100,195 文档，字段 ID/text/URL；PDF 第 1 页 | `data/prepare.py`、`data/store.py`；限制为指定 Hugging Face corpus，记录不可变版本和实际数量 | `test_mapping_offsets_resume_and_mutation_guard`；100,195篇、4,345,592片段及全量BM25实测完成，完整神经索引仍待完成 |
 | 三类检索；PDF 第 2 页加本轮用户范围 | `retrieval/sparse.py` 的 FTS5 BM25；`retrieval/embedding.py` 的 E5 与 Qwen3；`retrieval/dense.py` 的持久化向量分片 | `tests/test_retrieval.py`；真实神经检索以 `scripts/smoke_retrieval.py` 和验证记录为准 |
 | 长文档完整覆盖与原文溯源；本轮用户范围 | `chunk_document`、`TransformerEmbedder.segments`；字符 offset，模型 token 长度检查 | `test_token_budget_segments_preserve_all_characters`，索引结果片段与原文一致性检查 |
 | 索引持久化、兼容检查和恢复；本轮用户范围 | SQLite 完成标记；`dense.py` 的 manifest、SHA256、分片复用和内存映射 | `test_dense_shards_resume_compatibility_and_corruption`、`test_dense_merges_passages_across_shards_and_resumes` |
@@ -32,7 +32,7 @@ PDF 第 2 页允许至少一类检索；实现一、二、三类对应不同分�
 | 所有 API 调用的 `usage.total_tokens` 求和；PDF 第 4 页 | provider 和 loop 记录成功响应及有 usage 的重试；不使用本地字符估算作为正式 token | `test_missing_usage_rejected_and_tool_not_executed`、`test_http_retry_records_attempts_and_never_logs_credentials` |
 | 验证集答案仅用于评测；PDF 第 5 页及本轮用户范围 | `evaluation/io.py` 将问题投影为 `Question(id, question)`；`metrics.py` 单独读取参考答案 | `test_labels_removed_and_id_preserved`、`test_reference_answer_rejected_at_question_boundary` |
 | Normalized EM；PDF 第 4 页 | `evaluation/metrics.py`：小写、去标点、去英文冠词、空白归一后精确匹配 | `test_normalized_em_and_failures`；不虚构相对排名，排名需要其他组数据 |
-| 正式 100 题全覆盖且来自真实指定模型；PDF 第 4 页 | `evaluation/validate.py` 的 formal 模式检查身份、模式、配对、usage、引用和覆盖 | `test_pairing_usage_and_formal_gate`、`test_coverage_types_and_usage_missing`；离线 demo、小样本和失败记录不能通过正式门槛 |
+| 正式 100 题全覆盖且来自真实指定模型；PDF 第 4 页 | `evaluation/validate.py` 的 formal 模式检查真实身份、模式、配对、usage、答案来源和覆盖；严格引用质量由`--strict-grounding`独立检查 | `test_pairing_usage_and_formal_gate`、`test_coverage_types_and_usage_missing`；离线demo、小样本不能通过正式批量门槛；错误答案和真实诚实弃答可单条合格，基础设施失败逐条报告 |
 | 断点续跑、失败重跑不丢记录；本轮用户范围 | `evaluation/batch.py` 的输入/配置绑定、互斥锁、逐题落盘与失败历史存档 | `test_resume_and_failed_retry_are_durable_and_label_free`、`test_uncaught_failure_is_recorded_and_never_formal` |
 | 可复现实验开关；PDF 报告要求加本轮用户范围 | `configs/ablation-*.yaml` 及共用 Settings，控制单步、context、skills、三方法 | 开关与边界有离线测试；尚未产生全量对比实验数据 |
 | 安装、预测、校验、打包入口；PDF 第 5 页 | `pyproject.toml`、`requirements.txt`、`cli.py`、`scripts/package_course.py` | `test_package_rejects_incomplete_and_ignores_secrets`；正式包缺少预测/报告/视频时拒绝生成，draft 明确标注源码开发包 |
