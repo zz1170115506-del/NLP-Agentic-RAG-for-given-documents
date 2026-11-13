@@ -24,12 +24,16 @@ analysis = ["matplotlib==3.10.8"]
 [project.scripts]
 rag-agent = "rag_agent.cli:main"
 
+[tool.setuptools]
+package-dir = {"" = "src", search_agent = "agent12/search_agent"}
+
 [tool.setuptools.packages.find]
-where = ["src"]
+where = ["src", "agent12"]
+include = ["rag_agent", "rag_agent.*", "search_agent", "search_agent.*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-pythonpath = ["src"]
+pythonpath = ["src", "agent12"]
 addopts = "-q"
 
 [tool.ruff]

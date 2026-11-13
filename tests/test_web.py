@@ -1,5 +1,6 @@
 """Exercise the actual Streamlit form against the shared synthetic runtime."""
 from pathlib import Path
+import pytest
 import yaml
 from streamlit.testing.v1 import AppTest
 from rag_agent.config import Settings
@@ -7,9 +8,10 @@ from rag_agent.data import DocumentStore, iter_jsonl
 from rag_agent.retrieval import build_indexes
 
 
-def test_web_demo_and_missing_live_setup(tmp_path, monkeypatch):
+@pytest.mark.parametrize("agent_engine", ["baseline", "agent12"])
+def test_web_demo_and_missing_live_setup(tmp_path, monkeypatch, agent_engine):
     root = Path(__file__).resolve().parents[1]
-    cfg = Settings(mode="demo", method="sparse", store_path=str(tmp_path / "corpus.sqlite"),
+    cfg = Settings(mode="demo", method="sparse", agent_engine=agent_engine, store_path=str(tmp_path / "corpus.sqlite"),
                    index_dir=str(tmp_path / "index"), skills_dir=str(root / "skills"))
     store = DocumentStore(cfg.store_path)
     store.import_documents(iter_jsonl(root / "tests/fixtures/corpus.jsonl"), cfg.chunk_size, cfg.chunk_overlap)
@@ -23,8 +25,14 @@ def test_web_demo_and_missing_live_setup(tmp_path, monkeypatch):
     app.button[0].click().run()
     assert not app.exception
     result = app.session_state["result"]
-    assert result["prediction"]["answer"] == "Northport"
-    assert result["prediction"]["tool_calls"] >= 3
+    if agent_engine == "agent12":
+        assert "Lumen Observatory" in result["prediction"]["answer"]
+        assert result["prediction"]["tool_calls"] == 2
+        assert result["state"]["selected_evidence_ids"] == ["E1"]
+        assert any("答案引用" in expander.label for expander in app.expander)
+    else:
+        assert result["prediction"]["answer"] == "Northport"
+        assert result["prediction"]["tool_calls"] >= 3
     assert result["mode"] == "demo" and not result["eligible"]
     assert app.session_state["busy"] is False
     assert len(app.tabs) == 3
@@ -36,7 +44,6 @@ def test_web_demo_and_missing_live_setup(tmp_path, monkeypatch):
 
 
 def test_config_roundtrip_and_wrong_backbone():
-    import pytest
     cfg = Settings()
     assert cfg.config_id == Settings.model_validate(cfg.model_dump()).config_id
     with pytest.raises(ValueError, match="not a pinned"):

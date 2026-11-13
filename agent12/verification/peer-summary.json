@@ -1,0 +1,179 @@
+{
+  "verified_at": "2026-11-11T11:06:24.049726+00:00",
+  "component": "COMP5423 section 1.2 + supplied section 1.1",
+  "development_only": true,
+  "scope": "Real DeepSeek API and real peer BM25, synthetic six-document corpus; not course benchmark accuracy",
+  "corpus_fingerprint": "938bb16e75b3a944e0691ca5d2bd9c1f1ea3a4ce6a419aff797b6ef53173078b",
+  "scenarios": [
+    {
+      "scenario": "multihop",
+      "passed": true,
+      "answer": "Northport",
+      "model": [
+        "deepseek-flash"
+      ],
+      "api_requests": 3,
+      "tool_calls": 2,
+      "api_total_tokens": 4438,
+      "max_message_chars": 5278,
+      "checks": [
+        "second query uses university observed in first result",
+        "cross-document citations"
+      ],
+      "trace": "final/live_multihop.json"
+    },
+    {
+      "scenario": "recovery",
+      "passed": true,
+      "answer": "Northport",
+      "model": [
+        "deepseek-flash"
+      ],
+      "api_requests": 3,
+      "tool_calls": 2,
+      "api_total_tokens": 4375,
+      "max_message_chars": 5449,
+      "checks": [
+        "empty first search",
+        "reformulation reaches actual BM25 evidence"
+      ],
+      "trace": "final/live_recovery.json"
+    },
+    {
+      "scenario": "passages",
+      "passed": true,
+      "answer": "Nara Vale; 1977",
+      "model": [
+        "deepseek-flash"
+      ],
+      "api_requests": 2,
+      "tool_calls": 1,
+      "api_total_tokens": 2874,
+      "max_message_chars": 5014,
+      "checks": [
+        "top_k=2 returns two same-document passages",
+        "both distinct evidence IDs cited"
+      ],
+      "trace": "final/live_passages.json"
+    },
+    {
+      "scenario": "context",
+      "passed": true,
+      "answer": "Elara Venn",
+      "model": [
+        "deepseek-flash"
+      ],
+      "api_requests": 2,
+      "tool_calls": 1,
+      "api_total_tokens": 2708,
+      "max_message_chars": 5095,
+      "checks": [
+        "12000-character original retained",
+        "paired compact tool exchange",
+        "no repeated read",
+        "context <= 6000 characters"
+      ],
+      "trace": "final/live_context.json"
+    }
+  ],
+  "final_api_requests": 10,
+  "final_api_total_tokens": 14395,
+  "all_attempts": [
+    {
+      "id": "peer-context-fixed",
+      "status": "completed",
+      "api_total_tokens": 2708,
+      "api_requests": 2,
+      "trace": "final/live_context.json"
+    },
+    {
+      "id": "peer-multihop-final",
+      "status": "completed",
+      "api_total_tokens": 4438,
+      "api_requests": 3,
+      "trace": "final/live_multihop.json"
+    },
+    {
+      "id": "peer-passages-final",
+      "status": "completed",
+      "api_total_tokens": 2874,
+      "api_requests": 2,
+      "trace": "final/live_passages.json"
+    },
+    {
+      "id": "peer-recovery-final",
+      "status": "completed",
+      "api_total_tokens": 4375,
+      "api_requests": 3,
+      "trace": "final/live_recovery.json"
+    },
+    {
+      "id": "peer-context",
+      "status": "max_steps",
+      "api_total_tokens": 11348,
+      "api_requests": 8,
+      "trace": "live_context.json"
+    },
+    {
+      "id": "peer-multihop",
+      "status": "completed",
+      "api_total_tokens": 4377,
+      "api_requests": 3,
+      "trace": "live_multihop.json"
+    },
+    {
+      "id": "peer-passages",
+      "status": "completed",
+      "api_total_tokens": 11814,
+      "api_requests": 5,
+      "trace": "live_passages.json"
+    },
+    {
+      "id": "peer-recovery",
+      "status": "completed",
+      "api_total_tokens": 7342,
+      "api_requests": 4,
+      "trace": "live_recovery.json"
+    }
+  ],
+  "all_attempt_api_tokens": 49276,
+  "regression": "Initial context test reached max_steps after repeated reads. Final implementation preserves a compact paired tool exchange; the same question then completes after one read.",
+  "agent_module_sha256": {
+    "agent.py": "dd1d56f7412a24b63fa62840850c0d4657e2f35749e06bcc2cecdcf52b241734",
+    "agent12.py": "c4bfddb23f10df40dff381cf3a746ef2ceee2af0cad6badc0f3fca5c826e8476",
+    "config.py": "75bf63e987c1bfa73a157f1e2c4c8caf30db5bcf40d06906f123317502c07e0b",
+    "llm.py": "3dc34b89e37e9589a58a6406997792c06b1c62b394483f61d448370d0d623a3d",
+    "peer.py": "65e1a95e3c1634d2c9d8535c69d53a91d5b70e2bf40d8e416135d314f3a0b022",
+    "ports.py": "a0d4cac5163495a9323c516d12fcde3ea7d69cb797211bf1888d1cbffe2f6ffd"
+  },
+  "unmodified_peer_source_sha256": {
+    "src/rag_agent/__init__.py": "a34ca9ae609779674d5f77ce911607373cbd522098af667aeeaa24a7e5aa0e54",
+    "src/rag_agent/agent/__init__.py": "243c910be0f3a02e4b59b80c6dba2f1a9467cbaf9bc90722f7133fb3dca75d33",
+    "src/rag_agent/agent/context.py": "0f9af02a931cb1326f979cbde49c61a28956fd6411e715f80021b5359a3c3795",
+    "src/rag_agent/agent/loop.py": "afcade2a3b3548599b65360746eb1ec25b9d0e24b86298f1eec0580ab618a2a8",
+    "src/rag_agent/cli.py": "c80f66657e0aff0b842fdb25b67d816cd72702f615fc9dc0a2472cea890d5e1c",
+    "src/rag_agent/config.py": "9d84eea4f8419ac92397fb322b3adc10d4374f5baa1600beb5d1b38c968afe54",
+    "src/rag_agent/data/__init__.py": "968913b76559d9ec8a0b11afd2881d497f04b834736cdfe55acb61bf4e1562b0",
+    "src/rag_agent/data/prepare.py": "6e8853c5f01046f9e1589c4dca87af325f496679ae641dce58fbee9285076605",
+    "src/rag_agent/data/store.py": "fdab6bdc53429ca31cfa3699440502fb64e44aec58839f403443dc51cacabfa7",
+    "src/rag_agent/evaluation/__init__.py": "a6103d1753b0922465c5929df8bc34ad9612538ad8daa67c1543931730f39d72",
+    "src/rag_agent/evaluation/batch.py": "8abca8a9ccc5f8b88163f09896ef7becac04d61c534e24809e1d8679dc4a52d8",
+    "src/rag_agent/evaluation/io.py": "604c7ed9d842b637ab29ef106eac8816c916f801651d085758d1dcda8c9dfd11",
+    "src/rag_agent/evaluation/metrics.py": "f4a0996fa9d816b84c6255244eff8e1564d14095895b6855f4039b6f6c73533c",
+    "src/rag_agent/evaluation/validate.py": "d0836bbff994bf9ffc0e083e5547178db8af88af2146bef1af06eeea1859d3d4",
+    "src/rag_agent/llm/__init__.py": "85d5d54d4b77cd27ed01be45409c62cb461837e8c4d0ac2360e712d81358641e",
+    "src/rag_agent/llm/provider.py": "36c4468d7c1625984628223c39cb27750997fa5e031d3d3217312e120ac99109",
+    "src/rag_agent/peer_backend.py": "1c2ab293220fd2bba0b367769d7391f920f1423fe27d1bf3ffa711089f2594bd",
+    "src/rag_agent/retrieval/__init__.py": "6bad2f9bcde3c4fd26ef8558ad4da0eaa6d58b30d6e2d5668b06809d2fc48fe5",
+    "src/rag_agent/retrieval/dense.py": "ba6845b4f28c60476b02a641d81c92a94fcf158f041a808e3eecc1b92ce88981",
+    "src/rag_agent/retrieval/embedding.py": "c83828ebcc7325e4d6ff80a63c558d2c80d55dfd219f382fde5b3ab63a7b8b8e",
+    "src/rag_agent/retrieval/sparse.py": "618eb4cfed8849c4039c52ebe3a394dc9de076700aed7dcc8c0c44747d0bfde1",
+    "src/rag_agent/runtime.py": "145298ecad4e8c01142a34389c0b143bdfec828ab8d8186b25cdc11b9924f27f",
+    "src/rag_agent/schemas.py": "57f7416627502c30454a47017115c1897951b08a4d2aa578cfcd40b32505484d",
+    "src/rag_agent/skills/__init__.py": "e15428139d85050d7785100c3f694faa9ed1901a88145195b7dbdff5e0ee7f6a",
+    "src/rag_agent/skills/runtime.py": "6411a247864c9a402697cbe070a159c0ac37809bdbe4dfe601c0421782f3dea3",
+    "src/rag_agent/tools/__init__.py": "d6c03b9928640bc7bcd4f36ce70cbc310be6c9910194bb1458526b846e53fc3b",
+    "src/rag_agent/tools/registry.py": "43d93a93fca8b0f17c177ee164c68678708b47735ac5b9d72a7c8df3ebee835f",
+    "src/rag_agent/web_app.py": "447fcecbd952c0e24ee26f5f026aa5c8a33aad3b60dc67d2101333755adf75cc"
+  }
+}

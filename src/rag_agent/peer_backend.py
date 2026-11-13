@@ -16,8 +16,8 @@ def _span(document: Document, start: int, end: int) -> dict:
 class PeerBackend:
     """Bind the agreed Agent tool signatures to an indexed corpus."""
 
-    def __init__(self, settings: Settings):
-        self._search = SearchService(settings)
+    def __init__(self, settings: Settings, *, search: SearchService | None = None):
+        self._search = search if search is not None else SearchService(settings)
 
     def search(self, query: str, top_k: int = 5) -> list[dict]:
         results = []

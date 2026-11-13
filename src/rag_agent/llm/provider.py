@@ -43,14 +43,19 @@ class HTTPProvider:
         if self.owns_client:
             self.client.close()
 
-    def complete(self, messages, tools, max_tokens=None):
+    def build_payload(self, messages, tools, max_tokens=None, *, allow_tools=True):
         payload = {"model": self.settings.llm_model, "messages": messages, "tools": tools,
-                   "tool_choice": "auto", "max_tokens": max_tokens or self.settings.max_output_tokens,
+                   "tool_choice": "auto" if allow_tools else "none",
+                   "max_tokens": max_tokens or self.settings.max_output_tokens,
                    "temperature": 0, "stream": False}
         if urlparse(self.settings.llm_base_url).hostname == "openrouter.ai":
             # This baseline uses the same backbone with thinking disabled. Avoid a
             # hidden reasoning block that would require replay across tool turns.
             payload["reasoning"] = {"enabled": False, "exclude": True}
+        return payload
+
+    def complete(self, messages, tools, max_tokens=None, *, allow_tools=True):
+        payload = self.build_payload(messages, tools, max_tokens, allow_tools=allow_tools)
         url = self.settings.llm_base_url.rstrip("/") + "/chat/completions"
         for attempt in range(self.settings.max_retries + 1):
             if time.monotonic() >= self.deadline:

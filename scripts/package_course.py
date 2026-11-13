@@ -19,8 +19,11 @@ def source_files(root: Path):
             continue
         if path.is_file() and path.name in SOURCE_FILES:
             yield path
-        elif path.is_dir() and path.name in SOURCE_DIRECTORIES:
-            for item in sorted(path.rglob("*")):
+        elif path.is_dir() and (path.name in SOURCE_DIRECTORIES or path.name == "agent12"):
+            source = path / "search_agent" if path.name == "agent12" else path
+            if source.is_symlink():
+                continue
+            for item in sorted(source.rglob("*")):
                 if not item.is_file() or item.is_symlink():
                     continue
                 relative = item.relative_to(path)

@@ -16,6 +16,23 @@ COMP5423 2026 Fall **Skill-Augmented Search Agent**：从指定固定文档集�
 不能代替全量配置。安装后可先执行 `python scripts/smoke_rerank.py` 验证接口与排序逻辑，
 该入口无需模型或 API，并明确标记神经检索/评分测试替身。
 
+## 1.2 Agent 接入版
+
+负责 1.2 的实现位于 [`agent12/`](agent12/)，通过统一 `search(query, top_k)` 调用本仓库的 1.1 检索。支持结果驱动的多轮搜索、空结果恢复、片段级引用和保留工具配对的上下文压缩。`top_k` 按片段计数，同文档不同片段分别保留。
+
+从仓库根目录运行无需 API 的 70 项 Agent/接入测试，并建立合成 BM25 样例：
+
+```bash
+cd agent12
+python -m pip install -r requirements-peer.txt
+python -m unittest discover -s tests -v
+python scripts/prepare_peer12.py --peer-project ..
+```
+
+真实模型开发入口、索引配置与完整步骤见 [1.2 运行说明](agent12/PEER_INTEGRATION.md)。已使用真实 DeepSeek Flash API 和本仓库 BM25 验证四类合成案例，记录见 [验证摘要](agent12/verification/peer-summary.json)。这些是开发联调，正式课程模型与全量语料的评测仍待完成。
+
+安装本项目并按下文建立演示索引后，可在网页选择 `configs/agent12-demo.yaml`，或运行 `rag-agent ask --config configs/agent12-demo.yaml 'When did the Copper Museum open?'`。批处理同样支持该配置，请使用独立的输出文件。已有配置默认使用基线 Agent。需要用 Agent 1.2 试跑已配置的真实 API 时，在对应配置中加入 `agent_engine: agent12`，保留主项目的模型验证设置。Agent 1.2 的片段编号和原始事件会随运行记录保存，目前用于联调和普通评测，正式导出使用基线 Agent。
+
 ## 1. 安装
 
 在项目根目录执行。支持 Python **3.11–3.13**，本次验证环境是 macOS arm64 / Python 3.12.14。

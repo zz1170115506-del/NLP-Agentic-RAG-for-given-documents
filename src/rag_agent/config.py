@@ -13,6 +13,7 @@ from pydantic import BaseModel, ConfigDict, Field, model_validator
 class Settings(BaseModel):
     model_config = ConfigDict(extra="forbid", validate_default=True)
     mode: Literal["live", "demo"] = "live"
+    agent_engine: Literal["baseline", "agent12"] = "baseline"
     store_path: str = "data/documents.sqlite"
     index_dir: str = "indexes/default"
     skills_dir: str = "skills"
@@ -61,11 +62,17 @@ class Settings(BaseModel):
     def validate_overlap(self):
         if self.chunk_overlap >= self.chunk_size:
             raise ValueError("chunk_overlap must be smaller than chunk_size")
+        if self.agent_engine == "agent12" and self.context_chars < 6000:
+            raise ValueError("Agent 1.2 requires context_chars >= 6000")
         return self
 
     @property
     def config_id(self) -> str:
-        return hashlib.sha256(json.dumps(self.model_dump(), sort_keys=True).encode()).hexdigest()[:16]
+        config = self.model_dump()
+        # Existing baseline predictions and resume manifests predate this setting.
+        if self.agent_engine == "baseline":
+            config.pop("agent_engine")
+        return hashlib.sha256(json.dumps(config, sort_keys=True).encode()).hexdigest()[:16]
 
     @classmethod
     def load(cls, path: str | Path | None = None, **overrides):

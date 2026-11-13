@@ -5,7 +5,7 @@ import sys
 from pathlib import Path
 
 from rag_agent.config import Settings
-from rag_agent.runtime import local_caches, make_runtime
+from rag_agent.runtime import local_caches, make_runtime, run_question
 from rag_agent.schemas import Question
 
 
@@ -78,7 +78,6 @@ def main(argv=None):
             from rag_agent.retrieval import SearchService
             emit([x.model_dump() for x in SearchService(cfg).search(args.query, cfg.top_k, args.method or cfg.method)])
         elif args.command == "ask":
-            from rag_agent.agent.loop import run_question
             store, search = make_runtime(cfg)
             result = run_question(Question(id=args.id, question=args.question), cfg, store=store, search=search)
             emit(result.model_dump())
@@ -87,7 +86,6 @@ def main(argv=None):
                 path.parent.mkdir(parents=True, exist_ok=True)
                 path.write_text(result.prediction.model_dump_json() + "\n", encoding="utf-8")
         elif args.command == "predict":
-            from rag_agent.agent.loop import run_question
             from rag_agent.evaluation import batch_predict
             store, search = make_runtime(cfg)
             emit(batch_predict(args.input, args.output, cfg, lambda q, settings: run_question(q, settings, store=store, search=search), resume=True, rerun_failed=args.rerun_failed))
@@ -99,8 +97,12 @@ def main(argv=None):
             if args.command == "validate" and not result["valid"]:
                 return 1
         elif args.command == "tools":
-            from rag_agent.tools.registry import ToolRegistry
-            emit(ToolRegistry.documentation())
+            if cfg.agent_engine == "agent12":
+                from rag_agent.agent.agent12 import tool_schemas
+                emit(tool_schemas(cfg.use_skills))
+            else:
+                from rag_agent.tools.registry import ToolRegistry
+                emit(ToolRegistry.documentation())
         return 0
     except (ValueError, FileNotFoundError, RuntimeError) as exc:
         print(f"Error: {exc}", file=sys.stderr)

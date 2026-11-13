@@ -1,5 +1,7 @@
 # 组内 Agent 检索后端接入
 
+仓库内已提供 [1.2 Agent 运行入口与联调说明](../agent12/PEER_INTEGRATION.md)。无需复制检索源码，进入 `agent12/` 后用 `--peer-project ..` 即可接入本项目。
+
 在仓库根目录安装本项目，使用同一份配置准备语料和索引，然后通过 `rag_agent.peer_backend:create_backend` 接入。配置指定语料库、索引目录和检索方法。配置与索引匹配时，可直接使用已有索引。
 
 用合成语料和 BM25 先确认接口。索引建好后，在装有同僚 Agent 的同一 Python 环境中执行最后一条命令。
