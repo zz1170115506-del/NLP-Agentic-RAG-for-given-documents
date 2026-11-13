@@ -53,6 +53,7 @@ class Settings(BaseModel):
     use_skills: bool = True
     manage_context: bool = True
     iterative: bool = True
+    graceful_finalization: bool = False
     llm_base_url: str = "https://api.deepseek.com"
     llm_model: str = ""
     model_verified: bool = False
@@ -72,6 +73,8 @@ class Settings(BaseModel):
         # Existing baseline predictions and resume manifests predate this setting.
         if self.agent_engine == "baseline":
             config.pop("agent_engine")
+        if not self.graceful_finalization:
+            config.pop("graceful_finalization")
         return hashlib.sha256(json.dumps(config, sort_keys=True).encode()).hexdigest()[:16]
 
     @classmethod

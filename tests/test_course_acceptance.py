@@ -17,7 +17,7 @@ from rag_agent.schemas import Question
 from search_agent.final_output import parse_final_object
 
 
-def protocol_run(tmp_path, monkeypatch, engine):
+def protocol_run(tmp_path, monkeypatch, engine, *, settings_updates=None, usage=None):
     root = Path(__file__).resolve().parents[1]
     monkeypatch.setenv("LLM_API_KEY", "synthetic-key-not-a-real-credential")
     config = Settings(agent_engine=engine, method="sparse", store_path=str(tmp_path / "corpus.sqlite"),
@@ -25,6 +25,8 @@ def protocol_run(tmp_path, monkeypatch, engine):
                       llm_base_url="https://protocol.example/v1", llm_model="synthetic-flash-deployment",
                       model_verified=True, model_verification_note="Synthetic protocol fixture; no API contacted",
                       use_skills=False, max_retries=0)
+    if settings_updates:
+        config = config.model_copy(update=settings_updates)
     store = DocumentStore(config.store_path)
     store.import_documents(iter_jsonl(root / "tests/fixtures/corpus.jsonl"))
     store.close()
@@ -39,7 +41,7 @@ def protocol_run(tmp_path, monkeypatch, engine):
         else:
             # Both engines use IDs from the real local tool result, not retyped offsets.
             message = {"role": "assistant", "content": '{"answer":"1984","supporting_evidence":["E1"]}'}
-        return httpx.Response(200, json={"model": config.llm_model, "usage": {"total_tokens": 11},
+        return httpx.Response(200, json={"model": config.llm_model, "usage": usage or {"total_tokens": 11},
                                          "choices": [{"message": message, "finish_reason": "stop"}]})
 
     monkeypatch.setattr(httpx.Client, "post", post)
@@ -64,6 +66,18 @@ def test_id_contract_and_actual_provider_call_ids(tmp_path, monkeypatch, engine)
     assert call["tool_calls"][0]["id"] == "actual-provider-call-id"
     assert "E1" in json.dumps(requests[1]["messages"])
     assert "synthetic-key-not-a-real-credential" not in prediction.model_dump_json()
+
+
+@pytest.mark.parametrize("engine", ["baseline", "agent12"])
+def test_budget_reserve_requests_a_real_final_answer_with_tools_disabled(tmp_path, monkeypatch, engine):
+    result, _, requests = protocol_run(tmp_path, monkeypatch, engine,
+        settings_updates={"graceful_finalization": True, "max_total_tokens": 1500, "max_output_tokens": 64},
+        usage={"total_tokens": 700, "prompt_tokens": 600, "completion_tokens": 100})
+    assert len(requests) == 2
+    assert requests[0]["tool_choice"] == "auto" and requests[1]["tool_choice"] == "none"
+    assert result.prediction.answer == "1984" and result.prediction.total_tokens == 1400
+    assert result.state.stop_reason == "completed"
+    assert validate_record(result.prediction, formal=True, check_grounding=True) == []
 
 
 @pytest.mark.parametrize("mutation,expected", [

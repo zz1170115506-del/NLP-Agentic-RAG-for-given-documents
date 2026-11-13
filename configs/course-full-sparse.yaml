@@ -30,3 +30,4 @@ model_verified: true
 model_verification_note: '2026-11-13: https://openrouter.ai/api/v1/models returned
   exact pinned model ID and tools/tool_choice support.'
 agent_engine: baseline
+graceful_finalization: true

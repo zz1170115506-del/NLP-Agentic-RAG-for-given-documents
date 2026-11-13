@@ -42,6 +42,7 @@ class AgentConfig:
     development_only: bool = False
     require_evidence: bool = False
     auto_select_skills: bool = False
+    graceful_finalization: bool = False
     repeat_limit: int = 3
     run_timeout_seconds: float = 300
 
@@ -163,6 +164,8 @@ class SearchAgent:
         self.events: list[dict] = []
         self.started = time.monotonic()
         self.repeated_actions = {}
+        self.last_prompt_tokens = 0
+        self.finalizing = False
         self.callback_errors: list[dict] = []
         self.evidence: list[dict] = []
         self.evidence_by_key: dict[tuple, dict] = {}
@@ -211,8 +214,13 @@ class SearchAgent:
             if self.total_tokens >= self.config.max_tokens:
                 return self._finish("max_tokens", "")
             self._auto_select_skill()
+            self.finalizing = bool(self.config.graceful_finalization and (
+                step == self.config.max_steps or self.stalled_searches >= 2
+                or self.config.max_tokens - self.total_tokens <= max(self.config.max_tokens * .35,
+                    2 * self.last_prompt_tokens + 2 * self.config.max_output_tokens)
+                or self.tool_calls >= max(1, self.config.max_tool_calls - 2)))
             if (self.tool_calls >= self.config.max_tool_calls
-                    or (not self.config.iterative and self.retrieval_rounds)):
+                    or (not self.config.iterative and self.retrieval_rounds) or self.finalizing):
                 # One final call with tools disabled lets the model answer from observed evidence.
                 allow_tools = False
             else:
@@ -368,6 +376,8 @@ class SearchAgent:
         tokens = usage.get("total_tokens") if isinstance(usage, dict) else None
         if isinstance(tokens, int) and not isinstance(tokens, bool) and tokens >= 0:
             self.total_tokens += tokens
+            if type(usage.get("prompt_tokens")) is int and usage["prompt_tokens"] >= 0:
+                self.last_prompt_tokens = usage["prompt_tokens"]
         else:
             tokens = 0
             self.usage_complete = False
@@ -626,6 +636,8 @@ class SearchAgent:
 
     def _messages(self, step: int) -> list[dict]:
         system = BASE_PROMPT
+        if self.finalizing:
+            system += "\nThis is the final turn. Tools are disabled. Return final answer JSON using observed evidence IDs, or an empty answer if unsupported. Do not guess."
         if not self.config.enable_skills:
             system = system.replace("Only skill metadata is initially advertised. You can load a relevant skill at runtime;\nuse distinct skills when their triggering conditions apply, and skip skills for simple cases.\nFollow loaded procedures with subsequent actions, not merely by mentioning their names.\n", "")
         else:

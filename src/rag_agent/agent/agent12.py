@@ -98,6 +98,7 @@ def run_agent12(question: Question, settings: Settings, *, search: SearchService
             context_chars=settings.context_chars, skills_dir=settings.skills_dir, enable_skills=settings.use_skills,
             context_management=settings.manage_context, iterative=settings.iterative, require_evidence=True,
             auto_select_skills=settings.use_skills,
+            graceful_finalization=settings.graceful_finalization,
         )
 
         def notify(event: dict) -> None:

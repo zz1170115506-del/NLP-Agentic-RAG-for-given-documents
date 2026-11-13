@@ -11,7 +11,7 @@ from rag_agent.skills import SkillCatalog
 from rag_agent.tools import ToolRegistry
 from rag_agent.llm.provider import DemoProvider, HTTPProvider, ProviderError, scrub
 from rag_agent.evidence import resolve_evidence_ids
-from .context import build_context
+from .context import build_context, message_size
 from search_agent.final_output import parse_final_object
 
 
@@ -121,6 +121,7 @@ def run_question(question: Question, settings: Settings, store=None, search=None
     retrieval_batches = 0
     original_emit = None
     final_repairs = 0
+    last_prompt_tokens = 0
 
     def emit(event):
         nonlocal usage_complete
@@ -179,8 +180,26 @@ def run_question(question: Question, settings: Settings, store=None, search=None
                     body = catalog.load(selected)
                     state.selected_skills.append(selected)
                     emit({"event": "skill_loaded", "name": selected, "source": "automatic", "instructions": body})
+            remaining = settings.max_total_tokens - state.total_tokens
+            close_reason = None
+            if settings.graceful_finalization:
+                if step == settings.max_steps - 1:
+                    close_reason = "last_step"
+                elif remaining <= max(settings.max_total_tokens * .35, 2 * last_prompt_tokens + 2 * settings.max_output_tokens):
+                    close_reason = "reserve_final_usage"
+                elif state.stalled_searches >= 2:
+                    close_reason = "search_stalled"
+                elif state.tool_calls >= max(1, settings.max_tool_calls - 2):
+                    close_reason = "reserve_tool_budget"
+                elif not settings.iterative and retrieval_batches:
+                    close_reason = "single_search_complete"
             try:
-                messages, context_info = build_context(state, catalog, groups, settings)
+                context_settings = settings.model_copy(update={"context_chars": settings.context_chars - 400}) if close_reason else settings
+                messages, context_info = build_context(state, catalog, groups, context_settings)
+                if close_reason:
+                    messages.append({"role": "user", "content": "Finish now using only evidence already observed. Tools are disabled for this final turn. Return the required answer JSON with observed evidence IDs. If support is insufficient, return an empty answer; do not guess."})
+                    context_info["characters"] = message_size(messages)
+                    emit({"event": "finalization", "reason": close_reason, "remaining_reported_tokens": remaining})
             except ValueError as exc:
                 emit({"event": "error", "code": "context_budget", "message": str(exc)})
                 state.stop_reason = "context_budget"
@@ -190,11 +209,16 @@ def run_question(question: Question, settings: Settings, store=None, search=None
             remaining_output = min(settings.max_output_tokens, settings.max_total_tokens - state.total_tokens)
             emit({"event": "request", "messages": messages, "tools": schemas, "max_tokens": remaining_output})
             state.steps += 1
-            response = provider.complete(messages, schemas, max_tokens=remaining_output)
+            if isinstance(provider, HTTPProvider):
+                response = provider.complete(messages, schemas, max_tokens=remaining_output, allow_tools=not bool(close_reason))
+            else:
+                response = provider.complete(messages, schemas, max_tokens=remaining_output)
             usage = response.get("usage") if isinstance(response, dict) else None
             reliable = isinstance(usage, dict) and type(usage.get("total_tokens")) is int and usage["total_tokens"] >= 0
             if reliable:
                 state.total_tokens += usage["total_tokens"]
+                if type(usage.get("prompt_tokens")) is int and usage["prompt_tokens"] >= 0:
+                    last_prompt_tokens = usage["prompt_tokens"]
             else:
                 usage_complete = False
             usage_complete = usage_complete and not getattr(provider, "uncertain_usage", False)
@@ -244,6 +268,8 @@ def run_question(question: Question, settings: Settings, store=None, search=None
                     if not isinstance(name, str) or not isinstance(arguments, str) or call.get("type") != "function":
                         state.stop_reason = "invalid_tool_response"
                         result = registry.error("invalid_tool_response", "Tool calls require type=function, a name and JSON-string arguments")
+                    elif close_reason:
+                        result = registry.error("final_turn", "Tools were disabled; finish from inspected evidence or abstain")
                     elif state.stop_reason != "running":
                         result = registry.error("run_stopping", f"Call not executed: {state.stop_reason}")
                     elif state.tool_calls > settings.max_tool_calls:
