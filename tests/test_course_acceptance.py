@@ -71,6 +71,7 @@ def test_id_contract_and_actual_provider_call_ids(tmp_path, monkeypatch, engine)
     ("offset", "never shown"), ("missing_tool", "missing tool results"),
     ("missing_usage", "reliable API usage"), ("fake_http", "raw response"),
     ("changed_raw_response", "differs from its raw HTTP response"),
+    ("malformed_request", "request"),
 ])
 def test_bad_provenance_and_accounting_are_rejected(tmp_path, monkeypatch, mutation, expected):
     result, _, _ = protocol_run(tmp_path, monkeypatch, "agent12")
@@ -95,6 +96,8 @@ def test_bad_provenance_and_accounting_are_rejected(tmp_path, monkeypatch, mutat
         next(row for row in prediction.trajectory if row.get("event") == "api_attempt").pop("response")
     elif mutation == "changed_raw_response":
         next(row for row in prediction.trajectory if row.get("event") == "api_attempt")["response"]["usage"]["total_tokens"] += 1
+    elif mutation == "malformed_request":
+        next(row for row in prediction.trajectory if row.get("event") == "request")["messages"] = [None]
     errors = validate_record(prediction, formal=True, check_grounding=True)
     assert any(expected in error for error in errors), errors
 

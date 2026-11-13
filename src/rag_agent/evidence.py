@@ -78,7 +78,12 @@ def observed_and_visible(trajectory):
                 if item:
                     observed.append(item)
         elif event.get("event") == "request":
-            for message in event.get("messages", []):
+            messages = event.get("messages", [])
+            if not isinstance(messages, list):
+                raise ValueError("Recorded request messages must be a list")
+            for message in messages:
+                if not isinstance(message, dict):
+                    raise ValueError("Recorded request messages must contain objects")
                 for row in objects(_json_content(message.get("content"))):
                     item = passage(row)
                     if item and any(contains(source, item) and
