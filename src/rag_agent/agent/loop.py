@@ -122,6 +122,7 @@ def run_question(question: Question, settings: Settings, store=None, search=None
     original_emit = None
     final_repairs = 0
     last_prompt_tokens = 0
+    forced_final_reason = None
 
     def emit(event):
         nonlocal usage_complete
@@ -181,8 +182,8 @@ def run_question(question: Question, settings: Settings, store=None, search=None
                     state.selected_skills.append(selected)
                     emit({"event": "skill_loaded", "name": selected, "source": "automatic", "instructions": body})
             remaining = settings.max_total_tokens - state.total_tokens
-            close_reason = None
-            if settings.graceful_finalization:
+            close_reason = forced_final_reason
+            if settings.graceful_finalization and not close_reason:
                 if step == settings.max_steps - 1:
                     close_reason = "last_step"
                 elif remaining <= max(settings.max_total_tokens * .35, 2 * last_prompt_tokens + 2 * settings.max_output_tokens):
@@ -294,6 +295,13 @@ def run_question(question: Question, settings: Settings, store=None, search=None
                 groups.append(group)
                 emit({"event": "state", "state": state.model_dump()})
                 if state.stop_reason != "running":
+                    if (settings.graceful_finalization and state.stop_reason in
+                            {"repeated_action", "tool_budget", "single_step_limit"}
+                            and step < settings.max_steps - 1 and state.total_tokens < settings.max_total_tokens):
+                        forced_final_reason = state.stop_reason
+                        emit({"event": "finalization_requested", "reason": forced_final_reason})
+                        state.stop_reason = "running"
+                        continue
                     break
                 continue
             if state.stop_reason != "running":

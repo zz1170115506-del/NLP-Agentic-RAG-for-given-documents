@@ -166,6 +166,7 @@ class SearchAgent:
         self.repeated_actions = {}
         self.last_prompt_tokens = 0
         self.finalizing = False
+        self.force_finalization = False
         self.callback_errors: list[dict] = []
         self.evidence: list[dict] = []
         self.evidence_by_key: dict[tuple, dict] = {}
@@ -215,7 +216,7 @@ class SearchAgent:
                 return self._finish("max_tokens", "")
             self._auto_select_skill()
             self.finalizing = bool(self.config.graceful_finalization and (
-                step == self.config.max_steps or self.stalled_searches >= 2
+                self.force_finalization or step == self.config.max_steps or self.stalled_searches >= 2
                 or self.config.max_tokens - self.total_tokens <= max(self.config.max_tokens * .35,
                     2 * self.last_prompt_tokens + 2 * self.config.max_output_tokens)
                 or self.tool_calls >= max(1, self.config.max_tool_calls - 2)))
@@ -325,6 +326,7 @@ class SearchAgent:
                         self.repeated_actions[signature] = self.repeated_actions.get(signature, 0) + 1
                         if self.repeated_actions[signature] > self.config.repeat_limit:
                             result = {"error": "Repeated identical action limit reached; change the query or finish.", "error_type": "repeated_action"}
+                            self.force_finalization = True
                         elif time.monotonic() - self.started >= self.config.run_timeout_seconds:
                             result = {"error": "Run deadline reached; call not executed.", "error_type": "timeout"}
                         elif self.total_tokens >= self.config.max_tokens:

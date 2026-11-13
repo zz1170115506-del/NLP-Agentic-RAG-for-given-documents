@@ -17,7 +17,7 @@ from rag_agent.schemas import Question
 from search_agent.final_output import parse_final_object
 
 
-def protocol_run(tmp_path, monkeypatch, engine, *, settings_updates=None, usage=None):
+def protocol_run(tmp_path, monkeypatch, engine, *, settings_updates=None, usage=None, parallel_search_calls=1):
     root = Path(__file__).resolve().parents[1]
     monkeypatch.setenv("LLM_API_KEY", "synthetic-key-not-a-real-credential")
     config = Settings(agent_engine=engine, method="sparse", store_path=str(tmp_path / "corpus.sqlite"),
@@ -36,8 +36,10 @@ def protocol_run(tmp_path, monkeypatch, engine, *, settings_updates=None, usage=
     def post(self, url, *, json, **kwargs):
         requests.append(copy.deepcopy(json))
         if len(requests) == 1:
-            message = {"role": "assistant", "content": None, "tool_calls": [{"id": "actual-provider-call-id",
-                       "type": "function", "function": {"name": "search", "arguments": '{"query":"Copper Museum","top_k":2}'}}]}
+            message = {"role": "assistant", "content": None, "tool_calls": [
+                {"id": "actual-provider-call-id" + (f"-{i}" if i else ""),
+                 "type": "function", "function": {"name": "search", "arguments": '{"query":"Copper Museum","top_k":2}'}}
+                for i in range(parallel_search_calls)]}
         else:
             # Both engines use IDs from the real local tool result, not retyped offsets.
             message = {"role": "assistant", "content": '{"answer":"1984","supporting_evidence":["E1"]}'}
@@ -77,6 +79,16 @@ def test_budget_reserve_requests_a_real_final_answer_with_tools_disabled(tmp_pat
     assert requests[0]["tool_choice"] == "auto" and requests[1]["tool_choice"] == "none"
     assert result.prediction.answer == "1984" and result.prediction.total_tokens == 1400
     assert result.state.stop_reason == "completed"
+    assert validate_record(result.prediction, formal=True, check_grounding=True) == []
+
+
+@pytest.mark.parametrize("engine", ["baseline", "agent12"])
+def test_parallel_repeat_limit_keeps_pairs_and_finishes_with_an_actual_model_turn(tmp_path, monkeypatch, engine):
+    result, _, requests = protocol_run(tmp_path, monkeypatch, engine,
+        settings_updates={"graceful_finalization": True, "repeat_limit": 1}, parallel_search_calls=3)
+    assert len(requests) == 2 and requests[1]["tool_choice"] == "none"
+    assert result.prediction.tool_calls == 3  # Includes both blocked, actually issued calls.
+    assert result.prediction.answer == "1984"
     assert validate_record(result.prediction, formal=True, check_grounding=True) == []
 
 
