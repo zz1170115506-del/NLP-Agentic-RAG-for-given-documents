@@ -1,0 +1,6 @@
+agent_engine: agent12
+mode: demo
+store_path: data/demo.sqlite
+index_dir: indexes/demo
+skills_dir: skills
+method: sparse

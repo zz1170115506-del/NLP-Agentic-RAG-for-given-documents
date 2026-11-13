@@ -4,9 +4,8 @@ from pathlib import Path
 import streamlit as st
 
 from rag_agent.config import Settings
-from rag_agent.runtime import make_runtime
+from rag_agent.runtime import make_runtime, run_question
 from rag_agent.schemas import Question
-from rag_agent.agent.loop import run_question
 
 
 @st.cache_resource(show_spinner=False)
@@ -33,6 +32,7 @@ def main():
             st.error(str(exc))
             return
         st.write("模式：", "离线合成演示" if cfg.mode == "demo" else "真实模型 API")
+        st.caption("Agent：1.2" if cfg.agent_engine == "agent12" else "Agent：基线")
         st.caption(f"检索：{cfg.method} · 索引：{cfg.index_dir}")
         st.caption(f"最多 {cfg.max_steps} 轮 / {cfg.max_tool_calls} 次工具调用")
         st.caption(f"配置标识：{cfg.config_id}")
@@ -92,13 +92,18 @@ def main():
     tabs = st.tabs(["文档证据", "工具过程", "完整运行轨迹"])
     with tabs[0]:
         for evidence in state["evidence"]:
-            with st.expander(f"{evidence['doc_id']} · 字符位置 {evidence['offset']}", expanded=True):
+            evidence_id = evidence.get("evidence_id")
+            label = f"{evidence_id} · " if evidence_id else ""
+            if evidence_id and evidence_id in state.get("selected_evidence_ids", []):
+                label += "答案引用 · "
+            label += f"{evidence['doc_id']} · 字符位置 {evidence['offset']}"
+            with st.expander(label, expanded=True):
                 st.text(evidence["text"])
                 url = evidence.get("url", "")
                 if url.startswith(("https://", "http://")):
                     st.link_button("来源 URL（仅用于溯源）", url)
         if not state["evidence"]:
-            st.write("没有已验证的原文片段。")
+            st.write("没有可展示的原文片段。")
     with tabs[1]:
         for item in prediction["trajectory"]:
             if item.get("role") == "assistant" and item.get("tool_calls"):

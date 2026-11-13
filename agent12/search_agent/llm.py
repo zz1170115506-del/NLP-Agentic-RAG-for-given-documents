@@ -85,14 +85,18 @@ class DemoClient:
     def complete(self, messages: list[dict], tools: list[dict],
                  max_output_tokens: int = 2048, allow_tools: bool = True) -> dict:
         self.step += 1
-        if self.step == 1 and allow_tools:
+        try:
+            state = json.loads(next((m["content"] for m in messages if m.get("name") == "agent_state"), "{}"))
+        except ValueError:
+            state = {}
+        available = {tool["function"]["name"] for tool in tools}
+        catalog = next((m["content"] for m in messages if m.get("role") == "system"), "")
+        load_skill = allow_tools and "load_skill" in available and '"multi-clue-search"' in catalog
+        if self.step == 1 and load_skill:
             return self._tool("demo_skill", "load_skill", {"name": "multi-clue-search"})
-        if self.step == 2 and allow_tools:
-            state = next((m["content"] for m in messages if m.get("name") == "agent_state"), "{}")
-            try:
-                question = json.loads(state).get("question", "synthetic demonstration")
-            except ValueError:
-                question = "synthetic demonstration"
+        search_step = 2 if load_skill else 1
+        if self.step == search_step and allow_tools:
+            question = state.get("question", "synthetic demonstration")
             return self._tool("demo_search", "search", {"query": question})
         observations = []
         for message in messages:
@@ -103,23 +107,13 @@ class DemoClient:
                         observations.extend(value.get("results", []))
                 except ValueError:
                     pass
-        if self.step == 3 and observations and allow_tools:
+        if self.step == search_step + 1 and observations and allow_tools and "open_document" in available:
             return self._tool("demo_open", "open_document",
                               {"doc_id": str(observations[0]["doc_id"])})
-        passage = ""
-        support = []
-        for message in reversed(messages):
-            if message.get("name") == "agent_state":
-                try:
-                    evidence = json.loads(message["content"]).get("evidence", [])
-                    if evidence:
-                        passage = evidence[0].get("text", "")[:500]
-                        support = [evidence[0]["evidence_id"]]
-                except ValueError:
-                    pass
-                break
-        content = json.dumps({"answer": "[DEMO: retrieved passage] " + passage,
-                              "supporting_evidence": support,
+        evidence = state.get("evidence", [])
+        passage = evidence[0]["text"][:500] if evidence else ""
+        content = json.dumps({"answer": "[DEMO: retrieved passage] " + passage if passage else "",
+                              "supporting_evidence": [evidence[0]["evidence_id"]] if passage else [],
                               "unresolved_conditions": ["Synthetic simulator; no model reasoning performed."]})
         return {"choices": [{"message": {"role": "assistant", "content": content},
                              "finish_reason": "stop"}], "demo": True}

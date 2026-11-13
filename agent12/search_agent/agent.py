@@ -36,6 +36,7 @@ class AgentConfig:
     context_management: bool = True
     iterative: bool = True
     expected_model_family: str = "deepseek-v4-flash"
+    expected_model_id: str | None = None
     strict_model_identity: bool = False
     development_only: bool = False
     require_evidence: bool = False
@@ -402,6 +403,11 @@ class SearchAgent:
             self.identity_unknown = True
             return "unverified"
         self.observed_models.append(actual)
+        if self.config.expected_model_id is not None:
+            if actual == self.config.expected_model_id:
+                return "verified"
+            self.model_mismatch = f"Provider returned model '{actual}', expected '{self.config.expected_model_id}'."
+            return "mismatch"
         observed = actual.lower().rsplit("/", 1)[-1].split(":", 1)[0].replace("_", "-")
         expected = self.config.expected_model_family.lower().rsplit("/", 1)[-1].replace("_", "-")
         if observed == expected or (observed.startswith(expected + "-") and

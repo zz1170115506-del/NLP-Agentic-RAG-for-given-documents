@@ -37,12 +37,15 @@ class Evidence(Record):
     offset: int = Field(ge=0)
     text: str
     url: str = ""
+    evidence_id: str | None = Field(default=None, exclude_if=lambda value: value is None)
+    chunk_id: str | None = Field(default=None, exclude_if=lambda value: value is None)
 
 
 class AgentState(Record):
     question: Question
     visited_documents: list[str] = Field(default_factory=list)
     evidence: list[Evidence] = Field(default_factory=list)
+    selected_evidence_ids: list[str] = Field(default_factory=list, exclude_if=lambda value: not value)
     active_queries: list[str] = Field(default_factory=list)
     candidate_answer: str = ""
     selected_skills: list[str] = Field(default_factory=list)

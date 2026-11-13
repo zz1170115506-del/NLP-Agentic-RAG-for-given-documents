@@ -31,6 +31,8 @@ python scripts/prepare_peer12.py --peer-project ..
 
 真实模型开发入口、索引配置与完整步骤见 [1.2 运行说明](agent12/PEER_INTEGRATION.md)。已使用真实 DeepSeek Flash API 和本仓库 BM25 验证四类合成案例，记录见 [验证摘要](agent12/verification/peer-summary.json)。这些是开发联调，正式课程模型与全量语料的评测仍待完成。
 
+安装本项目并按下文建立演示索引后，可在网页选择 `configs/agent12-demo.yaml`，或运行 `rag-agent ask --config configs/agent12-demo.yaml 'When did the Copper Museum open?'`。批处理同样支持该配置，请使用独立的输出文件。已有配置默认使用基线 Agent。需要用 Agent 1.2 试跑已配置的真实 API 时，在对应配置中加入 `agent_engine: agent12`，保留主项目的模型验证设置。Agent 1.2 的片段编号和原始事件会随运行记录保存，目前用于联调和普通评测，正式导出使用基线 Agent。
+
 ## 1. 安装
 
 在项目根目录执行。支持 Python **3.11–3.13**，本次验证环境是 macOS arm64 / Python 3.12.14。
