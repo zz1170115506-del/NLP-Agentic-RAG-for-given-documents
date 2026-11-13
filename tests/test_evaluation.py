@@ -210,7 +210,7 @@ def test_formal_rejects_tampered_identity_and_unsupported_evidence():
     assert any("contradicts" in error for error in validate_record(broken, formal=True))
     broken = baseline.model_copy(deep=True)
     broken.trajectory[5]["content"] = json.dumps({"ok": True, "data": {"results": []}})
-    assert any("previously returned" in error for error in validate_record(broken, formal=True))
+    assert any("previously returned" in error for error in validate_record(broken, formal=True, check_grounding=True))
     broken = baseline.model_copy(deep=True)
     broken.answer = "A manually overwritten answer"
     assert any("differs from" in error for error in validate_record(broken, formal=True))

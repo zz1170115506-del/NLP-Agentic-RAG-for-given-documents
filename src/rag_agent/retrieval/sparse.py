@@ -26,17 +26,28 @@ def build_sparse(store: DocumentStore, target: Path, progress=None) -> dict:
         conn.execute("INSERT OR REPLACE INTO metadata VALUES ('ready','false')")
         conn.execute("INSERT OR REPLACE INTO metadata VALUES ('fingerprint',?)", (fingerprint,))
         conn.commit()
-        done = conn.execute("SELECT count(*) FROM records").fetchone()[0]
-        for i, c in enumerate(store.iter_chunks()):
-            if i < done:
-                continue
-            cursor = conn.execute("INSERT INTO records(chunk_id,doc_id,offset,text,url) VALUES (?,?,?,?,?)",
-                                  (c.chunk_id,c.doc_id,c.offset,c.text,c.url))
-            conn.execute("INSERT INTO fts(rowid,text) VALUES (?,?)", (cursor.lastrowid,c.text))
-            if (i + 1) % 1000 == 0:
-                conn.commit()
-                if progress:
-                    progress({"method":"sparse", "chunks":i+1, "total":store.chunk_count})
+        # Native SQLite bulk copy avoids millions of Python/Pydantic round trips.
+        # Source seq is immutable and lets interrupted record copies resume exactly.
+        conn.execute("ATTACH DATABASE ? AS corpus_source", (str(store.path.resolve()),))
+        total = store.chunk_count
+        done = conn.execute("SELECT coalesce(max(seq),0) FROM records").fetchone()[0]
+        while True:
+            cursor = conn.execute("""INSERT INTO records(seq,chunk_id,doc_id,offset,text,url)
+                SELECT seq,chunk_id,doc_id,offset,text,url FROM corpus_source.chunks
+                WHERE seq>? ORDER BY seq LIMIT 10000""", (done,))
+            if not cursor.rowcount:
+                break
+            done = conn.execute("SELECT max(seq) FROM records").fetchone()[0]
+            conn.commit()
+            if progress:
+                progress({"method": "sparse", "stage": "copy", "chunks": done, "total": total})
+        if conn.execute("SELECT count(*) FROM records").fetchone()[0] != total:
+            raise ValueError("Sparse record coverage differs from the fixed corpus")
+        if progress:
+            progress({"method": "sparse", "stage": "fts_rebuild", "chunks": done, "total": total})
+        # Rebuild is one atomic native transaction. If interrupted, ready stays false
+        # and the next invocation reuses records and retries this exact stage.
+        conn.execute("INSERT INTO fts(fts) VALUES ('rebuild')")
         conn.execute("INSERT OR REPLACE INTO metadata VALUES ('ready','true')")
         conn.execute("INSERT OR REPLACE INTO metadata VALUES ('tokenizer','unicode61 remove_diacritics 2')")
         conn.commit()

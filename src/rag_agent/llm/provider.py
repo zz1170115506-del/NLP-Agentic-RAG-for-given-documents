@@ -75,20 +75,27 @@ class HTTPProvider:
                 event["http_status"] = response.status_code
                 if response.is_success:
                     event["outcome"] = "received"
-                    self.emit(scrub(event))
                     try:
-                        payload = response.json()
+                        result = response.json()
                     except ValueError as exc:
+                        event["response_parse_error"] = True
+                        event["usage_unknown"] = True
+                        self.emit(scrub(event))
+                        self.uncertain_usage = True
                         raise ProviderError("Provider returned non-JSON success; usage cannot be verified") from exc
-                    if not isinstance(payload, dict):
+                    event["response"] = result
+                    self.emit(scrub(event))
+                    if not isinstance(result, dict):
+                        self.uncertain_usage = True
                         raise ProviderError("Provider returned a non-object completion; usage cannot be verified")
-                    return payload
+                    return result
                 event["outcome"] = "http_error"
                 try:
                     error_payload = response.json()
                 except ValueError:
                     error_payload = None
                 returned_usage = error_payload.get("usage") if isinstance(error_payload, dict) else None
+                event["response"] = error_payload
                 if isinstance(returned_usage, dict) and type(returned_usage.get("total_tokens")) is int and returned_usage["total_tokens"] >= 0:
                     event["usage_unknown"] = False
                     self.emit(scrub({"event": "api_usage", "attempt": attempt + 1, "http_status": response.status_code,

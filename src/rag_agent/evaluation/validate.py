@@ -6,7 +6,9 @@ from urllib.parse import urlparse
 
 from rag_agent.config import Settings
 from rag_agent.schemas import Prediction
+from rag_agent.evidence import resolve_evidence_ids
 from .io import read_predictions, read_questions
+from search_agent.final_output import parse_final_object
 
 
 def run_metadata(prediction: Prediction) -> tuple[dict, dict]:
@@ -65,6 +67,8 @@ def _message_shape_errors(messages: list[dict], label: str, *, api_messages: boo
                         errors.append(f"{prefix}: tool function must contain string name/arguments")
         event = message.get("event")
         if event == "run_start":
+            if "audit_version" in message and (type(message["audit_version"]) is not int or message["audit_version"] < 1):
+                errors.append(f"{prefix}: audit_version must be a positive integer")
             for key in ("config_id", "mode", "provider", "model_verification_note"):
                 if key in message and not isinstance(message[key], str):
                     errors.append(f"{prefix}: {key} must be a string")
@@ -112,12 +116,15 @@ def _formal_identity(start: dict, prediction: Prediction) -> list[str]:
 
 def _formal_grounding(prediction: Prediction) -> list[str]:
     """Check observable provenance; semantic entailment still needs evaluation."""
+    shape = _message_shape_errors(prediction.trajectory, "trajectory")
+    if shape:
+        return shape
     assistants = [event for event in prediction.trajectory if event.get("role") == "assistant"]
     if not assistants:
         return ["missing final assistant response"]
     final_message = assistants[-1]
     try:
-        final = json.loads(final_message.get("content", ""))
+        final = parse_final_object(final_message.get("content"))
     except (ValueError, TypeError):
         return ["final assistant response is not valid answer JSON"]
     if not isinstance(final, dict) or not isinstance(final.get("answer"), str):
@@ -125,6 +132,15 @@ def _formal_grounding(prediction: Prediction) -> list[str]:
     errors = []
     if final_message.get("tool_calls") or final["answer"].strip() != prediction.answer:
         errors.append("prediction answer differs from the actual final assistant answer")
+    if "supporting_evidence" in final:
+        try:
+            prior = prediction.trajectory[:prediction.trajectory.index(final_message)]
+            resolved = resolve_evidence_ids(final["supporting_evidence"], prior)
+            if prediction.answer.strip() and not resolved:
+                errors.append("final answer must include inspected evidence citations")
+        except ValueError as exc:
+            errors.append(str(exc))
+        return errors
     citations = final.get("evidence")
     if not isinstance(citations, list) or not citations:
         return errors + ["final answer must include inspected evidence citations"]
@@ -181,6 +197,55 @@ def _formal_http_audit(prediction: Prediction, start: dict) -> list[str]:
         status = attempt.get("http_status")
         if attempt.get("outcome") == "received" and (type(status) is not int or not 200 <= status < 300):
             errors.append("successful HTTP attempt has no valid success status")
+    if start.get("audit_version", 1) >= 2:
+        pending = None
+        context = None
+        responses = []
+        retry_usage = []
+        for event in prediction.trajectory:
+            if event.get("event") == "request":
+                context = event
+            elif event.get("event") == "api_attempt":
+                payload = event.get("request")
+                if not isinstance(payload, dict):
+                    errors.append("HTTP attempt request must be an object")
+                    continue
+                if (context is None or payload.get("messages") != context.get("messages")
+                        or payload.get("tools", []) != context.get("tools", [])
+                        or payload.get("max_tokens") != context.get("max_tokens")):
+                    errors.append("HTTP attempt is not bound to its preceding request/context/tools/budget")
+                if event.get("outcome") == "received":
+                    if pending is not None:
+                        errors.append("received HTTP response was not paired with an assistant")
+                    pending = event.get("response")
+                    if not isinstance(pending, dict):
+                        errors.append("successful HTTP event lacks its actual raw response")
+                elif event.get("outcome") == "http_error" and event.get("usage_unknown") is False:
+                    retry_usage.append(event)
+            elif event.get("role") == "assistant":
+                if not isinstance(pending, dict):
+                    errors.append("assistant has no preceding raw HTTP response")
+                    continue
+                choices = pending.get("choices")
+                choice = choices[0] if isinstance(choices, list) and choices and isinstance(choices[0], dict) else {}
+                message = choice.get("message", {})
+                if (not isinstance(message, dict) or message.get("content") != event.get("content")
+                        or (message.get("tool_calls") or []) != (event.get("tool_calls") or [])
+                        or pending.get("model") != event.get("model") or pending.get("usage") != event.get("usage")):
+                    errors.append("assistant content/tool calls/model/usage differs from its raw HTTP response")
+                responses.append(pending)
+                pending = None
+        if pending is not None:
+            errors.append("unpaired received HTTP response")
+        usages = [event for event in prediction.trajectory if event.get("event") == "api_usage"]
+        if len(usages) != len(retry_usage):
+            errors.append("retry API usage events do not match received HTTP errors")
+        for usage, attempt in zip(usages, retry_usage):
+            response = attempt.get("response")
+            if (not isinstance(response, dict) or response.get("usage") != usage.get("usage")
+                    or response != usage.get("response") or response.get("model") != usage.get("model")
+                    or attempt.get("http_status") != usage.get("http_status")):
+                errors.append("retry usage differs from its actual HTTP error response")
     return errors
 
 
@@ -229,7 +294,7 @@ def _check_pairing(messages: list[dict], label: str) -> tuple[list[str], int]:
     return errors, calls_count
 
 
-def validate_record(prediction: Prediction, *, formal: bool = False) -> list[str]:
+def validate_record(prediction: Prediction, *, formal: bool = False, check_grounding: bool = False) -> list[str]:
     shape_errors = _message_shape_errors(prediction.trajectory, "trajectory")
     for position, event in enumerate(prediction.trajectory):
         if event.get("event") == "request":
@@ -270,7 +335,23 @@ def validate_record(prediction: Prediction, *, formal: bool = False) -> list[str
         errors.append("run_start/run_end must delimit the complete trajectory")
     if formal:
         errors.extend(_formal_identity(start, prediction))
-        errors.extend(_formal_grounding(prediction))
+        # Course validity is independent of citation quality and answer correctness.
+        # Always bind the exported answer to the actual final model response.
+        assistants_final = [row for row in prediction.trajectory if row.get("role") == "assistant"]
+        if assistants_final:
+            last = assistants_final[-1]
+            content = last.get("content") or ""
+            if content.strip().startswith("```"):
+                content = "\n".join(content.strip().splitlines()[1:-1])
+            try:
+                final = parse_final_object(content)
+                actual = final.get("answer") if isinstance(final, dict) else None
+            except ValueError:
+                actual = content
+            if not isinstance(actual, str) or actual.strip() != prediction.answer or last.get("tool_calls"):
+                errors.append("prediction answer differs from the actual final assistant answer")
+        else:
+            errors.append("missing final assistant response")
         errors.extend(_formal_http_audit(prediction, start))
         if start.get("mode") != "live" or start.get("provider") != "http":
             errors.append("formal export requires live HTTP model execution, not demo/scripted output")
@@ -280,20 +361,21 @@ def validate_record(prediction: Prediction, *, formal: bool = False) -> list[str
             errors.append("provider model ID must have documented DeepSeek-V4-Flash verification")
         if not start.get("config_id"):
             errors.append("missing reproducibility config_id")
-        if end.get("eligible") is not True or not is_completed(prediction):
+        if not is_completed(prediction) and end.get("status") not in {"unresolved", "insufficient_evidence"}:
             errors.append("failed/incomplete run is ineligible for formal export")
         if end.get("usage_complete") is not True or missing_usage or not assistants or not total_tokens:
             errors.append("formal export requires reliable API usage for every received assistant response")
-        if not prediction.answer.strip():
-            errors.append("formal completed run has an empty answer")
         if not any(row.get("event") == "request" for row in prediction.trajectory):
             errors.append("missing actual LLM request contexts")
         if call_count == 0:
             errors.append("formal run lacks any tool use")
+    if check_grounding:
+        errors.extend(_formal_grounding(prediction))
     return errors
 
 
-def validate_predictions(input_path: str | Path, prediction_path: str | Path, formal: bool = False) -> dict[str, Any]:
+def validate_predictions(input_path: str | Path, prediction_path: str | Path, formal: bool = False,
+                         check_grounding: bool = False) -> dict[str, Any]:
     errors = []
     try:
         questions = read_questions(input_path)
@@ -310,7 +392,7 @@ def validate_predictions(input_path: str | Path, prediction_path: str | Path, fo
             errors.append(f"unexpected prediction ID: {prediction.id!r}")
         elif prediction.question != expected[prediction.id]:
             errors.append(f"question mismatch for ID {prediction.id!r}")
-        errors.extend(f"ID {prediction.id!r}: {error}" for error in validate_record(prediction, formal=formal))
+        errors.extend(f"ID {prediction.id!r}: {error}" for error in validate_record(prediction, formal=formal, check_grounding=check_grounding))
     missing = set(expected) - seen
     if missing:
         errors.append(f"missing prediction IDs: {sorted(missing)!r}")
@@ -321,4 +403,10 @@ def validate_predictions(input_path: str | Path, prediction_path: str | Path, fo
     if formal and len(config_ids) != 1:
         errors.append("formal batch must use one consistent recorded config_id")
     completed = sum(is_completed(row) for row in predictions)
-    return {"valid": not errors, "formal": formal, "errors": errors, "records": len(predictions), "expected": len(questions), "completed": completed, "failed": len(predictions) - completed, "tool_calls": sum(row.tool_calls for row in predictions), "total_tokens": sum(row.total_tokens for row in predictions), "config_ids": config_ids}
+    citation_errors = {row.id: _formal_grounding(row) for row in predictions}
+    citation_passed = sum(not failures for failures in citation_errors.values())
+    return {"valid": not errors, "formal": formal, "strict_grounding": check_grounding,
+            "errors": errors, "records": len(predictions), "expected": len(questions), "completed": completed,
+            "failed": len(predictions) - completed, "citation_passed": citation_passed,
+            "citation_errors": {key: failures for key, failures in citation_errors.items() if failures},
+            "tool_calls": sum(row.tool_calls for row in predictions), "total_tokens": sum(row.total_tokens for row in predictions), "config_ids": config_ids}

@@ -31,7 +31,7 @@ python scripts/prepare_peer12.py --peer-project ..
 
 真实模型开发入口、索引配置与完整步骤见 [1.2 运行说明](agent12/PEER_INTEGRATION.md)。已使用真实 DeepSeek Flash API 和本仓库 BM25 验证四类合成案例，记录见 [验证摘要](agent12/verification/peer-summary.json)。这些是开发联调，正式课程模型与全量语料的评测仍待完成。
 
-安装本项目并按下文建立演示索引后，可在网页选择 `configs/agent12-demo.yaml`，或运行 `rag-agent ask --config configs/agent12-demo.yaml 'When did the Copper Museum open?'`。批处理同样支持该配置，请使用独立的输出文件。已有配置默认使用基线 Agent。需要用 Agent 1.2 试跑已配置的真实 API 时，在对应配置中加入 `agent_engine: agent12`，保留主项目的模型验证设置。Agent 1.2 的片段编号和原始事件会随运行记录保存，目前用于联调和普通评测，正式导出使用基线 Agent。
+安装本项目并按下文建立演示索引后，可在网页选择 `configs/agent12-demo.yaml`，或运行 `rag-agent ask --config configs/agent12-demo.yaml 'When did the Copper Museum open?'`。批处理同样支持该配置，请使用独立的输出文件。已有配置默认使用基线 Agent。使用 Agent 1.2 时加入 `agent_engine: agent12`，保留模型验证设置。两种 Agent 现在共用六字段正式记录、HTTP 对账和证据编号校验；Agent 1.2 保留服务原始调用 ID、完整原始事件及实际模型请求。当前能力与数据范围见[程序验收回传文档](docs/task_NLP-Agentic-RAG-for-given-documents_全项目程序验收与缺口补齐_prompt_1return.md)。
 
 ## 1. 安装
 
@@ -78,7 +78,9 @@ rag-agent validate --config configs/demo.yaml \
   --input tests/fixtures/questions.jsonl --predictions outputs/demo_prediction.jsonl
 ```
 
-重复执行 predict 会跳过已保存题目；加 `--rerun-failed` 仅重跑失败题并保存旧尝试。旧输出与输入/配置不一致时会拒绝恢复，应使用新的输出路径。
+重复执行 predict 会跳过已保存题目；加 `--rerun-failed` 仅重跑失败题并保存旧尝试。恢复清单绑定输入、配置、程序代码、实际语料及索引身份；任一变化应使用新的输出路径。旧 schema_version=1 清单不会自动升级混跑。
+
+`predict --limit 5` 每次只处理最多五个尚未保存的问题，清单仍绑定完整原输入，适合分批续跑同一个 100 题文件。`index --max-new-shards 2` 可以按分片停止两种向量构建以测量资源；部分索引始终标记 `ready: false`，搜索会拒绝加载；后续去掉该参数即可恢复全量构建。
 
 ## 3. 正式模型配置
 
@@ -170,7 +172,17 @@ rag-agent predict --config configs/openrouter.yaml \
   --input data/test.jsonl --output outputs/test_prediction.jsonl --rerun-failed
 ```
 
-正式验收要求输入恰好 100 题、ID/题目全覆盖、唯一性、真实模式与模型元数据、完整调用与返回配对、API usage 及实际计数一致，并拒绝 demo/脚本/失败或统计不完整的结果。验收通过仅表示通过项目内检查，不替代教师验收，也不能保证答案正确。
+`validate --formal` 按课程有效记录条件检查恰好 100 题、覆盖与唯一性、真实模型身份、完整工具配对、原始 HTTP 请求/响应及实际 API usage。答错、诚实弃答和引用质量分别报告；基础设施失败、未完成与未知用量不能成为有效记录。项目内部 `eligible` 标志不会覆盖实际审计结果。另加 `--strict-grounding` 要求引用也通过来源检查；准确率只由独立 evaluator 比较参考答案。旧轨迹保留兼容校验，新 `audit_version: 2` 还逐一核对原始响应、模型文本、工具 ID 与重试用量。
+
+两种 Agent 优先要求模型输出 `supporting_evidence: ["E1", "E2"]`，程序从更早的成功工具结果与实际模型请求恢复原文。压缩过的证据只引用实际展示过的范围。旧基线 `evidence` 原文坐标输出仍兼容。模型在 JSON 前添加说明时，只接受唯一完整的答案对象，原始响应不变；歧义对象、坏编号和破损 JSON 不会被补写。最终格式最多修复一次。
+
+生成不含题目、答案与轨迹的统计摘要：
+
+```bash
+python scripts/audit_predictions.py --input data/validation.jsonl \
+  --predictions outputs/validation_prediction.jsonl --evaluate \
+  --output outputs/validation-summary.json
+```
 
 输出每条记录仅含课程六字段。附加运行状态、配置、选择事件和裁剪信息放在 `trajectory` 内；每次请求保留精简上下文，完整历史不被删除。`tool_calls` 统计每个模型发出的调用（含失败）；混合检索内部的三路操作只算一次。自动内部 skill 选择/加载不计作模型工具调用，模型显式 `load_skill` 则计数。API tokens 仅累计服务返回的 `usage.total_tokens`；未知用量使运行不具备正式资格。
 

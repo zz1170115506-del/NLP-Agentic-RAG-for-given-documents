@@ -10,7 +10,9 @@ from rag_agent.schemas import AgentState, Evidence, Prediction, Question, RunRes
 from rag_agent.skills import SkillCatalog
 from rag_agent.tools import ToolRegistry
 from rag_agent.llm.provider import DemoProvider, HTTPProvider, ProviderError, scrub
+from rag_agent.evidence import resolve_evidence_ids
 from .context import build_context
+from search_agent.final_output import parse_final_object
 
 
 class Citation(BaseModel):
@@ -23,7 +25,8 @@ class Citation(BaseModel):
 class FinalAnswer(BaseModel):
     model_config = ConfigDict(extra="forbid", strict=True)
     answer: str = Field(max_length=1000)
-    evidence: list[Citation]
+    evidence: list[Citation] = Field(default_factory=list)
+    supporting_evidence: list[str] = Field(default_factory=list)
     explanation: str = Field(default="", max_length=4000)
 
 
@@ -40,11 +43,13 @@ def _add_evidence(state, item, store):
     if document.doc_id not in state.visited_documents:
         state.visited_documents.append(document.doc_id)
     for previous in state.evidence:
-        if previous.doc_id == document.doc_id and previous.offset <= offset and previous.offset + len(previous.text) >= offset + len(text):
+        if previous.doc_id == document.doc_id and previous.offset == offset and previous.text == text:
+            item["evidence_id"] = previous.evidence_id
             return
-    # If a new inspected window covers a smaller old one, retain only the new span.
-    state.evidence[:] = [ev for ev in state.evidence if not (ev.doc_id == document.doc_id and offset <= ev.offset and offset + len(text) >= ev.offset + len(ev.text))]
-    state.evidence.append(Evidence(doc_id=document.doc_id, offset=offset, text=text, url=document.url))
+    evidence_id = f"E{len(state.evidence) + 1}"
+    state.evidence.append(Evidence(doc_id=document.doc_id, offset=offset, text=text, url=document.url,
+                                   evidence_id=evidence_id, chunk_id=item.get("chunk_id")))
+    item["evidence_id"] = evidence_id
 
 
 def _update_state(state, name, arguments, result, store):
@@ -76,10 +81,16 @@ def _update_state(state, name, arguments, result, store):
         state.stalled_searches = state.stalled_searches + 1 if after == before else 0
 
 
-def _validate_final(content, state, store):
-    final = FinalAnswer.model_validate_json(content)
+def _validate_final(content, state, store, trajectory=None):
+    final = FinalAnswer.model_validate(parse_final_object(content))
     if not final.answer.strip():
         return final, "insufficient_evidence"
+    if final.supporting_evidence:
+        if final.evidence:
+            raise ValueError("Use supporting_evidence IDs or legacy evidence spans, not both")
+        resolved = resolve_evidence_ids(final.supporting_evidence, trajectory or [], store)
+        final.evidence = [Citation(doc_id=item["doc_id"], offset=item["offset"], text=item["text"]) for item in resolved]
+        state.selected_evidence_ids = list(final.supporting_evidence)
     if not final.evidence:
         raise ValueError("Nonempty answers require inspected supporting evidence")
     for citation in final.evidence:
@@ -109,6 +120,7 @@ def run_question(question: Question, settings: Settings, store=None, search=None
     final_valid = False
     retrieval_batches = 0
     original_emit = None
+    final_repairs = 0
 
     def emit(event):
         nonlocal usage_complete
@@ -125,7 +137,7 @@ def run_question(question: Question, settings: Settings, store=None, search=None
         if on_event:
             on_event(copy.deepcopy(record))
 
-    emit({"event": "run_start", "mode": settings.mode, "provider": provider_kind, "injected_provider": injected_provider, "config_id": settings.config_id,
+    emit({"event": "run_start", "audit_version": 2, "mode": settings.mode, "provider": provider_kind, "injected_provider": injected_provider, "config_id": settings.config_id,
           "model": settings.llm_model, "model_verified": settings.model_verified,
           "model_verification_note": settings.model_verification_note,
           "config": settings.model_dump()})
@@ -262,7 +274,7 @@ def run_question(question: Question, settings: Settings, store=None, search=None
                 break
             content = message.get("content")
             try:
-                final, status = _validate_final(content, state, store)
+                final, status = _validate_final(content, state, store, trajectory)
                 answer = final.answer.strip()
                 state.candidate_answer = answer
                 state.stop_reason = status
@@ -272,6 +284,10 @@ def run_question(question: Question, settings: Settings, store=None, search=None
             except (ValueError, TypeError) as exc:
                 # Repair is another real API call and is fully counted on the next iteration.
                 emit({"event": "error", "code": "invalid_final", "message": str(exc)[:1500]})
+                if final_repairs >= 1:
+                    state.stop_reason = "invalid_final"
+                    break
+                final_repairs += 1
                 groups.append([assistant, {"role": "user", "content": "Your final JSON/citations failed validation: " + str(exc)[:800] + ". Correct it using inspected evidence or return an empty answer. Do not invent text."}])
         else:
             state.stop_reason = "step_budget"

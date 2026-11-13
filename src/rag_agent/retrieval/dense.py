@@ -45,7 +45,10 @@ def _check(manifest, expected):
         raise ValueError(f"Incompatible dense index ({', '.join(mismatch)}); choose a new index_dir or restore matching config")
 
 
-def build_dense(settings, store: DocumentStore, target: Path, method: str, progress=None, embedder=None):
+def build_dense(settings, store: DocumentStore, target: Path, method: str, progress=None, embedder=None,
+                max_new_shards: int | None = None):
+    if max_new_shards is not None and max_new_shards < 1:
+        raise ValueError("max_new_shards must be positive")
     target.mkdir(parents=True, exist_ok=True)
     manifest_path = target / "manifest.json"
     expected = _expected(settings, store, method)
@@ -66,6 +69,7 @@ def build_dense(settings, store: DocumentStore, target: Path, method: str, progr
     iterator = iter(store.iter_chunks())
     shard_number = 0
     consumed = 0
+    new_shards = 0
     while group := list(islice(iterator, SHARD_CHUNKS)):
         if shard_number < len(manifest["shards"]):
             existing = manifest["shards"][shard_number]
@@ -89,6 +93,11 @@ def build_dense(settings, store: DocumentStore, target: Path, method: str, progr
             if progress:
                 progress({"method":method, "chunks":consumed, "total":store.chunk_count, "reused":True})
             continue
+        if max_new_shards is not None and new_shards >= max_new_shards:
+            manifest.update(ready=False, source_chunk_count=consumed,
+                            vector_count=sum(s["rows"] for s in manifest["shards"]))
+            _write_json(manifest_path, manifest)
+            return manifest
         # At most 256 source chunks are staged; each embedding call has at most batch_size passages.
         segments = [segment for chunk in group for segment in model.segments(chunk)]
         if not segments:
@@ -122,6 +131,7 @@ def build_dense(settings, store: DocumentStore, target: Path, method: str, progr
         _write_json(manifest_path, manifest)
         consumed += len(group)
         shard_number += 1
+        new_shards += 1
         if progress:
             progress({"method":method, "chunks":consumed, "total":store.chunk_count, "reused":False})
     if shard_number != len(manifest["shards"]):
@@ -171,13 +181,19 @@ class DenseRetriever:
             if vectors.shape != (shard["rows"], self.manifest["dimension"]):
                 raise ValueError("Dense shard shape mismatch")
             scores = vectors @ q
+            # Read all metadata lines for integrity, but parse only possible top-k
+            # rows. Include ties so global doc/chunk ordering remains deterministic.
+            threshold = np.partition(scores, max(0, len(scores) - top_k))[max(0, len(scores) - top_k)]
+            candidates = set(np.flatnonzero(scores >= threshold).tolist())
             count = 0
             with meta_path.open(encoding="utf-8") as handle:
                 for row, line in enumerate(handle):
                     if row >= len(scores):
                         raise ValueError("Dense shard metadata has extra rows")
-                    c = Chunk.model_validate_json(line)
                     count += 1
+                    if row not in candidates:
+                        continue
+                    c = Chunk.model_validate_json(line)
                     if not c.text.strip():
                         continue
                     score = float(scores[row])
@@ -186,8 +202,7 @@ class DenseRetriever:
                     if prior is None or score > prior.score:
                         best[key] = SearchHit(**c.model_dump(), score=score, method=self.method,
                             metadata={"model_id":self.manifest["model_id"], "revision":self.manifest["resolved_revision"]})
-                    if len(best) > top_k * 2:
-                        best = dict(sorted(best.items(), key=lambda x:(-x[1].score,x[0]))[:top_k])
+            best = dict(sorted(best.items(), key=lambda x:(-x[1].score,x[0]))[:top_k])
             if count != shard["rows"]:
                 raise ValueError("Dense shard metadata missing rows")
             del vectors

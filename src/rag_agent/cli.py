@@ -29,6 +29,7 @@ def main(argv=None):
             s.add_argument("--revision", default="main")
         elif name == "index":
             s.add_argument("--methods", nargs="+", choices=["sparse", "encoder", "instruction"], default=["sparse", "encoder", "instruction"])
+            s.add_argument("--max-new-shards", type=int, help="Checkpoint each dense route after this many NEW shards; incomplete indexes remain unsearchable")
         elif name == "search":
             s.add_argument("query")
             s.add_argument("--method", choices=["sparse", "encoder", "instruction", "hybrid"])
@@ -40,11 +41,13 @@ def main(argv=None):
             s.add_argument("--input", required=True)
             s.add_argument("--output", default="outputs/test_prediction.jsonl")
             s.add_argument("--rerun-failed", action="store_true")
+            s.add_argument("--limit", type=int, help="Run at most this many pending questions; resume uses the full original input")
         elif name in ("validate", "evaluate"):
             s.add_argument("--input", required=True)
             s.add_argument("--predictions", required=True)
             if name == "validate":
                 s.add_argument("--formal", action="store_true")
+                s.add_argument("--strict-grounding", action="store_true", help="Also require exact inspected citations; separate from course record validity")
     args = p.parse_args(argv)
     try:
         local_caches()
@@ -73,7 +76,7 @@ def main(argv=None):
             emit(result)
         elif args.command == "index":
             from rag_agent.retrieval import build_indexes
-            emit(build_indexes(cfg, args.methods, progress=lambda event: print(str(event), file=sys.stderr)))
+            emit(build_indexes(cfg, args.methods, progress=lambda event: print(str(event), file=sys.stderr), max_new_shards=args.max_new_shards))
         elif args.command == "search":
             from rag_agent.retrieval import SearchService
             emit([x.model_dump() for x in SearchService(cfg).search(args.query, cfg.top_k, args.method or cfg.method)])
@@ -88,10 +91,10 @@ def main(argv=None):
         elif args.command == "predict":
             from rag_agent.evaluation import batch_predict
             store, search = make_runtime(cfg)
-            emit(batch_predict(args.input, args.output, cfg, lambda q, settings: run_question(q, settings, store=store, search=search), resume=True, rerun_failed=args.rerun_failed))
+            emit(batch_predict(args.input, args.output, cfg, lambda q, settings: run_question(q, settings, store=store, search=search), resume=True, rerun_failed=args.rerun_failed, max_questions=args.limit))
         elif args.command in ("validate", "evaluate"):
             from rag_agent.evaluation import evaluate, validate_predictions
-            result = (validate_predictions(args.input, args.predictions, formal=args.formal)
+            result = (validate_predictions(args.input, args.predictions, formal=args.formal, check_grounding=args.strict_grounding)
                       if args.command == "validate" else evaluate(args.input, args.predictions))
             emit(result)
             if args.command == "validate" and not result["valid"]:

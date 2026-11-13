@@ -10,6 +10,7 @@ from typing import Callable
 
 from rag_agent.config import Settings
 from rag_agent.schemas import Prediction, Question, RunResult
+from rag_agent.identity import runtime_identity
 from .io import dump_line, file_sha256, read_predictions, read_questions
 from .validate import is_completed, run_metadata, validate_predictions, validate_record
 
@@ -88,7 +89,7 @@ def _invalid_result(question: Question, prediction: Prediction, errors: list[str
 
 def batch_predict(input_path: str | Path, output_path: str | Path, settings: Settings,
                   run_fn: Callable[[Question, Settings], RunResult], resume: bool = True,
-                  rerun_failed: bool = False) -> dict:
+                  rerun_failed: bool = False, max_questions: int | None = None) -> dict:
     """Write one real attempt per input; every completed question is fsync'ed.
 
     A .meta.json sidecar binds resume to exact input bytes and configuration.
@@ -96,11 +97,14 @@ def batch_predict(input_path: str | Path, output_path: str | Path, settings: Set
     An interrupted/truncated JSONL is rejected rather than silently repaired.
     """
     input_path, output_path = Path(input_path), Path(output_path)
+    if max_questions is not None and max_questions < 1:
+        raise ValueError("max_questions must be positive")
     questions = read_questions(input_path)
     output_path.parent.mkdir(parents=True, exist_ok=True)
     metadata_path = output_path.with_suffix(output_path.suffix + ".meta.json")
     attempts_path = output_path.with_suffix(output_path.suffix + ".attempts.jsonl")
-    manifest = {"schema_version": 1, "source_sha256": file_sha256(input_path), "config_id": settings.config_id, "mode": settings.mode, "input_count": len(questions)}
+    manifest = {"schema_version": 2, "source_sha256": file_sha256(input_path), "config_id": settings.config_id,
+                "mode": settings.mode, "input_count": len(questions), "runtime_identity": runtime_identity(settings)}
     expected = {question.id: question.question for question in questions}
     with _exclusive_lock(output_path.with_suffix(output_path.suffix + ".lock")):
         if output_path.exists() and not resume:
@@ -133,6 +137,8 @@ def batch_predict(input_path: str | Path, output_path: str | Path, settings: Set
             if old is not None and (not rerun_failed or is_completed(old)):
                 skipped += 1
                 continue
+            if max_questions is not None and attempted >= max_questions:
+                break
             try:
                 result = run_fn(question, settings)
                 prediction = Prediction.model_validate(result.prediction)
@@ -154,4 +160,12 @@ def batch_predict(input_path: str | Path, output_path: str | Path, settings: Set
                 _append(output_path, prediction)
                 by_id[question.id] = prediction
     summary = validate_predictions(input_path, output_path)
-    return {**summary, "attempted_this_run": attempted, "skipped": skipped, "replaced_failed": replaced, "config_id": settings.config_id, "output": str(output_path), "attempt_archive": str(attempts_path) if attempts_path.exists() else None}
+    archived = []
+    if attempts_path.exists():
+        from .io import iter_jsonl
+        archived = [Prediction.model_validate(row["prediction"]) for row in iter_jsonl(attempts_path)]
+    return {**summary, "attempted_this_run": attempted, "skipped": skipped, "replaced_failed": replaced,
+            "all_attempts_total_tokens": summary["total_tokens"] + sum(row.total_tokens for row in archived),
+            "all_attempts_tool_calls": summary["tool_calls"] + sum(row.tool_calls for row in archived),
+            "archived_attempts": len(archived),
+            "config_id": settings.config_id, "output": str(output_path), "attempt_archive": str(attempts_path) if attempts_path.exists() else None}

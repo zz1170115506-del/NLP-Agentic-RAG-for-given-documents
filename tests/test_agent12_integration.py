@@ -76,5 +76,7 @@ def test_agent12_live_boundary_records_model_calls_and_usage(tmp_path, monkeypat
     tool = next(row for row in requests[1]["messages"] if row["role"] == "tool")
     assert "1984" in json.loads(tool["content"])["results"][0]["text"]
     assert validate_record(prediction) == []
-    assert not prediction.trajectory[-1]["eligible"]
+    assert prediction.trajectory[-1]["eligible"]
+    # Synthetic HTTP response fixture verifies the protocol, not a real API run.
+    assert validate_record(prediction, formal=True, check_grounding=True) == []
     assert "synthetic-test-key" not in Path("single.jsonl").read_text()

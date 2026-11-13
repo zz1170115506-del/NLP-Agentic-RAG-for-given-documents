@@ -1,0 +1,32 @@
+mode: live
+store_path: data/course-full/documents.sqlite
+index_dir: indexes/course-full
+skills_dir: skills
+method: sparse
+chunk_size: 900
+chunk_overlap: 150
+batch_size: 16
+top_k: 5
+rrf_k: 60
+encoder_model: intfloat/e5-small-v2
+encoder_revision: ffb93f3bd4047442299a41ebb6fa998a38507c52
+instruction_model: Qwen/Qwen3-Embedding-0.6B
+instruction_revision: 97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3
+device: cpu
+max_seq_length: 512
+candidate_depth: 50
+rerank_enabled: false
+rerank_model: cross-encoder/ms-marco-MiniLM-L6-v2
+rerank_revision: 233902d25c440f23af6f7d6e94d2946bac0bee0a
+rerank_device: cpu
+rerank_depth: 30
+rerank_batch_size: 8
+rerank_max_length: 512
+rerank_max_windows: 4
+rerank_on_error: raise
+llm_base_url: https://openrouter.ai/api/v1
+llm_model: deepseek/deepseek-v4-flash-0731
+model_verified: true
+model_verification_note: '2026-11-13: https://openrouter.ai/api/v1/models returned
+  exact pinned model ID and tools/tool_choice support.'
+agent_engine: agent12

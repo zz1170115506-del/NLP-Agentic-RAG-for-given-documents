@@ -1,5 +1,7 @@
 # 课程要求与实现位置
 
+2026-11-13 的正式链路、真实实测与全量状态以[程序验收回传文档](task_NLP-Agentic-RAG-for-given-documents_全项目程序验收与缺口补齐_prompt_1return.md)为准。`--formal` 检查课程记录有效性，`--strict-grounding` 独立检查引用质量，Normalized EM 独立检查答案正确性。下表历史“正式门槛”中的引用和非空答案要求已据原指南分层调整。
+
 依据用户提供的 `COMP5423_26Fall_Project.pdf`（August 2026 v1.0，共 6 页）及本轮明确选择的完整功能范围。课程最低要求与本项目目标分开列出；实现对应关系不是教师评分承诺。实际执行命令及验证结果统一见 [`validation.md`](validation.md)。
 
 ## 范围与后续交付

@@ -13,6 +13,7 @@ from typing import Any, Callable
 
 from .llm import DeepSeekClient, DemoClient, LLMError
 from .skills import SkillRegistry
+from .final_output import parse_final_object
 
 
 @dataclass
@@ -40,9 +41,12 @@ class AgentConfig:
     strict_model_identity: bool = False
     development_only: bool = False
     require_evidence: bool = False
+    auto_select_skills: bool = False
+    repeat_limit: int = 3
+    run_timeout_seconds: float = 300
 
     def __post_init__(self):
-        for name in ("max_steps", "max_tool_calls", "max_tokens", "top_k", "max_output_tokens"):
+        for name in ("max_steps", "max_tool_calls", "max_tokens", "top_k", "max_output_tokens", "repeat_limit", "run_timeout_seconds"):
             if getattr(self, name) < 1:
                 raise ValueError(name + " must be positive.")
         if self.context_chars < 6000:
@@ -157,6 +161,8 @@ class SearchAgent:
         if not isinstance(question, str) or not question.strip():
             raise ValueError("question must be a non-empty string.")
         self.events: list[dict] = []
+        self.started = time.monotonic()
+        self.repeated_actions = {}
         self.callback_errors: list[dict] = []
         self.evidence: list[dict] = []
         self.evidence_by_key: dict[tuple, dict] = {}
@@ -200,8 +206,11 @@ class SearchAgent:
         except ValueError as exc:
             return self._finish("configuration_error", "", error=str(exc))
         for step in range(1, self.config.max_steps + 1):
+            if time.monotonic() - self.started >= self.config.run_timeout_seconds:
+                return self._finish("timeout", "")
             if self.total_tokens >= self.config.max_tokens:
                 return self._finish("max_tokens", "")
+            self._auto_select_skill()
             if (self.tool_calls >= self.config.max_tool_calls
                     or (not self.config.iterative and self.retrieval_rounds)):
                 # One final call with tools disabled lets the model answer from observed evidence.
@@ -227,6 +236,8 @@ class SearchAgent:
                            max_output_tokens=completion_limit, allow_tools=allow_tools,
                            demo=self.config.provider == "demo")
                 try:
+                    if time.monotonic() - self.started >= self.config.run_timeout_seconds:
+                        return self._finish("timeout", "")
                     response = self.client.complete(messages, self.tools,
                         max_output_tokens=completion_limit, allow_tools=allow_tools)
                     self._record_response(response, step, attempt + 1)
@@ -302,7 +313,16 @@ class SearchAgent:
                     if not allow_tools or self.tool_calls > self.config.max_tool_calls:
                         result = {"error": "Tool budget exhausted; this issued call was not executed."}
                     else:
-                        result = self._dispatch(name, arguments)
+                        signature = (name, json.dumps(arguments, sort_keys=True, ensure_ascii=False))
+                        self.repeated_actions[signature] = self.repeated_actions.get(signature, 0) + 1
+                        if self.repeated_actions[signature] > self.config.repeat_limit:
+                            result = {"error": "Repeated identical action limit reached; change the query or finish.", "error_type": "repeated_action"}
+                        elif time.monotonic() - self.started >= self.config.run_timeout_seconds:
+                            result = {"error": "Run deadline reached; call not executed.", "error_type": "timeout"}
+                        elif self.total_tokens >= self.config.max_tokens:
+                            result = {"error": "Token budget reached; call not executed.", "error_type": "max_tokens"}
+                        else:
+                            result = self._dispatch(name, arguments)
                 except Exception as exc:
                     result = {"error": str(exc), "error_type": type(exc).__name__}
                 self._emit("tool_result", step=step, tool_call_id=call_id, name=name, result=result,
@@ -323,6 +343,24 @@ class SearchAgent:
                        search_feedback=self.search_feedback,
                        tool_calls=self.tool_calls, total_tokens=self.total_tokens)
         return self._finish("max_steps", "")
+
+    def _auto_select_skill(self):
+        """Optional deterministic runtime routing, distinct from model tool calls."""
+        if not self.config.enable_skills or not self.config.auto_select_skills:
+            return
+        names = {item["name"] for item in self.skills.catalog()}
+        name = None
+        if self.stalled_searches and "search-recovery" not in self.loaded:
+            name = "search-recovery"
+        elif re.search(r"\b(and|whose|both|before|after|where.*(?:architect|designer))\b|同时|并且|哪所|设计者", self.question, re.I):
+            name = next((candidate for candidate in ("multi-clue-decomposition", "multi-clue-search")
+                         if candidate in names and candidate not in self.loaded), None)
+        if name not in names:
+            return
+        skill = self.skills.load(name)
+        self.loaded[name] = skill
+        self._emit("skill_loaded", name=name, description=skill["description"], instructions=skill["instructions"],
+                   source="automatic", stalled_searches=self.stalled_searches)
 
     def _record_response(self, response: dict, step: int, attempt: int,
                          error_response: bool = False):
@@ -674,7 +712,7 @@ class SearchAgent:
             lines = text.splitlines()
             text = "\n".join(lines[1:-1])
         try:
-            data = json.loads(text)
+            data = parse_final_object(text)
         except ValueError:
             if text.startswith(("{", "[")):
                 self.final_validation_error = "Final JSON is incomplete or malformed."
@@ -693,6 +731,8 @@ class SearchAgent:
             self.final_validation_error = "supporting_evidence must be a list of observed evidence ID strings."
         elif any(item not in known for item in support):
             self.final_validation_error = "Unknown supporting evidence IDs: " + ", ".join(item for item in support if item not in known)
+        elif len(support) != len(set(support)):
+            self.final_validation_error = "Duplicate supporting evidence IDs are not allowed."
         support = [item for item in support if isinstance(item, str) and item in known] if isinstance(support, list) else []
         if self.config.require_evidence and data["answer"].strip() and not support:
             self.final_validation_error = "A nonempty answer requires observed supporting evidence. Use the search tools first, then cite their evidence IDs."

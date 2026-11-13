@@ -10,6 +10,10 @@ from rag_agent.retrieval import build_indexes
 
 @pytest.mark.parametrize("agent_engine", ["baseline", "agent12"])
 def test_web_demo_and_missing_live_setup(tmp_path, monkeypatch, agent_engine):
+    # A developer may already have authorized real credentials in the parent env.
+    # This missing-setup test must never contact a real service.
+    for name in ("LLM_API_KEY", "LLM_BASE_URL", "LLM_MODEL", "LLM_MODEL_VERIFIED", "LLM_MODEL_VERIFICATION_NOTE"):
+        monkeypatch.delenv(name, raising=False)
     root = Path(__file__).resolve().parents[1]
     cfg = Settings(mode="demo", method="sparse", agent_engine=agent_engine, store_path=str(tmp_path / "corpus.sqlite"),
                    index_dir=str(tmp_path / "index"), skills_dir=str(root / "skills"))

@@ -91,6 +91,14 @@ def main():
     st.write("已选 skills：", ", ".join(state["selected_skills"]) or "本题无需加载 skill")
     tabs = st.tabs(["文档证据", "工具过程", "完整运行轨迹"])
     with tabs[0]:
+        resolved = next((event for event in prediction["trajectory"] if event.get("event") == "evidence_resolution"), {})
+        if resolved.get("citations"):
+            st.caption("答案实际引用的原文范围（按模型请求中可见的文字恢复）")
+            for citation in resolved["citations"]:
+                st.write(f"{citation['evidence_id']} · {citation['doc_id']} · {citation['offset']}–{citation['end']}")
+                st.text(citation["text"])
+        if resolved.get("errors"):
+            st.error("引用检查未通过：" + "; ".join(resolved["errors"]))
         for evidence in state["evidence"]:
             evidence_id = evidence.get("evidence_id")
             label = f"{evidence_id} · " if evidence_id else ""

@@ -38,7 +38,7 @@ def rrf_fuse(rankings: list[list[SearchHit]], top_k: int, rrf_k: int = 60) -> li
     ]
 
 
-def build_indexes(settings: Settings, methods: list[str], progress=None) -> dict:
+def build_indexes(settings: Settings, methods: list[str], progress=None, max_new_shards: int | None = None) -> dict:
     if not methods or any(method not in METHODS for method in methods):
         raise ValueError(f"methods must be selected from {METHODS}")
     store = DocumentStore(settings.store_path)
@@ -47,7 +47,7 @@ def build_indexes(settings: Settings, methods: list[str], progress=None) -> dict
     try:
         for method in dict.fromkeys(methods):
             started = time.monotonic()
-            manifest = build_sparse(store, target, progress) if method == "sparse" else build_dense(settings, store, target / method, method, progress)
+            manifest = build_sparse(store, target, progress) if method == "sparse" else build_dense(settings, store, target / method, method, progress, max_new_shards=max_new_shards)
             output[method] = {"manifest":manifest, "seconds":round(time.monotonic()-started,3)}
     finally:
         store.close()

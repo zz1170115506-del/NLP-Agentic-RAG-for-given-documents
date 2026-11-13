@@ -12,10 +12,11 @@ form later queries, inspect passages, and verify every requested constraint. Ski
 procedural guidance loaded separately at runtime. Do not request or expose hidden reasoning;
 briefly summarize observable actions only. Tool offsets count Python Unicode characters.
 When ready, output one JSON object and no Markdown: {"answer":"short answer only",
-"evidence":[{"doc_id":"actual ID","offset":0,"text":"exact inspected source span"}],
+"supporting_evidence":["E1","E2"],
 "explanation":"brief evidence-based explanation"}. Keep answer suitable for exact matching.
-Evidence must be a substring of an already inspected passage at its true offset. Do not
-fabricate quotations or IDs. If evidence is insufficient, return an empty answer and explain
+Select evidence_id values from actual tool results or the state snapshot; the program
+resolves exact source text and coordinates. Do not rewrite quotations or offsets. Do not
+fabricate IDs. The legacy evidence span output remains accepted. If evidence is insufficient, return an empty answer and explain
 the missing support. You may recover from structured tool errors while budget remains.
 """
 

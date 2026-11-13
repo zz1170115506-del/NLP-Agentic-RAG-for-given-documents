@@ -3,7 +3,6 @@ import copy
 import json
 import os
 import time
-from itertools import groupby
 
 from search_agent.agent import AgentConfig, SearchAgent, TOOLS
 from search_agent.llm import LLMError
@@ -15,6 +14,7 @@ from rag_agent.llm.provider import HTTPProvider, ProviderError, scrub
 from rag_agent.peer_backend import PeerBackend
 from rag_agent.retrieval import SearchService
 from rag_agent.schemas import AgentState, Evidence, Prediction, Question, RunResult
+from rag_agent.evidence import resolve_evidence_ids
 
 
 def tool_schemas(use_skills: bool) -> list[dict]:
@@ -55,55 +55,30 @@ class _Client:
         self.provider.close()
 
 
-def _tool_message(call: dict) -> dict:
-    arguments = call["raw_arguments"]
-    return {
-        "id": call["tool_call_id"],
-        "type": "function",
-        "function": {
-            "name": str(call["name"]),
-            "arguments": arguments if isinstance(arguments, str) else json.dumps(arguments, ensure_ascii=False),
-        },
-    }
-
-
 def _trajectory(raw: list[dict], http_events: dict[int, list[dict]]):
     """Expose standard messages, retaining every original Agent 1.2 event."""
-    attempts = groupby(raw, key=lambda event: event["seq"] if event["type"] == "llm_request" else None)
-    for request_seq, events in attempts:
-        events = list(events)
-        if request_seq is not None:
-            request = events[0]
-            yield {"event": "request", "messages": request["request"]["messages"],
-                   "tools": request["request"].get("tools", []), "max_tokens": request["max_output_tokens"]}
-        calls = [_tool_message(event) for event in events if event["type"] == "tool_call"]
-        for event in events:
-            kind = event["type"]
-            yield {"event": "agent12", "source_event": event}
-            if kind == "llm_request":
-                for attempt in http_events.get(event["seq"], []):
-                    yield {"event": "agent12_http", "source_event": attempt}
-            elif kind == "llm_response":
-                response = event["response"]
-                usage = response.get("usage") if isinstance(response, dict) else None
-                if event["error_response"]:
-                    if isinstance(usage, dict) and type(usage.get("total_tokens")) is int and usage["total_tokens"] >= 0:
-                        yield {"event": "api_usage", "usage": usage, "model": event["response_model"]}
-                    continue
-                choices = response.get("choices") if isinstance(response, dict) else None
-                choice = choices[0] if isinstance(choices, list) and choices and isinstance(choices[0], dict) else {}
-                message = choice.get("message")
-                content = message.get("content") if isinstance(message, dict) else None
-                assistant = {"role": "assistant", "content": content if isinstance(content, str) else None,
-                             "model": event["response_model"], "usage": usage}
-                if calls:
-                    assistant["tool_calls"] = calls
-                yield assistant
-            elif kind == "tool_result":
-                yield {"role": "tool", "tool_call_id": event["tool_call_id"], "name": str(event["name"]),
-                       "content": json.dumps(event["result"], ensure_ascii=False)}
-            elif kind == "skill_loaded":
-                yield {"event": "skill_selected", "name": event["name"], "source": "tool"}
+    for event in raw:
+        kind = event["type"]
+        if kind == "llm_request":
+            yield {"event": "request", "messages": event["request"]["messages"],
+                   "tools": event["request"].get("tools", []), "max_tokens": event["max_output_tokens"]}
+        yield {"event": "agent12", "source_event": event}
+        if kind == "llm_request":
+            yield from copy.deepcopy(http_events.get(event["seq"], []))
+        elif kind == "llm_response" and not event["error_response"]:
+            response = event["response"]
+            choices = response.get("choices") if isinstance(response, dict) else None
+            choice = choices[0] if isinstance(choices, list) and choices and isinstance(choices[0], dict) else {}
+            message = choice.get("message")
+            assistant = copy.deepcopy(message) if isinstance(message, dict) else {"role": "assistant", "content": None}
+            assistant.update(model=event["response_model"], usage=response.get("usage"),
+                             finish_reason=choice.get("finish_reason"))
+            yield assistant
+        elif kind == "tool_result":
+            yield {"role": "tool", "tool_call_id": event["provider_tool_call_id"], "name": str(event["name"]),
+                   "content": json.dumps(event["result"], ensure_ascii=False)}
+        elif kind == "skill_loaded":
+            yield {"event": "skill_selected", "name": event["name"], "source": event.get("source", "tool")}
 
 
 def run_agent12(question: Question, settings: Settings, *, search: SearchService, on_event=None) -> RunResult:
@@ -119,8 +94,10 @@ def run_agent12(question: Question, settings: Settings, *, search: SearchService
             max_steps=settings.max_steps, max_tool_calls=settings.max_tool_calls,
             max_tokens=settings.max_total_tokens, max_output_tokens=settings.max_output_tokens,
             max_retries=settings.max_retries, search_method=settings.method, top_k=settings.top_k,
+            timeout=settings.timeout_seconds, repeat_limit=settings.repeat_limit, run_timeout_seconds=settings.run_timeout_seconds,
             context_chars=settings.context_chars, skills_dir=settings.skills_dir, enable_skills=settings.use_skills,
             context_management=settings.manage_context, iterative=settings.iterative, require_evidence=True,
+            auto_select_skills=settings.use_skills,
         )
 
         def notify(event: dict) -> None:
@@ -144,7 +121,7 @@ def run_agent12(question: Question, settings: Settings, *, search: SearchService
                        total_tokens=raw["total_tokens"], stalled_searches=raw["state"]["stalled_searches"],
                        stop_reason=raw["status"])
     trajectory = [
-        {"event": "run_start", "mode": settings.mode, "provider": "http" if client else "demo",
+        {"event": "run_start", "audit_version": 2, "mode": settings.mode, "provider": "http" if client else "demo",
          "injected_provider": False, "engine": "agent12", "model": settings.llm_model,
          "config_id": settings.config_id, "config": settings.model_dump(),
          "model_verified": settings.model_verified, "model_verification_note": settings.model_verification_note},
@@ -152,10 +129,18 @@ def run_agent12(question: Question, settings: Settings, *, search: SearchService
         *_trajectory(raw["trajectory"], client.http_events if client else {}),
         {"event": "run_end", "status": raw["status"], "stop_reason": raw["status"],
          "usage_complete": raw["token_metrics_complete"] and not bool(client and client.provider.uncertain_usage),
-         # Formal export requires the existing model-authored span citation contract.
          "eligible": False, "state": state.model_dump()},
     ]
+    try:
+        resolved = resolve_evidence_ids(raw["supporting_evidence"], trajectory, search.store)
+        grounding_errors = []
+    except ValueError as exc:
+        resolved, grounding_errors = [], [str(exc)]
+    trajectory.insert(-1, {"event": "evidence_resolution", "citations": resolved, "errors": grounding_errors})
+    eligible = bool(client and raw["status"] in {"completed", "unresolved"}
+                    and raw["model_identity_verified"] and trajectory[-1]["usage_complete"] and raw["tool_calls"])
+    trajectory[-1]["eligible"] = eligible
     prediction = Prediction(id=question.id, question=question.question, answer=raw["answer"],
                             trajectory=scrub(trajectory), tool_calls=raw["tool_calls"],
                             total_tokens=raw["total_tokens"])
-    return RunResult(prediction=prediction, state=state, mode=settings.mode)
+    return RunResult(prediction=prediction, state=state, mode=settings.mode, eligible=eligible)
