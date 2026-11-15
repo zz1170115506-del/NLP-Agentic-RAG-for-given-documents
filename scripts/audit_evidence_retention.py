@@ -248,14 +248,22 @@ def audit_record(record, targets):
             unobserved = [v for v in views if v not in verified]
             state_visibility = []
             for item in latest_state:
-                state_visibility.append({**public_span(item), **coverage(item, verified)})
+                content = coverage(item, verified, require_id=False)
+                state_visibility.append({**public_span(item), **coverage(item, verified),
+                                         "content_visibility": content["visibility"],
+                                         "content_visible_chars": content["visible_chars"],
+                                         "content_coverage_fraction": content["coverage_fraction"]})
             for ident, item in observed.items():
+                content = coverage(item, verified, require_id=False)
                 observations[ident]["api_views"].append({"api_sequence": seq,
                     "present_in_latest_state": any(contains(s, item) for s in latest_state),
-                    **coverage(item, verified)})
+                    **coverage(item, verified), "content_visibility": content["visibility"],
+                    "content_visible_chars": content["visible_chars"],
+                    "content_coverage_fraction": content["coverage_fraction"]})
             response = event.get("response") or {}
             usage = response.get("usage") or {}
             counts = Counter(row["visibility"] for row in state_visibility)
+            content_counts = Counter(row["content_visibility"] for row in state_visibility)
             chars = len(json.dumps(messages, ensure_ascii=False, separators=(",", ":")))
             public = {"sequence": seq, "http_status": event.get("http_status"),
                       "request_sha256": digest(request), "response_sha256": digest(response),
@@ -267,6 +275,9 @@ def audit_record(record, targets):
                       "usage_unknown": type(usage.get("total_tokens")) is not int,
                       "state_spans": len(latest_state), "state_full_visible": counts["full"],
                       "state_partial_visible": counts["partial"], "state_absent": counts["absent"],
+                      "state_content_full_visible": content_counts["full"],
+                      "state_content_partial_visible": content_counts["partial"],
+                      "state_content_absent": content_counts["absent"],
                       "unobserved_view_spans": len(unobserved), "tool_pairing_errors": pairing_errors(messages),
                       "visible_spans": [public_span(v) for v in verified],
                       "state_visibility": state_visibility,
@@ -283,12 +294,18 @@ def audit_record(record, targets):
         life = observations[ident]
         history = life["api_views"]
         visible_then_lost = any(v["visibility"] != "absent" for v in history[:-1]) and bool(history) and history[-1]["visibility"] == "absent"
+        content_then_lost = (any(v["content_visibility"] != "absent" for v in history[:-1])
+                             and bool(history) and history[-1]["content_visibility"] == "absent")
         summary = {**public_span(item), "first_tool_sequence": life["first_tool_sequence"],
                    "tool_observation_sequences": life["tool_sequences"],
                    "api_views": history, "ever_visible": any(v["visible_chars"] for v in history),
                    "ever_fully_visible": any(v["visibility"] == "full" for v in history),
                    "lost_by_final_request_after_prior_visibility": visible_then_lost,
-                   "final_request_visibility": history[-1]["visibility"] if history else "no_later_request"}
+                   "final_request_visibility": history[-1]["visibility"] if history else "no_later_request",
+                   "ever_content_visible": any(v["content_visible_chars"] for v in history),
+                   "ever_content_fully_visible": any(v["content_visibility"] == "full" for v in history),
+                   "content_lost_by_final_request_after_prior_visibility": content_then_lost,
+                   "final_request_content_visibility": history[-1]["content_visibility"] if history else "no_later_request"}
         evidence_public.append(summary)
         evidence_private.append({**summary, "text": item["text"]})
     end = trajectory[-1]
@@ -317,9 +334,14 @@ def audit_record(record, targets):
               "observed_span_count": len(evidence_public),
               "never_visible_observed_spans": sum(not e["ever_visible"] for e in evidence_public),
               "visible_then_lost_by_final_request": sum(e["lost_by_final_request_after_prior_visibility"] for e in evidence_public),
+              "never_visible_observed_content_spans": sum(not e["ever_content_visible"] for e in evidence_public),
+              "content_visible_then_lost_by_final_request": sum(e["content_lost_by_final_request_after_prior_visibility"]
+                                                                for e in evidence_public),
               "state_span_request_exposures": sum(a["state_spans"] for a in api_public),
               "fully_visible_state_span_request_exposures": sum(a["state_full_visible"] for a in api_public),
               "partially_visible_state_span_request_exposures": sum(a["state_partial_visible"] for a in api_public),
+              "fully_visible_state_content_request_exposures": sum(a["state_content_full_visible"] for a in api_public),
+              "partially_visible_state_content_request_exposures": sum(a["state_content_partial_visible"] for a in api_public),
               "unobserved_view_spans": sum(a["unobserved_view_spans"] for a in api_public),
               "finalizations": finalizations, "requests": api_public, "evidence_lifetimes": evidence_public,
               "retrospective_targets": target_rows}
@@ -328,6 +350,12 @@ def audit_record(record, targets):
         if evidence_public else None)
     public["full_state_span_request_exposure_fraction"] = (
         public["fully_visible_state_span_request_exposures"] / public["state_span_request_exposures"]
+        if public["state_span_request_exposures"] else None)
+    public["observed_content_spans_ever_visible_fraction"] = (
+        (len(evidence_public) - public["never_visible_observed_content_spans"]) / len(evidence_public)
+        if evidence_public else None)
+    public["full_state_content_request_exposure_fraction"] = (
+        public["fully_visible_state_content_request_exposures"] / public["state_span_request_exposures"]
         if public["state_span_request_exposures"] else None)
     private = {"case_id": record["id"], "question": record["question"], "answer": record["answer"],
                "record_sha256": digest(record), "event_details": private_events,
@@ -386,7 +414,9 @@ def main():
     fields = ["reported_total_tokens", "tool_calls", "api_requests", "exact_repeated_search_queries",
               "observed_span_count", "never_visible_observed_spans", "visible_then_lost_by_final_request",
               "state_span_request_exposures", "fully_visible_state_span_request_exposures",
-              "partially_visible_state_span_request_exposures"]
+              "partially_visible_state_span_request_exposures", "never_visible_observed_content_spans",
+              "content_visible_then_lost_by_final_request", "fully_visible_state_content_request_exposures",
+              "partially_visible_state_content_request_exposures"]
     for first, second in zip(public["baseline"]["cases"], public["candidate"]["cases"], strict=True):
         comparison.append({"case_id": first["case_id"], "baseline_status": first["status"],
                            "candidate_status": second["status"], "baseline_has_answer": first["has_answer"],
@@ -397,6 +427,7 @@ def main():
               "target_plan_sha256": target_sha,
               "caveats": ["Visibility/retention counts do not establish semantic support or answer correctness.",
                           "Evidence IDs are local to each run; compare coordinates rather than IDs across runs.",
+                          "Unprefixed visibility requires the original evidence ID; content_* metrics allow exact text under another observed ID.",
                           "Exact repeated queries count all tool attempts; successful-result repeats are reported separately.",
                           "Exposure fractions have run-dependent denominators; they are not a paired semantic-recall score.",
                           "A missed target is retrieval failure only within the observed run, not proof of corpus absence.",

@@ -1,0 +1,4926 @@
+{
+  "method": "Independent graph components from the last state before each API request; exact observed full-source rows from actual messages; union interval coverage.",
+  "production_context_metadata_read": false,
+  "production_context_selector_called": false,
+  "labels_read": false,
+  "new_api_calls_by_auditor": 0,
+  "records": 9,
+  "actual_api_requests": 41,
+  "component_request_pair_counts": {
+    "fully_visible": 394,
+    "fully_omitted": 52
+  },
+  "multi_member_component_request_pairs": 49,
+  "multi_member_fully_visible": 47,
+  "multi_member_fully_omitted": 2,
+  "all_visible_rows_are_complete_original_observations": true,
+  "all_components_fully_visible_or_fully_omitted": true,
+  "violations": [],
+  "record_details": [
+    {
+      "id": "960",
+      "api_request_count": 5,
+      "requests": [
+        {
+          "api_sequence": 4,
+          "pre_request_state_evidence_count": 0,
+          "distinct_actual_source_ids": 0,
+          "source_identity_violations": 0,
+          "components": []
+        },
+        {
+          "api_sequence": 11,
+          "pre_request_state_evidence_count": 10,
+          "distinct_actual_source_ids": 10,
+          "source_identity_violations": 0,
+          "components": [
+            {
+              "doc_id": "95823",
+              "offset": 3000,
+              "end": 3900,
+              "member_ids": [
+                "E1"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "83917",
+              "offset": 3000,
+              "end": 3900,
+              "member_ids": [
+                "E2"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "54527",
+              "offset": 42750,
+              "end": 43650,
+              "member_ids": [
+                "E3"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "44775",
+              "offset": 14250,
+              "end": 15150,
+              "member_ids": [
+                "E4"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "41503",
+              "offset": 56250,
+              "end": 57150,
+              "member_ids": [
+                "E5"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "72186",
+              "offset": 0,
+              "end": 900,
+              "member_ids": [
+                "E6"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "76946",
+              "offset": 0,
+              "end": 900,
+              "member_ids": [
+                "E7"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "29264",
+              "offset": 4500,
+              "end": 5400,
+              "member_ids": [
+                "E8"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "51",
+              "offset": 0,
+              "end": 900,
+              "member_ids": [
+                "E9"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "64768",
+              "offset": 33750,
+              "end": 34650,
+              "member_ids": [
+                "E10"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            }
+          ]
+        },
+        {
+          "api_sequence": 18,
+          "pre_request_state_evidence_count": 19,
+          "distinct_actual_source_ids": 18,
+          "source_identity_violations": 0,
+          "components": [
+            {
+              "doc_id": "95823",
+              "offset": 3000,
+              "end": 3900,
+              "member_ids": [
+                "E1"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "83917",
+              "offset": 3000,
+              "end": 3900,
+              "member_ids": [
+                "E2"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "54527",
+              "offset": 42750,
+              "end": 43650,
+              "member_ids": [
+                "E3"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "44775",
+              "offset": 14250,
+              "end": 15150,
+              "member_ids": [
+                "E4"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "41503",
+              "offset": 56250,
+              "end": 57150,
+              "member_ids": [
+                "E5"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "72186",
+              "offset": 0,
+              "end": 900,
+              "member_ids": [
+                "E6"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "76946",
+              "offset": 0,
+              "end": 900,
+              "member_ids": [
+                "E7"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "29264",
+              "offset": 4500,
+              "end": 5400,
+              "member_ids": [
+                "E8"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "51",
+              "offset": 0,
+              "end": 900,
+              "member_ids": [
+                "E9"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "64768",
+              "offset": 33750,
+              "end": 34650,
+              "member_ids": [
+                "E10"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "52512",
+              "offset": 8250,
+              "end": 9150,
+              "member_ids": [
+                "E11"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "37585",
+              "offset": 19500,
+              "end": 20400,
+              "member_ids": [
+                "E12"
+              ],
+              "member_count": 1,
+              "coverage": "fully_omitted"
+            },
+            {
+              "doc_id": "85984",
+              "offset": 39000,
+              "end": 39900,
+              "member_ids": [
+                "E13"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "30073",
+              "offset": 0,
+              "end": 900,
+              "member_ids": [
+                "E14"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "85984",
+              "offset": 27750,
+              "end": 28650,
+              "member_ids": [
+                "E15"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "94993",
+              "offset": 21000,
+              "end": 21900,
+              "member_ids": [
+                "E16"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "73444",
+              "offset": 15000,
+              "end": 16650,
+              "member_ids": [
+                "E17",
+                "E19"
+              ],
+              "member_count": 2,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "65675",
+              "offset": 13500,
+              "end": 14400,
+              "member_ids": [
+                "E18"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            }
+          ]
+        },
+        {
+          "api_sequence": 25,
+          "pre_request_state_evidence_count": 23,
+          "distinct_actual_source_ids": 18,
+          "source_identity_violations": 0,
+          "components": [
+            {
+              "doc_id": "95823",
+              "offset": 3000,
+              "end": 3900,
+              "member_ids": [
+                "E1"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "83917",
+              "offset": 3000,
+              "end": 3900,
+              "member_ids": [
+                "E2"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "54527",
+              "offset": 42750,
+              "end": 43650,
+              "member_ids": [
+                "E3"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "44775",
+              "offset": 14250,
+              "end": 15150,
+              "member_ids": [
+                "E4"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "41503",
+              "offset": 56250,
+              "end": 57150,
+              "member_ids": [
+                "E5"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "72186",
+              "offset": 0,
+              "end": 900,
+              "member_ids": [
+                "E6"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "76946",
+              "offset": 0,
+              "end": 900,
+              "member_ids": [
+                "E7"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "29264",
+              "offset": 4500,
+              "end": 5400,
+              "member_ids": [
+                "E8"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "51",
+              "offset": 0,
+              "end": 900,
+              "member_ids": [
+                "E9"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "64768",
+              "offset": 33750,
+              "end": 34650,
+              "member_ids": [
+                "E10"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "52512",
+              "offset": 8250,
+              "end": 9150,
+              "member_ids": [
+                "E11"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "37585",
+              "offset": 19500,
+              "end": 20400,
+              "member_ids": [
+                "E12"
+              ],
+              "member_count": 1,
+              "coverage": "fully_omitted"
+            },
+            {
+              "doc_id": "85984",
+              "offset": 39000,
+              "end": 39900,
+              "member_ids": [
+                "E13"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "30073",
+              "offset": 0,
+              "end": 900,
+              "member_ids": [
+                "E14"
+              ],
+              "member_count": 1,
+              "coverage": "fully_omitted"
+            },
+            {
+              "doc_id": "85984",
+              "offset": 27750,
+              "end": 28650,
+              "member_ids": [
+                "E15"
+              ],
+              "member_count": 1,
+              "coverage": "fully_omitted"
+            },
+            {
+              "doc_id": "94993",
+              "offset": 21000,
+              "end": 21900,
+              "member_ids": [
+                "E16"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "73444",
+              "offset": 15000,
+              "end": 16650,
+              "member_ids": [
+                "E17",
+                "E19"
+              ],
+              "member_count": 2,
+              "coverage": "fully_omitted"
+            },
+            {
+              "doc_id": "65675",
+              "offset": 13500,
+              "end": 14400,
+              "member_ids": [
+                "E18"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "38691",
+              "offset": 55500,
+              "end": 56400,
+              "member_ids": [
+                "E20"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "8205",
+              "offset": 84750,
+              "end": 85650,
+              "member_ids": [
+                "E21"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "2400",
+              "offset": 17250,
+              "end": 18150,
+              "member_ids": [
+                "E22"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "41684",
+              "offset": 54000,
+              "end": 54900,
+              "member_ids": [
+                "E23"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            }
+          ]
+        },
+        {
+          "api_sequence": 35,
+          "pre_request_state_evidence_count": 23,
+          "distinct_actual_source_ids": 17,
+          "source_identity_violations": 0,
+          "components": [
+            {
+              "doc_id": "95823",
+              "offset": 3000,
+              "end": 3900,
+              "member_ids": [
+                "E1"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "83917",
+              "offset": 3000,
+              "end": 3900,
+              "member_ids": [
+                "E2"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "54527",
+              "offset": 42750,
+              "end": 43650,
+              "member_ids": [
+                "E3"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "44775",
+              "offset": 14250,
+              "end": 15150,
+              "member_ids": [
+                "E4"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "41503",
+              "offset": 56250,
+              "end": 57150,
+              "member_ids": [
+                "E5"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "72186",
+              "offset": 0,
+              "end": 900,
+              "member_ids": [
+                "E6"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "76946",
+              "offset": 0,
+              "end": 900,
+              "member_ids": [
+                "E7"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "29264",
+              "offset": 4500,
+              "end": 5400,
+              "member_ids": [
+                "E8"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "51",
+              "offset": 0,
+              "end": 900,
+              "member_ids": [
+                "E9"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "64768",
+              "offset": 33750,
+              "end": 34650,
+              "member_ids": [
+                "E10"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "52512",
+              "offset": 8250,
+              "end": 9150,
+              "member_ids": [
+                "E11"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "37585",
+              "offset": 19500,
+              "end": 20400,
+              "member_ids": [
+                "E12"
+              ],
+              "member_count": 1,
+              "coverage": "fully_omitted"
+            },
+            {
+              "doc_id": "85984",
+              "offset": 39000,
+              "end": 39900,
+              "member_ids": [
+                "E13"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "30073",
+              "offset": 0,
+              "end": 900,
+              "member_ids": [
+                "E14"
+              ],
+              "member_count": 1,
+              "coverage": "fully_omitted"
+            },
+            {
+              "doc_id": "85984",
+              "offset": 27750,
+              "end": 28650,
+              "member_ids": [
+                "E15"
+              ],
+              "member_count": 1,
+              "coverage": "fully_omitted"
+            },
+            {
+              "doc_id": "94993",
+              "offset": 21000,
+              "end": 21900,
+              "member_ids": [
+                "E16"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "73444",
+              "offset": 15000,
+              "end": 16650,
+              "member_ids": [
+                "E17",
+                "E19"
+              ],
+              "member_count": 2,
+              "coverage": "fully_omitted"
+            },
+            {
+              "doc_id": "65675",
+              "offset": 13500,
+              "end": 14400,
+              "member_ids": [
+                "E18"
+              ],
+              "member_count": 1,
+              "coverage": "fully_omitted"
+            },
+            {
+              "doc_id": "38691",
+              "offset": 55500,
+              "end": 56400,
+              "member_ids": [
+                "E20"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "8205",
+              "offset": 84750,
+              "end": 85650,
+              "member_ids": [
+                "E21"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "2400",
+              "offset": 17250,
+              "end": 18150,
+              "member_ids": [
+                "E22"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "41684",
+              "offset": 54000,
+              "end": 54900,
+              "member_ids": [
+                "E23"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1035",
+      "api_request_count": 4,
+      "requests": [
+        {
+          "api_sequence": 6,
+          "pre_request_state_evidence_count": 0,
+          "distinct_actual_source_ids": 0,
+          "source_identity_violations": 0,
+          "components": []
+        },
+        {
+          "api_sequence": 13,
+          "pre_request_state_evidence_count": 10,
+          "distinct_actual_source_ids": 10,
+          "source_identity_violations": 0,
+          "components": [
+            {
+              "doc_id": "49234",
+              "offset": 31500,
+              "end": 32400,
+              "member_ids": [
+                "E1"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "14187",
+              "offset": 172500,
+              "end": 173400,
+              "member_ids": [
+                "E2"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "3034",
+              "offset": 4500,
+              "end": 5400,
+              "member_ids": [
+                "E3"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "457",
+              "offset": 3000,
+              "end": 3900,
+              "member_ids": [
+                "E4"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "65142",
+              "offset": 45750,
+              "end": 46650,
+              "member_ids": [
+                "E5"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "39916",
+              "offset": 0,
+              "end": 900,
+              "member_ids": [
+                "E6"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "36395",
+              "offset": 9000,
+              "end": 9900,
+              "member_ids": [
+                "E7"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "72939",
+              "offset": 2250,
+              "end": 3150,
+              "member_ids": [
+                "E8"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "9989",
+              "offset": 3750,
+              "end": 4650,
+              "member_ids": [
+                "E9"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "50958",
+              "offset": 4500,
+              "end": 5400,
+              "member_ids": [
+                "E10"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            }
+          ]
+        },
+        {
+          "api_sequence": 20,
+          "pre_request_state_evidence_count": 15,
+          "distinct_actual_source_ids": 15,
+          "source_identity_violations": 0,
+          "components": [
+            {
+              "doc_id": "49234",
+              "offset": 31500,
+              "end": 32400,
+              "member_ids": [
+                "E1"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "14187",
+              "offset": 172500,
+              "end": 173400,
+              "member_ids": [
+                "E2"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "3034",
+              "offset": 4500,
+              "end": 5400,
+              "member_ids": [
+                "E3"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "457",
+              "offset": 3000,
+              "end": 3900,
+              "member_ids": [
+                "E4"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "65142",
+              "offset": 45750,
+              "end": 46650,
+              "member_ids": [
+                "E5"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "39916",
+              "offset": 0,
+              "end": 900,
+              "member_ids": [
+                "E6"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "36395",
+              "offset": 9000,
+              "end": 9900,
+              "member_ids": [
+                "E7"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "72939",
+              "offset": 2250,
+              "end": 3150,
+              "member_ids": [
+                "E8"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "9989",
+              "offset": 3750,
+              "end": 4650,
+              "member_ids": [
+                "E9"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "50958",
+              "offset": 4500,
+              "end": 5400,
+              "member_ids": [
+                "E10"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "22277",
+              "offset": 35250,
+              "end": 36150,
+              "member_ids": [
+                "E11"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "5006",
+              "offset": 74250,
+              "end": 75150,
+              "member_ids": [
+                "E12"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "58115",
+              "offset": 37500,
+              "end": 38400,
+              "member_ids": [
+                "E13"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "87754",
+              "offset": 51000,
+              "end": 51900,
+              "member_ids": [
+                "E14"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "11881",
+              "offset": 0,
+              "end": 900,
+              "member_ids": [
+                "E15"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            }
+          ]
+        },
+        {
+          "api_sequence": 30,
+          "pre_request_state_evidence_count": 15,
+          "distinct_actual_source_ids": 15,
+          "source_identity_violations": 0,
+          "components": [
+            {
+              "doc_id": "49234",
+              "offset": 31500,
+              "end": 32400,
+              "member_ids": [
+                "E1"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "14187",
+              "offset": 172500,
+              "end": 173400,
+              "member_ids": [
+                "E2"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "3034",
+              "offset": 4500,
+              "end": 5400,
+              "member_ids": [
+                "E3"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "457",
+              "offset": 3000,
+              "end": 3900,
+              "member_ids": [
+                "E4"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "65142",
+              "offset": 45750,
+              "end": 46650,
+              "member_ids": [
+                "E5"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "39916",
+              "offset": 0,
+              "end": 900,
+              "member_ids": [
+                "E6"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "36395",
+              "offset": 9000,
+              "end": 9900,
+              "member_ids": [
+                "E7"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "72939",
+              "offset": 2250,
+              "end": 3150,
+              "member_ids": [
+                "E8"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "9989",
+              "offset": 3750,
+              "end": 4650,
+              "member_ids": [
+                "E9"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "50958",
+              "offset": 4500,
+              "end": 5400,
+              "member_ids": [
+                "E10"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "22277",
+              "offset": 35250,
+              "end": 36150,
+              "member_ids": [
+                "E11"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "5006",
+              "offset": 74250,
+              "end": 75150,
+              "member_ids": [
+                "E12"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "58115",
+              "offset": 37500,
+              "end": 38400,
+              "member_ids": [
+                "E13"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "87754",
+              "offset": 51000,
+              "end": 51900,
+              "member_ids": [
+                "E14"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "11881",
+              "offset": 0,
+              "end": 900,
+              "member_ids": [
+                "E15"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "64",
+      "api_request_count": 5,
+      "requests": [
+        {
+          "api_sequence": 6,
+          "pre_request_state_evidence_count": 0,
+          "distinct_actual_source_ids": 0,
+          "source_identity_violations": 0,
+          "components": []
+        },
+        {
+          "api_sequence": 13,
+          "pre_request_state_evidence_count": 10,
+          "distinct_actual_source_ids": 10,
+          "source_identity_violations": 0,
+          "components": [
+            {
+              "doc_id": "31726",
+              "offset": 750,
+              "end": 1650,
+              "member_ids": [
+                "E1"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "66829",
+              "offset": 12000,
+              "end": 13650,
+              "member_ids": [
+                "E2",
+                "E5"
+              ],
+              "member_count": 2,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "10744",
+              "offset": 30000,
+              "end": 30900,
+              "member_ids": [
+                "E3"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "10744",
+              "offset": 0,
+              "end": 900,
+              "member_ids": [
+                "E4"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "72383",
+              "offset": 27000,
+              "end": 27900,
+              "member_ids": [
+                "E6"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "51931",
+              "offset": 750,
+              "end": 1650,
+              "member_ids": [
+                "E7"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "72363",
+              "offset": 0,
+              "end": 900,
+              "member_ids": [
+                "E8"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "51931",
+              "offset": 3000,
+              "end": 3900,
+              "member_ids": [
+                "E9"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "55029",
+              "offset": 9000,
+              "end": 9900,
+              "member_ids": [
+                "E10"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            }
+          ]
+        },
+        {
+          "api_sequence": 20,
+          "pre_request_state_evidence_count": 19,
+          "distinct_actual_source_ids": 18,
+          "source_identity_violations": 0,
+          "components": [
+            {
+              "doc_id": "31726",
+              "offset": 750,
+              "end": 1650,
+              "member_ids": [
+                "E1"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "66829",
+              "offset": 12000,
+              "end": 13650,
+              "member_ids": [
+                "E2",
+                "E5"
+              ],
+              "member_count": 2,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "10744",
+              "offset": 30000,
+              "end": 30900,
+              "member_ids": [
+                "E3"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "10744",
+              "offset": 0,
+              "end": 900,
+              "member_ids": [
+                "E4"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "72383",
+              "offset": 27000,
+              "end": 27900,
+              "member_ids": [
+                "E6"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "51931",
+              "offset": 750,
+              "end": 1650,
+              "member_ids": [
+                "E7"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "72363",
+              "offset": 0,
+              "end": 900,
+              "member_ids": [
+                "E8"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "51931",
+              "offset": 3000,
+              "end": 3900,
+              "member_ids": [
+                "E9"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "55029",
+              "offset": 9000,
+              "end": 9900,
+              "member_ids": [
+                "E10"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "50486",
+              "offset": 0,
+              "end": 127,
+              "member_ids": [
+                "E11"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "10744",
+              "offset": 11250,
+              "end": 12150,
+              "member_ids": [
+                "E12"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "10744",
+              "offset": 5250,
+              "end": 6150,
+              "member_ids": [
+                "E13"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "64050",
+              "offset": 9000,
+              "end": 9900,
+              "member_ids": [
+                "E14"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "64232",
+              "offset": 750,
+              "end": 2400,
+              "member_ids": [
+                "E15",
+                "E16"
+              ],
+              "member_count": 2,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "64240",
+              "offset": 20250,
+              "end": 21150,
+              "member_ids": [
+                "E17"
+              ],
+              "member_count": 1,
+              "coverage": "fully_omitted"
+            },
+            {
+              "doc_id": "75973",
+              "offset": 45750,
+              "end": 46650,
+              "member_ids": [
+                "E18"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "75973",
+              "offset": 42750,
+              "end": 43650,
+              "member_ids": [
+                "E19"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            }
+          ]
+        },
+        {
+          "api_sequence": 27,
+          "pre_request_state_evidence_count": 23,
+          "distinct_actual_source_ids": 20,
+          "source_identity_violations": 0,
+          "components": [
+            {
+              "doc_id": "31726",
+              "offset": 750,
+              "end": 1650,
+              "member_ids": [
+                "E1"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "66829",
+              "offset": 12000,
+              "end": 13650,
+              "member_ids": [
+                "E2",
+                "E5"
+              ],
+              "member_count": 2,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "10744",
+              "offset": 30000,
+              "end": 30900,
+              "member_ids": [
+                "E3"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "10744",
+              "offset": 0,
+              "end": 1127,
+              "member_ids": [
+                "E4",
+                "E20",
+                "E21"
+              ],
+              "member_count": 3,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "72383",
+              "offset": 27000,
+              "end": 27900,
+              "member_ids": [
+                "E6"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "51931",
+              "offset": 750,
+              "end": 1650,
+              "member_ids": [
+                "E7"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "72363",
+              "offset": 0,
+              "end": 900,
+              "member_ids": [
+                "E8"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "51931",
+              "offset": 3000,
+              "end": 3900,
+              "member_ids": [
+                "E9"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "55029",
+              "offset": 9000,
+              "end": 9900,
+              "member_ids": [
+                "E10"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "50486",
+              "offset": 0,
+              "end": 127,
+              "member_ids": [
+                "E11"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "10744",
+              "offset": 11250,
+              "end": 12150,
+              "member_ids": [
+                "E12"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "10744",
+              "offset": 5250,
+              "end": 6150,
+              "member_ids": [
+                "E13"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "64050",
+              "offset": 9000,
+              "end": 9900,
+              "member_ids": [
+                "E14"
+              ],
+              "member_count": 1,
+              "coverage": "fully_omitted"
+            },
+            {
+              "doc_id": "64232",
+              "offset": 750,
+              "end": 2400,
+              "member_ids": [
+                "E15",
+                "E16"
+              ],
+              "member_count": 2,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "64240",
+              "offset": 20250,
+              "end": 21150,
+              "member_ids": [
+                "E17"
+              ],
+              "member_count": 1,
+              "coverage": "fully_omitted"
+            },
+            {
+              "doc_id": "75973",
+              "offset": 45750,
+              "end": 46650,
+              "member_ids": [
+                "E18"
+              ],
+              "member_count": 1,
+              "coverage": "fully_omitted"
+            },
+            {
+              "doc_id": "75973",
+              "offset": 42750,
+              "end": 43650,
+              "member_ids": [
+                "E19"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "10744",
+              "offset": 26339,
+              "end": 26747,
+              "member_ids": [
+                "E22"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "10744",
+              "offset": 27309,
+              "end": 27717,
+              "member_ids": [
+                "E23"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            }
+          ]
+        },
+        {
+          "api_sequence": 34,
+          "pre_request_state_evidence_count": 23,
+          "distinct_actual_source_ids": 20,
+          "source_identity_violations": 0,
+          "components": [
+            {
+              "doc_id": "31726",
+              "offset": 750,
+              "end": 1650,
+              "member_ids": [
+                "E1"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "66829",
+              "offset": 12000,
+              "end": 13650,
+              "member_ids": [
+                "E2",
+                "E5"
+              ],
+              "member_count": 2,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "10744",
+              "offset": 30000,
+              "end": 30900,
+              "member_ids": [
+                "E3"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "10744",
+              "offset": 0,
+              "end": 1127,
+              "member_ids": [
+                "E4",
+                "E20",
+                "E21"
+              ],
+              "member_count": 3,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "72383",
+              "offset": 27000,
+              "end": 27900,
+              "member_ids": [
+                "E6"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "51931",
+              "offset": 750,
+              "end": 1650,
+              "member_ids": [
+                "E7"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "72363",
+              "offset": 0,
+              "end": 900,
+              "member_ids": [
+                "E8"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "51931",
+              "offset": 3000,
+              "end": 3900,
+              "member_ids": [
+                "E9"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "55029",
+              "offset": 9000,
+              "end": 9900,
+              "member_ids": [
+                "E10"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "50486",
+              "offset": 0,
+              "end": 127,
+              "member_ids": [
+                "E11"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "10744",
+              "offset": 11250,
+              "end": 12150,
+              "member_ids": [
+                "E12"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "10744",
+              "offset": 5250,
+              "end": 6150,
+              "member_ids": [
+                "E13"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "64050",
+              "offset": 9000,
+              "end": 9900,
+              "member_ids": [
+                "E14"
+              ],
+              "member_count": 1,
+              "coverage": "fully_omitted"
+            },
+            {
+              "doc_id": "64232",
+              "offset": 750,
+              "end": 2400,
+              "member_ids": [
+                "E15",
+                "E16"
+              ],
+              "member_count": 2,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "64240",
+              "offset": 20250,
+              "end": 21150,
+              "member_ids": [
+                "E17"
+              ],
+              "member_count": 1,
+              "coverage": "fully_omitted"
+            },
+            {
+              "doc_id": "75973",
+              "offset": 45750,
+              "end": 46650,
+              "member_ids": [
+                "E18"
+              ],
+              "member_count": 1,
+              "coverage": "fully_omitted"
+            },
+            {
+              "doc_id": "75973",
+              "offset": 42750,
+              "end": 43650,
+              "member_ids": [
+                "E19"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "10744",
+              "offset": 26339,
+              "end": 26747,
+              "member_ids": [
+                "E22"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "10744",
+              "offset": 27309,
+              "end": 27717,
+              "member_ids": [
+                "E23"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "231",
+      "api_request_count": 5,
+      "requests": [
+        {
+          "api_sequence": 6,
+          "pre_request_state_evidence_count": 0,
+          "distinct_actual_source_ids": 0,
+          "source_identity_violations": 0,
+          "components": []
+        },
+        {
+          "api_sequence": 13,
+          "pre_request_state_evidence_count": 10,
+          "distinct_actual_source_ids": 10,
+          "source_identity_violations": 0,
+          "components": [
+            {
+              "doc_id": "6261",
+              "offset": 2250,
+              "end": 3150,
+              "member_ids": [
+                "E1"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "53505",
+              "offset": 6000,
+              "end": 7650,
+              "member_ids": [
+                "E2",
+                "E5"
+              ],
+              "member_count": 2,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "6261",
+              "offset": 3750,
+              "end": 4603,
+              "member_ids": [
+                "E3"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "95417",
+              "offset": 0,
+              "end": 900,
+              "member_ids": [
+                "E4"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "60315",
+              "offset": 60000,
+              "end": 60900,
+              "member_ids": [
+                "E6"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "90121",
+              "offset": 63750,
+              "end": 64650,
+              "member_ids": [
+                "E7"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "83365",
+              "offset": 48750,
+              "end": 49650,
+              "member_ids": [
+                "E8"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "100090",
+              "offset": 9750,
+              "end": 10650,
+              "member_ids": [
+                "E9"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "69649",
+              "offset": 91500,
+              "end": 92400,
+              "member_ids": [
+                "E10"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            }
+          ]
+        },
+        {
+          "api_sequence": 20,
+          "pre_request_state_evidence_count": 20,
+          "distinct_actual_source_ids": 17,
+          "source_identity_violations": 0,
+          "components": [
+            {
+              "doc_id": "6261",
+              "offset": 2250,
+              "end": 3150,
+              "member_ids": [
+                "E1"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "53505",
+              "offset": 6000,
+              "end": 7650,
+              "member_ids": [
+                "E2",
+                "E5"
+              ],
+              "member_count": 2,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "6261",
+              "offset": 3750,
+              "end": 4603,
+              "member_ids": [
+                "E3"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "95417",
+              "offset": 0,
+              "end": 900,
+              "member_ids": [
+                "E4"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "60315",
+              "offset": 60000,
+              "end": 60900,
+              "member_ids": [
+                "E6"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "90121",
+              "offset": 63750,
+              "end": 64650,
+              "member_ids": [
+                "E7"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "83365",
+              "offset": 48750,
+              "end": 49650,
+              "member_ids": [
+                "E8"
+              ],
+              "member_count": 1,
+              "coverage": "fully_omitted"
+            },
+            {
+              "doc_id": "100090",
+              "offset": 9750,
+              "end": 10650,
+              "member_ids": [
+                "E9"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "69649",
+              "offset": 91500,
+              "end": 92400,
+              "member_ids": [
+                "E10"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "73330",
+              "offset": 15000,
+              "end": 15900,
+              "member_ids": [
+                "E11"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "81918",
+              "offset": 1500,
+              "end": 2400,
+              "member_ids": [
+                "E12"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "5965",
+              "offset": 156750,
+              "end": 157650,
+              "member_ids": [
+                "E13"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "88132",
+              "offset": 3000,
+              "end": 3900,
+              "member_ids": [
+                "E14"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "81918",
+              "offset": 11250,
+              "end": 12150,
+              "member_ids": [
+                "E15"
+              ],
+              "member_count": 1,
+              "coverage": "fully_omitted"
+            },
+            {
+              "doc_id": "18066",
+              "offset": 80250,
+              "end": 81150,
+              "member_ids": [
+                "E16"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "4545",
+              "offset": 63750,
+              "end": 64650,
+              "member_ids": [
+                "E17"
+              ],
+              "member_count": 1,
+              "coverage": "fully_omitted"
+            },
+            {
+              "doc_id": "48115",
+              "offset": 0,
+              "end": 900,
+              "member_ids": [
+                "E18"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "88797",
+              "offset": 56250,
+              "end": 57150,
+              "member_ids": [
+                "E19"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "69649",
+              "offset": 89250,
+              "end": 90150,
+              "member_ids": [
+                "E20"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            }
+          ]
+        },
+        {
+          "api_sequence": 27,
+          "pre_request_state_evidence_count": 24,
+          "distinct_actual_source_ids": 17,
+          "source_identity_violations": 0,
+          "components": [
+            {
+              "doc_id": "6261",
+              "offset": 2250,
+              "end": 3150,
+              "member_ids": [
+                "E1"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "53505",
+              "offset": 6000,
+              "end": 7650,
+              "member_ids": [
+                "E2",
+                "E5"
+              ],
+              "member_count": 2,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "6261",
+              "offset": 3750,
+              "end": 4603,
+              "member_ids": [
+                "E3"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "95417",
+              "offset": 0,
+              "end": 900,
+              "member_ids": [
+                "E4"
+              ],
+              "member_count": 1,
+              "coverage": "fully_omitted"
+            },
+            {
+              "doc_id": "60315",
+              "offset": 60000,
+              "end": 60900,
+              "member_ids": [
+                "E6"
+              ],
+              "member_count": 1,
+              "coverage": "fully_omitted"
+            },
+            {
+              "doc_id": "90121",
+              "offset": 63750,
+              "end": 64650,
+              "member_ids": [
+                "E7"
+              ],
+              "member_count": 1,
+              "coverage": "fully_omitted"
+            },
+            {
+              "doc_id": "83365",
+              "offset": 48750,
+              "end": 49650,
+              "member_ids": [
+                "E8"
+              ],
+              "member_count": 1,
+              "coverage": "fully_omitted"
+            },
+            {
+              "doc_id": "100090",
+              "offset": 9750,
+              "end": 10650,
+              "member_ids": [
+                "E9"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "69649",
+              "offset": 91500,
+              "end": 92400,
+              "member_ids": [
+                "E10"
+              ],
+              "member_count": 1,
+              "coverage": "fully_omitted"
+            },
+            {
+              "doc_id": "73330",
+              "offset": 15000,
+              "end": 15900,
+              "member_ids": [
+                "E11"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "81918",
+              "offset": 1500,
+              "end": 2400,
+              "member_ids": [
+                "E12"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "5965",
+              "offset": 156750,
+              "end": 157650,
+              "member_ids": [
+                "E13"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "88132",
+              "offset": 3000,
+              "end": 3900,
+              "member_ids": [
+                "E14"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "81918",
+              "offset": 11250,
+              "end": 12150,
+              "member_ids": [
+                "E15"
+              ],
+              "member_count": 1,
+              "coverage": "fully_omitted"
+            },
+            {
+              "doc_id": "18066",
+              "offset": 80250,
+              "end": 81150,
+              "member_ids": [
+                "E16"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "4545",
+              "offset": 63750,
+              "end": 64650,
+              "member_ids": [
+                "E17"
+              ],
+              "member_count": 1,
+              "coverage": "fully_omitted"
+            },
+            {
+              "doc_id": "48115",
+              "offset": 0,
+              "end": 900,
+              "member_ids": [
+                "E18"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "88797",
+              "offset": 56250,
+              "end": 57150,
+              "member_ids": [
+                "E19"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "69649",
+              "offset": 89250,
+              "end": 90150,
+              "member_ids": [
+                "E20"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "95986",
+              "offset": 32250,
+              "end": 33150,
+              "member_ids": [
+                "E21"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "92911",
+              "offset": 61500,
+              "end": 62400,
+              "member_ids": [
+                "E22"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "9443",
+              "offset": 3000,
+              "end": 3900,
+              "member_ids": [
+                "E23"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "100095",
+              "offset": 68250,
+              "end": 69150,
+              "member_ids": [
+                "E24"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            }
+          ]
+        },
+        {
+          "api_sequence": 35,
+          "pre_request_state_evidence_count": 28,
+          "distinct_actual_source_ids": 16,
+          "source_identity_violations": 0,
+          "components": [
+            {
+              "doc_id": "6261",
+              "offset": 2250,
+              "end": 3150,
+              "member_ids": [
+                "E1"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "53505",
+              "offset": 6000,
+              "end": 7650,
+              "member_ids": [
+                "E2",
+                "E5"
+              ],
+              "member_count": 2,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "6261",
+              "offset": 3750,
+              "end": 4603,
+              "member_ids": [
+                "E3"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "95417",
+              "offset": 0,
+              "end": 900,
+              "member_ids": [
+                "E4"
+              ],
+              "member_count": 1,
+              "coverage": "fully_omitted"
+            },
+            {
+              "doc_id": "60315",
+              "offset": 60000,
+              "end": 60900,
+              "member_ids": [
+                "E6"
+              ],
+              "member_count": 1,
+              "coverage": "fully_omitted"
+            },
+            {
+              "doc_id": "90121",
+              "offset": 63750,
+              "end": 64650,
+              "member_ids": [
+                "E7"
+              ],
+              "member_count": 1,
+              "coverage": "fully_omitted"
+            },
+            {
+              "doc_id": "83365",
+              "offset": 48750,
+              "end": 49650,
+              "member_ids": [
+                "E8"
+              ],
+              "member_count": 1,
+              "coverage": "fully_omitted"
+            },
+            {
+              "doc_id": "100090",
+              "offset": 9750,
+              "end": 10650,
+              "member_ids": [
+                "E9"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "69649",
+              "offset": 91500,
+              "end": 92400,
+              "member_ids": [
+                "E10"
+              ],
+              "member_count": 1,
+              "coverage": "fully_omitted"
+            },
+            {
+              "doc_id": "73330",
+              "offset": 15000,
+              "end": 15900,
+              "member_ids": [
+                "E11"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "81918",
+              "offset": 1500,
+              "end": 2400,
+              "member_ids": [
+                "E12"
+              ],
+              "member_count": 1,
+              "coverage": "fully_omitted"
+            },
+            {
+              "doc_id": "5965",
+              "offset": 156750,
+              "end": 157650,
+              "member_ids": [
+                "E13"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "88132",
+              "offset": 3000,
+              "end": 3900,
+              "member_ids": [
+                "E14"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "81918",
+              "offset": 11250,
+              "end": 12150,
+              "member_ids": [
+                "E15"
+              ],
+              "member_count": 1,
+              "coverage": "fully_omitted"
+            },
+            {
+              "doc_id": "18066",
+              "offset": 80250,
+              "end": 81150,
+              "member_ids": [
+                "E16"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "4545",
+              "offset": 63750,
+              "end": 64650,
+              "member_ids": [
+                "E17"
+              ],
+              "member_count": 1,
+              "coverage": "fully_omitted"
+            },
+            {
+              "doc_id": "48115",
+              "offset": 0,
+              "end": 900,
+              "member_ids": [
+                "E18"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "88797",
+              "offset": 56250,
+              "end": 57150,
+              "member_ids": [
+                "E19"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "69649",
+              "offset": 89250,
+              "end": 90150,
+              "member_ids": [
+                "E20"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "95986",
+              "offset": 32250,
+              "end": 33150,
+              "member_ids": [
+                "E21"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "92911",
+              "offset": 61500,
+              "end": 62400,
+              "member_ids": [
+                "E22"
+              ],
+              "member_count": 1,
+              "coverage": "fully_omitted"
+            },
+            {
+              "doc_id": "9443",
+              "offset": 3000,
+              "end": 3900,
+              "member_ids": [
+                "E23"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "100095",
+              "offset": 68250,
+              "end": 69150,
+              "member_ids": [
+                "E24"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "62604",
+              "offset": 3000,
+              "end": 3900,
+              "member_ids": [
+                "E25"
+              ],
+              "member_count": 1,
+              "coverage": "fully_omitted"
+            },
+            {
+              "doc_id": "65432",
+              "offset": 50250,
+              "end": 51150,
+              "member_ids": [
+                "E26"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "69649",
+              "offset": 93750,
+              "end": 94650,
+              "member_ids": [
+                "E27"
+              ],
+              "member_count": 1,
+              "coverage": "fully_omitted"
+            },
+            {
+              "doc_id": "16086",
+              "offset": 67500,
+              "end": 68400,
+              "member_ids": [
+                "E28"
+              ],
+              "member_count": 1,
+              "coverage": "fully_omitted"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "390",
+      "api_request_count": 5,
+      "requests": [
+        {
+          "api_sequence": 6,
+          "pre_request_state_evidence_count": 0,
+          "distinct_actual_source_ids": 0,
+          "source_identity_violations": 0,
+          "components": []
+        },
+        {
+          "api_sequence": 13,
+          "pre_request_state_evidence_count": 9,
+          "distinct_actual_source_ids": 9,
+          "source_identity_violations": 0,
+          "components": [
+            {
+              "doc_id": "45387",
+              "offset": 3000,
+              "end": 3900,
+              "member_ids": [
+                "E1"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "85888",
+              "offset": 6750,
+              "end": 8400,
+              "member_ids": [
+                "E2",
+                "E9"
+              ],
+              "member_count": 2,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "37417",
+              "offset": 750,
+              "end": 1650,
+              "member_ids": [
+                "E3"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "71899",
+              "offset": 33000,
+              "end": 33900,
+              "member_ids": [
+                "E4"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "85888",
+              "offset": 750,
+              "end": 2400,
+              "member_ids": [
+                "E5",
+                "E6"
+              ],
+              "member_count": 2,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "37120",
+              "offset": 3750,
+              "end": 4650,
+              "member_ids": [
+                "E7"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "67511",
+              "offset": 37500,
+              "end": 38400,
+              "member_ids": [
+                "E8"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            }
+          ]
+        },
+        {
+          "api_sequence": 20,
+          "pre_request_state_evidence_count": 14,
+          "distinct_actual_source_ids": 14,
+          "source_identity_violations": 0,
+          "components": [
+            {
+              "doc_id": "45387",
+              "offset": 3000,
+              "end": 3900,
+              "member_ids": [
+                "E1"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "85888",
+              "offset": 6750,
+              "end": 8400,
+              "member_ids": [
+                "E2",
+                "E9"
+              ],
+              "member_count": 2,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "37417",
+              "offset": 750,
+              "end": 1650,
+              "member_ids": [
+                "E3"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "71899",
+              "offset": 33000,
+              "end": 33900,
+              "member_ids": [
+                "E4"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "85888",
+              "offset": 750,
+              "end": 2400,
+              "member_ids": [
+                "E5",
+                "E6"
+              ],
+              "member_count": 2,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "37120",
+              "offset": 3750,
+              "end": 4650,
+              "member_ids": [
+                "E7"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "67511",
+              "offset": 37500,
+              "end": 38400,
+              "member_ids": [
+                "E8"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "3282",
+              "offset": 0,
+              "end": 900,
+              "member_ids": [
+                "E10"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "40229",
+              "offset": 4500,
+              "end": 5400,
+              "member_ids": [
+                "E11"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "12980",
+              "offset": 66000,
+              "end": 66900,
+              "member_ids": [
+                "E12"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "88470",
+              "offset": 750,
+              "end": 1650,
+              "member_ids": [
+                "E13"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "22863",
+              "offset": 102000,
+              "end": 102900,
+              "member_ids": [
+                "E14"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            }
+          ]
+        },
+        {
+          "api_sequence": 27,
+          "pre_request_state_evidence_count": 20,
+          "distinct_actual_source_ids": 17,
+          "source_identity_violations": 0,
+          "components": [
+            {
+              "doc_id": "45387",
+              "offset": 3000,
+              "end": 3900,
+              "member_ids": [
+                "E1"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "85888",
+              "offset": 6750,
+              "end": 8400,
+              "member_ids": [
+                "E2",
+                "E9"
+              ],
+              "member_count": 2,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "37417",
+              "offset": 750,
+              "end": 1650,
+              "member_ids": [
+                "E3"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "71899",
+              "offset": 33000,
+              "end": 33900,
+              "member_ids": [
+                "E4"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "85888",
+              "offset": 750,
+              "end": 2400,
+              "member_ids": [
+                "E5",
+                "E6"
+              ],
+              "member_count": 2,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "37120",
+              "offset": 3750,
+              "end": 4650,
+              "member_ids": [
+                "E7"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "67511",
+              "offset": 37500,
+              "end": 38400,
+              "member_ids": [
+                "E8"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "3282",
+              "offset": 0,
+              "end": 1226,
+              "member_ids": [
+                "E10",
+                "E18"
+              ],
+              "member_count": 2,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "40229",
+              "offset": 4500,
+              "end": 5400,
+              "member_ids": [
+                "E11"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "12980",
+              "offset": 66000,
+              "end": 66900,
+              "member_ids": [
+                "E12"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "88470",
+              "offset": 0,
+              "end": 1650,
+              "member_ids": [
+                "E13",
+                "E20"
+              ],
+              "member_count": 2,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "22863",
+              "offset": 102000,
+              "end": 102900,
+              "member_ids": [
+                "E14"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "10661",
+              "offset": 21750,
+              "end": 22650,
+              "member_ids": [
+                "E15"
+              ],
+              "member_count": 1,
+              "coverage": "fully_omitted"
+            },
+            {
+              "doc_id": "61856",
+              "offset": 23250,
+              "end": 24150,
+              "member_ids": [
+                "E16"
+              ],
+              "member_count": 1,
+              "coverage": "fully_omitted"
+            },
+            {
+              "doc_id": "3653",
+              "offset": 30000,
+              "end": 30900,
+              "member_ids": [
+                "E17"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "20259",
+              "offset": 0,
+              "end": 900,
+              "member_ids": [
+                "E19"
+              ],
+              "member_count": 1,
+              "coverage": "fully_omitted"
+            }
+          ]
+        },
+        {
+          "api_sequence": 35,
+          "pre_request_state_evidence_count": 21,
+          "distinct_actual_source_ids": 17,
+          "source_identity_violations": 0,
+          "components": [
+            {
+              "doc_id": "45387",
+              "offset": 3000,
+              "end": 3900,
+              "member_ids": [
+                "E1"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "85888",
+              "offset": 6750,
+              "end": 8400,
+              "member_ids": [
+                "E2",
+                "E9"
+              ],
+              "member_count": 2,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "37417",
+              "offset": 750,
+              "end": 1650,
+              "member_ids": [
+                "E3"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "71899",
+              "offset": 33000,
+              "end": 33900,
+              "member_ids": [
+                "E4"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "85888",
+              "offset": 750,
+              "end": 2400,
+              "member_ids": [
+                "E5",
+                "E6"
+              ],
+              "member_count": 2,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "37120",
+              "offset": 3750,
+              "end": 4650,
+              "member_ids": [
+                "E7"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "67511",
+              "offset": 37500,
+              "end": 38400,
+              "member_ids": [
+                "E8"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "3282",
+              "offset": 0,
+              "end": 1226,
+              "member_ids": [
+                "E10",
+                "E18"
+              ],
+              "member_count": 2,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "40229",
+              "offset": 4500,
+              "end": 5400,
+              "member_ids": [
+                "E11"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "12980",
+              "offset": 66000,
+              "end": 66900,
+              "member_ids": [
+                "E12"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "88470",
+              "offset": 0,
+              "end": 1650,
+              "member_ids": [
+                "E13",
+                "E20"
+              ],
+              "member_count": 2,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "22863",
+              "offset": 102000,
+              "end": 102900,
+              "member_ids": [
+                "E14"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "10661",
+              "offset": 21750,
+              "end": 22650,
+              "member_ids": [
+                "E15"
+              ],
+              "member_count": 1,
+              "coverage": "fully_omitted"
+            },
+            {
+              "doc_id": "61856",
+              "offset": 23250,
+              "end": 24150,
+              "member_ids": [
+                "E16"
+              ],
+              "member_count": 1,
+              "coverage": "fully_omitted"
+            },
+            {
+              "doc_id": "3653",
+              "offset": 30000,
+              "end": 30900,
+              "member_ids": [
+                "E17"
+              ],
+              "member_count": 1,
+              "coverage": "fully_omitted"
+            },
+            {
+              "doc_id": "20259",
+              "offset": 0,
+              "end": 900,
+              "member_ids": [
+                "E19"
+              ],
+              "member_count": 1,
+              "coverage": "fully_omitted"
+            },
+            {
+              "doc_id": "45387",
+              "offset": 0,
+              "end": 900,
+              "member_ids": [
+                "E21"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "58",
+      "api_request_count": 5,
+      "requests": [
+        {
+          "api_sequence": 6,
+          "pre_request_state_evidence_count": 0,
+          "distinct_actual_source_ids": 0,
+          "source_identity_violations": 0,
+          "components": []
+        },
+        {
+          "api_sequence": 13,
+          "pre_request_state_evidence_count": 9,
+          "distinct_actual_source_ids": 9,
+          "source_identity_violations": 0,
+          "components": [
+            {
+              "doc_id": "30746",
+              "offset": 0,
+              "end": 900,
+              "member_ids": [
+                "E1"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "19676",
+              "offset": 54000,
+              "end": 54900,
+              "member_ids": [
+                "E2"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "21297",
+              "offset": 6000,
+              "end": 6900,
+              "member_ids": [
+                "E3"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "30746",
+              "offset": 1500,
+              "end": 2400,
+              "member_ids": [
+                "E4"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "79075",
+              "offset": 750,
+              "end": 1650,
+              "member_ids": [
+                "E5"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "28406",
+              "offset": 17250,
+              "end": 18150,
+              "member_ids": [
+                "E6"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "68816",
+              "offset": 0,
+              "end": 900,
+              "member_ids": [
+                "E7"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "68816",
+              "offset": 38250,
+              "end": 39150,
+              "member_ids": [
+                "E8"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "68816",
+              "offset": 35250,
+              "end": 36150,
+              "member_ids": [
+                "E9"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            }
+          ]
+        },
+        {
+          "api_sequence": 20,
+          "pre_request_state_evidence_count": 14,
+          "distinct_actual_source_ids": 12,
+          "source_identity_violations": 0,
+          "components": [
+            {
+              "doc_id": "30746",
+              "offset": 0,
+              "end": 900,
+              "member_ids": [
+                "E1"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "19676",
+              "offset": 54000,
+              "end": 54900,
+              "member_ids": [
+                "E2"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "21297",
+              "offset": 6000,
+              "end": 6900,
+              "member_ids": [
+                "E3"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "30746",
+              "offset": 1500,
+              "end": 2400,
+              "member_ids": [
+                "E4"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "79075",
+              "offset": 0,
+              "end": 2400,
+              "member_ids": [
+                "E5",
+                "E12",
+                "E14"
+              ],
+              "member_count": 3,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "28406",
+              "offset": 17250,
+              "end": 18150,
+              "member_ids": [
+                "E6"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "68816",
+              "offset": 0,
+              "end": 900,
+              "member_ids": [
+                "E7"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "68816",
+              "offset": 38250,
+              "end": 39150,
+              "member_ids": [
+                "E8"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "68816",
+              "offset": 35250,
+              "end": 36150,
+              "member_ids": [
+                "E9"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "4619",
+              "offset": 0,
+              "end": 1650,
+              "member_ids": [
+                "E10",
+                "E11"
+              ],
+              "member_count": 2,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "28406",
+              "offset": 48750,
+              "end": 49650,
+              "member_ids": [
+                "E13"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            }
+          ]
+        },
+        {
+          "api_sequence": 27,
+          "pre_request_state_evidence_count": 16,
+          "distinct_actual_source_ids": 14,
+          "source_identity_violations": 0,
+          "components": [
+            {
+              "doc_id": "30746",
+              "offset": 0,
+              "end": 900,
+              "member_ids": [
+                "E1"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "19676",
+              "offset": 54000,
+              "end": 54900,
+              "member_ids": [
+                "E2"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "21297",
+              "offset": 6000,
+              "end": 6900,
+              "member_ids": [
+                "E3"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "30746",
+              "offset": 1500,
+              "end": 2400,
+              "member_ids": [
+                "E4"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "79075",
+              "offset": 0,
+              "end": 2400,
+              "member_ids": [
+                "E5",
+                "E12",
+                "E14"
+              ],
+              "member_count": 3,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "28406",
+              "offset": 17250,
+              "end": 18150,
+              "member_ids": [
+                "E6"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "68816",
+              "offset": 0,
+              "end": 900,
+              "member_ids": [
+                "E7"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "68816",
+              "offset": 38250,
+              "end": 39150,
+              "member_ids": [
+                "E8"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "68816",
+              "offset": 35250,
+              "end": 36150,
+              "member_ids": [
+                "E9"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "4619",
+              "offset": 0,
+              "end": 1650,
+              "member_ids": [
+                "E10",
+                "E11"
+              ],
+              "member_count": 2,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "28406",
+              "offset": 48750,
+              "end": 49650,
+              "member_ids": [
+                "E13"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "28406",
+              "offset": 38806,
+              "end": 39230,
+              "member_ids": [
+                "E15",
+                "E16"
+              ],
+              "member_count": 2,
+              "coverage": "fully_visible"
+            }
+          ]
+        },
+        {
+          "api_sequence": 34,
+          "pre_request_state_evidence_count": 17,
+          "distinct_actual_source_ids": 15,
+          "source_identity_violations": 0,
+          "components": [
+            {
+              "doc_id": "30746",
+              "offset": 0,
+              "end": 900,
+              "member_ids": [
+                "E1"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "19676",
+              "offset": 54000,
+              "end": 54900,
+              "member_ids": [
+                "E2"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "21297",
+              "offset": 6000,
+              "end": 6900,
+              "member_ids": [
+                "E3"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "30746",
+              "offset": 1500,
+              "end": 2400,
+              "member_ids": [
+                "E4"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "79075",
+              "offset": 0,
+              "end": 2400,
+              "member_ids": [
+                "E5",
+                "E12",
+                "E14"
+              ],
+              "member_count": 3,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "28406",
+              "offset": 17250,
+              "end": 18150,
+              "member_ids": [
+                "E6"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "68816",
+              "offset": 0,
+              "end": 900,
+              "member_ids": [
+                "E7"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "68816",
+              "offset": 38250,
+              "end": 39150,
+              "member_ids": [
+                "E8"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "68816",
+              "offset": 35250,
+              "end": 36150,
+              "member_ids": [
+                "E9"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "4619",
+              "offset": 0,
+              "end": 1650,
+              "member_ids": [
+                "E10",
+                "E11"
+              ],
+              "member_count": 2,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "28406",
+              "offset": 48750,
+              "end": 49650,
+              "member_ids": [
+                "E13"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "28406",
+              "offset": 38800,
+              "end": 39230,
+              "member_ids": [
+                "E15",
+                "E16",
+                "E17"
+              ],
+              "member_count": 3,
+              "coverage": "fully_visible"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1155",
+      "api_request_count": 4,
+      "requests": [
+        {
+          "api_sequence": 4,
+          "pre_request_state_evidence_count": 0,
+          "distinct_actual_source_ids": 0,
+          "source_identity_violations": 0,
+          "components": []
+        },
+        {
+          "api_sequence": 11,
+          "pre_request_state_evidence_count": 10,
+          "distinct_actual_source_ids": 10,
+          "source_identity_violations": 0,
+          "components": [
+            {
+              "doc_id": "56790",
+              "offset": 0,
+              "end": 900,
+              "member_ids": [
+                "E1"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "44164",
+              "offset": 750,
+              "end": 1650,
+              "member_ids": [
+                "E2"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "90811",
+              "offset": 0,
+              "end": 900,
+              "member_ids": [
+                "E3"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "46699",
+              "offset": 25500,
+              "end": 26400,
+              "member_ids": [
+                "E4"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "96616",
+              "offset": 9000,
+              "end": 9900,
+              "member_ids": [
+                "E5"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "78676",
+              "offset": 3750,
+              "end": 4650,
+              "member_ids": [
+                "E6"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "17323",
+              "offset": 3000,
+              "end": 3900,
+              "member_ids": [
+                "E7"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "88797",
+              "offset": 16500,
+              "end": 17400,
+              "member_ids": [
+                "E8"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "3094",
+              "offset": 583500,
+              "end": 584400,
+              "member_ids": [
+                "E9"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "8865",
+              "offset": 1500,
+              "end": 2400,
+              "member_ids": [
+                "E10"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            }
+          ]
+        },
+        {
+          "api_sequence": 20,
+          "pre_request_state_evidence_count": 12,
+          "distinct_actual_source_ids": 12,
+          "source_identity_violations": 0,
+          "components": [
+            {
+              "doc_id": "56790",
+              "offset": 0,
+              "end": 900,
+              "member_ids": [
+                "E1"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "44164",
+              "offset": 750,
+              "end": 1650,
+              "member_ids": [
+                "E2"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "90811",
+              "offset": 0,
+              "end": 900,
+              "member_ids": [
+                "E3"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "46699",
+              "offset": 25500,
+              "end": 26400,
+              "member_ids": [
+                "E4"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "96616",
+              "offset": 9000,
+              "end": 9900,
+              "member_ids": [
+                "E5"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "78676",
+              "offset": 3750,
+              "end": 4650,
+              "member_ids": [
+                "E6"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "17323",
+              "offset": 3000,
+              "end": 3900,
+              "member_ids": [
+                "E7"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "88797",
+              "offset": 16500,
+              "end": 17400,
+              "member_ids": [
+                "E8"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "3094",
+              "offset": 583500,
+              "end": 584400,
+              "member_ids": [
+                "E9"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "8865",
+              "offset": 1500,
+              "end": 2400,
+              "member_ids": [
+                "E10"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "78245",
+              "offset": 63000,
+              "end": 63900,
+              "member_ids": [
+                "E11"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "3094",
+              "offset": 143250,
+              "end": 144150,
+              "member_ids": [
+                "E12"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            }
+          ]
+        },
+        {
+          "api_sequence": 28,
+          "pre_request_state_evidence_count": 12,
+          "distinct_actual_source_ids": 12,
+          "source_identity_violations": 0,
+          "components": [
+            {
+              "doc_id": "56790",
+              "offset": 0,
+              "end": 900,
+              "member_ids": [
+                "E1"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "44164",
+              "offset": 750,
+              "end": 1650,
+              "member_ids": [
+                "E2"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "90811",
+              "offset": 0,
+              "end": 900,
+              "member_ids": [
+                "E3"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "46699",
+              "offset": 25500,
+              "end": 26400,
+              "member_ids": [
+                "E4"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "96616",
+              "offset": 9000,
+              "end": 9900,
+              "member_ids": [
+                "E5"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "78676",
+              "offset": 3750,
+              "end": 4650,
+              "member_ids": [
+                "E6"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "17323",
+              "offset": 3000,
+              "end": 3900,
+              "member_ids": [
+                "E7"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "88797",
+              "offset": 16500,
+              "end": 17400,
+              "member_ids": [
+                "E8"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "3094",
+              "offset": 583500,
+              "end": 584400,
+              "member_ids": [
+                "E9"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "8865",
+              "offset": 1500,
+              "end": 2400,
+              "member_ids": [
+                "E10"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "78245",
+              "offset": 63000,
+              "end": 63900,
+              "member_ids": [
+                "E11"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "3094",
+              "offset": 143250,
+              "end": 144150,
+              "member_ids": [
+                "E12"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1066",
+      "api_request_count": 3,
+      "requests": [
+        {
+          "api_sequence": 6,
+          "pre_request_state_evidence_count": 0,
+          "distinct_actual_source_ids": 0,
+          "source_identity_violations": 0,
+          "components": []
+        },
+        {
+          "api_sequence": 13,
+          "pre_request_state_evidence_count": 10,
+          "distinct_actual_source_ids": 10,
+          "source_identity_violations": 0,
+          "components": [
+            {
+              "doc_id": "8280",
+              "offset": 314250,
+              "end": 315900,
+              "member_ids": [
+                "E1",
+                "E5"
+              ],
+              "member_count": 2,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "72125",
+              "offset": 750,
+              "end": 1650,
+              "member_ids": [
+                "E2"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "8280",
+              "offset": 219000,
+              "end": 219900,
+              "member_ids": [
+                "E3"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "8280",
+              "offset": 108000,
+              "end": 108900,
+              "member_ids": [
+                "E4"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "41005",
+              "offset": 2250,
+              "end": 3150,
+              "member_ids": [
+                "E6"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "12060",
+              "offset": 0,
+              "end": 696,
+              "member_ids": [
+                "E7"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "15322",
+              "offset": 54750,
+              "end": 55650,
+              "member_ids": [
+                "E8"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "53440",
+              "offset": 91500,
+              "end": 92400,
+              "member_ids": [
+                "E9"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "44637",
+              "offset": 3000,
+              "end": 3900,
+              "member_ids": [
+                "E10"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            }
+          ]
+        },
+        {
+          "api_sequence": 23,
+          "pre_request_state_evidence_count": 10,
+          "distinct_actual_source_ids": 10,
+          "source_identity_violations": 0,
+          "components": [
+            {
+              "doc_id": "8280",
+              "offset": 314250,
+              "end": 315900,
+              "member_ids": [
+                "E1",
+                "E5"
+              ],
+              "member_count": 2,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "72125",
+              "offset": 750,
+              "end": 1650,
+              "member_ids": [
+                "E2"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "8280",
+              "offset": 219000,
+              "end": 219900,
+              "member_ids": [
+                "E3"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "8280",
+              "offset": 108000,
+              "end": 108900,
+              "member_ids": [
+                "E4"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "41005",
+              "offset": 2250,
+              "end": 3150,
+              "member_ids": [
+                "E6"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "12060",
+              "offset": 0,
+              "end": 696,
+              "member_ids": [
+                "E7"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "15322",
+              "offset": 54750,
+              "end": 55650,
+              "member_ids": [
+                "E8"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "53440",
+              "offset": 91500,
+              "end": 92400,
+              "member_ids": [
+                "E9"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "44637",
+              "offset": 3000,
+              "end": 3900,
+              "member_ids": [
+                "E10"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "788",
+      "api_request_count": 5,
+      "requests": [
+        {
+          "api_sequence": 6,
+          "pre_request_state_evidence_count": 0,
+          "distinct_actual_source_ids": 0,
+          "source_identity_violations": 0,
+          "components": []
+        },
+        {
+          "api_sequence": 13,
+          "pre_request_state_evidence_count": 8,
+          "distinct_actual_source_ids": 8,
+          "source_identity_violations": 0,
+          "components": [
+            {
+              "doc_id": "45789",
+              "offset": 3000,
+              "end": 5400,
+              "member_ids": [
+                "E1",
+                "E3",
+                "E8"
+              ],
+              "member_count": 3,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "96357",
+              "offset": 0,
+              "end": 562,
+              "member_ids": [
+                "E2"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "1823",
+              "offset": 0,
+              "end": 900,
+              "member_ids": [
+                "E4"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "45789",
+              "offset": 6000,
+              "end": 6900,
+              "member_ids": [
+                "E5"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "52795",
+              "offset": 0,
+              "end": 900,
+              "member_ids": [
+                "E6"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "81783",
+              "offset": 1500,
+              "end": 2400,
+              "member_ids": [
+                "E7"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            }
+          ]
+        },
+        {
+          "api_sequence": 22,
+          "pre_request_state_evidence_count": 13,
+          "distinct_actual_source_ids": 13,
+          "source_identity_violations": 0,
+          "components": [
+            {
+              "doc_id": "45789",
+              "offset": 3000,
+              "end": 5400,
+              "member_ids": [
+                "E1",
+                "E3",
+                "E8"
+              ],
+              "member_count": 3,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "96357",
+              "offset": 0,
+              "end": 562,
+              "member_ids": [
+                "E2"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "1823",
+              "offset": 0,
+              "end": 900,
+              "member_ids": [
+                "E4"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "45789",
+              "offset": 6000,
+              "end": 6900,
+              "member_ids": [
+                "E5"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "52795",
+              "offset": 0,
+              "end": 900,
+              "member_ids": [
+                "E6"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "81783",
+              "offset": 1500,
+              "end": 2400,
+              "member_ids": [
+                "E7"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "6743",
+              "offset": 0,
+              "end": 900,
+              "member_ids": [
+                "E9"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "70534",
+              "offset": 0,
+              "end": 1650,
+              "member_ids": [
+                "E10",
+                "E13"
+              ],
+              "member_count": 2,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "56202",
+              "offset": 0,
+              "end": 900,
+              "member_ids": [
+                "E11"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "70534",
+              "offset": 3000,
+              "end": 3900,
+              "member_ids": [
+                "E12"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            }
+          ]
+        },
+        {
+          "api_sequence": 29,
+          "pre_request_state_evidence_count": 20,
+          "distinct_actual_source_ids": 17,
+          "source_identity_violations": 0,
+          "components": [
+            {
+              "doc_id": "45789",
+              "offset": 2250,
+              "end": 5400,
+              "member_ids": [
+                "E1",
+                "E3",
+                "E8",
+                "E20"
+              ],
+              "member_count": 4,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "96357",
+              "offset": 0,
+              "end": 562,
+              "member_ids": [
+                "E2"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "1823",
+              "offset": 0,
+              "end": 900,
+              "member_ids": [
+                "E4"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "45789",
+              "offset": 6000,
+              "end": 6900,
+              "member_ids": [
+                "E5"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "52795",
+              "offset": 0,
+              "end": 900,
+              "member_ids": [
+                "E6"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "81783",
+              "offset": 1500,
+              "end": 2400,
+              "member_ids": [
+                "E7"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "6743",
+              "offset": 0,
+              "end": 900,
+              "member_ids": [
+                "E9"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "70534",
+              "offset": 0,
+              "end": 1650,
+              "member_ids": [
+                "E10",
+                "E13"
+              ],
+              "member_count": 2,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "56202",
+              "offset": 0,
+              "end": 900,
+              "member_ids": [
+                "E11"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "70534",
+              "offset": 3000,
+              "end": 3900,
+              "member_ids": [
+                "E12"
+              ],
+              "member_count": 1,
+              "coverage": "fully_omitted"
+            },
+            {
+              "doc_id": "57904",
+              "offset": 0,
+              "end": 1650,
+              "member_ids": [
+                "E14",
+                "E15"
+              ],
+              "member_count": 2,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "56188",
+              "offset": 0,
+              "end": 1059,
+              "member_ids": [
+                "E16",
+                "E17"
+              ],
+              "member_count": 2,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "95802",
+              "offset": 0,
+              "end": 827,
+              "member_ids": [
+                "E18"
+              ],
+              "member_count": 1,
+              "coverage": "fully_omitted"
+            },
+            {
+              "doc_id": "56202",
+              "offset": 7500,
+              "end": 8400,
+              "member_ids": [
+                "E19"
+              ],
+              "member_count": 1,
+              "coverage": "fully_omitted"
+            }
+          ]
+        },
+        {
+          "api_sequence": 37,
+          "pre_request_state_evidence_count": 20,
+          "distinct_actual_source_ids": 17,
+          "source_identity_violations": 0,
+          "components": [
+            {
+              "doc_id": "45789",
+              "offset": 2250,
+              "end": 5400,
+              "member_ids": [
+                "E1",
+                "E3",
+                "E8",
+                "E20"
+              ],
+              "member_count": 4,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "96357",
+              "offset": 0,
+              "end": 562,
+              "member_ids": [
+                "E2"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "1823",
+              "offset": 0,
+              "end": 900,
+              "member_ids": [
+                "E4"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "45789",
+              "offset": 6000,
+              "end": 6900,
+              "member_ids": [
+                "E5"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "52795",
+              "offset": 0,
+              "end": 900,
+              "member_ids": [
+                "E6"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "81783",
+              "offset": 1500,
+              "end": 2400,
+              "member_ids": [
+                "E7"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "6743",
+              "offset": 0,
+              "end": 900,
+              "member_ids": [
+                "E9"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "70534",
+              "offset": 0,
+              "end": 1650,
+              "member_ids": [
+                "E10",
+                "E13"
+              ],
+              "member_count": 2,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "56202",
+              "offset": 0,
+              "end": 900,
+              "member_ids": [
+                "E11"
+              ],
+              "member_count": 1,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "70534",
+              "offset": 3000,
+              "end": 3900,
+              "member_ids": [
+                "E12"
+              ],
+              "member_count": 1,
+              "coverage": "fully_omitted"
+            },
+            {
+              "doc_id": "57904",
+              "offset": 0,
+              "end": 1650,
+              "member_ids": [
+                "E14",
+                "E15"
+              ],
+              "member_count": 2,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "56188",
+              "offset": 0,
+              "end": 1059,
+              "member_ids": [
+                "E16",
+                "E17"
+              ],
+              "member_count": 2,
+              "coverage": "fully_visible"
+            },
+            {
+              "doc_id": "95802",
+              "offset": 0,
+              "end": 827,
+              "member_ids": [
+                "E18"
+              ],
+              "member_count": 1,
+              "coverage": "fully_omitted"
+            },
+            {
+              "doc_id": "56202",
+              "offset": 7500,
+              "end": 8400,
+              "member_ids": [
+                "E19"
+              ],
+              "member_count": 1,
+              "coverage": "fully_omitted"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "frozen_commit": "a476ef7b062bb9a0deac0db54b5895daa5e30827",
+  "prediction_sha256": "6d9f63efad178f04de81040494096012e1fe0920903ec74c6499e4ef2bfda5c8",
+  "synthetic_self_check": {
+    "independent_graph_locality": true,
+    "partial_left_detected": true,
+    "partial_right_detected": true,
+    "complete_union_accepted": true,
+    "contained_child_covered_without_its_id": true,
+    "forged_text_rejected": true
+  },
+  "audited_at_utc": "2026-11-15T13:06:15.323690+00:00"
+}

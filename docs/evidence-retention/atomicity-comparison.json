@@ -1,0 +1,49 @@
+{
+  "same_independent_audit_applied_to_all_saved_actual_requests": true,
+  "labels_read": false,
+  "new_api_calls": 0,
+  "interpretation_limit": "Runs contain different searches and observed evidence pools; counts are not matched-case improvement rates or final-answer correctness.",
+  "runs": [
+    {
+      "run": "original_baseline",
+      "api_requests": 47,
+      "component_request_pair_counts": {
+        "fully_visible": 262,
+        "fully_omitted": 275,
+        "partially_visible": 22
+      },
+      "multi_member_component_request_pairs": 57,
+      "multi_member_fully_visible": 13,
+      "multi_member_fully_omitted": 22,
+      "multi_member_partially_visible": 22,
+      "source_identity_violations": 0
+    },
+    {
+      "run": "retention_v1",
+      "api_requests": 37,
+      "component_request_pair_counts": {
+        "fully_visible": 336,
+        "fully_omitted": 25,
+        "partially_visible": 7
+      },
+      "multi_member_component_request_pairs": 29,
+      "multi_member_fully_visible": 21,
+      "multi_member_fully_omitted": 1,
+      "multi_member_partially_visible": 7,
+      "source_identity_violations": 0
+    },
+    {
+      "run": "retention_v2",
+      "api_requests": 41,
+      "component_request_pair_counts": {
+        "fully_visible": 394,
+        "fully_omitted": 52
+      },
+      "multi_member_component_request_pairs": 49,
+      "multi_member_fully_visible": 47,
+      "multi_member_fully_omitted": 2,
+      "multi_member_partially_visible": 0,
+      "source_identity_violations": 0
+    }
+  ]
+}

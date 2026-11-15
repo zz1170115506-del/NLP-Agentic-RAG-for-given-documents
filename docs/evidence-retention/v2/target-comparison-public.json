@@ -1,0 +1,819 @@
+[
+  {
+    "run": "baseline",
+    "case_id": "960",
+    "target_index": 7,
+    "doc_id": "21800",
+    "offset": 3317,
+    "end": 5935,
+    "selection_basis": "posthoc_reference_assisted",
+    "first_any_overlap_tool": null,
+    "first_full_tool": null,
+    "next_request_after_first_full": null,
+    "final_request": {
+      "api_sequence": 48,
+      "visible_chars": 0,
+      "span_chars": 2618,
+      "coverage_fraction": 0.0,
+      "visibility": "absent"
+    }
+  },
+  {
+    "run": "baseline",
+    "case_id": "1035",
+    "target_index": 8,
+    "doc_id": "44626",
+    "offset": 0,
+    "end": 750,
+    "selection_basis": "posthoc_reference_assisted",
+    "first_any_overlap_tool": null,
+    "first_full_tool": null,
+    "next_request_after_first_full": null,
+    "final_request": {
+      "api_sequence": 37,
+      "visible_chars": 0,
+      "span_chars": 750,
+      "coverage_fraction": 0.0,
+      "visibility": "absent"
+    }
+  },
+  {
+    "run": "baseline",
+    "case_id": "64",
+    "target_index": 0,
+    "doc_id": "10744",
+    "offset": 0,
+    "end": 900,
+    "selection_basis": "historical_observed_support",
+    "first_any_overlap_tool": {
+      "tool_sequence": 8,
+      "tool_name": "search",
+      "visible_chars": 900,
+      "span_chars": 900,
+      "coverage_fraction": 1.0,
+      "visibility": "full"
+    },
+    "first_full_tool": {
+      "tool_sequence": 8,
+      "tool_name": "search",
+      "visible_chars": 900,
+      "span_chars": 900,
+      "coverage_fraction": 1.0,
+      "visibility": "full"
+    },
+    "next_request_after_first_full": {
+      "api_sequence": 13,
+      "visible_chars": 900,
+      "span_chars": 900,
+      "coverage_fraction": 1.0,
+      "visibility": "full"
+    },
+    "final_request": {
+      "api_sequence": 51,
+      "visible_chars": 0,
+      "span_chars": 900,
+      "coverage_fraction": 0.0,
+      "visibility": "absent"
+    }
+  },
+  {
+    "run": "baseline",
+    "case_id": "231",
+    "target_index": 6,
+    "doc_id": "43835",
+    "offset": 0,
+    "end": 900,
+    "selection_basis": "historical_observed_support",
+    "first_any_overlap_tool": null,
+    "first_full_tool": null,
+    "next_request_after_first_full": null,
+    "final_request": {
+      "api_sequence": 23,
+      "visible_chars": 0,
+      "span_chars": 900,
+      "coverage_fraction": 0.0,
+      "visibility": "absent"
+    }
+  },
+  {
+    "run": "baseline",
+    "case_id": "390",
+    "target_index": 2,
+    "doc_id": "3282",
+    "offset": 750,
+    "end": 1226,
+    "selection_basis": "historical_observed_support",
+    "first_any_overlap_tool": {
+      "tool_sequence": 9,
+      "tool_name": "search",
+      "visible_chars": 150,
+      "span_chars": 476,
+      "coverage_fraction": 0.31512605042016806,
+      "visibility": "partial"
+    },
+    "first_full_tool": {
+      "tool_sequence": 16,
+      "tool_name": "search",
+      "visible_chars": 476,
+      "span_chars": 476,
+      "coverage_fraction": 1.0,
+      "visibility": "full"
+    },
+    "next_request_after_first_full": {
+      "api_sequence": 20,
+      "visible_chars": 150,
+      "span_chars": 476,
+      "coverage_fraction": 0.31512605042016806,
+      "visibility": "partial"
+    },
+    "final_request": {
+      "api_sequence": 44,
+      "visible_chars": 476,
+      "span_chars": 476,
+      "coverage_fraction": 1.0,
+      "visibility": "full"
+    }
+  },
+  {
+    "run": "baseline",
+    "case_id": "58",
+    "target_index": 3,
+    "doc_id": "28406",
+    "offset": 38250,
+    "end": 39150,
+    "selection_basis": "historical_observed_support",
+    "first_any_overlap_tool": null,
+    "first_full_tool": null,
+    "next_request_after_first_full": null,
+    "final_request": {
+      "api_sequence": 37,
+      "visible_chars": 0,
+      "span_chars": 900,
+      "coverage_fraction": 0.0,
+      "visibility": "absent"
+    }
+  },
+  {
+    "run": "baseline",
+    "case_id": "58",
+    "target_index": 4,
+    "doc_id": "28406",
+    "offset": 38806,
+    "end": 39216,
+    "selection_basis": "historical_observed_support",
+    "first_any_overlap_tool": null,
+    "first_full_tool": null,
+    "next_request_after_first_full": null,
+    "final_request": {
+      "api_sequence": 37,
+      "visible_chars": 0,
+      "span_chars": 410,
+      "coverage_fraction": 0.0,
+      "visibility": "absent"
+    }
+  },
+  {
+    "run": "baseline",
+    "case_id": "1066",
+    "target_index": 5,
+    "doc_id": "26814",
+    "offset": 0,
+    "end": 726,
+    "selection_basis": "historical_observed_support",
+    "first_any_overlap_tool": null,
+    "first_full_tool": null,
+    "next_request_after_first_full": null,
+    "final_request": {
+      "api_sequence": 23,
+      "visible_chars": 0,
+      "span_chars": 726,
+      "coverage_fraction": 0.0,
+      "visibility": "absent"
+    }
+  },
+  {
+    "run": "baseline",
+    "case_id": "788",
+    "target_index": 1,
+    "doc_id": "70534",
+    "offset": 0,
+    "end": 900,
+    "selection_basis": "historical_observed_support",
+    "first_any_overlap_tool": {
+      "tool_sequence": 15,
+      "tool_name": "search",
+      "visible_chars": 900,
+      "span_chars": 900,
+      "coverage_fraction": 1.0,
+      "visibility": "full"
+    },
+    "first_full_tool": {
+      "tool_sequence": 15,
+      "tool_name": "search",
+      "visible_chars": 900,
+      "span_chars": 900,
+      "coverage_fraction": 1.0,
+      "visibility": "full"
+    },
+    "next_request_after_first_full": {
+      "api_sequence": 22,
+      "visible_chars": 0,
+      "span_chars": 900,
+      "coverage_fraction": 0.0,
+      "visibility": "absent"
+    },
+    "final_request": {
+      "api_sequence": 45,
+      "visible_chars": 0,
+      "span_chars": 900,
+      "coverage_fraction": 0.0,
+      "visibility": "absent"
+    }
+  },
+  {
+    "run": "baseline",
+    "case_id": "788",
+    "target_index": 9,
+    "doc_id": "57904",
+    "offset": 0,
+    "end": 900,
+    "selection_basis": "observed_run_v1_counterevidence_no_reference_needed",
+    "first_any_overlap_tool": null,
+    "first_full_tool": null,
+    "next_request_after_first_full": null,
+    "final_request": {
+      "api_sequence": 45,
+      "visible_chars": 0,
+      "span_chars": 900,
+      "coverage_fraction": 0.0,
+      "visibility": "absent"
+    }
+  },
+  {
+    "run": "v1",
+    "case_id": "960",
+    "target_index": 7,
+    "doc_id": "21800",
+    "offset": 3317,
+    "end": 5935,
+    "selection_basis": "posthoc_reference_assisted",
+    "first_any_overlap_tool": null,
+    "first_full_tool": null,
+    "next_request_after_first_full": null,
+    "final_request": {
+      "api_sequence": 33,
+      "visible_chars": 0,
+      "span_chars": 2618,
+      "coverage_fraction": 0.0,
+      "visibility": "absent"
+    }
+  },
+  {
+    "run": "v1",
+    "case_id": "1035",
+    "target_index": 8,
+    "doc_id": "44626",
+    "offset": 0,
+    "end": 750,
+    "selection_basis": "posthoc_reference_assisted",
+    "first_any_overlap_tool": null,
+    "first_full_tool": null,
+    "next_request_after_first_full": null,
+    "final_request": {
+      "api_sequence": 30,
+      "visible_chars": 0,
+      "span_chars": 750,
+      "coverage_fraction": 0.0,
+      "visibility": "absent"
+    }
+  },
+  {
+    "run": "v1",
+    "case_id": "64",
+    "target_index": 0,
+    "doc_id": "10744",
+    "offset": 0,
+    "end": 900,
+    "selection_basis": "historical_observed_support",
+    "first_any_overlap_tool": {
+      "tool_sequence": 16,
+      "tool_name": "search",
+      "visible_chars": 900,
+      "span_chars": 900,
+      "coverage_fraction": 1.0,
+      "visibility": "full"
+    },
+    "first_full_tool": {
+      "tool_sequence": 16,
+      "tool_name": "search",
+      "visible_chars": 900,
+      "span_chars": 900,
+      "coverage_fraction": 1.0,
+      "visibility": "full"
+    },
+    "next_request_after_first_full": {
+      "api_sequence": 20,
+      "visible_chars": 900,
+      "span_chars": 900,
+      "coverage_fraction": 1.0,
+      "visibility": "full"
+    },
+    "final_request": {
+      "api_sequence": 30,
+      "visible_chars": 900,
+      "span_chars": 900,
+      "coverage_fraction": 1.0,
+      "visibility": "full"
+    }
+  },
+  {
+    "run": "v1",
+    "case_id": "231",
+    "target_index": 6,
+    "doc_id": "43835",
+    "offset": 0,
+    "end": 900,
+    "selection_basis": "historical_observed_support",
+    "first_any_overlap_tool": null,
+    "first_full_tool": null,
+    "next_request_after_first_full": null,
+    "final_request": {
+      "api_sequence": 30,
+      "visible_chars": 0,
+      "span_chars": 900,
+      "coverage_fraction": 0.0,
+      "visibility": "absent"
+    }
+  },
+  {
+    "run": "v1",
+    "case_id": "390",
+    "target_index": 2,
+    "doc_id": "3282",
+    "offset": 750,
+    "end": 1226,
+    "selection_basis": "historical_observed_support",
+    "first_any_overlap_tool": {
+      "tool_sequence": 9,
+      "tool_name": "search",
+      "visible_chars": 150,
+      "span_chars": 476,
+      "coverage_fraction": 0.31512605042016806,
+      "visibility": "partial"
+    },
+    "first_full_tool": {
+      "tool_sequence": 15,
+      "tool_name": "search",
+      "visible_chars": 476,
+      "span_chars": 476,
+      "coverage_fraction": 1.0,
+      "visibility": "full"
+    },
+    "next_request_after_first_full": {
+      "api_sequence": 20,
+      "visible_chars": 476,
+      "span_chars": 476,
+      "coverage_fraction": 1.0,
+      "visibility": "full"
+    },
+    "final_request": {
+      "api_sequence": 35,
+      "visible_chars": 150,
+      "span_chars": 476,
+      "coverage_fraction": 0.31512605042016806,
+      "visibility": "partial"
+    }
+  },
+  {
+    "run": "v1",
+    "case_id": "58",
+    "target_index": 3,
+    "doc_id": "28406",
+    "offset": 38250,
+    "end": 39150,
+    "selection_basis": "historical_observed_support",
+    "first_any_overlap_tool": null,
+    "first_full_tool": null,
+    "next_request_after_first_full": null,
+    "final_request": {
+      "api_sequence": 23,
+      "visible_chars": 0,
+      "span_chars": 900,
+      "coverage_fraction": 0.0,
+      "visibility": "absent"
+    }
+  },
+  {
+    "run": "v1",
+    "case_id": "58",
+    "target_index": 4,
+    "doc_id": "28406",
+    "offset": 38806,
+    "end": 39216,
+    "selection_basis": "historical_observed_support",
+    "first_any_overlap_tool": null,
+    "first_full_tool": null,
+    "next_request_after_first_full": null,
+    "final_request": {
+      "api_sequence": 23,
+      "visible_chars": 0,
+      "span_chars": 410,
+      "coverage_fraction": 0.0,
+      "visibility": "absent"
+    }
+  },
+  {
+    "run": "v1",
+    "case_id": "1066",
+    "target_index": 5,
+    "doc_id": "26814",
+    "offset": 0,
+    "end": 726,
+    "selection_basis": "historical_observed_support",
+    "first_any_overlap_tool": null,
+    "first_full_tool": null,
+    "next_request_after_first_full": null,
+    "final_request": {
+      "api_sequence": 23,
+      "visible_chars": 0,
+      "span_chars": 726,
+      "coverage_fraction": 0.0,
+      "visibility": "absent"
+    }
+  },
+  {
+    "run": "v1",
+    "case_id": "788",
+    "target_index": 1,
+    "doc_id": "70534",
+    "offset": 0,
+    "end": 900,
+    "selection_basis": "historical_observed_support",
+    "first_any_overlap_tool": {
+      "tool_sequence": 15,
+      "tool_name": "search",
+      "visible_chars": 900,
+      "span_chars": 900,
+      "coverage_fraction": 1.0,
+      "visibility": "full"
+    },
+    "first_full_tool": {
+      "tool_sequence": 15,
+      "tool_name": "search",
+      "visible_chars": 900,
+      "span_chars": 900,
+      "coverage_fraction": 1.0,
+      "visibility": "full"
+    },
+    "next_request_after_first_full": {
+      "api_sequence": 22,
+      "visible_chars": 900,
+      "span_chars": 900,
+      "coverage_fraction": 1.0,
+      "visibility": "full"
+    },
+    "final_request": {
+      "api_sequence": 37,
+      "visible_chars": 900,
+      "span_chars": 900,
+      "coverage_fraction": 1.0,
+      "visibility": "full"
+    }
+  },
+  {
+    "run": "v1",
+    "case_id": "788",
+    "target_index": 9,
+    "doc_id": "57904",
+    "offset": 0,
+    "end": 900,
+    "selection_basis": "observed_run_v1_counterevidence_no_reference_needed",
+    "first_any_overlap_tool": {
+      "tool_sequence": 25,
+      "tool_name": "search",
+      "visible_chars": 900,
+      "span_chars": 900,
+      "coverage_fraction": 1.0,
+      "visibility": "full"
+    },
+    "first_full_tool": {
+      "tool_sequence": 25,
+      "tool_name": "search",
+      "visible_chars": 900,
+      "span_chars": 900,
+      "coverage_fraction": 1.0,
+      "visibility": "full"
+    },
+    "next_request_after_first_full": {
+      "api_sequence": 29,
+      "visible_chars": 900,
+      "span_chars": 900,
+      "coverage_fraction": 1.0,
+      "visibility": "full"
+    },
+    "final_request": {
+      "api_sequence": 37,
+      "visible_chars": 150,
+      "span_chars": 900,
+      "coverage_fraction": 0.16666666666666666,
+      "visibility": "partial"
+    }
+  },
+  {
+    "run": "v2",
+    "case_id": "960",
+    "target_index": 7,
+    "doc_id": "21800",
+    "offset": 3317,
+    "end": 5935,
+    "selection_basis": "posthoc_reference_assisted",
+    "first_any_overlap_tool": null,
+    "first_full_tool": null,
+    "next_request_after_first_full": null,
+    "final_request": {
+      "api_sequence": 35,
+      "visible_chars": 0,
+      "span_chars": 2618,
+      "coverage_fraction": 0.0,
+      "visibility": "absent"
+    }
+  },
+  {
+    "run": "v2",
+    "case_id": "1035",
+    "target_index": 8,
+    "doc_id": "44626",
+    "offset": 0,
+    "end": 750,
+    "selection_basis": "posthoc_reference_assisted",
+    "first_any_overlap_tool": null,
+    "first_full_tool": null,
+    "next_request_after_first_full": null,
+    "final_request": {
+      "api_sequence": 30,
+      "visible_chars": 0,
+      "span_chars": 750,
+      "coverage_fraction": 0.0,
+      "visibility": "absent"
+    }
+  },
+  {
+    "run": "v2",
+    "case_id": "64",
+    "target_index": 0,
+    "doc_id": "10744",
+    "offset": 0,
+    "end": 900,
+    "selection_basis": "historical_observed_support",
+    "first_any_overlap_tool": {
+      "tool_sequence": 8,
+      "tool_name": "search",
+      "visible_chars": 900,
+      "span_chars": 900,
+      "coverage_fraction": 1.0,
+      "visibility": "full"
+    },
+    "first_full_tool": {
+      "tool_sequence": 8,
+      "tool_name": "search",
+      "visible_chars": 900,
+      "span_chars": 900,
+      "coverage_fraction": 1.0,
+      "visibility": "full"
+    },
+    "next_request_after_first_full": {
+      "api_sequence": 13,
+      "visible_chars": 900,
+      "span_chars": 900,
+      "coverage_fraction": 1.0,
+      "visibility": "full"
+    },
+    "final_request": {
+      "api_sequence": 34,
+      "visible_chars": 900,
+      "span_chars": 900,
+      "coverage_fraction": 1.0,
+      "visibility": "full"
+    }
+  },
+  {
+    "run": "v2",
+    "case_id": "231",
+    "target_index": 6,
+    "doc_id": "43835",
+    "offset": 0,
+    "end": 900,
+    "selection_basis": "historical_observed_support",
+    "first_any_overlap_tool": null,
+    "first_full_tool": null,
+    "next_request_after_first_full": null,
+    "final_request": {
+      "api_sequence": 35,
+      "visible_chars": 0,
+      "span_chars": 900,
+      "coverage_fraction": 0.0,
+      "visibility": "absent"
+    }
+  },
+  {
+    "run": "v2",
+    "case_id": "390",
+    "target_index": 2,
+    "doc_id": "3282",
+    "offset": 750,
+    "end": 1226,
+    "selection_basis": "historical_observed_support",
+    "first_any_overlap_tool": {
+      "tool_sequence": 16,
+      "tool_name": "search",
+      "visible_chars": 150,
+      "span_chars": 476,
+      "coverage_fraction": 0.31512605042016806,
+      "visibility": "partial"
+    },
+    "first_full_tool": {
+      "tool_sequence": 23,
+      "tool_name": "search",
+      "visible_chars": 476,
+      "span_chars": 476,
+      "coverage_fraction": 1.0,
+      "visibility": "full"
+    },
+    "next_request_after_first_full": {
+      "api_sequence": 27,
+      "visible_chars": 476,
+      "span_chars": 476,
+      "coverage_fraction": 1.0,
+      "visibility": "full"
+    },
+    "final_request": {
+      "api_sequence": 35,
+      "visible_chars": 476,
+      "span_chars": 476,
+      "coverage_fraction": 1.0,
+      "visibility": "full"
+    }
+  },
+  {
+    "run": "v2",
+    "case_id": "58",
+    "target_index": 3,
+    "doc_id": "28406",
+    "offset": 38250,
+    "end": 39150,
+    "selection_basis": "historical_observed_support",
+    "first_any_overlap_tool": {
+      "tool_sequence": 22,
+      "tool_name": "find_in_document",
+      "visible_chars": 344,
+      "span_chars": 900,
+      "coverage_fraction": 0.38222222222222224,
+      "visibility": "partial"
+    },
+    "first_full_tool": null,
+    "next_request_after_first_full": null,
+    "final_request": {
+      "api_sequence": 34,
+      "visible_chars": 350,
+      "span_chars": 900,
+      "coverage_fraction": 0.3888888888888889,
+      "visibility": "partial"
+    }
+  },
+  {
+    "run": "v2",
+    "case_id": "58",
+    "target_index": 4,
+    "doc_id": "28406",
+    "offset": 38806,
+    "end": 39216,
+    "selection_basis": "historical_observed_support",
+    "first_any_overlap_tool": {
+      "tool_sequence": 22,
+      "tool_name": "find_in_document",
+      "visible_chars": 410,
+      "span_chars": 410,
+      "coverage_fraction": 1.0,
+      "visibility": "full"
+    },
+    "first_full_tool": {
+      "tool_sequence": 22,
+      "tool_name": "find_in_document",
+      "visible_chars": 410,
+      "span_chars": 410,
+      "coverage_fraction": 1.0,
+      "visibility": "full"
+    },
+    "next_request_after_first_full": {
+      "api_sequence": 27,
+      "visible_chars": 410,
+      "span_chars": 410,
+      "coverage_fraction": 1.0,
+      "visibility": "full"
+    },
+    "final_request": {
+      "api_sequence": 34,
+      "visible_chars": 410,
+      "span_chars": 410,
+      "coverage_fraction": 1.0,
+      "visibility": "full"
+    }
+  },
+  {
+    "run": "v2",
+    "case_id": "1066",
+    "target_index": 5,
+    "doc_id": "26814",
+    "offset": 0,
+    "end": 726,
+    "selection_basis": "historical_observed_support",
+    "first_any_overlap_tool": null,
+    "first_full_tool": null,
+    "next_request_after_first_full": null,
+    "final_request": {
+      "api_sequence": 23,
+      "visible_chars": 0,
+      "span_chars": 726,
+      "coverage_fraction": 0.0,
+      "visibility": "absent"
+    }
+  },
+  {
+    "run": "v2",
+    "case_id": "788",
+    "target_index": 1,
+    "doc_id": "70534",
+    "offset": 0,
+    "end": 900,
+    "selection_basis": "historical_observed_support",
+    "first_any_overlap_tool": {
+      "tool_sequence": 15,
+      "tool_name": "search",
+      "visible_chars": 900,
+      "span_chars": 900,
+      "coverage_fraction": 1.0,
+      "visibility": "full"
+    },
+    "first_full_tool": {
+      "tool_sequence": 15,
+      "tool_name": "search",
+      "visible_chars": 900,
+      "span_chars": 900,
+      "coverage_fraction": 1.0,
+      "visibility": "full"
+    },
+    "next_request_after_first_full": {
+      "api_sequence": 22,
+      "visible_chars": 900,
+      "span_chars": 900,
+      "coverage_fraction": 1.0,
+      "visibility": "full"
+    },
+    "final_request": {
+      "api_sequence": 37,
+      "visible_chars": 900,
+      "span_chars": 900,
+      "coverage_fraction": 1.0,
+      "visibility": "full"
+    }
+  },
+  {
+    "run": "v2",
+    "case_id": "788",
+    "target_index": 9,
+    "doc_id": "57904",
+    "offset": 0,
+    "end": 900,
+    "selection_basis": "observed_run_v1_counterevidence_no_reference_needed",
+    "first_any_overlap_tool": {
+      "tool_sequence": 24,
+      "tool_name": "search",
+      "visible_chars": 900,
+      "span_chars": 900,
+      "coverage_fraction": 1.0,
+      "visibility": "full"
+    },
+    "first_full_tool": {
+      "tool_sequence": 24,
+      "tool_name": "search",
+      "visible_chars": 900,
+      "span_chars": 900,
+      "coverage_fraction": 1.0,
+      "visibility": "full"
+    },
+    "next_request_after_first_full": {
+      "api_sequence": 29,
+      "visible_chars": 900,
+      "span_chars": 900,
+      "coverage_fraction": 1.0,
+      "visibility": "full"
+    },
+    "final_request": {
+      "api_sequence": 37,
+      "visible_chars": 900,
+      "span_chars": 900,
+      "coverage_fraction": 1.0,
+      "visibility": "full"
+    }
+  }
+]

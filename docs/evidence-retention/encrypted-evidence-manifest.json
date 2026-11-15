@@ -1,0 +1,22 @@
+{
+  "format_version": 1,
+  "release_tag": "evidence-retention-fix-20261115",
+  "evidence_files": 76,
+  "archive_payload_files_including_path_map": 77,
+  "plaintext_bytes": 46635588,
+  "path_map_sha256": "b65d061297e37e51c0242bba9fbf6e38e6954e31b24a927f97df04997a8f4566",
+  "algorithm": "AES-256-GCM-framed-v1",
+  "package_id": "8c8601d32b703aaaf5e6227c9e499968",
+  "key_id": "cafc881f2b0bf9fb540fc925",
+  "manifest_sha256": "18118a4f880643ecf075b93440bdd6549359148d4c17feae29434ef5d8e5e647",
+  "encrypted_parts": [
+    {
+      "name": "retention-evidence.course-data.tar.gz.part00001.aead",
+      "bytes": 9633941,
+      "sha256": "94af228ef53c21ce7b1fcaeaf7813d907220383bb8235ef83f0a67af919b248c"
+    }
+  ],
+  "local_authenticated_decryption": true,
+  "local_logical_restore_and_all_sha256_verified": true,
+  "keys_uploaded": false
+}

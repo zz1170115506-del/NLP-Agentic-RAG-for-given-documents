@@ -1,0 +1,115 @@
+{
+  "nonempty_answers": 3,
+  "citations_checked": 12,
+  "checks": [
+    {
+      "case_id": "64",
+      "evidence_id": "E4",
+      "doc_id": "10744",
+      "offset": 0,
+      "end": 900,
+      "corpus_text_and_url_equal": true,
+      "fully_visible_in_final_actual_request": true
+    },
+    {
+      "case_id": "64",
+      "evidence_id": "E11",
+      "doc_id": "50486",
+      "offset": 0,
+      "end": 127,
+      "corpus_text_and_url_equal": true,
+      "fully_visible_in_final_actual_request": true
+    },
+    {
+      "case_id": "64",
+      "evidence_id": "E13",
+      "doc_id": "10744",
+      "offset": 5250,
+      "end": 6150,
+      "corpus_text_and_url_equal": true,
+      "fully_visible_in_final_actual_request": true
+    },
+    {
+      "case_id": "64",
+      "evidence_id": "E15",
+      "doc_id": "64232",
+      "offset": 1500,
+      "end": 2400,
+      "corpus_text_and_url_equal": true,
+      "fully_visible_in_final_actual_request": true
+    },
+    {
+      "case_id": "58",
+      "evidence_id": "E15",
+      "doc_id": "28406",
+      "offset": 38806,
+      "end": 39216,
+      "corpus_text_and_url_equal": true,
+      "fully_visible_in_final_actual_request": true
+    },
+    {
+      "case_id": "58",
+      "evidence_id": "E16",
+      "doc_id": "28406",
+      "offset": 38823,
+      "end": 39230,
+      "corpus_text_and_url_equal": true,
+      "fully_visible_in_final_actual_request": true
+    },
+    {
+      "case_id": "58",
+      "evidence_id": "E17",
+      "doc_id": "28406",
+      "offset": 38800,
+      "end": 39000,
+      "corpus_text_and_url_equal": true,
+      "fully_visible_in_final_actual_request": true
+    },
+    {
+      "case_id": "788",
+      "evidence_id": "E13",
+      "doc_id": "70534",
+      "offset": 0,
+      "end": 900,
+      "corpus_text_and_url_equal": true,
+      "fully_visible_in_final_actual_request": true
+    },
+    {
+      "case_id": "788",
+      "evidence_id": "E2",
+      "doc_id": "96357",
+      "offset": 0,
+      "end": 562,
+      "corpus_text_and_url_equal": true,
+      "fully_visible_in_final_actual_request": true
+    },
+    {
+      "case_id": "788",
+      "evidence_id": "E17",
+      "doc_id": "56188",
+      "offset": 0,
+      "end": 900,
+      "corpus_text_and_url_equal": true,
+      "fully_visible_in_final_actual_request": true
+    },
+    {
+      "case_id": "788",
+      "evidence_id": "E16",
+      "doc_id": "56188",
+      "offset": 750,
+      "end": 1059,
+      "corpus_text_and_url_equal": true,
+      "fully_visible_in_final_actual_request": true
+    },
+    {
+      "case_id": "788",
+      "evidence_id": "E14",
+      "doc_id": "57904",
+      "offset": 0,
+      "end": 900,
+      "corpus_text_and_url_equal": true,
+      "fully_visible_in_final_actual_request": true
+    }
+  ],
+  "does_not_establish_semantic_entailment": true
+}

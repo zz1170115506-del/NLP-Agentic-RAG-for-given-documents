@@ -1,0 +1,856 @@
+{
+  "scope": "frozen_v1_final_state_offline_replay_not_fresh_agent_run",
+  "input_prediction_sha256": "f0db570a923351340476312eac6346f7bcad0fa16b80f91d50a3641dfb2a6608",
+  "v1_source_commit": "363d3f5f01dfebd048712becee0d9f58b6abd0ce",
+  "v2_context_sha256": "8d9f2e64602f4bf4a72dd15cb0a171af948b459499a338f33f128a09ee939c9c",
+  "new_api_calls": 0,
+  "labels_read": false,
+  "cases": [
+    {
+      "case_id": "788",
+      "actual_final_api_sequence": 37,
+      "v1_messages_reproduced_exactly": true,
+      "input_state_and_groups_unchanged": true,
+      "v1_message_characters": 23778,
+      "v2_message_characters": 23164,
+      "total_message_budget": 24000,
+      "v1_message_sha256": "90a759e54fc8c8d8c641075591982b14eab4a21ac480a82bc80ec7276d1a899a",
+      "v2_message_sha256": "8b1c677cd4abf0b4e275ac015be0ca69040bce0323ce9e658717719fd85589c0",
+      "v2_selected_snapshot_ids": [
+        "E11",
+        "E12",
+        "E4",
+        "E16",
+        "E17",
+        "E2",
+        "E6",
+        "E22",
+        "E8",
+        "E1",
+        "E3",
+        "E15",
+        "E20",
+        "E5",
+        "E7",
+        "E13"
+      ],
+      "v2_retained_group_indices": [],
+      "v1_partial_components": 3,
+      "v2_partial_components": 0,
+      "components": [
+        {
+          "doc_id": "45789",
+          "member_ids": [
+            "E1",
+            "E3",
+            "E8",
+            "E22"
+          ],
+          "offsets": [
+            3750,
+            4500,
+            3000,
+            2250
+          ],
+          "lengths": [
+            900,
+            900,
+            900,
+            900
+          ],
+          "v1_range_covered": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "v2_range_covered": [
+            true,
+            true,
+            true,
+            true
+          ],
+          "v2_atomic": true
+        },
+        {
+          "doc_id": "96357",
+          "member_ids": [
+            "E2"
+          ],
+          "offsets": [
+            0
+          ],
+          "lengths": [
+            562
+          ],
+          "v1_range_covered": [
+            true
+          ],
+          "v2_range_covered": [
+            true
+          ],
+          "v2_atomic": true
+        },
+        {
+          "doc_id": "81783",
+          "member_ids": [
+            "E4"
+          ],
+          "offsets": [
+            1500
+          ],
+          "lengths": [
+            900
+          ],
+          "v1_range_covered": [
+            true
+          ],
+          "v2_range_covered": [
+            true
+          ],
+          "v2_atomic": true
+        },
+        {
+          "doc_id": "1823",
+          "member_ids": [
+            "E5"
+          ],
+          "offsets": [
+            0
+          ],
+          "lengths": [
+            900
+          ],
+          "v1_range_covered": [
+            true
+          ],
+          "v2_range_covered": [
+            true
+          ],
+          "v2_atomic": true
+        },
+        {
+          "doc_id": "45789",
+          "member_ids": [
+            "E6"
+          ],
+          "offsets": [
+            6000
+          ],
+          "lengths": [
+            900
+          ],
+          "v1_range_covered": [
+            true
+          ],
+          "v2_range_covered": [
+            true
+          ],
+          "v2_atomic": true
+        },
+        {
+          "doc_id": "52795",
+          "member_ids": [
+            "E7"
+          ],
+          "offsets": [
+            0
+          ],
+          "lengths": [
+            900
+          ],
+          "v1_range_covered": [
+            true
+          ],
+          "v2_range_covered": [
+            true
+          ],
+          "v2_atomic": true
+        },
+        {
+          "doc_id": "6743",
+          "member_ids": [
+            "E9"
+          ],
+          "offsets": [
+            0
+          ],
+          "lengths": [
+            900
+          ],
+          "v1_range_covered": [
+            true
+          ],
+          "v2_range_covered": [
+            false
+          ],
+          "v2_atomic": true
+        },
+        {
+          "doc_id": "70534",
+          "member_ids": [
+            "E10"
+          ],
+          "offsets": [
+            3000
+          ],
+          "lengths": [
+            900
+          ],
+          "v1_range_covered": [
+            false
+          ],
+          "v2_range_covered": [
+            false
+          ],
+          "v2_atomic": true
+        },
+        {
+          "doc_id": "70534",
+          "member_ids": [
+            "E11",
+            "E12"
+          ],
+          "offsets": [
+            0,
+            750
+          ],
+          "lengths": [
+            900,
+            900
+          ],
+          "v1_range_covered": [
+            true,
+            true
+          ],
+          "v2_range_covered": [
+            true,
+            true
+          ],
+          "v2_atomic": true
+        },
+        {
+          "doc_id": "56202",
+          "member_ids": [
+            "E13"
+          ],
+          "offsets": [
+            0
+          ],
+          "lengths": [
+            900
+          ],
+          "v1_range_covered": [
+            true
+          ],
+          "v2_range_covered": [
+            true
+          ],
+          "v2_atomic": true
+        },
+        {
+          "doc_id": "95802",
+          "member_ids": [
+            "E14"
+          ],
+          "offsets": [
+            0
+          ],
+          "lengths": [
+            827
+          ],
+          "v1_range_covered": [
+            false
+          ],
+          "v2_range_covered": [
+            false
+          ],
+          "v2_atomic": true
+        },
+        {
+          "doc_id": "56202",
+          "member_ids": [
+            "E15",
+            "E20"
+          ],
+          "offsets": [
+            7500,
+            8250
+          ],
+          "lengths": [
+            900,
+            900
+          ],
+          "v1_range_covered": [
+            false,
+            true
+          ],
+          "v2_range_covered": [
+            true,
+            true
+          ],
+          "v2_atomic": true
+        },
+        {
+          "doc_id": "57904",
+          "member_ids": [
+            "E16",
+            "E17"
+          ],
+          "offsets": [
+            0,
+            750
+          ],
+          "lengths": [
+            900,
+            900
+          ],
+          "v1_range_covered": [
+            false,
+            true
+          ],
+          "v2_range_covered": [
+            true,
+            true
+          ],
+          "v2_atomic": true
+        },
+        {
+          "doc_id": "56188",
+          "member_ids": [
+            "E18",
+            "E19"
+          ],
+          "offsets": [
+            750,
+            0
+          ],
+          "lengths": [
+            309,
+            900
+          ],
+          "v1_range_covered": [
+            true,
+            false
+          ],
+          "v2_range_covered": [
+            false,
+            false
+          ],
+          "v2_atomic": true
+        },
+        {
+          "doc_id": "56202",
+          "member_ids": [
+            "E21"
+          ],
+          "offsets": [
+            5250
+          ],
+          "lengths": [
+            900
+          ],
+          "v1_range_covered": [
+            true
+          ],
+          "v2_range_covered": [
+            false
+          ],
+          "v2_atomic": true
+        }
+      ]
+    },
+    {
+      "case_id": "390",
+      "actual_final_api_sequence": 35,
+      "v1_messages_reproduced_exactly": true,
+      "input_state_and_groups_unchanged": true,
+      "v1_message_characters": 23828,
+      "v2_message_characters": 23529,
+      "total_message_budget": 24000,
+      "v1_message_sha256": "5106d00b05612fb56034357a25c2896b2f03a5df9ef689095c4b93d69153e728",
+      "v2_message_sha256": "8eb1939138b83550ea8e7e970d7461f686b840b9aecd11637abd25f298a52abc",
+      "v2_selected_snapshot_ids": [
+        "E9",
+        "E12",
+        "E21",
+        "E23",
+        "E1",
+        "E6",
+        "E10",
+        "E2",
+        "E4",
+        "E3",
+        "E16",
+        "E13",
+        "E11",
+        "E15",
+        "E14",
+        "E17",
+        "E5"
+      ],
+      "v2_retained_group_indices": [],
+      "v1_partial_components": 1,
+      "v2_partial_components": 0,
+      "components": [
+        {
+          "doc_id": "35962",
+          "member_ids": [
+            "E1"
+          ],
+          "offsets": [
+            12000
+          ],
+          "lengths": [
+            900
+          ],
+          "v1_range_covered": [
+            true
+          ],
+          "v2_range_covered": [
+            true
+          ],
+          "v2_atomic": true
+        },
+        {
+          "doc_id": "85888",
+          "member_ids": [
+            "E2"
+          ],
+          "offsets": [
+            102000
+          ],
+          "lengths": [
+            900
+          ],
+          "v1_range_covered": [
+            true
+          ],
+          "v2_range_covered": [
+            true
+          ],
+          "v2_atomic": true
+        },
+        {
+          "doc_id": "34159",
+          "member_ids": [
+            "E3"
+          ],
+          "offsets": [
+            76500
+          ],
+          "lengths": [
+            900
+          ],
+          "v1_range_covered": [
+            true
+          ],
+          "v2_range_covered": [
+            true
+          ],
+          "v2_atomic": true
+        },
+        {
+          "doc_id": "43704",
+          "member_ids": [
+            "E4"
+          ],
+          "offsets": [
+            17250
+          ],
+          "lengths": [
+            900
+          ],
+          "v1_range_covered": [
+            true
+          ],
+          "v2_range_covered": [
+            true
+          ],
+          "v2_atomic": true
+        },
+        {
+          "doc_id": "8844",
+          "member_ids": [
+            "E5"
+          ],
+          "offsets": [
+            750
+          ],
+          "lengths": [
+            900
+          ],
+          "v1_range_covered": [
+            true
+          ],
+          "v2_range_covered": [
+            true
+          ],
+          "v2_atomic": true
+        },
+        {
+          "doc_id": "94849",
+          "member_ids": [
+            "E6"
+          ],
+          "offsets": [
+            3000
+          ],
+          "lengths": [
+            900
+          ],
+          "v1_range_covered": [
+            true
+          ],
+          "v2_range_covered": [
+            true
+          ],
+          "v2_atomic": true
+        },
+        {
+          "doc_id": "89965",
+          "member_ids": [
+            "E7"
+          ],
+          "offsets": [
+            34500
+          ],
+          "lengths": [
+            900
+          ],
+          "v1_range_covered": [
+            false
+          ],
+          "v2_range_covered": [
+            false
+          ],
+          "v2_atomic": true
+        },
+        {
+          "doc_id": "94849",
+          "member_ids": [
+            "E8"
+          ],
+          "offsets": [
+            38250
+          ],
+          "lengths": [
+            900
+          ],
+          "v1_range_covered": [
+            false
+          ],
+          "v2_range_covered": [
+            false
+          ],
+          "v2_atomic": true
+        },
+        {
+          "doc_id": "3282",
+          "member_ids": [
+            "E9",
+            "E12"
+          ],
+          "offsets": [
+            0,
+            750
+          ],
+          "lengths": [
+            900,
+            476
+          ],
+          "v1_range_covered": [
+            true,
+            false
+          ],
+          "v2_range_covered": [
+            true,
+            true
+          ],
+          "v2_atomic": true
+        },
+        {
+          "doc_id": "45502",
+          "member_ids": [
+            "E10"
+          ],
+          "offsets": [
+            136500
+          ],
+          "lengths": [
+            900
+          ],
+          "v1_range_covered": [
+            true
+          ],
+          "v2_range_covered": [
+            true
+          ],
+          "v2_atomic": true
+        },
+        {
+          "doc_id": "20259",
+          "member_ids": [
+            "E11"
+          ],
+          "offsets": [
+            0
+          ],
+          "lengths": [
+            900
+          ],
+          "v1_range_covered": [
+            true
+          ],
+          "v2_range_covered": [
+            true
+          ],
+          "v2_atomic": true
+        },
+        {
+          "doc_id": "60979",
+          "member_ids": [
+            "E13"
+          ],
+          "offsets": [
+            17250
+          ],
+          "lengths": [
+            900
+          ],
+          "v1_range_covered": [
+            true
+          ],
+          "v2_range_covered": [
+            true
+          ],
+          "v2_atomic": true
+        },
+        {
+          "doc_id": "88470",
+          "member_ids": [
+            "E14",
+            "E15"
+          ],
+          "offsets": [
+            750,
+            0
+          ],
+          "lengths": [
+            900,
+            900
+          ],
+          "v1_range_covered": [
+            true,
+            true
+          ],
+          "v2_range_covered": [
+            true,
+            true
+          ],
+          "v2_atomic": true
+        },
+        {
+          "doc_id": "48310",
+          "member_ids": [
+            "E16"
+          ],
+          "offsets": [
+            44250
+          ],
+          "lengths": [
+            900
+          ],
+          "v1_range_covered": [
+            true
+          ],
+          "v2_range_covered": [
+            true
+          ],
+          "v2_atomic": true
+        },
+        {
+          "doc_id": "7237",
+          "member_ids": [
+            "E17"
+          ],
+          "offsets": [
+            0
+          ],
+          "lengths": [
+            900
+          ],
+          "v1_range_covered": [
+            true
+          ],
+          "v2_range_covered": [
+            true
+          ],
+          "v2_atomic": true
+        },
+        {
+          "doc_id": "85888",
+          "member_ids": [
+            "E18"
+          ],
+          "offsets": [
+            750
+          ],
+          "lengths": [
+            900
+          ],
+          "v1_range_covered": [
+            true
+          ],
+          "v2_range_covered": [
+            false
+          ],
+          "v2_atomic": true
+        },
+        {
+          "doc_id": "67511",
+          "member_ids": [
+            "E19"
+          ],
+          "offsets": [
+            37500
+          ],
+          "lengths": [
+            900
+          ],
+          "v1_range_covered": [
+            false
+          ],
+          "v2_range_covered": [
+            false
+          ],
+          "v2_atomic": true
+        },
+        {
+          "doc_id": "37120",
+          "member_ids": [
+            "E20"
+          ],
+          "offsets": [
+            3750
+          ],
+          "lengths": [
+            900
+          ],
+          "v1_range_covered": [
+            false
+          ],
+          "v2_range_covered": [
+            false
+          ],
+          "v2_atomic": true
+        },
+        {
+          "doc_id": "85888",
+          "member_ids": [
+            "E21",
+            "E23"
+          ],
+          "offsets": [
+            6750,
+            7500
+          ],
+          "lengths": [
+            900,
+            900
+          ],
+          "v1_range_covered": [
+            true,
+            true
+          ],
+          "v2_range_covered": [
+            true,
+            true
+          ],
+          "v2_atomic": true
+        },
+        {
+          "doc_id": "41854",
+          "member_ids": [
+            "E22"
+          ],
+          "offsets": [
+            33000
+          ],
+          "lengths": [
+            900
+          ],
+          "v1_range_covered": [
+            false
+          ],
+          "v2_range_covered": [
+            false
+          ],
+          "v2_atomic": true
+        },
+        {
+          "doc_id": "37120",
+          "member_ids": [
+            "E24"
+          ],
+          "offsets": [
+            2250
+          ],
+          "lengths": [
+            900
+          ],
+          "v1_range_covered": [
+            false
+          ],
+          "v2_range_covered": [
+            false
+          ],
+          "v2_atomic": true
+        },
+        {
+          "doc_id": "74627",
+          "member_ids": [
+            "E25",
+            "E26"
+          ],
+          "offsets": [
+            750,
+            1500
+          ],
+          "lengths": [
+            900,
+            900
+          ],
+          "v1_range_covered": [
+            false,
+            false
+          ],
+          "v2_range_covered": [
+            false,
+            false
+          ],
+          "v2_atomic": true
+        },
+        {
+          "doc_id": "10661",
+          "member_ids": [
+            "E27"
+          ],
+          "offsets": [
+            21750
+          ],
+          "lengths": [
+            900
+          ],
+          "v1_range_covered": [
+            false
+          ],
+          "v2_range_covered": [
+            false
+          ],
+          "v2_atomic": true
+        }
+      ]
+    }
+  ]
+}

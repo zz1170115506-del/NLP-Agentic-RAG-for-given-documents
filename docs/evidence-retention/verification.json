@@ -1,0 +1,23 @@
+{
+  "pytest_passed": 175,
+  "pytest_skipped": 5,
+  "pytest_failed": 0,
+  "ruff_passed": true,
+  "full_fresh_runs": 2,
+  "questions_per_run": 9,
+  "v2_api_200": 41,
+  "v2_max_request_chars": 23727,
+  "v2_max_reported_tokens": 26706,
+  "reference_labels_loaded_after_each_nine_finished": true,
+  "baseline_prediction_unmodified": true,
+  "new_api_calls": 79,
+  "new_reported_input_plus_output_tokens": 355559,
+  "unknown_usage_requests": 0,
+  "core_changes_only": "src/rag_agent/agent/context.py",
+  "qwen_not_used": true,
+  "encrypted_evidence_files": 76,
+  "archive_payload_files_including_path_map": 77,
+  "local_authenticated_decryption_passed": true,
+  "local_logical_restore_all_sha256_passed": true,
+  "remote_download_verification_record": "See the local delivery verification JSON supplied after release publication."
+}

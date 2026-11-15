@@ -1,0 +1,22 @@
+{
+  "valid": true,
+  "formal": false,
+  "official_compat": false,
+  "strict_grounding": false,
+  "errors": [],
+  "records": 9,
+  "expected": 9,
+  "completed": 3,
+  "failed": 6,
+  "citation_passed": 9,
+  "citation_errors": {},
+  "tool_calls": 62,
+  "total_tokens": 192021,
+  "config_ids": [
+    "900fc3b95b775d2a"
+  ],
+  "correct": 3,
+  "em": 0.3333333333333333,
+  "em_percent": 33.333333333333336,
+  "scoring": "normalized exact match; failed runs count as incorrect; not a course ranking"
+}

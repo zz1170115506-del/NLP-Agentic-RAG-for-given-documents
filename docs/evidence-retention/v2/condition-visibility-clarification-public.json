@@ -1,0 +1,52 @@
+{
+  "case_id": "788",
+  "reference_labels_read": false,
+  "actual_final_api_sequence": 37,
+  "distinct_conditions": [
+    {
+      "condition": "target_mosque_completion",
+      "evidence_id": "E13",
+      "doc_id": "70534",
+      "offset": 0,
+      "end": 900,
+      "first_tool_sequence": 15,
+      "actual_api_visibility": {
+        "22": "full",
+        "29": "full",
+        "37": "full"
+      },
+      "final_cited": true
+    },
+    {
+      "condition": "nearby_other_mosque_construction",
+      "evidence_id": "E18",
+      "doc_id": "95802",
+      "offset": 0,
+      "end": 827,
+      "tool_sequences": [
+        25,
+        31
+      ],
+      "actual_api_visibility": {
+        "29": "absent",
+        "37": "absent"
+      },
+      "final_cited": false,
+      "final_nearby_alternative_evidence": "E9/doc6743[0,900) supplies builder and distance but no explicit construction year"
+    },
+    {
+      "condition": "hospital_establishment_counterevidence",
+      "evidence_id": "E14",
+      "doc_id": "57904",
+      "offset": 0,
+      "end": 900,
+      "first_tool_sequence": 24,
+      "actual_api_visibility": {
+        "29": "full",
+        "37": "full"
+      },
+      "final_cited": true,
+      "interpretation": "Counterevidence visible; final explanation substitutes expansion/relocation for establishment."
+    }
+  ]
+}

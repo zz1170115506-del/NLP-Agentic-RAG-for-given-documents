@@ -69,6 +69,24 @@ def test_future_observation_does_not_validate_an_earlier_view():
     assert public["evidence_lifetimes"][0]["final_request_visibility"] == "no_later_request"
 
 
+def test_contained_text_under_other_observed_id_counts_as_content_not_original_id():
+    larger = {"evidence_id": "E2", "doc_id": "fixture-doc", "offset": 0,
+              "text": "PRIVATE_PASSAGE_EXTENDED", "chunk_id": "fixture-doc:larger"}
+    record = fixture_record([larger])
+    tool = next(e for e in record["trajectory"] if e.get("role") == "tool")
+    payload = json.loads(tool["content"])
+    payload["data"]["results"].append(larger)
+    tool["content"] = json.dumps(payload)
+    state = next(e for e in record["trajectory"] if e.get("event") == "state")
+    state["state"]["evidence"].append(larger)
+    public, _ = audit.audit_record(record, [])
+    assert public["never_visible_observed_spans"] == 1
+    assert public["never_visible_observed_content_spans"] == 0
+    request = public["requests"][0]
+    assert request["state_full_visible"] == 1
+    assert request["state_content_full_visible"] == 2
+
+
 def test_same_coordinates_with_changed_text_are_not_valid_provenance():
     view = {"evidence_id": "E1", "doc_id": "fixture-doc", "offset": 8, "text": "CHANGED"}
     public, _ = audit.audit_record(fixture_record([view]), [])

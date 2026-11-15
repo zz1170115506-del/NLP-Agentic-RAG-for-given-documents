@@ -1,0 +1,14 @@
+{
+  "scope": "completed_trajectory_offline_audit",
+  "audit_script_sha256": "68cf053865bb81c059ffa0ed85e6a0d0dfd24df5f2540647e5193e4b404d122a",
+  "files": {
+    "private-details.json": {
+      "bytes": 10505391,
+      "sha256": "8d1f1082af02e02740cac30878035cb564eff5f84f783b7bb4391ee551c8d688"
+    },
+    "public-summary.json": {
+      "bytes": 1435137,
+      "sha256": "2f43a509709eac27c0ec9574c639740e711f13da7bcdfe7048850fd230bd7b93"
+    }
+  }
+}
