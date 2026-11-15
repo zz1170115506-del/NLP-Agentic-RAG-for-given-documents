@@ -55,7 +55,7 @@
 
 ## 4. 执行机、语料、索引与恢复
 
-执行位置：`/Users/kiki/Documents/ChatGPT/关于大数据计算的项目写作/NLP-Agentic-RAG-for-given-documents`。macOS arm64，Python 3.12.14，统一内存24GiB；沙箱内MPS探测受限，真实执行命令在已授权外部环境确认MPS可用。CPU/CUDA没有互相冒充。基础/检索/开发依赖在新建 `.venv` 实际安装；版本快照见 [requirements-lock-py312-macos.txt](../requirements-lock-py312-macos.txt)。起始主测试66通过、2个网页测试受继承API环境影响失败；已隔离测试环境。正确的Agent1.2测试需在`agent12/`目录运行，最终70项通过。
+执行位置：`NLP-Agentic-RAG-for-given-documents（项目根目录）`。macOS arm64，Python 3.12.14，统一内存24GiB；沙箱内MPS探测受限，真实执行命令在已授权外部环境确认MPS可用。CPU/CUDA没有互相冒充。基础/检索/开发依赖在新建 `.venv` 实际安装；版本快照见 [requirements-lock-py312-macos.txt](../requirements-lock-py312-macos.txt)。起始主测试66通过、2个网页测试受继承API环境影响失败；已隔离测试环境。正确的Agent1.2测试需在`agent12/`目录运行，最终70项通过。
 
 固定语料：`https://huggingface.co/datasets/Tevatron/browsecomp-plus-corpus`，train，revision `b27b02bc3e45511b8b82a13e6f90ce761df726f6`，字段docid/text/url。唯一文档数100,195；Unicode字符分块900、重叠150；共4,345,592。指纹 `ea8764233b0d4a76d050842e290805a0f154858084dfd0430ba8c0d9c555025f`。`document.text[start:end] == snippet`为原文坐标条件，start/end不是字节或token位置。
 

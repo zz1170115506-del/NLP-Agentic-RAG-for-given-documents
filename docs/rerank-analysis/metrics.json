@@ -4470,7 +4470,7 @@
         "timing": "time.perf_counter; one full warmup per process",
         "rss_scope": "process lifetime high-water mark, not incremental reranker memory"
       },
-      "replay": "/Users/kiki/Documents/Codex/2026-11-10/zhi-xi/outputs/NLP-Agentic-RAG-for-given-documents/outputs/rerank-eval/round1"
+      "replay": "outputs/rerank-eval/round1"
     },
     {
       "run": "heldout",
@@ -4688,7 +4688,7 @@
         "timing": "time.perf_counter; one full warmup per process",
         "rss_scope": "process lifetime high-water mark, not incremental reranker memory"
       },
-      "replay": "/Users/kiki/Documents/Codex/2026-11-10/zhi-xi/outputs/NLP-Agentic-RAG-for-given-documents/outputs/rerank-eval/round2-control"
+      "replay": "outputs/rerank-eval/round2-control"
     }
   ],
   "integrated_latency": {
