@@ -10,7 +10,6 @@ import json
 import os
 from pathlib import Path
 import platform
-import subprocess
 import time
 
 from dotenv import load_dotenv
@@ -22,6 +21,7 @@ from rag_agent.data import DocumentStore
 from rag_agent.evaluation.batch import _exclusive_lock
 from rag_agent.evaluation.io import file_sha256, read_questions
 from rag_agent.retrieval import SearchService
+from rag_agent.source_provenance import optional_git_sha
 
 
 def write_json(path, value):
@@ -93,7 +93,7 @@ def main():
         source_digest.update(str(path).encode())
         source_digest.update(path.read_bytes())
     source_digest.update(Path(__file__).read_bytes())
-    metadata = {"git_sha": subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip(),
+    metadata = {"git_sha": optional_git_sha(Path(__file__).resolve().parents[1]),
                 "source_digest": source_digest.hexdigest(), "questions_sha256": file_sha256(args.questions),
                 "question_ids": [q.id for q in questions], "configs": [c.model_dump() for c in configs],
                 "config_ids": [c.config_id for c in configs], "platform": platform.platform(),

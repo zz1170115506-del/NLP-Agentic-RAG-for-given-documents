@@ -16,7 +16,6 @@ from pathlib import Path
 import platform
 import resource
 import statistics
-import subprocess
 import sys
 import time
 
@@ -26,6 +25,7 @@ from rag_agent.evaluation.io import file_sha256, iter_jsonl
 from rag_agent.retrieval import SearchService
 from rag_agent.retrieval.rerank import LocalCrossEncoder
 from rag_agent.schemas import Question
+from rag_agent.source_provenance import optional_git_sha
 
 GROUPS = ("B", "C", "D")
 
@@ -141,7 +141,7 @@ def run(args):
     search = CapturedSearch(configs["B"])
     try:
         index = Path(configs["B"].index_dir)
-        protocol = {"format_version": 1, "git_sha": subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=root, text=True).strip(),
+        protocol = {"format_version": 1, "git_sha": optional_git_sha(root),
             "source_digest": digest_json(sources), "source_files": sources,
             "config_ids": {group: config.config_id for group, config in configs.items()},
             "configs": {group: config.model_dump() for group, config in configs.items()},
