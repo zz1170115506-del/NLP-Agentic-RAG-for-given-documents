@@ -694,12 +694,16 @@ class SearchAgent:
         while len(turns) > 1 and self._size(messages + [item for turn in turns for item in turn]) > self.config.context_chars:
             turns.pop(0)
             self.context_stats["pruned_history_turns"] += 1
+        # Reject groups that cannot fit even without the evidence snapshot first.
+        # Otherwise pruning evidence to make room for a huge parallel-search turn,
+        # then dropping that turn too, leaves the model blind to all observations.
+        mandatory = [messages[0], {**messages[1], "content": json.dumps({**state, "evidence": []}, ensure_ascii=False)}]
+        while turns and self._size(mandatory + [item for turn in turns for item in turn]) > self.config.context_chars:
+            turns.pop(0)
+            self.context_stats["pruned_history_turns"] += 1
         while state["evidence"] and self._size(messages + [item for turn in turns for item in turn]) > self.config.context_chars:
             state["evidence"].pop(0)
             messages[1]["content"] = json.dumps(state, ensure_ascii=False)
-        if turns and self._size(messages + turns[0]) > self.config.context_chars:
-            turns.pop(0)
-            self.context_stats["pruned_history_turns"] += 1
         messages.extend(item for turn in turns for item in turn)
         if self._size(messages) > self.config.context_chars:
             # Never silently cut the question or loaded instructions.
