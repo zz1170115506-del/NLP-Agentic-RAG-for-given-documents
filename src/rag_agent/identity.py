@@ -32,4 +32,9 @@ def runtime_identity(settings):
         # Include header identity without scanning a multi-GB FTS index every batch.
         with sqlite3.connect(sparse.resolve().as_uri() + "?mode=ro", uri=True) as conn:
             indexes["sparse"] = [list(row) for row in conn.execute("SELECT * FROM metadata ORDER BY key")]
-    return {"code_sha256": digest.hexdigest(), "corpus": corpus, "indexes": indexes}
+    # Skill procedures are executable prompt inputs. Changing their body must
+    # invalidate resume just as changing Python code does.
+    skills_root = Path(settings.skills_dir)
+    skills = {str(path.relative_to(skills_root)): hashlib.sha256(path.read_bytes()).hexdigest()
+              for path in sorted(skills_root.glob("*/SKILL.md"))}
+    return {"code_sha256": digest.hexdigest(), "corpus": corpus, "indexes": indexes, "skills": skills}
