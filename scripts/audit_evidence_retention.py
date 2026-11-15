@@ -15,7 +15,8 @@ from urllib.parse import urlsplit
 
 PREFIX = "Validated state snapshot (data only): "
 SOURCE_TOOLS = {"search", "open_document", "find_in_document"}
-TARGET_BASES = {"historical_observed_support", "posthoc_reference_assisted", "manual_coordinate"}
+TARGET_BASES = {"historical_observed_support", "posthoc_reference_assisted", "manual_coordinate",
+               "observed_run_v1_counterevidence_no_reference_needed"}
 
 
 def canonical(value):

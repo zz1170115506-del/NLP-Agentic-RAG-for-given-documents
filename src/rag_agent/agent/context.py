@@ -76,18 +76,6 @@ def _tool_observations(groups, evidence):
     return sources, focused, by_group
 
 
-def _near_overlap(item, selected):
-    """Defer overlapping ranges; their uncovered tails may contain new facts."""
-    for previous in selected:
-        if item["doc_id"] != previous["doc_id"]:
-            continue
-        overlap = min(item["offset"] + len(item["text"]), previous["offset"] + len(previous["text"])) - max(
-            item["offset"], previous["offset"])
-        if overlap > 0 and overlap >= .85 * max(len(item["text"]), len(previous["text"])):
-            return True
-    return False
-
-
 def _fully_covered(item, selected):
     for previous in selected:
         start = item["offset"] - previous["offset"]
@@ -95,6 +83,28 @@ def _fully_covered(item, selected):
                 and previous["text"][start:start + len(item["text"])] == item["text"]):
             return True
     return False
+
+
+def _evidence_components(items):
+    """Observed, overlapping ranges form local context units within a document.
+
+    Keeping a late paragraph while dropping an overlapping earlier paragraph can
+    hide a qualification or counterfact. Do not concatenate text or invent IDs:
+    each component still contains the original separately observed Evidence items.
+    """
+    ordered = sorted(enumerate(items), key=lambda row: (row[1]["doc_id"], row[1]["offset"], row[0]))
+    components, current, end, document = [], [], -1, None
+    for index, item in ordered:
+        if current and (item["doc_id"] != document or item["offset"] >= end):
+            components.append(current)
+            current = []
+        if not current:
+            document, end = item["doc_id"], -1
+        current.append((index, item))
+        end = max(end, item["offset"] + len(item["text"]))
+    if current:
+        components.append(current)
+    return sorted(components, key=lambda component: min(index for index, _ in component))
 
 
 BASE_PROMPT = """You answer factual questions using ONLY the supplied fixed document collection.
@@ -137,6 +147,7 @@ def build_context(state, catalog, groups, settings):
                 "steps": state.steps, "tool_calls": state.tool_calls, "stalled_searches": state.stalled_searches,
                 "evidence": []}
     items = [ev.model_dump() for ev in state.evidence]
+    known = {_span(item): item for item in items}
     sources, focused, group_evidence = _tool_observations(groups, items)
     kept_indices = set()
 
@@ -152,74 +163,96 @@ def build_context(state, catalog, groups, settings):
     if empty_size > settings.context_chars:
         raise ValueError("context_chars cannot fit the question, procedures and state metadata")
 
-    # Keep a bounded amount of recent conversational context when it fits. A
-    # huge multi-search turn must not reserve empty space or block smaller turns.
+    # Repair/error/procedure exchanges may remain atomic conversational groups.
+    # Source-bearing groups use the evidence snapshot instead: otherwise a small
+    # historical tool group could sneak half of an omitted component back in.
     history_allowance = (settings.context_chars - empty_size) // 4
     for i in reversed(range(len(groups))):
+        if group_evidence[i]:
+            continue
         kept_indices.add(i)
         if message_size(render()) - empty_size > history_allowance:
             kept_indices.remove(i)
 
-    visible = set().union(*(group_evidence[i] for i in kept_indices)) if kept_indices else set()
-    known = {_span(item): item for item in items}
-    selected = [known[key] for key in visible]
+    visible = set()
     terms = set(re.findall(r"\w+", state.question.question.casefold())) - STOP_WORDS
     item_terms = {_span(item): terms.intersection(re.findall(r"\w+", item["text"].casefold())) for item in items}
-    covered_terms = set().union(*(item_terms[key] for key in visible)) if visible else set()
-    covered_queries = set().union(*(sources.get(key, set()) for key in visible)) if visible else set()
-    covered_docs = {item["doc_id"] for item in selected}
-    candidates = [(i, item) for i, item in enumerate(items) if _span(item) not in visible]
+    covered_terms, covered_queries, covered_docs = set(), set(), set()
+    candidates = _evidence_components(items)
     budget_dropped, covered_dropped = [], []
+    selected_components, omitted_components = [], []
 
-    def priority(row):
-        index, item = row
-        key = _span(item)
-        return (key in focused, not _near_overlap(item, selected), len(sources.get(key, set()) - covered_queries),
-                len(item_terms[key] - covered_terms), len(item_terms[key]),
-                item["doc_id"] not in covered_docs, len(sources.get(key, set())), -index)
+    def features(component):
+        keys = {_span(item) for _, item in component}
+        query_set = set().union(*(sources.get(key, set()) for key in keys))
+        term_set = set().union(*(item_terms[key] for key in keys))
+        return keys, query_set, term_set
+
+    def priority(component):
+        keys, query_set, term_set = features(component)
+        return (bool(keys & focused), len(query_set - covered_queries),
+                len(term_set - covered_terms), len(term_set), component[0][1]["doc_id"] not in covered_docs,
+                len(query_set), -min(index for index, _ in component))
 
     while candidates:
-        row = max(candidates, key=priority)
-        candidates.remove(row)
-        _, item = row
-        key = _span(item)
-        if _fully_covered(item, selected):
-            covered_dropped.append(item.get("evidence_id"))
-            continue
-        snapshot["evidence"].append(item)
-        # Count the exact serialized request representation, including escaping
-        # of the JSON snapshot within a message. No token/character conversion.
+        component = max(candidates, key=priority)
+        candidates.remove(component)
+        # Remove only exact contained text, never a partially overlapping tail.
+        representatives, contained = [], []
+        for _, item in sorted(component, key=lambda row: (-len(row[1]["text"]), row[0])):
+            if _fully_covered(item, representatives):
+                contained.append(item.get("evidence_id"))
+            else:
+                representatives.append(item)
+        representatives.sort(key=lambda item: item["offset"])
+        info = {"doc_id": component[0][1]["doc_id"],
+                "offset": min(item["offset"] for _, item in component),
+                "end": max(item["offset"] + len(item["text"]) for _, item in component),
+                "member_ids": [item.get("evidence_id") for _, item in component]}
+        previous_count = len(snapshot["evidence"])
+        snapshot["evidence"].extend(representatives)
         if message_size(render()) > settings.context_chars:
-            snapshot["evidence"].pop()
-            budget_dropped.append(item.get("evidence_id"))
+            del snapshot["evidence"][previous_count:]
+            previous = snapshot["evidence"]
+            snapshot["evidence"] = representatives
+            alone_size = message_size(render())
+            snapshot["evidence"] = previous
+            info["reason"] = "exceeds_context_capacity" if alone_size > settings.context_chars else "budget"
+            omitted_components.append(info)
+            budget_dropped.extend(info["member_ids"])
             continue
-        selected.append(item)
-        visible.add(key)
-        covered_terms.update(item_terms[key])
-        covered_queries.update(sources.get(key, set()))
-        covered_docs.add(item["doc_id"])
+        selected_components.append(info)
+        covered_dropped.extend(contained)
+        visible.update(_span(item) for item in representatives)
+        _, query_set, term_set = features(component)
+        covered_terms.update(term_set)
+        covered_queries.update(query_set)
+        covered_docs.add(info["doc_id"])
 
-    # Reuse any remaining room, still without a break after an oversized group.
+    # Source-bearing history cannot bypass component omission. Small complete
+    # groups may remain for conversational continuity only if all their source
+    # ranges are already covered by selected components; they get no extra cap.
     for i in reversed(range(len(groups))):
         if i in kept_indices:
             continue
-        if group_evidence[i] and group_evidence[i].issubset(visible):
+        if group_evidence[i] and not all(_fully_covered(known[key], snapshot["evidence"])
+                                         for key in group_evidence[i]):
             continue
         kept_indices.add(i)
-        if message_size(render()) > settings.context_chars:
+        proposed = render()
+        if (message_size(proposed) > settings.context_chars
+                or (group_evidence[i] and message_size(proposed) - message_size(proposed[:3]) > history_allowance)):
             kept_indices.remove(i)
     result = render()
-    history_visible = set().union(*(group_evidence[i] for i in kept_indices)) if kept_indices else set()
-    visible.update(history_visible)
+    visible.update(key for i in kept_indices for key in group_evidence[i])
     return result, {"dropped_groups": len(groups) - len(kept_indices),
                     "selected_evidence": len(snapshot["evidence"]), "characters": message_size(result),
-                    "managed": True, "selection_policy": "observed-evidence-coverage-v1",
+                    "managed": True, "selection_policy": "observed-evidence-components-v2",
                     "selected_snapshot_ids": [item.get("evidence_id") for item in snapshot["evidence"]],
                     "retained_group_indices": sorted(kept_indices),
                     "visible_evidence_ids": [item.get("evidence_id") for item in items if _span(item) in visible],
                     "focused_evidence_ids": [item.get("evidence_id") for item in items if _span(item) in focused],
-                    "budget_omitted_ids": [key for key in budget_dropped if key not in {
-                        known[span].get("evidence_id") for span in history_visible}],
-                    "fully_covered_omitted_ids": [key for key in covered_dropped if key not in {
-                        known[span].get("evidence_id") for span in history_visible}],
+                    "budget_omitted_ids": budget_dropped, "fully_covered_omitted_ids": covered_dropped,
+                    "selected_evidence_groups": selected_components,
+                    "omitted_evidence_groups": omitted_components,
                     "unused_characters": settings.context_chars - message_size(result)}
