@@ -4,11 +4,11 @@ import json
 from pathlib import Path
 from rag_agent.config import Settings
 from rag_agent.data import DocumentStore, iter_jsonl
-from rag_agent.retrieval import build_indexes, SearchService
+from rag_agent.retrieval import METHODS, build_indexes, SearchService
 from rag_agent.runtime import local_caches
 
 p = argparse.ArgumentParser()
-p.add_argument('--methods', nargs='+', choices=['sparse','encoder','instruction'], default=['sparse','encoder','instruction'])
+p.add_argument('--methods', nargs='+', choices=METHODS, default=list(METHODS))
 p.add_argument('--device', default='cpu')
 a = p.parse_args()
 local_caches()
@@ -18,14 +18,20 @@ store.import_documents(iter_jsonl('tests/fixtures/corpus.jsonl'),cfg.chunk_size,
 manifest = build_indexes(cfg,a.methods,progress=print)
 search = SearchService(cfg)
 results = {}
-for method in a.methods:
+routes = [*manifest, "hybrid"] if set(manifest) == set(METHODS) else list(manifest)
+for method in routes:
     hits = search.search('Where is Cedar University located?',3,method)
     assert hits, f'{method}: no results'
     assert hits[0].doc_id == 'd2', f'{method}: expected the direct university document to rank first'
     for hit in hits:
         doc = store.get(hit.doc_id)
         assert doc.text[hit.offset:hit.offset+len(hit.text)] == hit.text
-    results[method] = {'hits': [hit.model_dump() for hit in hits], 'manifest':manifest[method]}
+    results[method] = {'hits': [hit.model_dump() for hit in hits]}
+    if method == "hybrid":
+        fused_methods = {source["method"] for hit in hits for source in hit.metadata["rrf_sources"]}
+        assert fused_methods == set(METHODS), f"hybrid: missing routes {set(METHODS) - fused_methods}"
+    else:
+        results[method]['manifest'] = manifest[method]
 Path('outputs').mkdir(exist_ok=True)
 Path('outputs/retrieval_smoke.json').write_text(json.dumps(results,ensure_ascii=False,indent=2))
 print(json.dumps({'passed':list(results),'data':'3 synthetic documents','device':a.device}))

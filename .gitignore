@@ -13,6 +13,7 @@ outputs/*
 !outputs/.gitkeep
 data/*
 !data/README.md
+!data/test.jsonl
 indexes/*
 !indexes/.gitkeep
 build/

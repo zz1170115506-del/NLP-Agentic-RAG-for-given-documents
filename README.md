@@ -146,13 +146,36 @@ rag-agent search --config configs/openrouter.yaml 'your factual question' --meth
 
 E5 文档前缀的实际字符串是 `passage: `。向量索引采用 NumPy 分片与内存映射，避免一次加载所有向量。代价是查询仍需精确扫描全部分片；本轮未测全量延迟，后续可在保留相同协议的基础上换成近似向量索引。
 
-本机全量语料有 4,345,592 个源片段。长时间 MPS 构建已实测触发内存上限，可用独立进程逐片恢复来释放设备缓存；仍使用同一真实模型和生产构建器，不关闭内存保护。完整状态以回传文档和 manifest 为准，部分索引不能查询：
+课程全量语料有 4,345,592 个源片段。在已有完整语料库和检查点的机器上，用同一配置续建即可。迁移时保留 `data/course-full/documents.sqlite` 和完整分片目录。若 `indexes/course-full-vectors/` 的 BM25 文件指向 `indexes/course-full/`，迁移时一并保留目标目录。
+
+从空目录开始时，先导入和回传实验相同版本的语料。
 
 ```bash
-python scripts/index_in_shards.py --config configs/course-full-vectors.yaml --method instruction --status
-python scripts/index_in_shards.py --config configs/course-full-vectors.yaml --method instruction
-# 只推进有限批次时加 --max-processes 1；E5 可用 CPU 配置避开 MPS 争用：
+USE_TORCH=0 rag-agent prepare --config configs/course-full-vectors.yaml --hf \
+  --revision b27b02bc3e45511b8b82a13e6f90ce761df726f6
+```
+
+在连续构建稳定的设备上，可以直接构建三路。先把配置中的 `device` 设为对应设备，例如 NVIDIA GPU 用 `cuda`。
+
+```bash
+rag-agent index --config configs/course-full-vectors.yaml --methods sparse encoder instruction
+```
+
+长时间 MPS 构建触发内存上限时，可分批启动新进程。示例每个进程连续新增 4 个分片，减少重复加载模型和校验旧分片的开销。内存不足时可把 `--shards-per-process` 调回 1。续建会校验并复用已写入的分片。
+
+```bash
 rag-agent index --config configs/course-full-vectors-cpu.yaml --methods encoder
+python scripts/index_in_shards.py --config configs/course-full-vectors.yaml --method instruction --shards-per-process 4
+```
+
+两路状态均应显示 `ready: true`，源片段数应等于语料库总数。再分别测试三路和混合查询。混合查询需要在同一索引目录中访问到完整 BM25。
+
+```bash
+python scripts/index_in_shards.py --config configs/course-full-vectors.yaml --method encoder --status
+python scripts/index_in_shards.py --config configs/course-full-vectors.yaml --method instruction --status
+for method in sparse encoder instruction hybrid; do
+  rag-agent search --config configs/course-full-vectors.yaml 'your factual question' --method "$method"
+done
 ```
 
 长文档先按 Unicode 字符分块，保留 `doc_id/chunk_id/offset/url`；超出模型 token 长度的片段继续拆开，保留精确原文位置，不静默丢弃尾部。默认 E5/Qwen 模型约 33M/0.6B 参数；Qwen 的 CPU float32 权重内存约 2.4 GB，另需激活和框架内存。全语料索引可能占用数十 GB，应先评估存储空间。`device` 支持 cpu/mps/cuda/auto。

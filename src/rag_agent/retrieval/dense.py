@@ -4,6 +4,7 @@ import hashlib
 import json
 from itertools import islice
 from pathlib import Path
+import sqlite3
 import numpy as np
 from rag_agent.data import DocumentStore
 from rag_agent.schemas import Chunk, SearchHit
@@ -50,12 +51,32 @@ def build_dense(settings, store: DocumentStore, target: Path, method: str, progr
     if max_new_shards is not None and max_new_shards < 1:
         raise ValueError("max_new_shards must be positive")
     target.mkdir(parents=True, exist_ok=True)
+    # E5 and Qwen can build independently. Two writers to the same route would
+    # otherwise share temporary filenames and could overwrite each other's manifest.
+    lock = sqlite3.connect(target / "build-lock.sqlite", timeout=0)
+    try:
+        try:
+            lock.execute("BEGIN IMMEDIATE")
+        except sqlite3.OperationalError as exc:
+            if exc.sqlite_errorcode == sqlite3.SQLITE_BUSY:
+                raise ValueError(f"Another build is already writing {target}") from exc
+            raise
+        return _build_dense(settings, store, target, method, progress, embedder, max_new_shards)
+    finally:
+        lock.close()
+
+
+def _build_dense(settings, store, target, method, progress, embedder, max_new_shards):
     manifest_path = target / "manifest.json"
     expected = _expected(settings, store, method)
-    if not store.chunk_count or not store.fingerprint:
+    total_chunks = store.chunk_count
+    if not total_chunks or not expected["fingerprint"]:
         raise ValueError("Import a nonempty corpus before indexing")
     manifest = json.loads(manifest_path.read_text()) if manifest_path.exists() else {**expected, "ready":False, "shards":[]}
     _check(manifest, expected)
+    backend = "injected_test_stub" if embedder else "transformers"
+    if manifest["shards"] and manifest.get("embedding_backend") != backend:
+        raise ValueError("Cannot resume a dense index with a different embedding backend")
     # Pin resumed jobs to the resolved commit, even when the user's requested ref was main.
     model = embedder or TransformerEmbedder(settings, method, manifest.get("resolved_revision"))
     resolved = model.resolved_revision
@@ -64,12 +85,13 @@ def build_dense(settings, store: DocumentStore, target: Path, method: str, progr
     if manifest.get("dimension") and manifest["dimension"] != model.dimension:
         raise ValueError("Embedding dimension changed during resumed build")
     manifest.update({"resolved_revision":resolved, "tokenizer_revision":resolved, "dimension":model.dimension, "ready":False,
-                     "embedding_backend":"injected_test_stub" if embedder else "transformers"})
+                     "embedding_backend":backend})
     _write_json(manifest_path, manifest)
     iterator = iter(store.iter_chunks())
     shard_number = 0
     consumed = 0
     new_shards = 0
+    vector_count = 0
     while group := list(islice(iterator, SHARD_CHUNKS)):
         if shard_number < len(manifest["shards"]):
             existing = manifest["shards"][shard_number]
@@ -89,15 +111,13 @@ def build_dense(settings, store: DocumentStore, target: Path, method: str, progr
             if rows != existing["rows"]:
                 raise ValueError("Checkpoint metadata row count mismatch")
             consumed += len(group)
+            vector_count += rows
             shard_number += 1
             if progress:
-                progress({"method":method, "chunks":consumed, "total":store.chunk_count, "reused":True})
+                progress({"method":method, "chunks":consumed, "total":total_chunks, "reused":True})
             continue
         if max_new_shards is not None and new_shards >= max_new_shards:
-            manifest.update(ready=False, source_chunk_count=consumed,
-                            vector_count=sum(s["rows"] for s in manifest["shards"]))
-            _write_json(manifest_path, manifest)
-            return manifest
+            break
         # At most 256 source chunks are staged; each embedding call has at most batch_size passages.
         segments = [segment for chunk in group for segment in model.segments(chunk)]
         if not segments:
@@ -128,16 +148,17 @@ def build_dense(settings, store: DocumentStore, target: Path, method: str, progr
                  "source_chunks":len(group), "first_chunk_id":group[0].chunk_id, "last_chunk_id":group[-1].chunk_id,
                  "vectors_sha256":_digest(vector_path), "metadata_sha256":_digest(meta_path)}
         manifest["shards"].append(shard)
-        _write_json(manifest_path, manifest)
         consumed += len(group)
+        vector_count += len(segments)
         shard_number += 1
         new_shards += 1
+        manifest.update(source_chunk_count=consumed, vector_count=vector_count)
+        _write_json(manifest_path, manifest)
         if progress:
-            progress({"method":method, "chunks":consumed, "total":store.chunk_count, "reused":False})
+            progress({"method":method, "chunks":consumed, "total":total_chunks, "reused":False})
     if shard_number != len(manifest["shards"]):
         raise ValueError("Checkpoint has extra shards")
-    manifest.update({"ready":True, "source_chunk_count":consumed,
-                     "vector_count":sum(s["rows"] for s in manifest["shards"])})
+    manifest.update(ready=consumed == total_chunks, source_chunk_count=consumed, vector_count=vector_count)
     _write_json(manifest_path, manifest)
     return manifest
 

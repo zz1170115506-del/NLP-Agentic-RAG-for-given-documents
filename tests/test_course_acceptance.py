@@ -248,7 +248,9 @@ batch_predict(source,output,cfg,runner)
     assert summary["records"] == 2 and summary["completed"] == 2
 
 
-def test_neural_checkpoint_remains_incomplete_and_resumes(tmp_path, monkeypatch):
+@pytest.mark.parametrize("method", ["encoder", "instruction"])
+def test_neural_checkpoint_remains_incomplete_and_resumes(tmp_path, monkeypatch, method):
+    import json
     import numpy as np
     from rag_agent.retrieval import dense
     from rag_agent.schemas import Document
@@ -268,14 +270,30 @@ def test_neural_checkpoint_remains_incomplete_and_resumes(tmp_path, monkeypatch)
             return np.ones((len(texts), 2), dtype="float32")
 
     model, target = SyntheticEmbedder(), tmp_path / "vectors"
-    first = dense.build_dense(config, store, target, "encoder", embedder=model, max_new_shards=1)
+    def check_persisted_progress(event):
+        if not event["reused"]:
+            saved = json.loads((target / "manifest.json").read_text())
+            assert saved["source_chunk_count"] == event["chunks"]
+            assert saved["vector_count"] == event["chunks"]
+            assert saved["ready"] is False
+            with pytest.raises(ValueError, match="already writing"):
+                dense.build_dense(config, store, target, method, embedder=model)
+
+    def interrupt(event):
+        check_persisted_progress(event)
+        raise InterruptedError("test interruption after writing a shard")
+
+    with pytest.raises(InterruptedError):
+        dense.build_dense(config, store, target, method, interrupt, embedder=model)
+    first = json.loads((target / "manifest.json").read_text())
     assert not first["ready"] and first["source_chunk_count"] == 2
     with pytest.raises(ValueError, match="incomplete"):
-        dense.DenseRetriever(config, store, target, "encoder", embedder=model)
+        dense.DenseRetriever(config, store, target, method, embedder=model)
     before = (target / first["shards"][0]["vectors"]).stat().st_mtime_ns
-    second = dense.build_dense(config, store, target, "encoder", embedder=model, max_new_shards=1)
-    assert not second["ready"] and second["source_chunk_count"] == 4
+    second = dense.build_dense(config, store, target, method, check_persisted_progress,
+                               embedder=model, max_new_shards=2)
+    assert not second["ready"] and second["source_chunk_count"] == 6
     assert (target / first["shards"][0]["vectors"]).stat().st_mtime_ns == before
-    final = dense.build_dense(config, store, target, "encoder", embedder=model)
+    final = dense.build_dense(config, store, target, method, embedder=model)
     assert final["ready"] and final["source_chunk_count"] == store.chunk_count
     store.close()

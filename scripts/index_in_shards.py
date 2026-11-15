@@ -20,6 +20,8 @@ from rag_agent.retrieval.dense import DenseRetriever, _check, _expected
 def checkpoint(settings, method):
     path = Path(settings.index_dir) / method / "manifest.json"
     manifest = json.loads(path.read_text()) if path.exists() else {}
+    if not Path(settings.store_path).is_file():
+        raise FileNotFoundError(f"Corpus database is missing: {settings.store_path}; import or copy it first")
     store = DocumentStore(settings.store_path)
     try:
         fingerprint, total = store.fingerprint, store.chunk_count
@@ -42,19 +44,30 @@ def main():
     parser.add_argument("--config", required=True)
     parser.add_argument("--method", choices=["encoder", "instruction"], required=True)
     parser.add_argument("--max-processes", type=int, help="Optional positive checkpoint budget; omit to continue to ready=true")
+    parser.add_argument("--shards-per-process", type=int, default=1,
+                        help="New shards per worker. Increase to reuse the loaded model and checkpoint checks")
+    parser.add_argument("--device", choices=["auto", "cpu", "mps", "cuda"],
+                        help="Override the embedding device for this build")
     parser.add_argument("--output-dir", default="outputs/index-shards")
     parser.add_argument("--status", action="store_true", help="Inspect the actual checkpoint without encoding")
     parser.add_argument("--worker", action="store_true", help=argparse.SUPPRESS)
     args = parser.parse_args()
     if args.max_processes is not None and args.max_processes < 1:
         parser.error("--max-processes must be positive")
+    if args.shards_per_process < 1:
+        parser.error("--shards-per-process must be positive")
     settings = Settings.load(args.config)
+    if args.device:
+        settings = settings.model_copy(update={"device": args.device})
     if args.status:
         print(json.dumps(checkpoint(settings, args.method), indent=2))
         return 0
     if args.worker:
-        result = build_indexes(settings, [args.method], max_new_shards=1,
-                               progress=lambda event: print(json.dumps(event), flush=True))
+        def report(event):
+            if not event["reused"]:
+                print(json.dumps(event), flush=True)
+
+        result = build_indexes(settings, [args.method], max_new_shards=args.shards_per_process, progress=report)
         manifest = result[args.method]["manifest"]
         print(json.dumps({"ready": manifest["ready"], "source_chunks": manifest["source_chunk_count"],
                           "vectors": manifest["vector_count"], "seconds": result[args.method]["seconds"]}))
@@ -73,7 +86,8 @@ def main():
         log = output / f"{args.method}-{before['shards']:06d}-{time.time_ns()}.log"
         with log.open("w", encoding="utf-8") as stream:
             result = subprocess.run([sys.executable, str(Path(__file__).resolve()), "--worker",
-                                     "--config", str(Path(args.config).resolve()), "--method", args.method],
+                                     "--config", str(Path(args.config).resolve()), "--method", args.method,
+                                     "--shards-per-process", str(args.shards_per_process), "--device", settings.device],
                                     stdout=stream, stderr=subprocess.STDOUT)
         after = checkpoint(settings, args.method)
         attempts.append({"before": before["source_chunks"], "after": after["source_chunks"],
@@ -82,7 +96,8 @@ def main():
         (output / f"{args.method}-summary.json").write_text(json.dumps(summary, indent=2) + "\n")
         print(json.dumps({**after, "last_exit_code": result.returncode}), flush=True)
         if result.returncode:
-            return result.returncode
+            print(f"Index worker stopped. See {log}", file=sys.stderr)
+            return result.returncode if result.returncode > 0 else 128 - result.returncode
         if after["source_chunks"] <= before["source_chunks"] and not after["ready"]:
             raise RuntimeError("Builder made no progress; inspect the saved real log before retrying")
     print(json.dumps(checkpoint(settings, args.method), indent=2))
