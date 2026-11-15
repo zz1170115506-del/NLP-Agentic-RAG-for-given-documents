@@ -52,6 +52,10 @@ class HTTPProvider:
             # This baseline uses the same backbone with thinking disabled. Avoid a
             # hidden reasoning block that would require replay across tool turns.
             payload["reasoning"] = {"enabled": False, "exclude": True}
+        elif self.settings.model_policy == "official_compat":
+            # Official DeepSeek otherwise enables thinking by default. This mode
+            # explicitly uses the non-thinking tool protocol for both engines.
+            payload["thinking"] = {"type": "disabled"}
         return payload
 
     def complete(self, messages, tools, max_tokens=None, *, allow_tools=True):

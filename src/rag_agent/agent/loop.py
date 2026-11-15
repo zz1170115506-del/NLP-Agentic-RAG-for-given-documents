@@ -140,7 +140,7 @@ def run_question(question: Question, settings: Settings, store=None, search=None
             on_event(copy.deepcopy(record))
 
     emit({"event": "run_start", "audit_version": 2, "mode": settings.mode, "provider": provider_kind, "injected_provider": injected_provider, "config_id": settings.config_id,
-          "model": settings.llm_model, "model_verified": settings.model_verified,
+          "model": settings.llm_model, "model_policy": settings.model_policy, "model_verified": settings.model_verified,
           "model_verification_note": settings.model_verification_note,
           "config": settings.model_dump()})
     emit({"role": "user", "content": question.question})
@@ -240,8 +240,8 @@ def run_question(question: Question, settings: Settings, store=None, search=None
                 state.stop_reason = "missing_usage"
             elif state.total_tokens > settings.max_total_tokens:
                 state.stop_reason = "token_budget"
-            if settings.mode == "live" and provider_kind == "http" and response.get("model") != settings.llm_model:
-                emit({"event": "error", "code": "model_mismatch", "message": "Returned model ID differs from the verified configured ID."})
+            if settings.mode == "live" and provider_kind == "http" and not settings.accepts_response_model(response.get("model")):
+                emit({"event": "error", "code": "model_mismatch", "message": "Returned model ID is missing or not accepted by the configured model policy."})
                 state.stop_reason = "model_mismatch"
             if calls:
                 if not isinstance(calls, list):
@@ -337,7 +337,8 @@ def run_question(question: Question, settings: Settings, store=None, search=None
             provider.emit = original_emit
         if owns_provider and provider is not None and hasattr(provider, "close"):
             provider.close()
-    eligible = (final_valid and settings.mode == "live" and provider_kind == "http" and not injected_provider and settings.model_verified
+    eligible = (final_valid and settings.mode == "live" and settings.model_policy == "course_pinned"
+                and provider_kind == "http" and not injected_provider and settings.model_verified
                 and bool(settings.model_verification_note) and usage_complete and state.total_tokens > 0 and state.tool_calls > 0)
     emit({"event": "run_end", "eligible": eligible, "status": state.stop_reason, "stop_reason": state.stop_reason,
           "usage_complete": usage_complete, "state": state.model_dump()})
