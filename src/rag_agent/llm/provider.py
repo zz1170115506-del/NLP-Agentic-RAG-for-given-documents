@@ -56,6 +56,11 @@ class HTTPProvider:
             # Official DeepSeek otherwise enables thinking by default. This mode
             # explicitly uses the non-thinking tool protocol for both engines.
             payload["thinking"] = {"type": "disabled"}
+        elif (urlparse(self.settings.llm_base_url).hostname == "dashscope.aliyuncs.com"
+              or (urlparse(self.settings.llm_base_url).hostname or "").endswith(".cn-beijing.maas.aliyuncs.com")):
+            # Model Studio uses a different switch for the same non-thinking
+            # baseline. Record it in every actual request, including follow-ups.
+            payload["enable_thinking"] = False
         return payload
 
     def complete(self, messages, tools, max_tokens=None, *, allow_tools=True):
