@@ -1,0 +1,88 @@
+{
+  "selected_configuration": "configs/acceptance-final.yaml",
+  "config_id": "61d7cc3701b2a42a",
+  "runtime_identity": {
+    "code_sha256": "bdf0d95892e14fb49103f76d768542379812abf620b85962d97553957a3c10d9",
+    "corpus": {
+      "chunking": {
+        "size": 900,
+        "overlap": 150,
+        "unit": "python_unicode_characters"
+      },
+      "source": {
+        "type": "huggingface",
+        "dataset": "Tevatron/browsecomp-plus-corpus",
+        "split": "train",
+        "revision": "b27b02bc3e45511b8b82a13e6f90ce761df726f6",
+        "fields": [
+          "docid",
+          "text",
+          "url"
+        ],
+        "limit": null
+      },
+      "fingerprint": "ea8764233b0d4a76d050842e290805a0f154858084dfd0430ba8c0d9c555025f",
+      "document_count": 100195,
+      "chunk_count": 4345592,
+      "importing": false
+    },
+    "indexes": {
+      "sparse": [
+        [
+          "fingerprint",
+          "ea8764233b0d4a76d050842e290805a0f154858084dfd0430ba8c0d9c555025f"
+        ],
+        [
+          "ready",
+          "true"
+        ],
+        [
+          "tokenizer",
+          "unicode61 remove_diacritics 2"
+        ]
+      ]
+    },
+    "skills": {
+      "multi-clue-decomposition/SKILL.md": "f86bc73ad8d042558068e392c24339087e6fdb288b8b431421e64edcb5583ce2",
+      "search-recovery/SKILL.md": "983c75c6d14dae06f341e0f92e8dabd3deb8f80a296c0971277ebe7a911f4de4"
+    }
+  },
+  "diagnostic_validation_ids": [
+    "1005",
+    "121",
+    "253",
+    "445",
+    "720"
+  ],
+  "selection_reason": "The baseline retains skills, multi-step retrieval and context management, and all five diagnostic records passed real-HTTP compatibility auditing. Baseline, no-skills and single-step have equal 20% normalized EM on the five diagnostics; no-context has four budget failures. Repaired Agent1.2 still exhibited a model protocol failure. This is a functional candidate choice, not an accuracy superiority claim.",
+  "validation_limitations": "Five of the 100 validation questions were used for diagnosis and candidate selection; report this overlap and separately summarize the other 95. Test questions have no labels and are not used for tuning.",
+  "qwen": "Deferred by user; no further Qwen computation in current environment.",
+  "diagnostic_results": {
+    "baseline": {
+      "correct": 1,
+      "em_percent": 20,
+      "compatible_records": 5
+    },
+    "agent12_context_fixed": {
+      "correct": 2,
+      "em_percent": 40,
+      "compatible_records": 4
+    },
+    "no_skills": {
+      "correct": 1,
+      "em_percent": 20,
+      "compatible_records": 5
+    },
+    "single_step": {
+      "correct": 1,
+      "em_percent": 20,
+      "compatible_records": 5
+    },
+    "no_context": {
+      "correct": 1,
+      "em_percent": 20,
+      "compatible_records": 1
+    }
+  },
+  "code_commit": "dab7646"
+}

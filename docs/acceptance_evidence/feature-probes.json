@@ -1,0 +1,387 @@
+{
+  "scope": "synthetic functional acceptance, not benchmark results",
+  "expected": 8,
+  "records": 8,
+  "passed": 7,
+  "total_tokens": 39057,
+  "http_attempts": 24,
+  "cases": [
+    {
+      "id": "baseline-multihop",
+      "engine": "baseline",
+      "feature": "multihop",
+      "status": "completed",
+      "requested_model": "deepseek-v4-flash",
+      "response_models": [
+        "deepseek-flash"
+      ],
+      "tool_calls": 3,
+      "tool_names": [
+        "search",
+        "search",
+        "open_document"
+      ],
+      "total_tokens": 8040,
+      "raw_success_usage_total": 8040,
+      "http_attempts": 4,
+      "http_statuses": [
+        200,
+        200,
+        200,
+        200
+      ],
+      "usage_complete": true,
+      "selected_skills": [
+        "multi-clue-decomposition"
+      ],
+      "automatic_skills": [
+        "multi-clue-decomposition"
+      ],
+      "skill_bodies_in_actual_requests": {
+        "multi-clue-decomposition": true
+      },
+      "tool_results_in_followup_requests": {
+        "call_00_tyBMYDHMe8n6Ss2Ipwqw7821": true,
+        "call_00_Vo0KbawinBpOY5aLQBgC3363": true,
+        "call_00_YWu1rSDz8qUs2D3cCh4T0174": true
+      },
+      "max_actual_request_chars": 8060,
+      "feature_checks": {
+        "expected_synthetic_answer": true,
+        "automatic_decomposition": true,
+        "runtime_skill_body_in_request": true,
+        "query_uses_discovered_university": true,
+        "source_inspected": true
+      },
+      "passed": true
+    },
+    {
+      "id": "baseline-recovery",
+      "engine": "baseline",
+      "feature": "recovery",
+      "status": "insufficient_evidence",
+      "requested_model": "deepseek-v4-flash",
+      "response_models": [
+        "deepseek-flash"
+      ],
+      "tool_calls": 2,
+      "tool_names": [
+        "search",
+        "search"
+      ],
+      "total_tokens": 3884,
+      "raw_success_usage_total": 3884,
+      "http_attempts": 3,
+      "http_statuses": [
+        200,
+        200,
+        200
+      ],
+      "usage_complete": true,
+      "selected_skills": [
+        "search-recovery"
+      ],
+      "automatic_skills": [
+        "search-recovery"
+      ],
+      "skill_bodies_in_actual_requests": {
+        "search-recovery": true
+      },
+      "tool_results_in_followup_requests": {
+        "call_00_K5oprBBhKoJdFISmrgTv2514": true,
+        "call_00_Ko1AfpOhDtu744bx9ITi5945": true
+      },
+      "max_actual_request_chars": 4702,
+      "feature_checks": {
+        "expected_synthetic_answer": true,
+        "automatic_recovery": true,
+        "runtime_skill_body_in_request": true,
+        "honest_abstention": true
+      },
+      "passed": true
+    },
+    {
+      "id": "baseline-simple",
+      "engine": "baseline",
+      "feature": "simple",
+      "status": "completed",
+      "requested_model": "deepseek-v4-flash",
+      "response_models": [
+        "deepseek-flash"
+      ],
+      "tool_calls": 1,
+      "tool_names": [
+        "search"
+      ],
+      "total_tokens": 3007,
+      "raw_success_usage_total": 3007,
+      "http_attempts": 2,
+      "http_statuses": [
+        200,
+        200
+      ],
+      "usage_complete": true,
+      "selected_skills": [],
+      "automatic_skills": [],
+      "skill_bodies_in_actual_requests": {},
+      "tool_results_in_followup_requests": {
+        "call_00_SG7XDm1pkhTKiW8tId8a7420": true
+      },
+      "max_actual_request_chars": 3790,
+      "feature_checks": {
+        "expected_synthetic_answer": true,
+        "no_skill_selected": true
+      },
+      "passed": true
+    },
+    {
+      "id": "agent12-multihop",
+      "engine": "agent12",
+      "feature": "multihop",
+      "status": "completed",
+      "requested_model": "deepseek-v4-flash",
+      "response_models": [
+        "deepseek-flash"
+      ],
+      "tool_calls": 3,
+      "tool_names": [
+        "search",
+        "search",
+        "open_document"
+      ],
+      "total_tokens": 8293,
+      "raw_success_usage_total": 8293,
+      "http_attempts": 4,
+      "http_statuses": [
+        200,
+        200,
+        200,
+        200
+      ],
+      "usage_complete": true,
+      "selected_skills": [
+        "multi-clue-decomposition"
+      ],
+      "automatic_skills": [
+        "multi-clue-decomposition"
+      ],
+      "skill_bodies_in_actual_requests": {
+        "multi-clue-decomposition": true
+      },
+      "tool_results_in_followup_requests": {
+        "call_00_NcnRdPf0ozlKdfr0FDhd7602": true,
+        "call_00_dA7JablkSWLdKnyt6muo9811": true,
+        "call_00_C61HviV3hnED5mEFtB7m7549": true
+      },
+      "max_actual_request_chars": 8258,
+      "feature_checks": {
+        "expected_synthetic_answer": true,
+        "automatic_decomposition": true,
+        "runtime_skill_body_in_request": true,
+        "query_uses_discovered_university": true,
+        "source_inspected": true
+      },
+      "passed": true
+    },
+    {
+      "id": "agent12-recovery",
+      "engine": "agent12",
+      "feature": "recovery",
+      "status": "unresolved",
+      "requested_model": "deepseek-v4-flash",
+      "response_models": [
+        "deepseek-flash"
+      ],
+      "tool_calls": 2,
+      "tool_names": [
+        "search",
+        "open_document"
+      ],
+      "total_tokens": 4494,
+      "raw_success_usage_total": 4494,
+      "http_attempts": 3,
+      "http_statuses": [
+        200,
+        200,
+        200
+      ],
+      "usage_complete": true,
+      "selected_skills": [],
+      "automatic_skills": [],
+      "skill_bodies_in_actual_requests": {},
+      "tool_results_in_followup_requests": {
+        "call_00_MLeghQrbRnDg3XVEhbbK4416": true,
+        "call_00_6XdJG9gtDCWlVh3HB45L3230": true
+      },
+      "max_actual_request_chars": 4884,
+      "feature_checks": {
+        "expected_synthetic_answer": true,
+        "automatic_recovery": false,
+        "runtime_skill_body_in_request": false,
+        "honest_abstention": true
+      },
+      "passed": false
+    },
+    {
+      "id": "agent12-simple",
+      "engine": "agent12",
+      "feature": "simple",
+      "status": "completed",
+      "requested_model": "deepseek-v4-flash",
+      "response_models": [
+        "deepseek-flash"
+      ],
+      "tool_calls": 2,
+      "tool_names": [
+        "search",
+        "open_document"
+      ],
+      "total_tokens": 4916,
+      "raw_success_usage_total": 4916,
+      "http_attempts": 3,
+      "http_statuses": [
+        200,
+        200,
+        200
+      ],
+      "usage_complete": true,
+      "selected_skills": [],
+      "automatic_skills": [],
+      "skill_bodies_in_actual_requests": {},
+      "tool_results_in_followup_requests": {
+        "call_00_IcjQnYQhsPIpqknVGJpt9320": true,
+        "call_00_Hvm9hgxEHlQ2FwUCFBpU8237": true
+      },
+      "max_actual_request_chars": 5536,
+      "feature_checks": {
+        "expected_synthetic_answer": true,
+        "no_skill_selected": true
+      },
+      "passed": true
+    },
+    {
+      "id": "agent12-long-context",
+      "engine": "agent12",
+      "feature": "long-context",
+      "status": "completed",
+      "requested_model": "deepseek-v4-flash",
+      "response_models": [
+        "deepseek-flash"
+      ],
+      "tool_calls": 2,
+      "tool_names": [
+        "open_document",
+        "find_in_document"
+      ],
+      "total_tokens": 4637,
+      "raw_success_usage_total": 4637,
+      "http_attempts": 3,
+      "http_statuses": [
+        200,
+        200,
+        200
+      ],
+      "usage_complete": true,
+      "selected_skills": [],
+      "automatic_skills": [],
+      "skill_bodies_in_actual_requests": {},
+      "tool_results_in_followup_requests": {
+        "call_00_1msESzL3CDurb3dGNB716096": true,
+        "call_00_pJELNIfIchNDm2sRIC6o8840": true
+      },
+      "max_actual_request_chars": 6617,
+      "feature_checks": {
+        "expected_synthetic_answer": true,
+        "open_and_find": true,
+        "raw_12000_character_return_preserved": true,
+        "truncated_view_in_actual_request": true,
+        "context_within_configured_limit": true
+      },
+      "passed": true
+    },
+    {
+      "id": "baseline-budget-close",
+      "engine": "baseline",
+      "feature": "budget-close",
+      "status": "completed",
+      "requested_model": "deepseek-v4-flash",
+      "response_models": [
+        "deepseek-flash"
+      ],
+      "tool_calls": 1,
+      "tool_names": [
+        "search"
+      ],
+      "total_tokens": 1786,
+      "raw_success_usage_total": 1786,
+      "http_attempts": 2,
+      "http_statuses": [
+        200,
+        200
+      ],
+      "usage_complete": true,
+      "selected_skills": [],
+      "automatic_skills": [],
+      "skill_bodies_in_actual_requests": {},
+      "tool_results_in_followup_requests": {
+        "call_00_zlmfjyqsKCQm2RruKZeM7595": true
+      },
+      "max_actual_request_chars": 3021,
+      "feature_checks": {
+        "expected_synthetic_answer": true,
+        "last_step_finalization": true,
+        "actual_final_tools_disabled": true,
+        "real_final_response": true
+      },
+      "passed": true
+    }
+  ],
+  "supplement": {
+    "id": "agent12-recovery-empty-query-probe",
+    "engine": "agent12",
+    "feature": "recovery",
+    "status": "unresolved",
+    "requested_model": "deepseek-v4-flash",
+    "response_models": [
+      "deepseek-flash"
+    ],
+    "tool_calls": 3,
+    "tool_names": [
+      "search",
+      "search",
+      "search"
+    ],
+    "total_tokens": 4356,
+    "raw_success_usage_total": 4356,
+    "http_attempts": 3,
+    "http_statuses": [
+      200,
+      200,
+      200
+    ],
+    "usage_complete": true,
+    "selected_skills": [
+      "search-recovery"
+    ],
+    "automatic_skills": [
+      "search-recovery"
+    ],
+    "skill_bodies_in_actual_requests": {
+      "search-recovery": true
+    },
+    "tool_results_in_followup_requests": {
+      "call_00_Af3qry0HHhO0rUGbFwS21113": true,
+      "call_00_mQ9Xh4eExWqU2ec1JJ6a7747": true,
+      "call_01_uFMj0yJC7epsSOEG5fU75464": true
+    },
+    "max_actual_request_chars": 6707,
+    "feature_checks": {
+      "expected_synthetic_answer": true,
+      "automatic_recovery": true,
+      "runtime_skill_body_in_request": true,
+      "honest_abstention": true
+    },
+    "passed": true,
+    "source_identity_unchanged": true
+  }
+}

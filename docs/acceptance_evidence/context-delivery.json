@@ -1,0 +1,173 @@
+{
+  "scope": "actual validation diagnostics plus offline replay of captured API outputs; no additional API calls or labels used for replay",
+  "regression_before_fix": "All seven cases failed because both evidence snapshot and tool turn were empty; two synthetic context budgets plus five captured validation trajectories.",
+  "regression_after_fix": "All seven passed; 97 related tests passed.",
+  "fixed_file_sha256": "79a621369046ccb31e1ead687b0f54fcadf373800e8f062809957efe79ff5338",
+  "new_actual_api_after_fix": [
+    {
+      "id": "1005",
+      "status": "completed",
+      "requests": 5,
+      "max_actual_request_chars": 23796,
+      "post_first_view_has_observation": true,
+      "views": [
+        {
+          "state_evidence": 0,
+          "tool_messages": 0,
+          "chars": 5234
+        },
+        {
+          "state_evidence": 13,
+          "tool_messages": 0,
+          "chars": 23796
+        },
+        {
+          "state_evidence": 12,
+          "tool_messages": 0,
+          "chars": 22742
+        },
+        {
+          "state_evidence": 12,
+          "tool_messages": 0,
+          "chars": 22845
+        },
+        {
+          "state_evidence": 12,
+          "tool_messages": 0,
+          "chars": 22974
+        }
+      ]
+    },
+    {
+      "id": "121",
+      "status": "unresolved",
+      "requests": 5,
+      "max_actual_request_chars": 23548,
+      "post_first_view_has_observation": true,
+      "views": [
+        {
+          "state_evidence": 0,
+          "tool_messages": 0,
+          "chars": 4896
+        },
+        {
+          "state_evidence": 13,
+          "tool_messages": 0,
+          "chars": 23461
+        },
+        {
+          "state_evidence": 12,
+          "tool_messages": 0,
+          "chars": 23270
+        },
+        {
+          "state_evidence": 12,
+          "tool_messages": 0,
+          "chars": 23548
+        },
+        {
+          "state_evidence": 11,
+          "tool_messages": 0,
+          "chars": 23079
+        }
+      ]
+    },
+    {
+      "id": "253",
+      "status": "invalid_response",
+      "requests": 4,
+      "max_actual_request_chars": 23416,
+      "post_first_view_has_observation": true,
+      "views": [
+        {
+          "state_evidence": 0,
+          "tool_messages": 0,
+          "chars": 5212
+        },
+        {
+          "state_evidence": 13,
+          "tool_messages": 0,
+          "chars": 23416
+        },
+        {
+          "state_evidence": 12,
+          "tool_messages": 0,
+          "chars": 22990
+        },
+        {
+          "state_evidence": 13,
+          "tool_messages": 0,
+          "chars": 22831
+        }
+      ]
+    },
+    {
+      "id": "445",
+      "status": "unresolved",
+      "requests": 5,
+      "max_actual_request_chars": 23813,
+      "post_first_view_has_observation": true,
+      "views": [
+        {
+          "state_evidence": 0,
+          "tool_messages": 0,
+          "chars": 5262
+        },
+        {
+          "state_evidence": 12,
+          "tool_messages": 0,
+          "chars": 22787
+        },
+        {
+          "state_evidence": 12,
+          "tool_messages": 0,
+          "chars": 23813
+        },
+        {
+          "state_evidence": 11,
+          "tool_messages": 0,
+          "chars": 23280
+        },
+        {
+          "state_evidence": 10,
+          "tool_messages": 0,
+          "chars": 22993
+        }
+      ]
+    },
+    {
+      "id": "720",
+      "status": "completed",
+      "requests": 5,
+      "max_actual_request_chars": 23853,
+      "post_first_view_has_observation": true,
+      "views": [
+        {
+          "state_evidence": 0,
+          "tool_messages": 0,
+          "chars": 4993
+        },
+        {
+          "state_evidence": 13,
+          "tool_messages": 0,
+          "chars": 23349
+        },
+        {
+          "state_evidence": 12,
+          "tool_messages": 0,
+          "chars": 22900
+        },
+        {
+          "state_evidence": 11,
+          "tool_messages": 2,
+          "chars": 23853
+        },
+        {
+          "state_evidence": 13,
+          "tool_messages": 1,
+          "chars": 23737
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "scope": "public evidence JSON and Markdown plus return document",
+  "json_files_checked": 17,
+  "markdown_files_checked": 3,
+  "requirement_matrix_rows": 43,
+  "forbidden_raw_content_fields": [
+    "answer",
+    "content",
+    "messages",
+    "query",
+    "question",
+    "request",
+    "response",
+    "search_queries",
+    "text",
+    "trajectory"
+  ],
+  "secret_format_and_absolute_path_scan": "passed",
+  "relative_links": "all targets present",
+  "problems": []
+}

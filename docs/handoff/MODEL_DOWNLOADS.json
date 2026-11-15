@@ -1,0 +1,121 @@
+{
+  "format_version": 1,
+  "cache_dir": "indexes/model_cache",
+  "models": [
+    {
+      "role": "encoder",
+      "repo_id": "intfloat/e5-small-v2",
+      "repo_type": "model",
+      "revision": "ffb93f3bd4047442299a41ebb6fa998a38507c52",
+      "license": "MIT",
+      "policy": "required_for_encoder",
+      "files": [
+        {
+          "filename": "config.json",
+          "bytes": 615
+        },
+        {
+          "filename": "model.safetensors",
+          "bytes": 133466304
+        },
+        {
+          "filename": "special_tokens_map.json",
+          "bytes": 125
+        },
+        {
+          "filename": "tokenizer.json",
+          "bytes": 711396
+        },
+        {
+          "filename": "tokenizer_config.json",
+          "bytes": 314
+        },
+        {
+          "filename": "vocab.txt",
+          "bytes": 231508
+        }
+      ],
+      "expected_download_bytes": 134410262,
+      "source_url": "https://huggingface.co/intfloat/e5-small-v2",
+      "fixed_card_url": "https://huggingface.co/intfloat/e5-small-v2/resolve/ffb93f3bd4047442299a41ebb6fa998a38507c52/README.md",
+      "fixed_card_sha256": "0d57eda4766cc7ac045f2bf7e700286ea5a8360bb9b57278f67f9b8ef60b0b24"
+    },
+    {
+      "role": "instruction",
+      "repo_id": "Qwen/Qwen3-Embedding-0.6B",
+      "repo_type": "model",
+      "revision": "97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3",
+      "license": "Apache-2.0",
+      "policy": "user_deferred_no_download_or_compute_by_default",
+      "files": [
+        {
+          "filename": "config.json",
+          "bytes": 727
+        },
+        {
+          "filename": "merges.txt",
+          "bytes": 1671853
+        },
+        {
+          "filename": "model.safetensors",
+          "bytes": 1191586416
+        },
+        {
+          "filename": "tokenizer.json",
+          "bytes": 11423705
+        },
+        {
+          "filename": "tokenizer_config.json",
+          "bytes": 9706
+        },
+        {
+          "filename": "vocab.json",
+          "bytes": 2776833
+        }
+      ],
+      "expected_download_bytes": 1207469240,
+      "source_url": "https://huggingface.co/Qwen/Qwen3-Embedding-0.6B",
+      "fixed_card_url": "https://huggingface.co/Qwen/Qwen3-Embedding-0.6B/resolve/97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3/README.md",
+      "fixed_card_sha256": "c34d9b7e5a267ad3fdd13227a253686bc90844ff4744a2a6a86c7c905e3d06f3"
+    },
+    {
+      "role": "reranker",
+      "repo_id": "cross-encoder/ms-marco-MiniLM-L6-v2",
+      "repo_type": "model",
+      "revision": "233902d25c440f23af6f7d6e94d2946bac0bee0a",
+      "license": "Apache-2.0",
+      "policy": "optional_when_rerank_enabled",
+      "files": [
+        {
+          "filename": "config.json",
+          "bytes": 794
+        },
+        {
+          "filename": "model.safetensors",
+          "bytes": 90870598
+        },
+        {
+          "filename": "special_tokens_map.json",
+          "bytes": 132
+        },
+        {
+          "filename": "tokenizer.json",
+          "bytes": 711396
+        },
+        {
+          "filename": "tokenizer_config.json",
+          "bytes": 1330
+        },
+        {
+          "filename": "vocab.txt",
+          "bytes": 231508
+        }
+      ],
+      "expected_download_bytes": 91815758,
+      "source_url": "https://huggingface.co/cross-encoder/ms-marco-MiniLM-L6-v2",
+      "fixed_card_url": "https://huggingface.co/cross-encoder/ms-marco-MiniLM-L6-v2/resolve/233902d25c440f23af6f7d6e94d2946bac0bee0a/README.md",
+      "fixed_card_sha256": "7c0ec39941d0d1d766ccde671f592971d82fe45b7eea550a80d1ea864ebc3baa"
+    }
+  ],
+  "note": "Exact file bytes are checked after fixed-revision downloads; model weight hashes were not recomputed during active indexing. Hugging Face immutable revision determines content."
+}

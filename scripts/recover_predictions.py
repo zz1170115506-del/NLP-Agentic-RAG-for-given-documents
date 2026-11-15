@@ -1,7 +1,8 @@
 """Resume missing or course-ineligible records, preserving valid abstentions.
 
-Unlike --rerun-failed (which also retries unanswered questions), this recovery
-route uses the selected live per-record audit, never reference answers. Official
+This recovery route uses the selected live per-record audit, never reference
+answers. Official-compat batch --rerun-failed likewise preserves audited
+abstentions; legacy course-mode batch behavior still retries unanswered rows. Official
 compatibility runs keep the same HTTP/usage checks without claiming course-model
 identity. All new answers
 come from the same production runner. Old attempts are archived without edits.

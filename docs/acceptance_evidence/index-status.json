@@ -1,0 +1,121 @@
+{
+  "checked_at_utc": "2026-11-15T06:50:54.329068+00:00",
+  "full_corpus_documents": 100195,
+  "full_corpus_source_chunks": 4345592,
+  "fingerprint": "ea8764233b0d4a76d050842e290805a0f154858084dfd0430ba8c0d9c555025f",
+  "sparse": {
+    "status": "READY",
+    "source_chunks": 4345592,
+    "query_evidence": "full-route-readiness.json",
+    "updated_sql_equivalence": "sparse-sql-production-fix.json"
+  },
+  "hybrid": {
+    "status": "USER_DEFERRED",
+    "reason": "requires complete E5 and Qwen routes; user postponed Qwen computation"
+  },
+  "current_e5_run": {
+    "session_id": 17739,
+    "batch_size": 32,
+    "torch_threads": 10,
+    "log": "e5-cpu-continuous-post-snapshot.log",
+    "final_report_on_exit": "e5-cpu-continuous-post-snapshot.json",
+    "safe_stop_file": "stop-e5"
+  },
+  "integrity_notes": {
+    "copy": "APFS clone after empty WAL and stable source stat, metadata/counts checked, registered vector checksums verified",
+    "bounded_sqlite_quick_check": "ok for both corpus and BM25",
+    "initial_backup_attempt": "isolated 16MiB temp still held by historical PID13754; termination denied by sandbox; never used for retrieval",
+    "full_corpus_sqlite_quick_check": "passed; see full-corpus-quick-check.json",
+    "full_bm25_sqlite_quick_check": "passed; see full-bm25-quick-check.json"
+  },
+  "encoder": {
+    "status": "BUILDING",
+    "ready": false,
+    "source_chunks": 319232,
+    "vector_rows": 322550,
+    "shards": 1247,
+    "revision": "ffb93f3bd4047442299a41ebb6fa998a38507c52",
+    "fraction_complete": 0.07346110725535208
+  },
+  "instruction": {
+    "status": "USER_DEFERRED",
+    "ready": false,
+    "source_chunks": 9472,
+    "vector_rows": 9722,
+    "shards": 37,
+    "revision": "97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3",
+    "fraction_complete": 0.002179680006774681
+  },
+  "sqlite_quick_checks": {
+    "corpus": {
+      "state": "passed",
+      "read_only": true,
+      "sqlite_version": "3.53.1",
+      "file_bytes": 8336547840,
+      "elapsed_seconds": 265.98188462498365,
+      "peak_rss_bytes": 31244288,
+      "results": [
+        [
+          "ok"
+        ]
+      ],
+      "wal_bytes_before": 0,
+      "wal_bytes_after": 0,
+      "file_size_and_mtime_unchanged": true,
+      "report": "full-corpus-quick-check.json"
+    },
+    "bm25": {
+      "state": "passed",
+      "read_only": true,
+      "sqlite_version": "3.53.1",
+      "file_bytes": 6670352384,
+      "elapsed_seconds": 222.69445695803734,
+      "peak_rss_bytes": 31342592,
+      "results": [
+        [
+          "ok"
+        ]
+      ],
+      "wal_bytes_before": 0,
+      "wal_bytes_after": 0,
+      "file_size_and_mtime_unchanged": true,
+      "report": "full-bm25-quick-check.json"
+    }
+  },
+  "published_snapshot": {
+    "relative_root": "work/acceptance/indexes/snapshots/20261115T064803Z",
+    "state": "validated_snapshot",
+    "snapshot_complete": true,
+    "captured_at_utc": "2026-11-15T06:48:03.173248+00:00",
+    "dense": {
+      "encoder": {
+        "manifest_sha256": "220a926d0988adf16621a5f29632fe500226fd6cf7558c7fca4b81a0a254af60",
+        "source_chunks": 313344,
+        "vectors": 316662,
+        "shards": 1224,
+        "ready": false,
+        "registered_files": 2448,
+        "checksums_shapes_metadata_counts": "passed"
+      },
+      "instruction": {
+        "manifest_sha256": "2545f3ac840581263369b96055cb200a88b7909746790697967fe9b31e2c48bf",
+        "source_chunks": 9472,
+        "vectors": 9722,
+        "shards": 37,
+        "ready": false,
+        "registered_files": 74,
+        "checksums_shapes_metadata_counts": "passed"
+      }
+    },
+    "database_counts": {
+      "data/course-full/documents.sqlite": [
+        100195,
+        4345592
+      ],
+      "indexes/course-full/sparse.sqlite": [
+        4345592
+      ]
+    },
+    "source_git_sha": "dab7646158fef729c3bf3e0f37b7f302727fc568"
+  }
+}

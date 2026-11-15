@@ -1,0 +1,347 @@
+{
+  "captured_at_utc": "2026-11-15T05:25:58.509247+00:00",
+  "records": [
+    {
+      "source": "corpus",
+      "repo_id": "Tevatron/browsecomp-plus-corpus",
+      "repo_type": "dataset",
+      "revision": "b27b02bc3e45511b8b82a13e6f90ce761df726f6",
+      "filename": "README.md",
+      "url": "https://huggingface.co/datasets/Tevatron/browsecomp-plus-corpus/resolve/b27b02bc3e45511b8b82a13e6f90ce761df726f6/README.md",
+      "http_status": 200,
+      "bytes": 3232,
+      "sha256": "6c02abf89cc0c32800e2664e72b76b14a7a28791bf46f70d35cf57bd06e51b88",
+      "saved": "licenses/corpus/README.md"
+    },
+    {
+      "source": "corpus",
+      "repo_id": "Tevatron/browsecomp-plus-corpus",
+      "repo_type": "dataset",
+      "revision": "b27b02bc3e45511b8b82a13e6f90ce761df726f6",
+      "filename": "LICENSE",
+      "url": "https://huggingface.co/datasets/Tevatron/browsecomp-plus-corpus/resolve/b27b02bc3e45511b8b82a13e6f90ce761df726f6/LICENSE",
+      "http_status": 404
+    },
+    {
+      "source": "corpus",
+      "repo_id": "Tevatron/browsecomp-plus-corpus",
+      "repo_type": "dataset",
+      "revision": "b27b02bc3e45511b8b82a13e6f90ce761df726f6",
+      "filename": "LICENSE.txt",
+      "url": "https://huggingface.co/datasets/Tevatron/browsecomp-plus-corpus/resolve/b27b02bc3e45511b8b82a13e6f90ce761df726f6/LICENSE.txt",
+      "http_status": 404
+    },
+    {
+      "source": "corpus",
+      "repo_id": "Tevatron/browsecomp-plus-corpus",
+      "repo_type": "dataset",
+      "revision": "b27b02bc3e45511b8b82a13e6f90ce761df726f6",
+      "filename": "LICENSE.md",
+      "url": "https://huggingface.co/datasets/Tevatron/browsecomp-plus-corpus/resolve/b27b02bc3e45511b8b82a13e6f90ce761df726f6/LICENSE.md",
+      "http_status": 404
+    },
+    {
+      "source": "corpus",
+      "repo_id": "Tevatron/browsecomp-plus-corpus",
+      "repo_type": "dataset",
+      "revision": "b27b02bc3e45511b8b82a13e6f90ce761df726f6",
+      "filename": "NOTICE",
+      "url": "https://huggingface.co/datasets/Tevatron/browsecomp-plus-corpus/resolve/b27b02bc3e45511b8b82a13e6f90ce761df726f6/NOTICE",
+      "http_status": 404
+    },
+    {
+      "source": "corpus",
+      "repo_id": "Tevatron/browsecomp-plus-corpus",
+      "repo_type": "dataset",
+      "revision": "b27b02bc3e45511b8b82a13e6f90ce761df726f6",
+      "filename": "NOTICE.txt",
+      "url": "https://huggingface.co/datasets/Tevatron/browsecomp-plus-corpus/resolve/b27b02bc3e45511b8b82a13e6f90ce761df726f6/NOTICE.txt",
+      "http_status": 404
+    },
+    {
+      "source": "validation",
+      "repo_id": "HongruCai/COMP5423-BrowseComp-Plus-Val",
+      "repo_type": "dataset",
+      "revision": "277d3b49913c176976e8b40b7df55b00212cf158",
+      "filename": "README.md",
+      "url": "https://huggingface.co/datasets/HongruCai/COMP5423-BrowseComp-Plus-Val/resolve/277d3b49913c176976e8b40b7df55b00212cf158/README.md",
+      "http_status": 200,
+      "bytes": 1089,
+      "sha256": "e673121142f64828dc7ebd241b9de4ce9e5291eb933bbf5d12fda192a6ac8215",
+      "saved": "licenses/validation/README.md"
+    },
+    {
+      "source": "validation",
+      "repo_id": "HongruCai/COMP5423-BrowseComp-Plus-Val",
+      "repo_type": "dataset",
+      "revision": "277d3b49913c176976e8b40b7df55b00212cf158",
+      "filename": "LICENSE",
+      "url": "https://huggingface.co/datasets/HongruCai/COMP5423-BrowseComp-Plus-Val/resolve/277d3b49913c176976e8b40b7df55b00212cf158/LICENSE",
+      "http_status": 404
+    },
+    {
+      "source": "validation",
+      "repo_id": "HongruCai/COMP5423-BrowseComp-Plus-Val",
+      "repo_type": "dataset",
+      "revision": "277d3b49913c176976e8b40b7df55b00212cf158",
+      "filename": "LICENSE.txt",
+      "url": "https://huggingface.co/datasets/HongruCai/COMP5423-BrowseComp-Plus-Val/resolve/277d3b49913c176976e8b40b7df55b00212cf158/LICENSE.txt",
+      "http_status": 404
+    },
+    {
+      "source": "validation",
+      "repo_id": "HongruCai/COMP5423-BrowseComp-Plus-Val",
+      "repo_type": "dataset",
+      "revision": "277d3b49913c176976e8b40b7df55b00212cf158",
+      "filename": "LICENSE.md",
+      "url": "https://huggingface.co/datasets/HongruCai/COMP5423-BrowseComp-Plus-Val/resolve/277d3b49913c176976e8b40b7df55b00212cf158/LICENSE.md",
+      "http_status": 404
+    },
+    {
+      "source": "validation",
+      "repo_id": "HongruCai/COMP5423-BrowseComp-Plus-Val",
+      "repo_type": "dataset",
+      "revision": "277d3b49913c176976e8b40b7df55b00212cf158",
+      "filename": "NOTICE",
+      "url": "https://huggingface.co/datasets/HongruCai/COMP5423-BrowseComp-Plus-Val/resolve/277d3b49913c176976e8b40b7df55b00212cf158/NOTICE",
+      "http_status": 404
+    },
+    {
+      "source": "validation",
+      "repo_id": "HongruCai/COMP5423-BrowseComp-Plus-Val",
+      "repo_type": "dataset",
+      "revision": "277d3b49913c176976e8b40b7df55b00212cf158",
+      "filename": "NOTICE.txt",
+      "url": "https://huggingface.co/datasets/HongruCai/COMP5423-BrowseComp-Plus-Val/resolve/277d3b49913c176976e8b40b7df55b00212cf158/NOTICE.txt",
+      "http_status": 404
+    },
+    {
+      "source": "test",
+      "repo_id": "HongruCai/COMP5423-BrowseComp-Plus-Test",
+      "repo_type": "dataset",
+      "revision": "9cb2f4b9758f97c8bb4275c6d81f8d134bb3eadb",
+      "filename": "README.md",
+      "url": "https://huggingface.co/datasets/HongruCai/COMP5423-BrowseComp-Plus-Test/resolve/9cb2f4b9758f97c8bb4275c6d81f8d134bb3eadb/README.md",
+      "http_status": 200,
+      "bytes": 853,
+      "sha256": "f7515fe1f072c7dbccbb46bdc1111ea1c7677cddc4d34f359da2fd1bad085ffb",
+      "saved": "licenses/test/README.md"
+    },
+    {
+      "source": "test",
+      "repo_id": "HongruCai/COMP5423-BrowseComp-Plus-Test",
+      "repo_type": "dataset",
+      "revision": "9cb2f4b9758f97c8bb4275c6d81f8d134bb3eadb",
+      "filename": "LICENSE",
+      "url": "https://huggingface.co/datasets/HongruCai/COMP5423-BrowseComp-Plus-Test/resolve/9cb2f4b9758f97c8bb4275c6d81f8d134bb3eadb/LICENSE",
+      "http_status": 404
+    },
+    {
+      "source": "test",
+      "repo_id": "HongruCai/COMP5423-BrowseComp-Plus-Test",
+      "repo_type": "dataset",
+      "revision": "9cb2f4b9758f97c8bb4275c6d81f8d134bb3eadb",
+      "filename": "LICENSE.txt",
+      "url": "https://huggingface.co/datasets/HongruCai/COMP5423-BrowseComp-Plus-Test/resolve/9cb2f4b9758f97c8bb4275c6d81f8d134bb3eadb/LICENSE.txt",
+      "http_status": 404
+    },
+    {
+      "source": "test",
+      "repo_id": "HongruCai/COMP5423-BrowseComp-Plus-Test",
+      "repo_type": "dataset",
+      "revision": "9cb2f4b9758f97c8bb4275c6d81f8d134bb3eadb",
+      "filename": "LICENSE.md",
+      "url": "https://huggingface.co/datasets/HongruCai/COMP5423-BrowseComp-Plus-Test/resolve/9cb2f4b9758f97c8bb4275c6d81f8d134bb3eadb/LICENSE.md",
+      "http_status": 404
+    },
+    {
+      "source": "test",
+      "repo_id": "HongruCai/COMP5423-BrowseComp-Plus-Test",
+      "repo_type": "dataset",
+      "revision": "9cb2f4b9758f97c8bb4275c6d81f8d134bb3eadb",
+      "filename": "NOTICE",
+      "url": "https://huggingface.co/datasets/HongruCai/COMP5423-BrowseComp-Plus-Test/resolve/9cb2f4b9758f97c8bb4275c6d81f8d134bb3eadb/NOTICE",
+      "http_status": 404
+    },
+    {
+      "source": "test",
+      "repo_id": "HongruCai/COMP5423-BrowseComp-Plus-Test",
+      "repo_type": "dataset",
+      "revision": "9cb2f4b9758f97c8bb4275c6d81f8d134bb3eadb",
+      "filename": "NOTICE.txt",
+      "url": "https://huggingface.co/datasets/HongruCai/COMP5423-BrowseComp-Plus-Test/resolve/9cb2f4b9758f97c8bb4275c6d81f8d134bb3eadb/NOTICE.txt",
+      "http_status": 404
+    },
+    {
+      "source": "encoder",
+      "repo_id": "intfloat/e5-small-v2",
+      "repo_type": "model",
+      "revision": "ffb93f3bd4047442299a41ebb6fa998a38507c52",
+      "filename": "README.md",
+      "url": "https://huggingface.co/intfloat/e5-small-v2/resolve/ffb93f3bd4047442299a41ebb6fa998a38507c52/README.md",
+      "http_status": 200,
+      "bytes": 67791,
+      "sha256": "0d57eda4766cc7ac045f2bf7e700286ea5a8360bb9b57278f67f9b8ef60b0b24",
+      "saved": "licenses/encoder/README.md"
+    },
+    {
+      "source": "encoder",
+      "repo_id": "intfloat/e5-small-v2",
+      "repo_type": "model",
+      "revision": "ffb93f3bd4047442299a41ebb6fa998a38507c52",
+      "filename": "LICENSE",
+      "url": "https://huggingface.co/intfloat/e5-small-v2/resolve/ffb93f3bd4047442299a41ebb6fa998a38507c52/LICENSE",
+      "http_status": 404
+    },
+    {
+      "source": "encoder",
+      "repo_id": "intfloat/e5-small-v2",
+      "repo_type": "model",
+      "revision": "ffb93f3bd4047442299a41ebb6fa998a38507c52",
+      "filename": "LICENSE.txt",
+      "url": "https://huggingface.co/intfloat/e5-small-v2/resolve/ffb93f3bd4047442299a41ebb6fa998a38507c52/LICENSE.txt",
+      "http_status": 404
+    },
+    {
+      "source": "encoder",
+      "repo_id": "intfloat/e5-small-v2",
+      "repo_type": "model",
+      "revision": "ffb93f3bd4047442299a41ebb6fa998a38507c52",
+      "filename": "LICENSE.md",
+      "url": "https://huggingface.co/intfloat/e5-small-v2/resolve/ffb93f3bd4047442299a41ebb6fa998a38507c52/LICENSE.md",
+      "http_status": 404
+    },
+    {
+      "source": "encoder",
+      "repo_id": "intfloat/e5-small-v2",
+      "repo_type": "model",
+      "revision": "ffb93f3bd4047442299a41ebb6fa998a38507c52",
+      "filename": "NOTICE",
+      "url": "https://huggingface.co/intfloat/e5-small-v2/resolve/ffb93f3bd4047442299a41ebb6fa998a38507c52/NOTICE",
+      "http_status": 404
+    },
+    {
+      "source": "encoder",
+      "repo_id": "intfloat/e5-small-v2",
+      "repo_type": "model",
+      "revision": "ffb93f3bd4047442299a41ebb6fa998a38507c52",
+      "filename": "NOTICE.txt",
+      "url": "https://huggingface.co/intfloat/e5-small-v2/resolve/ffb93f3bd4047442299a41ebb6fa998a38507c52/NOTICE.txt",
+      "http_status": 404
+    },
+    {
+      "source": "instruction",
+      "repo_id": "Qwen/Qwen3-Embedding-0.6B",
+      "repo_type": "model",
+      "revision": "97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3",
+      "filename": "README.md",
+      "url": "https://huggingface.co/Qwen/Qwen3-Embedding-0.6B/resolve/97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3/README.md",
+      "http_status": 200,
+      "bytes": 17237,
+      "sha256": "c34d9b7e5a267ad3fdd13227a253686bc90844ff4744a2a6a86c7c905e3d06f3",
+      "saved": "licenses/instruction/README.md"
+    },
+    {
+      "source": "instruction",
+      "repo_id": "Qwen/Qwen3-Embedding-0.6B",
+      "repo_type": "model",
+      "revision": "97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3",
+      "filename": "LICENSE",
+      "url": "https://huggingface.co/Qwen/Qwen3-Embedding-0.6B/resolve/97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3/LICENSE",
+      "http_status": 404
+    },
+    {
+      "source": "instruction",
+      "repo_id": "Qwen/Qwen3-Embedding-0.6B",
+      "repo_type": "model",
+      "revision": "97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3",
+      "filename": "LICENSE.txt",
+      "url": "https://huggingface.co/Qwen/Qwen3-Embedding-0.6B/resolve/97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3/LICENSE.txt",
+      "http_status": 404
+    },
+    {
+      "source": "instruction",
+      "repo_id": "Qwen/Qwen3-Embedding-0.6B",
+      "repo_type": "model",
+      "revision": "97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3",
+      "filename": "LICENSE.md",
+      "url": "https://huggingface.co/Qwen/Qwen3-Embedding-0.6B/resolve/97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3/LICENSE.md",
+      "http_status": 404
+    },
+    {
+      "source": "instruction",
+      "repo_id": "Qwen/Qwen3-Embedding-0.6B",
+      "repo_type": "model",
+      "revision": "97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3",
+      "filename": "NOTICE",
+      "url": "https://huggingface.co/Qwen/Qwen3-Embedding-0.6B/resolve/97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3/NOTICE",
+      "http_status": 404
+    },
+    {
+      "source": "instruction",
+      "repo_id": "Qwen/Qwen3-Embedding-0.6B",
+      "repo_type": "model",
+      "revision": "97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3",
+      "filename": "NOTICE.txt",
+      "url": "https://huggingface.co/Qwen/Qwen3-Embedding-0.6B/resolve/97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3/NOTICE.txt",
+      "http_status": 404
+    },
+    {
+      "source": "reranker",
+      "repo_id": "cross-encoder/ms-marco-MiniLM-L6-v2",
+      "repo_type": "model",
+      "revision": "233902d25c440f23af6f7d6e94d2946bac0bee0a",
+      "filename": "README.md",
+      "url": "https://huggingface.co/cross-encoder/ms-marco-MiniLM-L6-v2/resolve/233902d25c440f23af6f7d6e94d2946bac0bee0a/README.md",
+      "http_status": 200,
+      "bytes": 3673,
+      "sha256": "7c0ec39941d0d1d766ccde671f592971d82fe45b7eea550a80d1ea864ebc3baa",
+      "saved": "licenses/reranker/README.md"
+    },
+    {
+      "source": "reranker",
+      "repo_id": "cross-encoder/ms-marco-MiniLM-L6-v2",
+      "repo_type": "model",
+      "revision": "233902d25c440f23af6f7d6e94d2946bac0bee0a",
+      "filename": "LICENSE",
+      "url": "https://huggingface.co/cross-encoder/ms-marco-MiniLM-L6-v2/resolve/233902d25c440f23af6f7d6e94d2946bac0bee0a/LICENSE",
+      "http_status": 404
+    },
+    {
+      "source": "reranker",
+      "repo_id": "cross-encoder/ms-marco-MiniLM-L6-v2",
+      "repo_type": "model",
+      "revision": "233902d25c440f23af6f7d6e94d2946bac0bee0a",
+      "filename": "LICENSE.txt",
+      "url": "https://huggingface.co/cross-encoder/ms-marco-MiniLM-L6-v2/resolve/233902d25c440f23af6f7d6e94d2946bac0bee0a/LICENSE.txt",
+      "http_status": 404
+    },
+    {
+      "source": "reranker",
+      "repo_id": "cross-encoder/ms-marco-MiniLM-L6-v2",
+      "repo_type": "model",
+      "revision": "233902d25c440f23af6f7d6e94d2946bac0bee0a",
+      "filename": "LICENSE.md",
+      "url": "https://huggingface.co/cross-encoder/ms-marco-MiniLM-L6-v2/resolve/233902d25c440f23af6f7d6e94d2946bac0bee0a/LICENSE.md",
+      "http_status": 404
+    },
+    {
+      "source": "reranker",
+      "repo_id": "cross-encoder/ms-marco-MiniLM-L6-v2",
+      "repo_type": "model",
+      "revision": "233902d25c440f23af6f7d6e94d2946bac0bee0a",
+      "filename": "NOTICE",
+      "url": "https://huggingface.co/cross-encoder/ms-marco-MiniLM-L6-v2/resolve/233902d25c440f23af6f7d6e94d2946bac0bee0a/NOTICE",
+      "http_status": 404
+    },
+    {
+      "source": "reranker",
+      "repo_id": "cross-encoder/ms-marco-MiniLM-L6-v2",
+      "repo_type": "model",
+      "revision": "233902d25c440f23af6f7d6e94d2946bac0bee0a",
+      "filename": "NOTICE.txt",
+      "url": "https://huggingface.co/cross-encoder/ms-marco-MiniLM-L6-v2/resolve/233902d25c440f23af6f7d6e94d2946bac0bee0a/NOTICE.txt",
+      "http_status": 404
+    }
+  ]
+}

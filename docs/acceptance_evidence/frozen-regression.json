@@ -1,0 +1,10 @@
+{
+  "code_commit": "dab7646",
+  "main_pytest_passed": 151,
+  "agent12_unittest_passed": 70,
+  "note": "Separate suites; earlier clean-install counts are separate checkpoints.",
+  "private_log_locations": [
+    "work/acceptance/final-pytest.log",
+    "work/acceptance/final-agent12-unittest.log"
+  ]
+}

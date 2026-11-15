@@ -1,0 +1,43 @@
+{
+  "data/test.jsonl": {
+    "records": 100,
+    "unique_ids": 100,
+    "field_sets": [
+      "id,question"
+    ],
+    "sha256": "2e9e3689de5901e0151995db91d0fa6525b2062cc116ddab88f59b9ccccd5d0b"
+  },
+  "data/validation.jsonl": {
+    "records": 100,
+    "unique_ids": 100,
+    "field_sets": [
+      "answer,id,question"
+    ],
+    "sha256": "5efedfaa2dd4cf58ee0c38be59d68be1fe7eb5a19beb9d3c45bfe91afda4a4da"
+  },
+  "data/validation-questions.jsonl": {
+    "records": 100,
+    "unique_ids": 100,
+    "field_sets": [
+      "id,question"
+    ],
+    "sha256": "6317237123a44b18c0781e1e198b863deabd33efea0065a52af1d158ddd04e35"
+  },
+  "data/acceptance-diagnostic-questions.jsonl": {
+    "records": 5,
+    "unique_ids": 5,
+    "field_sets": [
+      "id,question"
+    ],
+    "sha256": "f1d2182def7286f0795a103e5404a4cc9d2257d7fb2e94eb82799ac009e2b2aa"
+  },
+  "validation_test_id_overlap": 0,
+  "diagnostic_ids_in_validation": [
+    "1005",
+    "121",
+    "253",
+    "445",
+    "720"
+  ],
+  "scope": "structure, ID and hash only; no test labels or answer text exported"
+}

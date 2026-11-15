@@ -1,0 +1,967 @@
+{
+  "expected": 100,
+  "records": 100,
+  "coverage": 1.0,
+  "ordinary_valid": true,
+  "ordinary_error_count": 0,
+  "formal_batch_valid": false,
+  "formal_batch_error_count": 200,
+  "live_record_passed": 0,
+  "official_compat_requested": true,
+  "official_compat_valid": true,
+  "official_compat_record_passed": 100,
+  "official_compat_errors": [],
+  "citation_passed": 100,
+  "statuses": {
+    "insufficient_evidence": 80,
+    "completed": 20
+  },
+  "tool_types": {
+    "search": 679,
+    "load_skill": 3,
+    "find_in_document": 5,
+    "open_document": 2
+  },
+  "tool_calls": 689,
+  "total_tokens": 1576143,
+  "http_attempts": 456,
+  "response_models": [
+    "deepseek-flash"
+  ],
+  "raw_usage": {
+    "prompt_tokens": 1518238,
+    "completion_tokens": 57905,
+    "total_tokens": 1576143,
+    "prompt_cache_hit_tokens": 523904,
+    "prompt_cache_miss_tokens": 994334
+  },
+  "usage_fields_missing_responses": {
+    "prompt_tokens": 0,
+    "completion_tokens": 0,
+    "total_tokens": 0,
+    "prompt_cache_hit_tokens": 0,
+    "prompt_cache_miss_tokens": 0
+  },
+  "usage_accounting_sources": {
+    "raw_http_response": 456
+  },
+  "usage_response_count": 456,
+  "api_attempts_with_unknown_usage": 0,
+  "reported_cost_usd": null,
+  "reported_cost_provider_units": null,
+  "reported_cost_currency": null,
+  "responses_with_cost": 0,
+  "responses_without_cost": 456,
+  "cost_note": "Only returned usage.cost is reported; no tariff-derived estimate or currency conversion.",
+  "archived_attempts": 0,
+  "all_attempts_total_tokens": 1576143,
+  "all_attempts_tool_calls": 689,
+  "exact_six_fields": true,
+  "exact_question_id_order": true,
+  "prediction_sha256": "5f8d11089c343a5543a21810b6ea97ba083f8e712a9fdad34ae174141fd68509",
+  "input_sha256": "2e9e3689de5901e0151995db91d0fa6525b2062cc116ddab88f59b9ccccd5d0b",
+  "rows": [
+    {
+      "id": "1008",
+      "status": "insufficient_evidence",
+      "total_tokens": 17784,
+      "tool_calls": 8,
+      "http_attempts": 5,
+      "seconds": 17.270762
+    },
+    {
+      "id": "1010",
+      "status": "insufficient_evidence",
+      "total_tokens": 25024,
+      "tool_calls": 12,
+      "http_attempts": 7,
+      "seconds": 16.855316
+    },
+    {
+      "id": "1022",
+      "status": "insufficient_evidence",
+      "total_tokens": 9173,
+      "tool_calls": 4,
+      "http_attempts": 3,
+      "seconds": 12.68834
+    },
+    {
+      "id": "1023",
+      "status": "completed",
+      "total_tokens": 13680,
+      "tool_calls": 6,
+      "http_attempts": 4,
+      "seconds": 16.22015
+    },
+    {
+      "id": "1030",
+      "status": "insufficient_evidence",
+      "total_tokens": 17026,
+      "tool_calls": 8,
+      "http_attempts": 5,
+      "seconds": 13.566592
+    },
+    {
+      "id": "1041",
+      "status": "insufficient_evidence",
+      "total_tokens": 14271,
+      "tool_calls": 6,
+      "http_attempts": 4,
+      "seconds": 16.364516
+    },
+    {
+      "id": "1061",
+      "status": "insufficient_evidence",
+      "total_tokens": 18646,
+      "tool_calls": 6,
+      "http_attempts": 5,
+      "seconds": 7.124596
+    },
+    {
+      "id": "1078",
+      "status": "insufficient_evidence",
+      "total_tokens": 26331,
+      "tool_calls": 12,
+      "http_attempts": 7,
+      "seconds": 19.048631
+    },
+    {
+      "id": "11",
+      "status": "insufficient_evidence",
+      "total_tokens": 13424,
+      "tool_calls": 5,
+      "http_attempts": 4,
+      "seconds": 13.528912
+    },
+    {
+      "id": "1103",
+      "status": "insufficient_evidence",
+      "total_tokens": 25355,
+      "tool_calls": 12,
+      "http_attempts": 7,
+      "seconds": 35.999199
+    },
+    {
+      "id": "1105",
+      "status": "completed",
+      "total_tokens": 16790,
+      "tool_calls": 8,
+      "http_attempts": 5,
+      "seconds": 14.487599
+    },
+    {
+      "id": "1117",
+      "status": "completed",
+      "total_tokens": 14556,
+      "tool_calls": 6,
+      "http_attempts": 4,
+      "seconds": 18.594958
+    },
+    {
+      "id": "1127",
+      "status": "completed",
+      "total_tokens": 13089,
+      "tool_calls": 6,
+      "http_attempts": 4,
+      "seconds": 14.499537
+    },
+    {
+      "id": "1133",
+      "status": "insufficient_evidence",
+      "total_tokens": 13583,
+      "tool_calls": 6,
+      "http_attempts": 4,
+      "seconds": 7.520258
+    },
+    {
+      "id": "1152",
+      "status": "insufficient_evidence",
+      "total_tokens": 17174,
+      "tool_calls": 8,
+      "http_attempts": 5,
+      "seconds": 25.311616
+    },
+    {
+      "id": "1162",
+      "status": "insufficient_evidence",
+      "total_tokens": 21124,
+      "tool_calls": 10,
+      "http_attempts": 6,
+      "seconds": 22.34016
+    },
+    {
+      "id": "1188",
+      "status": "insufficient_evidence",
+      "total_tokens": 13484,
+      "tool_calls": 6,
+      "http_attempts": 4,
+      "seconds": 19.608055
+    },
+    {
+      "id": "119",
+      "status": "insufficient_evidence",
+      "total_tokens": 13157,
+      "tool_calls": 6,
+      "http_attempts": 4,
+      "seconds": 8.136109
+    },
+    {
+      "id": "1198",
+      "status": "insufficient_evidence",
+      "total_tokens": 13908,
+      "tool_calls": 6,
+      "http_attempts": 4,
+      "seconds": 16.35176
+    },
+    {
+      "id": "1213",
+      "status": "insufficient_evidence",
+      "total_tokens": 9250,
+      "tool_calls": 4,
+      "http_attempts": 3,
+      "seconds": 6.932119
+    },
+    {
+      "id": "1220",
+      "status": "insufficient_evidence",
+      "total_tokens": 21321,
+      "tool_calls": 10,
+      "http_attempts": 6,
+      "seconds": 27.611257
+    },
+    {
+      "id": "1232",
+      "status": "insufficient_evidence",
+      "total_tokens": 9299,
+      "tool_calls": 4,
+      "http_attempts": 3,
+      "seconds": 13.714597
+    },
+    {
+      "id": "1242",
+      "status": "insufficient_evidence",
+      "total_tokens": 13663,
+      "tool_calls": 5,
+      "http_attempts": 4,
+      "seconds": 9.397044
+    },
+    {
+      "id": "1248",
+      "status": "insufficient_evidence",
+      "total_tokens": 18921,
+      "tool_calls": 6,
+      "http_attempts": 5,
+      "seconds": 9.617785
+    },
+    {
+      "id": "1254",
+      "status": "insufficient_evidence",
+      "total_tokens": 17724,
+      "tool_calls": 8,
+      "http_attempts": 5,
+      "seconds": 28.911538
+    },
+    {
+      "id": "1258",
+      "status": "insufficient_evidence",
+      "total_tokens": 9262,
+      "tool_calls": 4,
+      "http_attempts": 3,
+      "seconds": 10.520945
+    },
+    {
+      "id": "131",
+      "status": "insufficient_evidence",
+      "total_tokens": 9089,
+      "tool_calls": 4,
+      "http_attempts": 3,
+      "seconds": 11.872095
+    },
+    {
+      "id": "168",
+      "status": "insufficient_evidence",
+      "total_tokens": 9412,
+      "tool_calls": 4,
+      "http_attempts": 3,
+      "seconds": 10.611129
+    },
+    {
+      "id": "186",
+      "status": "completed",
+      "total_tokens": 18081,
+      "tool_calls": 7,
+      "http_attempts": 5,
+      "seconds": 11.085991
+    },
+    {
+      "id": "193",
+      "status": "insufficient_evidence",
+      "total_tokens": 16621,
+      "tool_calls": 8,
+      "http_attempts": 5,
+      "seconds": 10.502841
+    },
+    {
+      "id": "194",
+      "status": "insufficient_evidence",
+      "total_tokens": 22410,
+      "tool_calls": 8,
+      "http_attempts": 6,
+      "seconds": 18.574357
+    },
+    {
+      "id": "196",
+      "status": "completed",
+      "total_tokens": 17977,
+      "tool_calls": 8,
+      "http_attempts": 5,
+      "seconds": 15.95039
+    },
+    {
+      "id": "199",
+      "status": "insufficient_evidence",
+      "total_tokens": 21720,
+      "tool_calls": 9,
+      "http_attempts": 6,
+      "seconds": 7.468975
+    },
+    {
+      "id": "229",
+      "status": "insufficient_evidence",
+      "total_tokens": 12988,
+      "tool_calls": 6,
+      "http_attempts": 4,
+      "seconds": 7.905079
+    },
+    {
+      "id": "23",
+      "status": "insufficient_evidence",
+      "total_tokens": 9218,
+      "tool_calls": 4,
+      "http_attempts": 3,
+      "seconds": 13.808239
+    },
+    {
+      "id": "236",
+      "status": "insufficient_evidence",
+      "total_tokens": 8982,
+      "tool_calls": 4,
+      "http_attempts": 3,
+      "seconds": 13.576076
+    },
+    {
+      "id": "257",
+      "status": "insufficient_evidence",
+      "total_tokens": 25472,
+      "tool_calls": 12,
+      "http_attempts": 7,
+      "seconds": 26.054869
+    },
+    {
+      "id": "266",
+      "status": "insufficient_evidence",
+      "total_tokens": 20894,
+      "tool_calls": 10,
+      "http_attempts": 6,
+      "seconds": 22.333754
+    },
+    {
+      "id": "27",
+      "status": "insufficient_evidence",
+      "total_tokens": 21603,
+      "tool_calls": 10,
+      "http_attempts": 6,
+      "seconds": 39.922332
+    },
+    {
+      "id": "286",
+      "status": "insufficient_evidence",
+      "total_tokens": 13853,
+      "tool_calls": 6,
+      "http_attempts": 4,
+      "seconds": 13.857069
+    },
+    {
+      "id": "295",
+      "status": "insufficient_evidence",
+      "total_tokens": 9035,
+      "tool_calls": 4,
+      "http_attempts": 3,
+      "seconds": 12.213167
+    },
+    {
+      "id": "311",
+      "status": "insufficient_evidence",
+      "total_tokens": 22352,
+      "tool_calls": 10,
+      "http_attempts": 6,
+      "seconds": 13.484828
+    },
+    {
+      "id": "315",
+      "status": "insufficient_evidence",
+      "total_tokens": 14021,
+      "tool_calls": 6,
+      "http_attempts": 4,
+      "seconds": 8.495301
+    },
+    {
+      "id": "354",
+      "status": "insufficient_evidence",
+      "total_tokens": 17357,
+      "tool_calls": 8,
+      "http_attempts": 5,
+      "seconds": 11.884313
+    },
+    {
+      "id": "356",
+      "status": "insufficient_evidence",
+      "total_tokens": 20709,
+      "tool_calls": 9,
+      "http_attempts": 6,
+      "seconds": 13.316579
+    },
+    {
+      "id": "36",
+      "status": "insufficient_evidence",
+      "total_tokens": 8996,
+      "tool_calls": 4,
+      "http_attempts": 3,
+      "seconds": 9.064072
+    },
+    {
+      "id": "366",
+      "status": "completed",
+      "total_tokens": 17903,
+      "tool_calls": 8,
+      "http_attempts": 5,
+      "seconds": 11.792843
+    },
+    {
+      "id": "367",
+      "status": "completed",
+      "total_tokens": 23612,
+      "tool_calls": 8,
+      "http_attempts": 6,
+      "seconds": 26.88867
+    },
+    {
+      "id": "395",
+      "status": "insufficient_evidence",
+      "total_tokens": 21920,
+      "tool_calls": 10,
+      "http_attempts": 6,
+      "seconds": 9.369101
+    },
+    {
+      "id": "406",
+      "status": "insufficient_evidence",
+      "total_tokens": 13749,
+      "tool_calls": 6,
+      "http_attempts": 4,
+      "seconds": 8.563484
+    },
+    {
+      "id": "409",
+      "status": "insufficient_evidence",
+      "total_tokens": 17163,
+      "tool_calls": 8,
+      "http_attempts": 5,
+      "seconds": 18.968728
+    },
+    {
+      "id": "426",
+      "status": "insufficient_evidence",
+      "total_tokens": 9646,
+      "tool_calls": 4,
+      "http_attempts": 3,
+      "seconds": 15.931274
+    },
+    {
+      "id": "433",
+      "status": "insufficient_evidence",
+      "total_tokens": 13287,
+      "tool_calls": 6,
+      "http_attempts": 4,
+      "seconds": 13.550744
+    },
+    {
+      "id": "434",
+      "status": "insufficient_evidence",
+      "total_tokens": 26533,
+      "tool_calls": 12,
+      "http_attempts": 7,
+      "seconds": 18.846191
+    },
+    {
+      "id": "435",
+      "status": "completed",
+      "total_tokens": 17729,
+      "tool_calls": 8,
+      "http_attempts": 5,
+      "seconds": 13.19791
+    },
+    {
+      "id": "469",
+      "status": "insufficient_evidence",
+      "total_tokens": 9114,
+      "tool_calls": 4,
+      "http_attempts": 3,
+      "seconds": 5.447017
+    },
+    {
+      "id": "470",
+      "status": "insufficient_evidence",
+      "total_tokens": 24387,
+      "tool_calls": 12,
+      "http_attempts": 7,
+      "seconds": 21.107842
+    },
+    {
+      "id": "478",
+      "status": "insufficient_evidence",
+      "total_tokens": 13788,
+      "tool_calls": 6,
+      "http_attempts": 4,
+      "seconds": 8.772331
+    },
+    {
+      "id": "484",
+      "status": "insufficient_evidence",
+      "total_tokens": 25429,
+      "tool_calls": 10,
+      "http_attempts": 7,
+      "seconds": 12.298555
+    },
+    {
+      "id": "487",
+      "status": "insufficient_evidence",
+      "total_tokens": 22741,
+      "tool_calls": 10,
+      "http_attempts": 6,
+      "seconds": 31.36908
+    },
+    {
+      "id": "491",
+      "status": "insufficient_evidence",
+      "total_tokens": 26341,
+      "tool_calls": 12,
+      "http_attempts": 7,
+      "seconds": 15.021635
+    },
+    {
+      "id": "494",
+      "status": "insufficient_evidence",
+      "total_tokens": 9247,
+      "tool_calls": 4,
+      "http_attempts": 3,
+      "seconds": 7.736032
+    },
+    {
+      "id": "502",
+      "status": "insufficient_evidence",
+      "total_tokens": 18033,
+      "tool_calls": 8,
+      "http_attempts": 5,
+      "seconds": 24.229545
+    },
+    {
+      "id": "523",
+      "status": "insufficient_evidence",
+      "total_tokens": 9315,
+      "tool_calls": 4,
+      "http_attempts": 3,
+      "seconds": 6.806772
+    },
+    {
+      "id": "525",
+      "status": "insufficient_evidence",
+      "total_tokens": 8867,
+      "tool_calls": 4,
+      "http_attempts": 3,
+      "seconds": 11.554388
+    },
+    {
+      "id": "535",
+      "status": "completed",
+      "total_tokens": 20922,
+      "tool_calls": 10,
+      "http_attempts": 6,
+      "seconds": 11.077088
+    },
+    {
+      "id": "538",
+      "status": "insufficient_evidence",
+      "total_tokens": 13253,
+      "tool_calls": 6,
+      "http_attempts": 4,
+      "seconds": 5.636943
+    },
+    {
+      "id": "556",
+      "status": "insufficient_evidence",
+      "total_tokens": 8933,
+      "tool_calls": 4,
+      "http_attempts": 3,
+      "seconds": 9.889586
+    },
+    {
+      "id": "563",
+      "status": "completed",
+      "total_tokens": 16874,
+      "tool_calls": 8,
+      "http_attempts": 5,
+      "seconds": 11.208438
+    },
+    {
+      "id": "580",
+      "status": "completed",
+      "total_tokens": 17961,
+      "tool_calls": 8,
+      "http_attempts": 5,
+      "seconds": 32.609217
+    },
+    {
+      "id": "587",
+      "status": "completed",
+      "total_tokens": 21114,
+      "tool_calls": 10,
+      "http_attempts": 6,
+      "seconds": 16.616962
+    },
+    {
+      "id": "602",
+      "status": "insufficient_evidence",
+      "total_tokens": 12663,
+      "tool_calls": 6,
+      "http_attempts": 4,
+      "seconds": 7.515415
+    },
+    {
+      "id": "619",
+      "status": "insufficient_evidence",
+      "total_tokens": 8325,
+      "tool_calls": 4,
+      "http_attempts": 3,
+      "seconds": 11.022744
+    },
+    {
+      "id": "628",
+      "status": "insufficient_evidence",
+      "total_tokens": 13627,
+      "tool_calls": 3,
+      "http_attempts": 4,
+      "seconds": 6.120628
+    },
+    {
+      "id": "635",
+      "status": "completed",
+      "total_tokens": 21224,
+      "tool_calls": 9,
+      "http_attempts": 6,
+      "seconds": 20.785434
+    },
+    {
+      "id": "639",
+      "status": "completed",
+      "total_tokens": 17514,
+      "tool_calls": 8,
+      "http_attempts": 5,
+      "seconds": 17.287849
+    },
+    {
+      "id": "673",
+      "status": "insufficient_evidence",
+      "total_tokens": 13284,
+      "tool_calls": 6,
+      "http_attempts": 4,
+      "seconds": 32.006154
+    },
+    {
+      "id": "682",
+      "status": "insufficient_evidence",
+      "total_tokens": 13106,
+      "tool_calls": 6,
+      "http_attempts": 4,
+      "seconds": 9.79812
+    },
+    {
+      "id": "688",
+      "status": "insufficient_evidence",
+      "total_tokens": 20934,
+      "tool_calls": 10,
+      "http_attempts": 6,
+      "seconds": 31.248574
+    },
+    {
+      "id": "69",
+      "status": "completed",
+      "total_tokens": 9164,
+      "tool_calls": 4,
+      "http_attempts": 3,
+      "seconds": 14.797085
+    },
+    {
+      "id": "715",
+      "status": "completed",
+      "total_tokens": 14724,
+      "tool_calls": 6,
+      "http_attempts": 4,
+      "seconds": 10.263998
+    },
+    {
+      "id": "719",
+      "status": "insufficient_evidence",
+      "total_tokens": 9398,
+      "tool_calls": 4,
+      "http_attempts": 3,
+      "seconds": 12.887042
+    },
+    {
+      "id": "723",
+      "status": "insufficient_evidence",
+      "total_tokens": 26572,
+      "tool_calls": 12,
+      "http_attempts": 7,
+      "seconds": 35.927065
+    },
+    {
+      "id": "74",
+      "status": "insufficient_evidence",
+      "total_tokens": 17679,
+      "tool_calls": 7,
+      "http_attempts": 5,
+      "seconds": 18.284981
+    },
+    {
+      "id": "745",
+      "status": "completed",
+      "total_tokens": 22455,
+      "tool_calls": 10,
+      "http_attempts": 6,
+      "seconds": 21.102342
+    },
+    {
+      "id": "770",
+      "status": "insufficient_evidence",
+      "total_tokens": 9428,
+      "tool_calls": 4,
+      "http_attempts": 3,
+      "seconds": 11.931268
+    },
+    {
+      "id": "776",
+      "status": "insufficient_evidence",
+      "total_tokens": 9380,
+      "tool_calls": 4,
+      "http_attempts": 3,
+      "seconds": 16.211247
+    },
+    {
+      "id": "792",
+      "status": "insufficient_evidence",
+      "total_tokens": 9287,
+      "tool_calls": 4,
+      "http_attempts": 3,
+      "seconds": 8.408699
+    },
+    {
+      "id": "821",
+      "status": "insufficient_evidence",
+      "total_tokens": 16324,
+      "tool_calls": 7,
+      "http_attempts": 5,
+      "seconds": 14.956102
+    },
+    {
+      "id": "828",
+      "status": "insufficient_evidence",
+      "total_tokens": 9079,
+      "tool_calls": 4,
+      "http_attempts": 3,
+      "seconds": 9.572559
+    },
+    {
+      "id": "872",
+      "status": "insufficient_evidence",
+      "total_tokens": 12471,
+      "tool_calls": 5,
+      "http_attempts": 4,
+      "seconds": 10.597974
+    },
+    {
+      "id": "885",
+      "status": "insufficient_evidence",
+      "total_tokens": 14303,
+      "tool_calls": 6,
+      "http_attempts": 4,
+      "seconds": 16.285695
+    },
+    {
+      "id": "921",
+      "status": "insufficient_evidence",
+      "total_tokens": 9129,
+      "tool_calls": 4,
+      "http_attempts": 3,
+      "seconds": 14.155855
+    },
+    {
+      "id": "923",
+      "status": "completed",
+      "total_tokens": 26846,
+      "tool_calls": 11,
+      "http_attempts": 7,
+      "seconds": 26.886746
+    },
+    {
+      "id": "936",
+      "status": "insufficient_evidence",
+      "total_tokens": 17370,
+      "tool_calls": 8,
+      "http_attempts": 5,
+      "seconds": 12.572054
+    },
+    {
+      "id": "946",
+      "status": "completed",
+      "total_tokens": 9978,
+      "tool_calls": 4,
+      "http_attempts": 3,
+      "seconds": 12.315907
+    },
+    {
+      "id": "959",
+      "status": "insufficient_evidence",
+      "total_tokens": 13697,
+      "tool_calls": 6,
+      "http_attempts": 4,
+      "seconds": 24.362451
+    },
+    {
+      "id": "969",
+      "status": "insufficient_evidence",
+      "total_tokens": 9232,
+      "tool_calls": 4,
+      "http_attempts": 3,
+      "seconds": 12.550213
+    },
+    {
+      "id": "978",
+      "status": "insufficient_evidence",
+      "total_tokens": 14018,
+      "tool_calls": 6,
+      "http_attempts": 4,
+      "seconds": 7.120469
+    },
+    {
+      "id": "984",
+      "status": "insufficient_evidence",
+      "total_tokens": 9262,
+      "tool_calls": 4,
+      "http_attempts": 3,
+      "seconds": 8.292966
+    }
+  ],
+  "raw_http_response_ids_unique_nonempty": true,
+  "formal_record_error_reasons": {
+    "official_compat records the official service's actual identity; it does not verify the original course model.": 100,
+    "provider model ID must have documented DeepSeek-V4-Flash verification": 100
+  },
+  "latency_seconds": {
+    "count": 100,
+    "min": 5.447017,
+    "median": 13.539828,
+    "mean": 15.37961819,
+    "p90": 26.8869384,
+    "p95": 31.4009337,
+    "max": 39.922332,
+    "sum": 1537.9618189999999
+  },
+  "timing_note": "Per-question monotonic elapsed seconds; sum is not parallel wall time",
+  "tools_per_question": {
+    "count": 100,
+    "min": 3,
+    "median": 6.0,
+    "mean": 6.89,
+    "p90": 10.0,
+    "p95": 12.0,
+    "max": 12,
+    "sum": 689
+  },
+  "tokens_per_question": {
+    "count": 100,
+    "min": 8325,
+    "median": 14287.0,
+    "mean": 15761.43,
+    "p90": 23689.500000000007,
+    "p95": 25514.949999999997,
+    "max": 26846,
+    "sum": 1576143
+  },
+  "http_per_question": {
+    "count": 100,
+    "min": 3,
+    "median": 4.0,
+    "mean": 4.56,
+    "p90": 6.1000000000000085,
+    "p95": 7.0,
+    "max": 7,
+    "sum": 456
+  },
+  "response_utc_dates": [
+    "2026-11-15"
+  ],
+  "cache_hit_share_of_prompt": 0.3450736972727596,
+  "tariff_estimate_cny": 1.2364320800000002,
+  "tariff": {
+    "source": "https://api-docs.deepseek.com/zh-cn/quick_start/pricing/",
+    "checked_date": "2026-11-15",
+    "currency": "CNY",
+    "per_million_hit_miss_completion": [
+      0.02,
+      1,
+      4
+    ],
+    "note": "Sunday Flash off-peak tariff estimate, not returned/paid cost"
+  },
+  "recovery_dry_run": {
+    "valid_existing": 100,
+    "pending": 0,
+    "missing": 0,
+    "ineligible": 0,
+    "dry_run": true,
+    "new_api_calls": 0
+  },
+  "cli_resume": {
+    "valid": true,
+    "formal": false,
+    "official_compat": false,
+    "strict_grounding": false,
+    "errors": [],
+    "records": 100,
+    "expected": 100,
+    "completed": 20,
+    "failed": 80,
+    "citation_passed": 100,
+    "citation_errors": {},
+    "tool_calls": 689,
+    "total_tokens": 1576143,
+    "config_ids": [
+      "61d7cc3701b2a42a"
+    ],
+    "attempted_this_run": 0,
+    "skipped": 100,
+    "replaced_failed": 0,
+    "all_attempts_total_tokens": 1576143,
+    "all_attempts_tool_calls": 689,
+    "archived_attempts": 0,
+    "config_id": "61d7cc3701b2a42a",
+    "output": "outputs/acceptance-test100-v1/test_prediction.jsonl",
+    "attempt_archive": null
+  },
+  "resume_file_sha256": {
+    "before_sha256": "5f8d11089c343a5543a21810b6ea97ba083f8e712a9fdad34ae174141fd68509",
+    "after_sha256": "5f8d11089c343a5543a21810b6ea97ba083f8e712a9fdad34ae174141fd68509",
+    "unchanged": true
+  }
+}

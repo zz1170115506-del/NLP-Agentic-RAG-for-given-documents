@@ -1,0 +1,97 @@
+{
+  "format_version": 1,
+  "status": "verified_locally_pending_release_publication",
+  "verified_at_hong_kong": "2026-11-15T15:06:35.033680+08:00",
+  "scope": "Independent decryption, complete streaming extraction, payload SHA256, SQLite and all dense shard semantic checks",
+  "verification": {
+    "status": "verified",
+    "archive_sha256": "dd2d6c63721911ea2b5da21cbd179de3eb3dfd313fa234b092ac71f7a6cf005a",
+    "files": 2540,
+    "restored": true,
+    "semantic_checks": {
+      "data/course-full/documents.sqlite": "quick_check_and_counts_passed",
+      "indexes/course-full/sparse.sqlite": "quick_check_and_counts_passed",
+      "encoder": {
+        "ready": false,
+        "source_chunks": 313344,
+        "total_source_chunks": 4345592,
+        "vectors": 316662,
+        "shards": 1224
+      },
+      "instruction": {
+        "ready": false,
+        "source_chunks": 9472,
+        "total_source_chunks": 4345592,
+        "vectors": 9722,
+        "shards": 37
+      }
+    }
+  },
+  "runtime_baseline_git_sha": "dab7646158fef729c3bf3e0f37b7f302727fc568",
+  "runtime_python_files_verified_against_git_object_live_and_snapshot": 44,
+  "runtime_python_source_sha256": "8205141f9335f19edc146192605055c81d4686a3644cbd767a011e47940e78c9",
+  "crypto_script_sha256": "ea969767a4cd0ed9aa1642c086c9d5948d326607e98296dbbe928f8347b3be1c",
+  "plaintext_archive_bytes": 6048568944,
+  "plaintext_archive_sha256": "dd2d6c63721911ea2b5da21cbd179de3eb3dfd313fa234b092ac71f7a6cf005a",
+  "encrypted_bytes": 6048600182,
+  "encrypted_parts": [
+    {
+      "name": "data.course-data.tar.gz.part00001.aead",
+      "bytes": 1900009655,
+      "sha256": "fc77d082a8e697a12e4de12a65abb615cf38d5f01d27efefc59ab8294a198edd"
+    },
+    {
+      "name": "data.course-data.tar.gz.part00002.aead",
+      "bytes": 1900009655,
+      "sha256": "da54a967f2f58d9dfecdbe2d095f81cfe29a904f8f85a774e311a54890f63780"
+    },
+    {
+      "name": "data.course-data.tar.gz.part00003.aead",
+      "bytes": 1900009655,
+      "sha256": "784ecea4d6a8676a5d471af304d02f44a0cada0b74970d351cc38b789cf1b220"
+    },
+    {
+      "name": "data.course-data.tar.gz.part00004.aead",
+      "bytes": 348571217,
+      "sha256": "f098b47be092ac8dc381d0a31051d6af74ba629c66c430c68f8b4e5d708efce9"
+    }
+  ],
+  "each_encrypted_part_strictly_less_than_2GiB": true,
+  "key_stored_separately_with_mode": "0600",
+  "corpus": {
+    "document_count": 100195,
+    "chunk_count": 4345592,
+    "fingerprint": "ea8764233b0d4a76d050842e290805a0f154858084dfd0430ba8c0d9c555025f"
+  },
+  "checkpoints": {
+    "encoder": {
+      "source_chunks": 313344,
+      "vectors": 316662,
+      "shards": 1224,
+      "ready": false,
+      "handoff_status": "partial_checkpoint",
+      "model_id": "intfloat/e5-small-v2",
+      "revision": "ffb93f3bd4047442299a41ebb6fa998a38507c52",
+      "coverage_percent": 7.210617
+    },
+    "instruction": {
+      "source_chunks": 9472,
+      "vectors": 9722,
+      "shards": 37,
+      "ready": false,
+      "handoff_status": "user_deferred",
+      "model_id": "Qwen/Qwen3-Embedding-0.6B",
+      "revision": "97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3",
+      "coverage_percent": 0.217968
+    }
+  },
+  "steps_seconds": {
+    "pack": 235.54,
+    "encrypt": 14.464,
+    "decrypt": 9.893,
+    "independent_verify": 454.731
+  },
+  "no_model_inference_or_api_calls_in_packaging": true,
+  "models": "Weights excluded; fixed revision official download list provided separately",
+  "qwen": "user_deferred; existing 9472 source chunks / 37 shards retained without new computation"
+}

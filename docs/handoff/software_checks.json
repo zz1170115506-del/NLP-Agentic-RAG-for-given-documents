@@ -1,0 +1,69 @@
+{
+  "checked_at_hong_kong": "2026-11-15T13:47:00.179626+08:00",
+  "source_git_sha": "dab7646158fef729c3bf3e0f37b7f302727fc568",
+  "runtime_source_frozen": true,
+  "python": "3.12.14",
+  "install": "PEP517 wheel built offline and installed non-editably into independent acceptance venv",
+  "wheel": {
+    "filename": "comp5423_skill_search_agent-0.1.0-py3-none-any.whl",
+    "sha256": "664c06cac85c506ec68bd69a75ee12758fe361ff109b0a2de8f3ae49d2faeaf6",
+    "bytes": 99892
+  },
+  "installed_source": {
+    "python_files": 44,
+    "checkout_snapshot_installed_hashes": "all_match",
+    "imports": "venv site-packages"
+  },
+  "dependency_check": "passed",
+  "api_calls_in_this_acceptance": 0,
+  "cli_steps": [
+    "prepare",
+    "index_sparse",
+    "search",
+    "ask",
+    "predict_limit_1",
+    "predict_resume",
+    "predict_reuse",
+    "validate"
+  ],
+  "demo_predict": {
+    "first_attempted": 1,
+    "resume_attempted": 2,
+    "resume_skipped": 1,
+    "reuse_attempted": 0,
+    "reuse_skipped": 3,
+    "records": 3,
+    "expected": 3,
+    "schema_valid": true,
+    "citation_passed": 2,
+    "strict_grounding_all_passed": false,
+    "limitation": "Third synthetic question intentionally has no evidence and returns an empty answer; its citation failure is retained."
+  },
+  "handoff_tests": {
+    "tests": 14,
+    "additional_subtests": 2,
+    "status": "passed",
+    "coverage": [
+      "synthetic SQLite/BM25/vector archive",
+      "relative links",
+      "AES256GCM roundtrip",
+      "ciphertext and header tampering",
+      "frame and volume reordering",
+      "missing and truncated final frame",
+      "extra bytes",
+      "wrong key",
+      "key reuse refusal",
+      "Windows-drive and traversal path rejection",
+      "case-insensitive credential-file refusal",
+      "semantic dense path and payload-hash binding",
+      "whole-package tail truncation with forged manifest/header"
+    ]
+  },
+  "ruff_handoff": "passed",
+  "model_cache_check": {
+    "encoder": "fixed revision and files verified offline",
+    "reranker": "fixed revision and files verified offline",
+    "instruction": "user_deferred; no model computation or download"
+  },
+  "large_payload": "Actual data package independently verified; see data-verification.json"
+}

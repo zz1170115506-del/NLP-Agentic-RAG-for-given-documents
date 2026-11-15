@@ -1,0 +1,64 @@
+{
+  "run_evidence": {
+    "files": 347,
+    "canonical_predictions_unchanged": true,
+    "redacted_logs": 4,
+    "encryption": "AES-256-GCM-framed-v1",
+    "encrypted_parts": 1,
+    "ciphertext_bytes": 44622175,
+    "archive_sha256": "b4422eccdad96f511cb4f3503be88a4c4153c3cab0b22d0968874348e7a04870",
+    "authenticated_decryption": "passed",
+    "independent_unpack_file_hashes": "passed",
+    "installed_package_validation_after_restore": {
+      "validation": {
+        "valid": true,
+        "formal": false,
+        "official_compat": true,
+        "strict_grounding": true,
+        "errors": [],
+        "records": 100,
+        "expected": 100,
+        "completed": 20,
+        "failed": 80,
+        "citation_passed": 100,
+        "citation_errors": {},
+        "tool_calls": 666,
+        "total_tokens": 1536320,
+        "config_ids": [
+          "61d7cc3701b2a42a"
+        ]
+      },
+      "test": {
+        "valid": true,
+        "formal": false,
+        "official_compat": true,
+        "strict_grounding": true,
+        "errors": [],
+        "records": 100,
+        "expected": 100,
+        "completed": 20,
+        "failed": 80,
+        "citation_passed": 100,
+        "citation_errors": {},
+        "tool_calls": 689,
+        "total_tokens": 1576143,
+        "config_ids": [
+          "61d7cc3701b2a42a"
+        ]
+      }
+    }
+  },
+  "local_prediction_files": [
+    {
+      "name": "validation_prediction.jsonl",
+      "bytes": 39446475,
+      "sha256": "17fdcf79dcf7ee09d5d14329fd272ee27d23db64d42ad4044890d691db59acf8"
+    },
+    {
+      "name": "test_prediction.jsonl",
+      "bytes": 41377334,
+      "sha256": "5f8d11089c343a5543a21810b6ea97ba083f8e712a9fdad34ae174141fd68509"
+    }
+  ],
+  "data_package": "Independent semantic verification passed; see docs/handoff/data-verification.json"
+}

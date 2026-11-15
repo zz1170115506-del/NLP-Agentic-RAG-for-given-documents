@@ -1,0 +1,39 @@
+{
+  "status": "passed_after_reproduced_fixes",
+  "python": "3.12.14",
+  "base_git_sha": "6e9c16f4559b544deb5deb219f874cadf08387df",
+  "source_package_sha256": "9e61a27800af7c52f0faeaf85bd9c15c1e8749eadce792240318af7eedc02352",
+  "main_pytest_passed": 134,
+  "agent12_pytest_passed": 70,
+  "agent12_subtests_passed": 4,
+  "agent12_source_changes_since_suite_run": [],
+  "ruff": "passed",
+  "pip_check": "passed",
+  "installed_extras": [
+    "retrieval",
+    "dev"
+  ],
+  "installed_cli_no_pythonpath": [
+    "prepare",
+    "index sparse",
+    "search sparse",
+    "ask",
+    "predict --limit 1",
+    "predict resume",
+    "predict reuse",
+    "validate"
+  ],
+  "unlabeled_prediction_count": 3,
+  "completed_demo_answers": 2,
+  "demo_abstentions": 1,
+  "rerun_attempts": 0,
+  "rerun_skipped": 3,
+  "api_calls": 0,
+  "reproduced_and_fixed": [
+    "evaluate_rerank requires .git",
+    "benchmark_rerank requires .git",
+    "run_rerank_agent requires .git"
+  ],
+  "provenance_policy": "source_digest always retained; unavailable or unrelated Git SHA is null",
+  "scope": "Earlier isolated archive checkpoint; not a final dab7646 archive reinstall. Full raw logs retained by execution owner."
+}

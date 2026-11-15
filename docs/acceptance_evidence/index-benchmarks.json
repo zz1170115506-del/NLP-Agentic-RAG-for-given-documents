@@ -1,0 +1,358 @@
+{
+  "encoder": {
+    "method": "encoder",
+    "device": "cpu",
+    "batch_size": 8,
+    "model_id": "intfloat/e5-small-v2",
+    "revision": "ffb93f3bd4047442299a41ebb6fa998a38507c52",
+    "corpus_fingerprint": "ea8764233b0d4a76d050842e290805a0f154858084dfd0430ba8c0d9c555025f",
+    "total_source_chunks": 4345592,
+    "before_source_chunks": 33536,
+    "after_source_chunks": 33792,
+    "added_source_chunks": 256,
+    "added_vector_rows": 256,
+    "added_shards": 1,
+    "ready": false,
+    "elapsed_seconds_including_model_load_and_resume": 13.158113417041022,
+    "source_chunks_per_second_including_setup": 19.455676652585726,
+    "peak_rss_bytes": 535199744
+  },
+  "instruction": {
+    "method": "instruction",
+    "device": "cpu",
+    "batch_size": 1,
+    "model_id": "Qwen/Qwen3-Embedding-0.6B",
+    "revision": "97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3",
+    "corpus_fingerprint": "ea8764233b0d4a76d050842e290805a0f154858084dfd0430ba8c0d9c555025f",
+    "total_source_chunks": 4345592,
+    "before_source_chunks": 9216,
+    "after_source_chunks": 9472,
+    "added_source_chunks": 256,
+    "added_vector_rows": 256,
+    "added_shards": 1,
+    "ready": false,
+    "elapsed_seconds_including_model_load_and_resume": 105.07430762500735,
+    "source_chunks_per_second_including_setup": 2.436371038614132,
+    "peak_rss_bytes": 2291269632
+  },
+  "e5_batch_threads": {
+    "source_identity": {
+      "code_sha256": "bdf0d95892e14fb49103f76d768542379812abf620b85962d97553957a3c10d9",
+      "corpus": {
+        "chunking": {
+          "size": 900,
+          "overlap": 150,
+          "unit": "python_unicode_characters"
+        },
+        "source": {
+          "type": "huggingface",
+          "dataset": "Tevatron/browsecomp-plus-corpus",
+          "split": "train",
+          "revision": "b27b02bc3e45511b8b82a13e6f90ce761df726f6",
+          "fields": [
+            "docid",
+            "text",
+            "url"
+          ],
+          "limit": null
+        },
+        "fingerprint": "ea8764233b0d4a76d050842e290805a0f154858084dfd0430ba8c0d9c555025f",
+        "document_count": 100195,
+        "chunk_count": 4345592,
+        "importing": false
+      },
+      "indexes": {
+        "encoder/manifest.json": "d4e5315624a50e1236e624fa2181ccbb94aa07bc194f47ebe851ebcdaf06438f",
+        "instruction/manifest.json": "2545f3ac840581263369b96055cb200a88b7909746790697967fe9b31e2c48bf",
+        "sparse": [
+          [
+            "fingerprint",
+            "ea8764233b0d4a76d050842e290805a0f154858084dfd0430ba8c0d9c555025f"
+          ],
+          [
+            "ready",
+            "true"
+          ],
+          [
+            "tokenizer",
+            "unicode61 remove_diacritics 2"
+          ]
+        ]
+      },
+      "skills": {
+        "multi-clue-decomposition/SKILL.md": "f86bc73ad8d042558068e392c24339087e6fdb288b8b431421e64edcb5583ce2",
+        "search-recovery/SKILL.md": "983c75c6d14dae06f341e0f92e8dabd3deb8f80a296c0971277ebe7a911f4de4"
+      }
+    },
+    "model_revision": "ffb93f3bd4047442299a41ebb6fa998a38507c52",
+    "source_chunk_count": 256,
+    "after_checkpoint_source_chunks": 52224,
+    "source_chunk_sha256": "d9b19f23152e98caf75c7799c7eaabb535eb8861db64cf0264b4d36880ebebf4",
+    "device": "cpu",
+    "protocol": "same 256 source chunks, same segmentation/model/dtype/pooling, one 8-row warmup, sequential 3 combinations; no index writes",
+    "runs": [
+      {
+        "batch_size": 8,
+        "torch_threads": 5,
+        "seconds": 6.457066916977055,
+        "source_chunks_per_second": 39.64648396734428,
+        "shape": [
+          264,
+          384
+        ],
+        "same_vectors_within_1e_6": true,
+        "maximum_absolute_difference": 0.0,
+        "process_cumulative_peak_rss_bytes": 780566528
+      },
+      {
+        "batch_size": 32,
+        "torch_threads": 5,
+        "seconds": 5.64844770799391,
+        "source_chunks_per_second": 45.32218641905785,
+        "shape": [
+          264,
+          384
+        ],
+        "same_vectors_within_1e_6": true,
+        "maximum_absolute_difference": 4.507601261138916e-07,
+        "process_cumulative_peak_rss_bytes": 1468760064
+      },
+      {
+        "batch_size": 32,
+        "torch_threads": 10,
+        "seconds": 4.6707463339553215,
+        "source_chunks_per_second": 54.80922783987113,
+        "shape": [
+          264,
+          384
+        ],
+        "same_vectors_within_1e_6": true,
+        "maximum_absolute_difference": 4.284083843231201e-07,
+        "process_cumulative_peak_rss_bytes": 1468760064
+      }
+    ],
+    "vector_rows": 264,
+    "selected": {
+      "batch_size": 32,
+      "torch_threads": 10,
+      "seconds": 4.6707463339553215,
+      "source_chunks_per_second": 54.80922783987113,
+      "shape": [
+        264,
+        384
+      ],
+      "same_vectors_within_1e_6": true,
+      "maximum_absolute_difference": 4.284083843231201e-07,
+      "process_cumulative_peak_rss_bytes": 1468760064
+    },
+    "caveat": "Three short measurements only; content length and simultaneous API retrievals affect sustained throughput; peak RSS is process cumulative"
+  },
+  "bounded_retrieval": {
+    "scope": "97 complete real corpus documents; 20 pre-existing author-written diagnostic questions; not official validation/test",
+    "questions_sha256": "3442db76add5dbc67cd4e9628210fdb7606bd76763e6a648d5fdabef1d64af48",
+    "labels_sha256": "4f342bb01908fe61f0c5bf675ade3b431dedee891e58b70cf1d3dc4c658b7f08",
+    "corpus": {
+      "chunking": {
+        "size": 900,
+        "overlap": 150,
+        "unit": "python_unicode_characters"
+      },
+      "source": {
+        "type": "huggingface",
+        "dataset": "Tevatron/browsecomp-plus-corpus",
+        "split": "train",
+        "revision": "b27b02bc3e45511b8b82a13e6f90ce761df726f6",
+        "fields": [
+          "docid",
+          "text",
+          "url"
+        ],
+        "limit": 100,
+        "selection": "complete documents with len(text) <= max_doc_chars",
+        "max_doc_chars": 100000,
+        "parent_fingerprint": "80e9a40fb2cdd8e5237a037f6826c047bc1abaffdc6a79ac7e6f074922c55678",
+        "parent_document_count": 100
+      },
+      "fingerprint": "adc0e479d11bd650bee7c7aff071cdffdd9ba8f98c7a342e3f8fb5394266078f",
+      "document_count": 97,
+      "chunk_count": 1069,
+      "importing": false
+    },
+    "protocol": {
+      "top_k": 5,
+      "recall_at": [
+        1,
+        5
+      ],
+      "timing": "same CPU; E5 index builder paused; first-query cold call then alternating route order; one warm pass",
+      "label_scope": "partial manually annotated sufficient evidence; unlabelled passages are unknown",
+      "relevance": "one returned passage must fully contain an annotated span; source text SHA checked",
+      "isolation": "read labels only after every query and ranking completes; retrieval gets question strings only"
+    },
+    "deferred": {
+      "instruction": "USER_DEFERRED: no Qwen model load or inference",
+      "hybrid": "USER_DEFERRED: no Qwen model load or inference"
+    },
+    "summary": {
+      "all": {
+        "sparse": {
+          "questions": 20,
+          "median_warm_seconds": 0.0009514580015093088,
+          "mean_warm_seconds": 0.0012179602985270322,
+          "metrics": {
+            "1": {
+              "evidence_recall_at_k": 0.75,
+              "evidence_hit_at_k": 0.75,
+              "document_recall_at_k": 0.9
+            },
+            "5": {
+              "evidence_recall_at_k": 1.0,
+              "evidence_hit_at_k": 1,
+              "document_recall_at_k": 1.0
+            }
+          }
+        },
+        "encoder": {
+          "questions": 20,
+          "median_warm_seconds": 0.036650812486186624,
+          "mean_warm_seconds": 0.03711511254950892,
+          "metrics": {
+            "1": {
+              "evidence_recall_at_k": 0.6,
+              "evidence_hit_at_k": 0.6,
+              "document_recall_at_k": 0.85
+            },
+            "5": {
+              "evidence_recall_at_k": 0.95,
+              "evidence_hit_at_k": 0.95,
+              "document_recall_at_k": 1.0
+            }
+          }
+        }
+      },
+      "dev": {
+        "sparse": {
+          "questions": 10,
+          "median_warm_seconds": 0.0012559374736156315,
+          "mean_warm_seconds": 0.0015618916950188577,
+          "metrics": {
+            "1": {
+              "evidence_recall_at_k": 0.8,
+              "evidence_hit_at_k": 0.8,
+              "document_recall_at_k": 0.9
+            },
+            "5": {
+              "evidence_recall_at_k": 1.0,
+              "evidence_hit_at_k": 1,
+              "document_recall_at_k": 1.0
+            }
+          }
+        },
+        "encoder": {
+          "questions": 10,
+          "median_warm_seconds": 0.0356001874897629,
+          "mean_warm_seconds": 0.037210458400659265,
+          "metrics": {
+            "1": {
+              "evidence_recall_at_k": 0.6,
+              "evidence_hit_at_k": 0.6,
+              "document_recall_at_k": 0.9
+            },
+            "5": {
+              "evidence_recall_at_k": 1.0,
+              "evidence_hit_at_k": 1,
+              "document_recall_at_k": 1.0
+            }
+          }
+        }
+      },
+      "heldout": {
+        "sparse": {
+          "questions": 10,
+          "median_warm_seconds": 0.0009127705125138164,
+          "mean_warm_seconds": 0.0008740289020352065,
+          "metrics": {
+            "1": {
+              "evidence_recall_at_k": 0.7,
+              "evidence_hit_at_k": 0.7,
+              "document_recall_at_k": 0.9
+            },
+            "5": {
+              "evidence_recall_at_k": 1.0,
+              "evidence_hit_at_k": 1,
+              "document_recall_at_k": 1.0
+            }
+          }
+        },
+        "encoder": {
+          "questions": 10,
+          "median_warm_seconds": 0.03750354200019501,
+          "mean_warm_seconds": 0.03701976669835858,
+          "metrics": {
+            "1": {
+              "evidence_recall_at_k": 0.6,
+              "evidence_hit_at_k": 0.6,
+              "document_recall_at_k": 0.8
+            },
+            "5": {
+              "evidence_recall_at_k": 0.9,
+              "evidence_hit_at_k": 0.9,
+              "document_recall_at_k": 1.0
+            }
+          }
+        }
+      }
+    },
+    "loaded_routes": [
+      "encoder",
+      "sparse"
+    ],
+    "qwen_model_loaded": false,
+    "peak_rss_bytes": 382271488
+  },
+  "sql_final": {
+    "question_id": "1005",
+    "seconds": 24.540684833016712,
+    "exact_ids_scores_offsets_urls": true,
+    "exact_texts": true,
+    "rows": [
+      {
+        "doc_id": "1250",
+        "chunk_id": "1250:25500:900",
+        "offset": 25500,
+        "url": "https://en.wikipedia.org/wiki/Academic_degree",
+        "score": -53.006026039935925
+      },
+      {
+        "doc_id": "9185",
+        "chunk_id": "9185:16500:900",
+        "offset": 16500,
+        "url": "https://notanothercelebritybrand.com/celebrities-with-degrees/",
+        "score": -51.235179664042
+      },
+      {
+        "doc_id": "21435",
+        "chunk_id": "21435:750:900",
+        "offset": 750,
+        "url": "https://loudwire.com/rock-metal-musicians-zodiac-sign-cancer/",
+        "score": -47.46752487424423
+      },
+      {
+        "doc_id": "767",
+        "chunk_id": "767:24750:900",
+        "offset": 24750,
+        "url": "https://digitaldefynd.com/IQ/famous-mit-professors/",
+        "score": -45.46005406322445
+      },
+      {
+        "doc_id": "22594",
+        "chunk_id": "22594:750:900",
+        "offset": 750,
+        "url": "https://los40.us/2025/chinese-zodiac-2025-find-out-your-animal-sign-based-on-your-birth-year-29160.html",
+        "score": -44.6632149896807
+      }
+    ],
+    "caveat": "one sequential read-only measurement; other API diagnostics may be querying; OS cache is warm"
+  },
+  "sql_interpretation": "No stable speedup established: original single-query approximately 24.49s, final 24.54s; concurrency/cache confounding."
+}

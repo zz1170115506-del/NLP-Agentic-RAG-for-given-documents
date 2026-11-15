@@ -5,7 +5,7 @@ skills_dir: skills
 method: hybrid
 chunk_size: 900
 chunk_overlap: 150
-batch_size: 8
+batch_size: 32
 top_k: 5
 rrf_k: 60
 encoder_model: intfloat/e5-small-v2

@@ -2,7 +2,7 @@
 
 COMP5423 2026 Fall **Skill-Augmented Search Agent**：从指定固定文档集合检索证据，由 DeepSeek-V4-Flash 通过工具进行多轮问答。现有代码包含三类真实检索实现、独立状态和上下文管理、两个原创 skills、Streamlit 网页、批处理、评测与打包入口。
 
-当前已导入固定语料100,195篇并完成全量BM25。两路神经索引保留可恢复检查点；官方验证因服务HTTP 402停止于90/100题，其中86条通过单条记录校验、4条服务失败、10题未运行。主测试90项及Agent 1.2测试70项通过。完整神经索引、完整100题验收和课程最终交付仍未完成，详见[本轮验收回传](docs/task_NLP-Agentic-RAG-for-given-documents_全项目程序验收与缺口补齐_prompt_1return.md)。
+2026-11-15：固定语料 100,195 篇、4,345,592 个源分块与全量 BM25 已就绪。本轮按用户选择使用官方临时 API，请求 `deepseek-v4-flash`，实际响应保留为 `deepseek-flash`。完整验证集与无标签测试集各 100 题均已运行，六字段、真实 HTTP/usage 和引用校验均为 100/100；验证集 normalized EM 为 19%，测试集不报告准确率。E5 继续构建；Qwen 已按用户要求暂缓。当前证据与限制见[本轮验收回传](docs/task_NLP-Agentic-RAG-for-given-documents_全项目程序验收与缺口补齐_prompt_2return.md)。此前 OpenRouter 的 90/100 记录仅保留为历史，不混入本轮。
 
 - [RAG 设计思路（中文，可分享给组员）](docs/RAG_设计思路.md)
 - [Agent 设计思路（中文，可分享给组员）](docs/Agent_设计思路.md)
@@ -78,11 +78,11 @@ rag-agent validate --config configs/demo.yaml \
   --input tests/fixtures/questions.jsonl --predictions outputs/demo_prediction.jsonl
 ```
 
-重复执行 predict 会跳过已保存题目；加 `--rerun-failed` 仅重跑失败题并保存旧尝试。恢复清单绑定输入、配置、程序代码、实际语料及索引身份；任一变化应使用新的输出路径。旧 schema_version=1 清单不会自动升级混跑。
+重复执行 predict 会跳过已保存题目；加 `--rerun-failed` 仅重跑失败题并保存旧尝试。恢复清单绑定输入、配置、程序代码、技能正文、实际语料及索引身份；任一变化应使用新的输出路径。旧 schema_version=1 清单不会自动升级混跑。
 
 `predict --limit 5` 每次只处理最多五个尚未保存的问题，清单仍绑定完整原输入，适合分批续跑同一个 100 题文件。`index --max-new-shards 2` 可以按分片停止两种向量构建以测量资源；部分索引始终标记 `ready: false`，搜索会拒绝加载；后续去掉该参数即可恢复全量构建。
 
-本轮90条验证记录中的60条诚实弃答已通过单条正式校验，普通`--rerun-failed`也会重跑这些未作答记录。如只需恢复缺失或不符合正式条件的记录，使用定向恢复脚本。它不读取参考答案，核对同一身份、保留有效弃答、原样归档旧失败；新结果先落盘再替换，中断后不重复已存结果，遇基础设施错误停止。先运行不会调用API的检查，当前结果为86条保留、14条待处理：
+2026-11-14 原服务的90条历史验证记录中的60条诚实弃答已通过单条正式校验，普通`--rerun-failed`也会重跑这些未作答记录。如只需恢复缺失或不符合正式条件的记录，使用定向恢复脚本。它不读取参考答案，核对同一身份、保留有效弃答、原样归档旧失败；新结果先落盘再替换，中断后不重复已存结果，遇基础设施错误停止。先运行不会调用API的检查，当前结果为86条保留、14条待处理：
 
 ```bash
 python scripts/recover_predictions.py --config configs/course-full-sparse.yaml \
@@ -94,7 +94,9 @@ python scripts/recover_predictions.py --config configs/course-full-sparse.yaml \
 
 ## 3. 正式模型配置
 
-**不要直接把 `api.deepseek.com` 的 `deepseek-v4-flash` 旧别名当成原 V4-Flash。** 2026-11-10 核对的官方文档说明它已转至 V4.1。本项目会拒绝这个已知不符合课程 backbone 的服务地址。
+当前按用户授权使用 `model_policy: official_compat`，可直接运行官方 API 的 `deepseek-v4-flash` 请求名；配置见 `configs/acceptance-final.yaml`，步骤见[官方兼容配置](docs/deepseek_official_compat.md)。实际响应模型名和完整 usage 均原样留存，原版模型身份不影响本轮开发、测试及兼容验收。
+
+`course_pinned` 仍用于将来原版 DeepSeek-V4-Flash 的课程身份核验；只有该严格模式会拒绝已知别名路由。兼容验收使用 `validate --official-compat`，原版身份核验使用 `validate --formal`，两者的结论分别报告。
 
 本次核对 OpenRouter 目录后，提供 `configs/openrouter.yaml`：
 

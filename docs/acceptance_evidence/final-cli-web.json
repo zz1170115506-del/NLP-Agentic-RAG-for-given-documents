@@ -1,0 +1,24 @@
+{
+  "same_question": true,
+  "same_answer": false,
+  "same_config": true,
+  "production_source_commit": "dab7646158fef729c3bf3e0f37b7f302727fc568",
+  "web_server_restarted_after_freeze": true,
+  "ui_evidence_observed": true,
+  "download_observed": true,
+  "answer_relationship": "same calendar date; original answer strings differ",
+  "cli": {
+    "config_id": "61d7cc3701b2a42a",
+    "total_tokens": 7308,
+    "tool_calls": 1,
+    "compat_errors": [],
+    "grounding_errors": []
+  },
+  "web": {
+    "config_id": "61d7cc3701b2a42a",
+    "total_tokens": 7303,
+    "tool_calls": 1,
+    "compat_errors": [],
+    "grounding_errors": []
+  }
+}

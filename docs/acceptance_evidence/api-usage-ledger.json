@@ -1,0 +1,364 @@
+{
+  "scope": "Current full acceptance task; prior 10-token connectivity and 8762-token initial smoke are excluded because balance_before was checked afterwards.",
+  "duplicate_avoidance": "Only canonical predictions are counted. Per-partition duplicates, event mirrors, downloads and replay fixtures are excluded. All failed diagnostic attempts are included.",
+  "runs": [
+    {
+      "file": "outputs/acceptance-features-v1/baseline-multihop.jsonl",
+      "records": 1,
+      "total_tokens": 8040,
+      "tool_calls": 3,
+      "http_attempts": 4,
+      "raw_prompt_tokens": 7756,
+      "raw_completion_tokens": 284,
+      "raw_total_tokens": 8040,
+      "raw_prompt_cache_hit_tokens": 3200,
+      "raw_prompt_cache_miss_tokens": 4556,
+      "response_models": [
+        "deepseek-flash"
+      ],
+      "estimated_cny": 0.005756
+    },
+    {
+      "file": "outputs/acceptance-features-v1/agent12-long-context.jsonl",
+      "records": 1,
+      "total_tokens": 4637,
+      "tool_calls": 2,
+      "http_attempts": 3,
+      "raw_prompt_tokens": 4463,
+      "raw_completion_tokens": 174,
+      "raw_total_tokens": 4637,
+      "raw_prompt_cache_hit_tokens": 1920,
+      "raw_prompt_cache_miss_tokens": 2543,
+      "response_models": [
+        "deepseek-flash"
+      ],
+      "estimated_cny": 0.0032774
+    },
+    {
+      "file": "outputs/acceptance-features-v1/baseline-simple.jsonl",
+      "records": 1,
+      "total_tokens": 3007,
+      "tool_calls": 1,
+      "http_attempts": 2,
+      "raw_prompt_tokens": 2918,
+      "raw_completion_tokens": 89,
+      "raw_total_tokens": 3007,
+      "raw_prompt_cache_hit_tokens": 2176,
+      "raw_prompt_cache_miss_tokens": 742,
+      "response_models": [
+        "deepseek-flash"
+      ],
+      "estimated_cny": 0.00114152
+    },
+    {
+      "file": "outputs/acceptance-features-v1/baseline-recovery.jsonl",
+      "records": 1,
+      "total_tokens": 3884,
+      "tool_calls": 2,
+      "http_attempts": 3,
+      "raw_prompt_tokens": 3723,
+      "raw_completion_tokens": 161,
+      "raw_total_tokens": 3884,
+      "raw_prompt_cache_hit_tokens": 640,
+      "raw_prompt_cache_miss_tokens": 3083,
+      "response_models": [
+        "deepseek-flash"
+      ],
+      "estimated_cny": 0.0037398
+    },
+    {
+      "file": "outputs/acceptance-features-v1/agent12-simple.jsonl",
+      "records": 1,
+      "total_tokens": 4916,
+      "tool_calls": 2,
+      "http_attempts": 3,
+      "raw_prompt_tokens": 4763,
+      "raw_completion_tokens": 153,
+      "raw_total_tokens": 4916,
+      "raw_prompt_cache_hit_tokens": 2816,
+      "raw_prompt_cache_miss_tokens": 1947,
+      "response_models": [
+        "deepseek-flash"
+      ],
+      "estimated_cny": 0.00261532
+    },
+    {
+      "file": "outputs/acceptance-features-v1/baseline-budget-close.jsonl",
+      "records": 1,
+      "total_tokens": 1786,
+      "tool_calls": 1,
+      "http_attempts": 2,
+      "raw_prompt_tokens": 1686,
+      "raw_completion_tokens": 100,
+      "raw_total_tokens": 1786,
+      "raw_prompt_cache_hit_tokens": 384,
+      "raw_prompt_cache_miss_tokens": 1302,
+      "response_models": [
+        "deepseek-flash"
+      ],
+      "estimated_cny": 0.00170968
+    },
+    {
+      "file": "outputs/acceptance-features-v1/agent12-recovery.jsonl",
+      "records": 1,
+      "total_tokens": 4494,
+      "tool_calls": 2,
+      "http_attempts": 3,
+      "raw_prompt_tokens": 4329,
+      "raw_completion_tokens": 165,
+      "raw_total_tokens": 4494,
+      "raw_prompt_cache_hit_tokens": 2048,
+      "raw_prompt_cache_miss_tokens": 2281,
+      "response_models": [
+        "deepseek-flash"
+      ],
+      "estimated_cny": 0.00298196
+    },
+    {
+      "file": "outputs/acceptance-features-v1/agent12-multihop.jsonl",
+      "records": 1,
+      "total_tokens": 8293,
+      "tool_calls": 3,
+      "http_attempts": 4,
+      "raw_prompt_tokens": 8070,
+      "raw_completion_tokens": 223,
+      "raw_total_tokens": 8293,
+      "raw_prompt_cache_hit_tokens": 3456,
+      "raw_prompt_cache_miss_tokens": 4614,
+      "response_models": [
+        "deepseek-flash"
+      ],
+      "estimated_cny": 0.00557512
+    },
+    {
+      "file": "outputs/acceptance-recovery-probe-v1/prediction.jsonl",
+      "records": 1,
+      "total_tokens": 4356,
+      "tool_calls": 3,
+      "http_attempts": 3,
+      "raw_prompt_tokens": 4200,
+      "raw_completion_tokens": 156,
+      "raw_total_tokens": 4356,
+      "raw_prompt_cache_hit_tokens": 1280,
+      "raw_prompt_cache_miss_tokens": 2920,
+      "response_models": [
+        "deepseek-flash"
+      ],
+      "estimated_cny": 0.0035696
+    },
+    {
+      "file": "outputs/acceptance-diagnostics/baseline.jsonl",
+      "records": 5,
+      "total_tokens": 87690,
+      "tool_calls": 38,
+      "http_attempts": 25,
+      "raw_prompt_tokens": 84451,
+      "raw_completion_tokens": 3239,
+      "raw_total_tokens": 87690,
+      "raw_prompt_cache_hit_tokens": 27776,
+      "raw_prompt_cache_miss_tokens": 56675,
+      "response_models": [
+        "deepseek-flash"
+      ],
+      "estimated_cny": 0.07018652
+    },
+    {
+      "file": "outputs/acceptance-diagnostics/agent12.jsonl",
+      "records": 5,
+      "total_tokens": 90538,
+      "tool_calls": 66,
+      "http_attempts": 38,
+      "raw_prompt_tokens": 84166,
+      "raw_completion_tokens": 6372,
+      "raw_total_tokens": 90538,
+      "raw_prompt_cache_hit_tokens": 43136,
+      "raw_prompt_cache_miss_tokens": 41030,
+      "response_models": [
+        "deepseek-flash"
+      ],
+      "estimated_cny": 0.06738072
+    },
+    {
+      "file": "outputs/acceptance-diagnostics/agent12-context-fixed.jsonl",
+      "records": 5,
+      "total_tokens": 127356,
+      "tool_calls": 29,
+      "http_attempts": 24,
+      "raw_prompt_tokens": 123324,
+      "raw_completion_tokens": 4032,
+      "raw_total_tokens": 127356,
+      "raw_prompt_cache_hit_tokens": 28288,
+      "raw_prompt_cache_miss_tokens": 95036,
+      "response_models": [
+        "deepseek-flash"
+      ],
+      "estimated_cny": 0.11172976
+    },
+    {
+      "file": "outputs/acceptance-ablations/no-skills.jsonl",
+      "records": 5,
+      "total_tokens": 70452,
+      "tool_calls": 34,
+      "http_attempts": 22,
+      "raw_prompt_tokens": 67550,
+      "raw_completion_tokens": 2902,
+      "raw_total_tokens": 70452,
+      "raw_prompt_cache_hit_tokens": 12800,
+      "raw_prompt_cache_miss_tokens": 54750,
+      "response_models": [
+        "deepseek-flash"
+      ],
+      "estimated_cny": 0.066614
+    },
+    {
+      "file": "outputs/acceptance-ablations/no-context.jsonl",
+      "records": 5,
+      "total_tokens": 168238,
+      "tool_calls": 19,
+      "http_attempts": 15,
+      "raw_prompt_tokens": 166186,
+      "raw_completion_tokens": 2052,
+      "raw_total_tokens": 168238,
+      "raw_prompt_cache_hit_tokens": 16896,
+      "raw_prompt_cache_miss_tokens": 149290,
+      "response_models": [
+        "deepseek-flash"
+      ],
+      "estimated_cny": 0.15783592
+    },
+    {
+      "file": "outputs/acceptance-ablations/single-step.jsonl",
+      "records": 5,
+      "total_tokens": 25077,
+      "tool_calls": 10,
+      "http_attempts": 10,
+      "raw_prompt_tokens": 23832,
+      "raw_completion_tokens": 1245,
+      "raw_total_tokens": 25077,
+      "raw_prompt_cache_hit_tokens": 7424,
+      "raw_prompt_cache_miss_tokens": 16408,
+      "response_models": [
+        "deepseek-flash"
+      ],
+      "estimated_cny": 0.02153648
+    },
+    {
+      "file": "work/acceptance/web/single_prediction.jsonl",
+      "records": 1,
+      "total_tokens": 3013,
+      "tool_calls": 1,
+      "http_attempts": 2,
+      "raw_prompt_tokens": 2923,
+      "raw_completion_tokens": 90,
+      "raw_total_tokens": 3013,
+      "raw_prompt_cache_hit_tokens": 2176,
+      "raw_prompt_cache_miss_tokens": 747,
+      "response_models": [
+        "deepseek-flash"
+      ],
+      "estimated_cny": 0.00115052
+    },
+    {
+      "file": "work/acceptance/web/final-cli.jsonl",
+      "records": 1,
+      "total_tokens": 7308,
+      "tool_calls": 1,
+      "http_attempts": 2,
+      "raw_prompt_tokens": 7195,
+      "raw_completion_tokens": 113,
+      "raw_total_tokens": 7308,
+      "raw_prompt_cache_hit_tokens": 2176,
+      "raw_prompt_cache_miss_tokens": 5019,
+      "response_models": [
+        "deepseek-flash"
+      ],
+      "estimated_cny": 0.00551452
+    },
+    {
+      "file": "work/acceptance/web/final-web.jsonl",
+      "records": 1,
+      "total_tokens": 7303,
+      "tool_calls": 1,
+      "http_attempts": 2,
+      "raw_prompt_tokens": 7192,
+      "raw_completion_tokens": 111,
+      "raw_total_tokens": 7303,
+      "raw_prompt_cache_hit_tokens": 2176,
+      "raw_prompt_cache_miss_tokens": 5016,
+      "response_models": [
+        "deepseek-flash"
+      ],
+      "estimated_cny": 0.00550352
+    },
+    {
+      "file": "outputs/acceptance-validation100-v1/validation_prediction.jsonl",
+      "records": 100,
+      "total_tokens": 1536320,
+      "tool_calls": 666,
+      "http_attempts": 442,
+      "raw_prompt_tokens": 1479026,
+      "raw_completion_tokens": 57294,
+      "raw_total_tokens": 1536320,
+      "raw_prompt_cache_hit_tokens": 548096,
+      "raw_prompt_cache_miss_tokens": 930930,
+      "response_models": [
+        "deepseek-flash"
+      ],
+      "estimated_cny": 1.17106792
+    },
+    {
+      "file": "outputs/acceptance-test100-v1/test_prediction.jsonl",
+      "records": 100,
+      "total_tokens": 1576143,
+      "tool_calls": 689,
+      "http_attempts": 456,
+      "raw_prompt_tokens": 1518238,
+      "raw_completion_tokens": 57905,
+      "raw_total_tokens": 1576143,
+      "raw_prompt_cache_hit_tokens": 523904,
+      "raw_prompt_cache_miss_tokens": 994334,
+      "response_models": [
+        "deepseek-flash"
+      ],
+      "estimated_cny": 1.23643208
+    }
+  ],
+  "totals": {
+    "records": 242,
+    "total_tokens": 3742851,
+    "tool_calls": 1573,
+    "http_attempts": 1065,
+    "raw_prompt_tokens": 3605991,
+    "raw_completion_tokens": 136860,
+    "raw_total_tokens": 3742851,
+    "raw_prompt_cache_hit_tokens": 1232768,
+    "raw_prompt_cache_miss_tokens": 2373223
+  },
+  "estimated_cny": 2.94531836,
+  "tariff": {
+    "source": "https://api-docs.deepseek.com/zh-cn/quick_start/pricing/",
+    "date": "2026-11-15",
+    "period": "Sunday/off-peak",
+    "currency": "CNY",
+    "per_million": {
+      "cache_hit_input": 0.02,
+      "cache_miss_input": 1,
+      "output": 4
+    }
+  },
+  "initial_observed_balance_cny": 9.99,
+  "after_balance": {
+    "timestamp": "2026-11-15T06:55:56.013278+00:00",
+    "http_status": 200,
+    "available": true,
+    "balances": [
+      {
+        "currency": "CNY",
+        "total_balance": "7.20",
+        "granted_balance": "0.00",
+        "topped_up_balance": "7.20"
+      }
+    ]
+  },
+  "balance_note": "Balance snapshots are service observations, may lag billing and include other account activity; tariff estimate is not a returned usage.cost."
+}
