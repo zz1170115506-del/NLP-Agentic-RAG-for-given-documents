@@ -1,0 +1,31 @@
+{
+  "format_version": 1,
+  "algorithm": "AES-256-GCM-framed-v1",
+  "package_id": "c291564fab6aee0b722f2d24f1b45962",
+  "label": "review-evidence",
+  "key_id": "8b90ab2763a2112804bb857d",
+  "chunk_bytes": 4194304,
+  "inner_volumes": {
+    "format_version": 1,
+    "compression": "tar+gzip",
+    "part_limit_bytes": 1900000000,
+    "archive_bytes": 39725319,
+    "archive_sha256": "6d7676e2459907840e63a2f3349e98138fad06134e8694d067946b0dd529bae2",
+    "handoff_sha256": "74db5e5f75e94c5985e5aee57d908a7171f4f173d6e8c3d55777c11736b3ab94",
+    "parts": [
+      {
+        "name": "course-data.tar.gz.part00001",
+        "bytes": 39725319,
+        "sha256": "6d7676e2459907840e63a2f3349e98138fad06134e8694d067946b0dd529bae2"
+      }
+    ]
+  },
+  "crypto_script_sha256": "ea969767a4cd0ed9aa1642c086c9d5948d326607e98296dbbe928f8347b3be1c",
+  "parts": [
+    {
+      "name": "review-evidence.course-data.tar.gz.part00001.aead",
+      "bytes": 39726109,
+      "sha256": "ffccf889e01b462f75af4deb1dddb229fdc228596cd3e71255612b9b7655fa8a"
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "baseline_snapshot_sha256": "4d6c24157fcc1290f7837763b904d60b93e7abbfec48d4680ec610860f8a0b92",
+  "status": "superseded_provider_error_attempt",
+  "record": {
+    "id": "58",
+    "row_sha256": "401d478ed4420d4e500b34b134459fec3ab5147037b709c8f04b2e5642c463ce",
+    "row_bytes": 182667,
+    "config_id": "900fc3b95b775d2a",
+    "event_count": 23,
+    "api_calls": [
+      {
+        "sequence": 6,
+        "type": "api_attempt",
+        "elapsed_seconds": 3.072917,
+        "http_status": 200,
+        "actual_request_target_passages": [],
+        "usage": {
+          "prompt_tokens": 1661,
+          "completion_tokens": 288,
+          "total_tokens": 1949,
+          "prompt_tokens_details": {
+            "cached_tokens": 1280
+          }
+        },
+        "error_code": null,
+        "response_model": "deepseek-v4-flash-0731",
+        "context_sequence": 4
+      },
+      {
+        "sequence": 13,
+        "type": "api_attempt",
+        "elapsed_seconds": 7.441474,
+        "http_status": 200,
+        "actual_request_target_passages": [],
+        "usage": {
+          "prompt_tokens": 4238,
+          "completion_tokens": 358,
+          "total_tokens": 4596,
+          "prompt_tokens_details": {
+            "cached_tokens": 1280
+          }
+        },
+        "error_code": null,
+        "response_model": "deepseek-v4-flash-0731",
+        "context_sequence": 11
+      },
+      {
+        "sequence": 20,
+        "type": "api_attempt",
+        "elapsed_seconds": 8.065979,
+        "http_status": 400,
+        "actual_request_target_passages": [],
+        "usage": null,
+        "error_code": "Arrearage",
+        "response_model": null,
+        "context_sequence": 18
+      }
+    ],
+    "raw_target_hits": [],
+    "status": "provider_error",
+    "tokens": 6545,
+    "tool_calls": 4,
+    "normalized_em": 0,
+    "model_abstention": false,
+    "has_answer_event": false,
+    "narrative": "新百炼只有前2次API成功；第三次seq20收到HTTP400，响应error.code/type均为Arrearage，程序seq21记录provider_error并终止。2次成功请求已报告6545 token、4次工具，失败请求用量未知，usage_complete=false。没有模型final答复，也没有answer事件；导出空串来自运行错误路径，而不是模型主动弃答。因此不能将新模型58的EM=0当作拒答能力证据，不能与旧模型最终明确空答混为一谈。恢复账户后必须完成或重新运行该题，再判断上下文与答案；本子任务没有调用API或修改账户。"
+  }
+}

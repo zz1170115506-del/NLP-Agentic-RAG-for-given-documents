@@ -1,0 +1,170 @@
+[
+  {
+    "id": "1155",
+    "tool_calls": 4,
+    "total_tokens": 8679,
+    "api_requests": 3,
+    "exact_query_repeats": 2,
+    "finalization_remaining": {
+      "tokens": 24555,
+      "tools": 20,
+      "steps": 10,
+      "stalled_searches": 2
+    },
+    "empty_origin": "model_original_response",
+    "final_status": "insufficient_evidence",
+    "historical_em": 0,
+    "historical_config_id": "61d7cc3701b2a42a",
+    "bailian_initial_attempt": {
+      "status": "NOT_RUN_PROVIDER_ARREARAGE",
+      "final_status": "provider_error",
+      "exported_answer": "",
+      "api_attempts": 1,
+      "http_statuses": [
+        400
+      ],
+      "tool_calls": 0,
+      "total_tokens": 0,
+      "arrearage_in_attempt": true,
+      "historical_or_new": "new_bailian_provider_failure",
+      "em": null
+    },
+    "bailian_completed_baseline": {
+      "id": "1155",
+      "tool_calls": 8,
+      "total_tokens": 16671,
+      "api_requests": 5,
+      "exact_query_repeats": 1,
+      "finalization_remaining": {
+        "tokens": 16469,
+        "tools": 16,
+        "steps": 8,
+        "stalled_searches": 2
+      },
+      "empty_origin": "nonempty_model_answer_preserved",
+      "final_status": "completed",
+      "em": 0,
+      "status": "VALID_COMPLETED_RUN",
+      "nonempty": true,
+      "config_id": "900fc3b95b775d2a",
+      "response_models": [
+        "deepseek-v4-flash-0731"
+      ]
+    },
+    "first_evidenced_problem": "seq12完整重复首轮两条查询，而seq11已见候选村落和步道片段；seq13–14新增证据均为0，停滞计数升至2。seq18在仍有大量预算时禁用工具收尾。",
+    "conclusion": "候选与步道信息可见，但重复查询触发提前收尾；离线找到年代支持及冲突，机场距离仍未闭环。",
+    "next_single_variable": "只替换第二轮第一条重复查询为历史候选名+缺失年代，其他设置不动；分别测新片段是否召回、是否进入实际请求。机场距离和年代来源冲突若仍未解决，仍可能弃答；没有已证实EM提升。"
+  },
+  {
+    "id": "1066",
+    "tool_calls": 8,
+    "total_tokens": 17843,
+    "api_requests": 5,
+    "exact_query_repeats": 2,
+    "finalization_remaining": {
+      "tokens": 15590,
+      "tools": 16,
+      "steps": 8,
+      "stalled_searches": 3
+    },
+    "empty_origin": "model_original_response",
+    "final_status": "insufficient_evidence",
+    "historical_em": 0,
+    "historical_config_id": "61d7cc3701b2a42a",
+    "bailian_initial_attempt": {
+      "status": "NOT_RUN_PROVIDER_ARREARAGE",
+      "final_status": "provider_error",
+      "exported_answer": "",
+      "api_attempts": 1,
+      "http_statuses": [
+        400
+      ],
+      "tool_calls": 0,
+      "total_tokens": 0,
+      "arrearage_in_attempt": true,
+      "historical_or_new": "new_bailian_provider_failure",
+      "em": null
+    },
+    "bailian_completed_baseline": {
+      "id": "1066",
+      "tool_calls": 4,
+      "total_tokens": 9082,
+      "api_requests": 3,
+      "exact_query_repeats": 2,
+      "finalization_remaining": {
+        "tokens": 24193,
+        "tools": 20,
+        "steps": 10,
+        "stalled_searches": 2
+      },
+      "empty_origin": "model_original_response",
+      "final_status": "insufficient_evidence",
+      "em": 0,
+      "status": "VALID_COMPLETED_RUN",
+      "nonempty": false,
+      "config_id": "900fc3b95b775d2a",
+      "response_models": [
+        "deepseek-v4-flash-0731"
+      ]
+    },
+    "first_evidenced_problem": "seq18构建上下文、seq20实际请求首次遗漏E12；E12仍在完整state，seq13曾可见，seq14也已发出包含候选及导演的查询。",
+    "conclusion": "曾出现参考文字不等于最后仍有候选证据。关键片段后续被上下文选择丢失，且电影关联条件尚未全部验证。",
+    "next_single_variable": "最小对照仅优先保留历史已经观察到的E12，维持同一证据字符预算。离线已证实seq20/29/37可重入且总字符<24000；不同时加入新导演/剪辑证据。真实模型回答和EM尚未测试。"
+  },
+  {
+    "id": "788",
+    "tool_calls": 12,
+    "total_tokens": 26364,
+    "api_requests": 7,
+    "exact_query_repeats": 3,
+    "finalization_remaining": {
+      "tokens": 7086,
+      "tools": 12,
+      "steps": 6,
+      "stalled_searches": 3
+    },
+    "empty_origin": "model_original_response",
+    "final_status": "insufficient_evidence",
+    "historical_em": 0,
+    "historical_config_id": "61d7cc3701b2a42a",
+    "bailian_initial_attempt": {
+      "status": "NOT_RUN_PROVIDER_ARREARAGE",
+      "final_status": "provider_error",
+      "exported_answer": "",
+      "api_attempts": 1,
+      "http_statuses": [
+        400
+      ],
+      "tool_calls": 0,
+      "total_tokens": 0,
+      "arrearage_in_attempt": true,
+      "historical_or_new": "new_bailian_provider_failure",
+      "em": null
+    },
+    "bailian_completed_baseline": {
+      "id": "788",
+      "tool_calls": 11,
+      "total_tokens": 22139,
+      "api_requests": 6,
+      "exact_query_repeats": 1,
+      "finalization_remaining": {
+        "tokens": 11363,
+        "tools": 13,
+        "steps": 7,
+        "stalled_searches": 2
+      },
+      "empty_origin": "model_original_response",
+      "final_status": "insufficient_evidence",
+      "em": 0,
+      "status": "VALID_COMPLETED_RUN",
+      "nonempty": false,
+      "config_id": "900fc3b95b775d2a",
+      "response_models": [
+        "deepseek-v4-flash-0731"
+      ]
+    },
+    "first_evidenced_problem": "seq15在候选主要指标已进入seq13请求后继续重复该指标；程序层更明确的问题为seq29遗漏seq25第8名返回的竣工年份E20。",
+    "conclusion": "主要指标可见，关键条件片段未保留；离线还发现面积来源冲突及候选医院年代反证，不能认定所有条件原已满足。",
+    "next_single_variable": "优先只保留已观察E20，检查该条件进入实际请求后是否被确认；不同时改查询、医院假设、预算。下一独立对照可核查候选医院成立年，观察是否避免把扩建年当创立年。"
+  }
+]

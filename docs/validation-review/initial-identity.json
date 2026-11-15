@@ -1,0 +1,24 @@
+{
+  "start_commit": "b55b8a6c5c8d3b9ad7f573c7c5ad22a415041869",
+  "historical_runtime_commit": "dab7646158fef729c3bf3e0f37b7f302727fc568",
+  "historical_config_id": "61d7cc3701b2a42a",
+  "historical_prediction_sha256": "17fdcf79dcf7ee09d5d14329fd272ee27d23db64d42ad4044890d691db59acf8",
+  "question_source_sha256": "6317237123a44b18c0781e1e198b863deabd33efea0065a52af1d158ddd04e35",
+  "review_input_sha256": "dd829d11a47ce9c4d7c150c0e75fbdbcf57341b5197f3221c162dfe00fb60ce9",
+  "review_ids": [
+    "960",
+    "1035",
+    "64",
+    "231",
+    "390",
+    "58",
+    "1155",
+    "1066",
+    "788"
+  ],
+  "agent_input_fields": [
+    "id",
+    "question"
+  ],
+  "reference_answers_sent_to_agent": false
+}

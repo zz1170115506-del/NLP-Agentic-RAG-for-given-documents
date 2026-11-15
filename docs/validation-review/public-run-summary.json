@@ -1,0 +1,874 @@
+{
+  "scope": "fixed_nine_validation_cases_plus_disclosed_probes_and_conditional_pairs",
+  "prediction_sha256": "c2abcd99c0c2c062584441aafc7200ffe8c00cab96d3c098ca194cb6261984cc",
+  "superseded_attempts_sha256": "084a32d8cdebb1ccb933357fa1472f5a1d4b13915625cfca64db7d11a9c0079c",
+  "canonical_case_count": 9,
+  "canonical_returned_tokens": 167499,
+  "api_calls_including_failed_attempts": 67,
+  "http_status_counts": {
+    "200": 63,
+    "400": 4
+  },
+  "known_returned_tokens_all_calls": 213830,
+  "calls_with_unknown_usage": 4,
+  "unknown_usage_explanation": "Errors without usage are not asserted to have zero billed tokens.",
+  "billing_amount_estimated": false,
+  "cases": [
+    {
+      "case_id": "960",
+      "status": "insufficient_evidence",
+      "has_answer": false,
+      "tool_calls": 12,
+      "returned_total_tokens": 23567,
+      "api_attempts": 7,
+      "response_models": [
+        "deepseek-v4-flash-0731"
+      ],
+      "all_http_200": true,
+      "all_enable_thinking_false": true
+    },
+    {
+      "case_id": "1035",
+      "status": "insufficient_evidence",
+      "has_answer": false,
+      "tool_calls": 8,
+      "returned_total_tokens": 17820,
+      "api_attempts": 5,
+      "response_models": [
+        "deepseek-v4-flash-0731"
+      ],
+      "all_http_200": true,
+      "all_enable_thinking_false": true
+    },
+    {
+      "case_id": "64",
+      "status": "completed",
+      "has_answer": true,
+      "tool_calls": 12,
+      "returned_total_tokens": 26370,
+      "api_attempts": 7,
+      "response_models": [
+        "deepseek-v4-flash-0731"
+      ],
+      "all_http_200": true,
+      "all_enable_thinking_false": true
+    },
+    {
+      "case_id": "231",
+      "status": "insufficient_evidence",
+      "has_answer": false,
+      "tool_calls": 4,
+      "returned_total_tokens": 9687,
+      "api_attempts": 3,
+      "response_models": [
+        "deepseek-v4-flash-0731"
+      ],
+      "all_http_200": true,
+      "all_enable_thinking_false": true
+    },
+    {
+      "case_id": "390",
+      "status": "insufficient_evidence",
+      "has_answer": false,
+      "tool_calls": 10,
+      "returned_total_tokens": 23082,
+      "api_attempts": 6,
+      "response_models": [
+        "deepseek-v4-flash-0731"
+      ],
+      "all_http_200": true,
+      "all_enable_thinking_false": true
+    },
+    {
+      "case_id": "58",
+      "status": "insufficient_evidence",
+      "has_answer": false,
+      "tool_calls": 8,
+      "returned_total_tokens": 19081,
+      "api_attempts": 5,
+      "response_models": [
+        "deepseek-v4-flash-0731"
+      ],
+      "all_http_200": true,
+      "all_enable_thinking_false": true
+    },
+    {
+      "case_id": "1155",
+      "status": "completed",
+      "has_answer": true,
+      "tool_calls": 8,
+      "returned_total_tokens": 16671,
+      "api_attempts": 5,
+      "response_models": [
+        "deepseek-v4-flash-0731"
+      ],
+      "all_http_200": true,
+      "all_enable_thinking_false": true
+    },
+    {
+      "case_id": "1066",
+      "status": "insufficient_evidence",
+      "has_answer": false,
+      "tool_calls": 4,
+      "returned_total_tokens": 9082,
+      "api_attempts": 3,
+      "response_models": [
+        "deepseek-v4-flash-0731"
+      ],
+      "all_http_200": true,
+      "all_enable_thinking_false": true
+    },
+    {
+      "case_id": "788",
+      "status": "insufficient_evidence",
+      "has_answer": false,
+      "tool_calls": 11,
+      "returned_total_tokens": 22139,
+      "api_attempts": 6,
+      "response_models": [
+        "deepseek-v4-flash-0731"
+      ],
+      "all_http_200": true,
+      "all_enable_thinking_false": true
+    }
+  ],
+  "api_ledger": [
+    {
+      "source": "baseline/960",
+      "http_status": 200,
+      "response_id": "chatcmpl-097e0c2a-f22b-9140-a88e-061b401d49ce",
+      "response_model": "deepseek-v4-flash-0731",
+      "requested_model": "deepseek-v4-flash-0731",
+      "enable_thinking": false,
+      "returned_total_tokens": 1437,
+      "usage_unknown": false,
+      "error_code": null
+    },
+    {
+      "source": "baseline/960",
+      "http_status": 200,
+      "response_id": "chatcmpl-963cd8e4-b0b5-90c6-a2f0-1c11f8e0527c",
+      "response_model": "deepseek-v4-flash-0731",
+      "requested_model": "deepseek-v4-flash-0731",
+      "enable_thinking": false,
+      "returned_total_tokens": 3983,
+      "usage_unknown": false,
+      "error_code": null
+    },
+    {
+      "source": "baseline/960",
+      "http_status": 200,
+      "response_id": "chatcmpl-5d325b66-2e94-9f77-b9b2-8cbc33a865a4",
+      "response_model": "deepseek-v4-flash-0731",
+      "requested_model": "deepseek-v4-flash-0731",
+      "enable_thinking": false,
+      "returned_total_tokens": 3840,
+      "usage_unknown": false,
+      "error_code": null
+    },
+    {
+      "source": "baseline/960",
+      "http_status": 200,
+      "response_id": "chatcmpl-a9cd573b-1a71-958f-b2d1-7c37da381dd6",
+      "response_model": "deepseek-v4-flash-0731",
+      "requested_model": "deepseek-v4-flash-0731",
+      "enable_thinking": false,
+      "returned_total_tokens": 3858,
+      "usage_unknown": false,
+      "error_code": null
+    },
+    {
+      "source": "baseline/960",
+      "http_status": 200,
+      "response_id": "chatcmpl-5bd04460-6aec-98f5-9991-208d2d3f94ac",
+      "response_model": "deepseek-v4-flash-0731",
+      "requested_model": "deepseek-v4-flash-0731",
+      "enable_thinking": false,
+      "returned_total_tokens": 3674,
+      "usage_unknown": false,
+      "error_code": null
+    },
+    {
+      "source": "baseline/960",
+      "http_status": 200,
+      "response_id": "chatcmpl-05dd5198-c42e-9d7e-af47-85fa34735a0b",
+      "response_model": "deepseek-v4-flash-0731",
+      "requested_model": "deepseek-v4-flash-0731",
+      "enable_thinking": false,
+      "returned_total_tokens": 3610,
+      "usage_unknown": false,
+      "error_code": null
+    },
+    {
+      "source": "baseline/960",
+      "http_status": 200,
+      "response_id": "chatcmpl-21da89c4-a1d1-9400-bb51-13e4caf4528c",
+      "response_model": "deepseek-v4-flash-0731",
+      "requested_model": "deepseek-v4-flash-0731",
+      "enable_thinking": false,
+      "returned_total_tokens": 3165,
+      "usage_unknown": false,
+      "error_code": null
+    },
+    {
+      "source": "baseline/1035",
+      "http_status": 200,
+      "response_id": "chatcmpl-00f772e0-d54c-9a7a-a098-fd7235e3bbba",
+      "response_model": "deepseek-v4-flash-0731",
+      "requested_model": "deepseek-v4-flash-0731",
+      "enable_thinking": false,
+      "returned_total_tokens": 1846,
+      "usage_unknown": false,
+      "error_code": null
+    },
+    {
+      "source": "baseline/1035",
+      "http_status": 200,
+      "response_id": "chatcmpl-213018b0-bccc-91ea-9641-34da62905861",
+      "response_model": "deepseek-v4-flash-0731",
+      "requested_model": "deepseek-v4-flash-0731",
+      "enable_thinking": false,
+      "returned_total_tokens": 4229,
+      "usage_unknown": false,
+      "error_code": null
+    },
+    {
+      "source": "baseline/1035",
+      "http_status": 200,
+      "response_id": "chatcmpl-d398d569-53af-928a-bd75-420784a1fdff",
+      "response_model": "deepseek-v4-flash-0731",
+      "requested_model": "deepseek-v4-flash-0731",
+      "enable_thinking": false,
+      "returned_total_tokens": 4223,
+      "usage_unknown": false,
+      "error_code": null
+    },
+    {
+      "source": "baseline/1035",
+      "http_status": 200,
+      "response_id": "chatcmpl-ab80cebe-5b7f-9d52-92a0-b8c6bd73ab48",
+      "response_model": "deepseek-v4-flash-0731",
+      "requested_model": "deepseek-v4-flash-0731",
+      "enable_thinking": false,
+      "returned_total_tokens": 4235,
+      "usage_unknown": false,
+      "error_code": null
+    },
+    {
+      "source": "baseline/1035",
+      "http_status": 200,
+      "response_id": "chatcmpl-e1db865a-7bd9-9b00-8fa4-5785c543d801",
+      "response_model": "deepseek-v4-flash-0731",
+      "requested_model": "deepseek-v4-flash-0731",
+      "enable_thinking": false,
+      "returned_total_tokens": 3287,
+      "usage_unknown": false,
+      "error_code": null
+    },
+    {
+      "source": "baseline/64",
+      "http_status": 200,
+      "response_id": "chatcmpl-abdc436a-dd5d-9f61-a474-37cd4887bc33",
+      "response_model": "deepseek-v4-flash-0731",
+      "requested_model": "deepseek-v4-flash-0731",
+      "enable_thinking": false,
+      "returned_total_tokens": 1722,
+      "usage_unknown": false,
+      "error_code": null
+    },
+    {
+      "source": "baseline/64",
+      "http_status": 200,
+      "response_id": "chatcmpl-2c9e6ba3-d5e9-97b7-8c73-caf82bbe5b63",
+      "response_model": "deepseek-v4-flash-0731",
+      "requested_model": "deepseek-v4-flash-0731",
+      "enable_thinking": false,
+      "returned_total_tokens": 4192,
+      "usage_unknown": false,
+      "error_code": null
+    },
+    {
+      "source": "baseline/64",
+      "http_status": 200,
+      "response_id": "chatcmpl-a1ca8f36-46ca-9ebd-9f53-432279d98586",
+      "response_model": "deepseek-v4-flash-0731",
+      "requested_model": "deepseek-v4-flash-0731",
+      "enable_thinking": false,
+      "returned_total_tokens": 4227,
+      "usage_unknown": false,
+      "error_code": null
+    },
+    {
+      "source": "baseline/64",
+      "http_status": 200,
+      "response_id": "chatcmpl-26861879-de6f-9d9a-a8dd-8951dea642ce",
+      "response_model": "deepseek-v4-flash-0731",
+      "requested_model": "deepseek-v4-flash-0731",
+      "enable_thinking": false,
+      "returned_total_tokens": 4199,
+      "usage_unknown": false,
+      "error_code": null
+    },
+    {
+      "source": "baseline/64",
+      "http_status": 200,
+      "response_id": "chatcmpl-3a74db9c-4386-9874-9249-18da3c19dfe9",
+      "response_model": "deepseek-v4-flash-0731",
+      "requested_model": "deepseek-v4-flash-0731",
+      "enable_thinking": false,
+      "returned_total_tokens": 4345,
+      "usage_unknown": false,
+      "error_code": null
+    },
+    {
+      "source": "baseline/64",
+      "http_status": 200,
+      "response_id": "chatcmpl-7d972f5d-4844-9b16-99a8-838440f92a3f",
+      "response_model": "deepseek-v4-flash-0731",
+      "requested_model": "deepseek-v4-flash-0731",
+      "enable_thinking": false,
+      "returned_total_tokens": 4241,
+      "usage_unknown": false,
+      "error_code": null
+    },
+    {
+      "source": "baseline/64",
+      "http_status": 200,
+      "response_id": "chatcmpl-7cbce97c-0a33-972c-ad88-fd8c5e41b2c0",
+      "response_model": "deepseek-v4-flash-0731",
+      "requested_model": "deepseek-v4-flash-0731",
+      "enable_thinking": false,
+      "returned_total_tokens": 3444,
+      "usage_unknown": false,
+      "error_code": null
+    },
+    {
+      "source": "baseline/231",
+      "http_status": 200,
+      "response_id": "chatcmpl-0dc07b82-d651-930b-8b1f-b691f8b7313b",
+      "response_model": "deepseek-v4-flash-0731",
+      "requested_model": "deepseek-v4-flash-0731",
+      "enable_thinking": false,
+      "returned_total_tokens": 1836,
+      "usage_unknown": false,
+      "error_code": null
+    },
+    {
+      "source": "baseline/231",
+      "http_status": 200,
+      "response_id": "chatcmpl-702b27d2-9a93-9078-8733-33d31869abfb",
+      "response_model": "deepseek-v4-flash-0731",
+      "requested_model": "deepseek-v4-flash-0731",
+      "enable_thinking": false,
+      "returned_total_tokens": 4355,
+      "usage_unknown": false,
+      "error_code": null
+    },
+    {
+      "source": "baseline/231",
+      "http_status": 200,
+      "response_id": "chatcmpl-7d7a100e-06db-9692-80cb-eea7943d56a6",
+      "response_model": "deepseek-v4-flash-0731",
+      "requested_model": "deepseek-v4-flash-0731",
+      "enable_thinking": false,
+      "returned_total_tokens": 3496,
+      "usage_unknown": false,
+      "error_code": null
+    },
+    {
+      "source": "baseline/390",
+      "http_status": 200,
+      "response_id": "chatcmpl-ab7e3f90-0283-91a8-9f88-2f9069ea3d17",
+      "response_model": "deepseek-v4-flash-0731",
+      "requested_model": "deepseek-v4-flash-0731",
+      "enable_thinking": false,
+      "returned_total_tokens": 1876,
+      "usage_unknown": false,
+      "error_code": null
+    },
+    {
+      "source": "baseline/390",
+      "http_status": 200,
+      "response_id": "chatcmpl-3ef29861-d5da-938e-a238-307c10f6cb4c",
+      "response_model": "deepseek-v4-flash-0731",
+      "requested_model": "deepseek-v4-flash-0731",
+      "enable_thinking": false,
+      "returned_total_tokens": 4306,
+      "usage_unknown": false,
+      "error_code": null
+    },
+    {
+      "source": "baseline/390",
+      "http_status": 200,
+      "response_id": "chatcmpl-24a30db8-d506-949d-9003-58b1a9fc8f24",
+      "response_model": "deepseek-v4-flash-0731",
+      "requested_model": "deepseek-v4-flash-0731",
+      "enable_thinking": false,
+      "returned_total_tokens": 4352,
+      "usage_unknown": false,
+      "error_code": null
+    },
+    {
+      "source": "baseline/390",
+      "http_status": 200,
+      "response_id": "chatcmpl-8243f001-ba0a-90ce-9193-f443eacc2479",
+      "response_model": "deepseek-v4-flash-0731",
+      "requested_model": "deepseek-v4-flash-0731",
+      "enable_thinking": false,
+      "returned_total_tokens": 4384,
+      "usage_unknown": false,
+      "error_code": null
+    },
+    {
+      "source": "baseline/390",
+      "http_status": 200,
+      "response_id": "chatcmpl-28b4b582-e185-93f1-bd63-87eaee6cbae0",
+      "response_model": "deepseek-v4-flash-0731",
+      "requested_model": "deepseek-v4-flash-0731",
+      "enable_thinking": false,
+      "returned_total_tokens": 4575,
+      "usage_unknown": false,
+      "error_code": null
+    },
+    {
+      "source": "baseline/390",
+      "http_status": 200,
+      "response_id": "chatcmpl-0c5d5dfd-26c7-9f17-9b95-90c1da88d5d7",
+      "response_model": "deepseek-v4-flash-0731",
+      "requested_model": "deepseek-v4-flash-0731",
+      "enable_thinking": false,
+      "returned_total_tokens": 3589,
+      "usage_unknown": false,
+      "error_code": null
+    },
+    {
+      "source": "baseline/58",
+      "http_status": 200,
+      "response_id": "chatcmpl-4b6f3ab7-ccaa-9890-aec0-e085596b309c",
+      "response_model": "deepseek-v4-flash-0731",
+      "requested_model": "deepseek-v4-flash-0731",
+      "enable_thinking": false,
+      "returned_total_tokens": 1940,
+      "usage_unknown": false,
+      "error_code": null
+    },
+    {
+      "source": "baseline/58",
+      "http_status": 200,
+      "response_id": "chatcmpl-093c653a-1613-9859-925f-f15da96a323b",
+      "response_model": "deepseek-v4-flash-0731",
+      "requested_model": "deepseek-v4-flash-0731",
+      "enable_thinking": false,
+      "returned_total_tokens": 4546,
+      "usage_unknown": false,
+      "error_code": null
+    },
+    {
+      "source": "baseline/58",
+      "http_status": 200,
+      "response_id": "chatcmpl-d941c0d4-f91c-9ef5-a169-c58687ee4567",
+      "response_model": "deepseek-v4-flash-0731",
+      "requested_model": "deepseek-v4-flash-0731",
+      "enable_thinking": false,
+      "returned_total_tokens": 4517,
+      "usage_unknown": false,
+      "error_code": null
+    },
+    {
+      "source": "baseline/58",
+      "http_status": 200,
+      "response_id": "chatcmpl-a877991e-45f5-9192-8dd7-de02d4762927",
+      "response_model": "deepseek-v4-flash-0731",
+      "requested_model": "deepseek-v4-flash-0731",
+      "enable_thinking": false,
+      "returned_total_tokens": 4522,
+      "usage_unknown": false,
+      "error_code": null
+    },
+    {
+      "source": "baseline/58",
+      "http_status": 200,
+      "response_id": "chatcmpl-51592c72-5def-9ed5-af0b-f140f69f3e3c",
+      "response_model": "deepseek-v4-flash-0731",
+      "requested_model": "deepseek-v4-flash-0731",
+      "enable_thinking": false,
+      "returned_total_tokens": 3556,
+      "usage_unknown": false,
+      "error_code": null
+    },
+    {
+      "source": "baseline/1155",
+      "http_status": 200,
+      "response_id": "chatcmpl-19cf793f-b687-9810-8e29-5347d7142b65",
+      "response_model": "deepseek-v4-flash-0731",
+      "requested_model": "deepseek-v4-flash-0731",
+      "enable_thinking": false,
+      "returned_total_tokens": 1425,
+      "usage_unknown": false,
+      "error_code": null
+    },
+    {
+      "source": "baseline/1155",
+      "http_status": 200,
+      "response_id": "chatcmpl-125bd3c0-2ca2-98e8-91f4-2cf5bf25c288",
+      "response_model": "deepseek-v4-flash-0731",
+      "requested_model": "deepseek-v4-flash-0731",
+      "enable_thinking": false,
+      "returned_total_tokens": 4008,
+      "usage_unknown": false,
+      "error_code": null
+    },
+    {
+      "source": "baseline/1155",
+      "http_status": 200,
+      "response_id": "chatcmpl-28b39531-3693-94ab-9509-3bdddedb0ca3",
+      "response_model": "deepseek-v4-flash-0731",
+      "requested_model": "deepseek-v4-flash-0731",
+      "enable_thinking": false,
+      "returned_total_tokens": 4048,
+      "usage_unknown": false,
+      "error_code": null
+    },
+    {
+      "source": "baseline/1155",
+      "http_status": 200,
+      "response_id": "chatcmpl-bc338f06-544f-9032-9a48-bfc71f581677",
+      "response_model": "deepseek-v4-flash-0731",
+      "requested_model": "deepseek-v4-flash-0731",
+      "enable_thinking": false,
+      "returned_total_tokens": 4050,
+      "usage_unknown": false,
+      "error_code": null
+    },
+    {
+      "source": "baseline/1155",
+      "http_status": 200,
+      "response_id": "chatcmpl-32bcce4e-924c-9c0d-8b49-83dcbce87922",
+      "response_model": "deepseek-v4-flash-0731",
+      "requested_model": "deepseek-v4-flash-0731",
+      "enable_thinking": false,
+      "returned_total_tokens": 3140,
+      "usage_unknown": false,
+      "error_code": null
+    },
+    {
+      "source": "baseline/1066",
+      "http_status": 200,
+      "response_id": "chatcmpl-a5601f82-5da0-9ced-a43a-0d475008f50a",
+      "response_model": "deepseek-v4-flash-0731",
+      "requested_model": "deepseek-v4-flash-0731",
+      "enable_thinking": false,
+      "returned_total_tokens": 1691,
+      "usage_unknown": false,
+      "error_code": null
+    },
+    {
+      "source": "baseline/1066",
+      "http_status": 200,
+      "response_id": "chatcmpl-fc4fcb85-4e26-9892-b709-85d6c82e66f9",
+      "response_model": "deepseek-v4-flash-0731",
+      "requested_model": "deepseek-v4-flash-0731",
+      "enable_thinking": false,
+      "returned_total_tokens": 4116,
+      "usage_unknown": false,
+      "error_code": null
+    },
+    {
+      "source": "baseline/1066",
+      "http_status": 200,
+      "response_id": "chatcmpl-eaf42e3f-8a51-9f54-9f66-46e481424bdc",
+      "response_model": "deepseek-v4-flash-0731",
+      "requested_model": "deepseek-v4-flash-0731",
+      "enable_thinking": false,
+      "returned_total_tokens": 3275,
+      "usage_unknown": false,
+      "error_code": null
+    },
+    {
+      "source": "baseline/788",
+      "http_status": 200,
+      "response_id": "chatcmpl-2978b157-09e3-94ee-8363-8ec8946e49af",
+      "response_model": "deepseek-v4-flash-0731",
+      "requested_model": "deepseek-v4-flash-0731",
+      "enable_thinking": false,
+      "returned_total_tokens": 1693,
+      "usage_unknown": false,
+      "error_code": null
+    },
+    {
+      "source": "baseline/788",
+      "http_status": 200,
+      "response_id": "chatcmpl-58b69dcd-3478-964f-ac69-a38a4e09aaea",
+      "response_model": "deepseek-v4-flash-0731",
+      "requested_model": "deepseek-v4-flash-0731",
+      "enable_thinking": false,
+      "returned_total_tokens": 3752,
+      "usage_unknown": false,
+      "error_code": null
+    },
+    {
+      "source": "baseline/788",
+      "http_status": 200,
+      "response_id": "chatcmpl-9e8b23b3-ccad-9f9e-8970-f97f00a336cd",
+      "response_model": "deepseek-v4-flash-0731",
+      "requested_model": "deepseek-v4-flash-0731",
+      "enable_thinking": false,
+      "returned_total_tokens": 4416,
+      "usage_unknown": false,
+      "error_code": null
+    },
+    {
+      "source": "baseline/788",
+      "http_status": 200,
+      "response_id": "chatcmpl-ed2e9ba6-47d3-9815-9628-2fcc7cba9f41",
+      "response_model": "deepseek-v4-flash-0731",
+      "requested_model": "deepseek-v4-flash-0731",
+      "enable_thinking": false,
+      "returned_total_tokens": 4382,
+      "usage_unknown": false,
+      "error_code": null
+    },
+    {
+      "source": "baseline/788",
+      "http_status": 200,
+      "response_id": "chatcmpl-47612d37-f76e-905d-82c3-3d49c4b331e6",
+      "response_model": "deepseek-v4-flash-0731",
+      "requested_model": "deepseek-v4-flash-0731",
+      "enable_thinking": false,
+      "returned_total_tokens": 4394,
+      "usage_unknown": false,
+      "error_code": null
+    },
+    {
+      "source": "baseline/788",
+      "http_status": 200,
+      "response_id": "chatcmpl-2d00a3d5-4056-9824-a96e-1d3bbd6aa97b",
+      "response_model": "deepseek-v4-flash-0731",
+      "requested_model": "deepseek-v4-flash-0731",
+      "enable_thinking": false,
+      "returned_total_tokens": 3502,
+      "usage_unknown": false,
+      "error_code": null
+    },
+    {
+      "source": "superseded/58",
+      "http_status": 200,
+      "response_id": "chatcmpl-2d7ff256-e9c4-9d64-9799-ba3ed2c2f031",
+      "response_model": "deepseek-v4-flash-0731",
+      "requested_model": "deepseek-v4-flash-0731",
+      "enable_thinking": false,
+      "returned_total_tokens": 1949,
+      "usage_unknown": false,
+      "error_code": null
+    },
+    {
+      "source": "superseded/58",
+      "http_status": 200,
+      "response_id": "chatcmpl-13361899-ad80-9c2e-8500-809ee787c138",
+      "response_model": "deepseek-v4-flash-0731",
+      "requested_model": "deepseek-v4-flash-0731",
+      "enable_thinking": false,
+      "returned_total_tokens": 4596,
+      "usage_unknown": false,
+      "error_code": null
+    },
+    {
+      "source": "superseded/58",
+      "http_status": 400,
+      "response_id": "chatcmpl-21078523-282e-9ffa-ad80-b8bf9d63b229",
+      "response_model": null,
+      "requested_model": "deepseek-v4-flash-0731",
+      "enable_thinking": false,
+      "returned_total_tokens": null,
+      "usage_unknown": true,
+      "error_code": "Arrearage"
+    },
+    {
+      "source": "superseded/1155",
+      "http_status": 400,
+      "response_id": "chatcmpl-49b00e1d-cce9-9b94-939e-090ff0dd69e7",
+      "response_model": null,
+      "requested_model": "deepseek-v4-flash-0731",
+      "enable_thinking": false,
+      "returned_total_tokens": null,
+      "usage_unknown": true,
+      "error_code": "Arrearage"
+    },
+    {
+      "source": "superseded/1066",
+      "http_status": 400,
+      "response_id": "chatcmpl-79db1acf-896c-9984-a7ac-5aa0b617f960",
+      "response_model": null,
+      "requested_model": "deepseek-v4-flash-0731",
+      "enable_thinking": false,
+      "returned_total_tokens": null,
+      "usage_unknown": true,
+      "error_code": "Arrearage"
+    },
+    {
+      "source": "superseded/788",
+      "http_status": 400,
+      "response_id": "chatcmpl-7cffdfa3-6446-9b3b-875f-64c66e8786a7",
+      "response_model": null,
+      "requested_model": "deepseek-v4-flash-0731",
+      "enable_thinking": false,
+      "returned_total_tokens": null,
+      "usage_unknown": true,
+      "error_code": "Arrearage"
+    },
+    {
+      "source": "connectivity.json",
+      "http_status": 200,
+      "response_id": "chatcmpl-75f44b7f-fd9b-9d42-a4bb-541fceafd362",
+      "response_model": "deepseek-v4-flash-0731",
+      "requested_model": "deepseek-v4-flash-0731",
+      "enable_thinking": false,
+      "returned_total_tokens": 10,
+      "usage_unknown": false,
+      "error_code": null
+    },
+    {
+      "source": "connectivity-after-recharge.json",
+      "http_status": 200,
+      "response_id": "chatcmpl-d7864a66-8a6d-9e22-b54e-d5f80d5cd7c0",
+      "response_model": "deepseek-v4-flash-0731",
+      "requested_model": "deepseek-v4-flash-0731",
+      "enable_thinking": false,
+      "returned_total_tokens": 10,
+      "usage_unknown": false,
+      "error_code": null
+    },
+    {
+      "source": "synthetic_project_tool_probe",
+      "http_status": 200,
+      "response_id": "chatcmpl-2ba3efc8-6ab4-9400-bd1f-43d65793a9ac",
+      "response_model": "deepseek-v4-flash-0731",
+      "requested_model": "deepseek-v4-flash-0731",
+      "enable_thinking": false,
+      "returned_total_tokens": 1296,
+      "usage_unknown": false,
+      "error_code": null
+    },
+    {
+      "source": "synthetic_project_tool_probe",
+      "http_status": 200,
+      "response_id": "chatcmpl-323b2402-452e-96d1-b438-e28e30df7398",
+      "response_model": "deepseek-v4-flash-0731",
+      "requested_model": "deepseek-v4-flash-0731",
+      "enable_thinking": false,
+      "returned_total_tokens": 1764,
+      "usage_unknown": false,
+      "error_code": null
+    },
+    {
+      "source": "paired-diagnostics/1066/control.api-attempt.json",
+      "http_status": 200,
+      "response_id": "chatcmpl-2b35bfa2-46b5-9edd-b094-ec4cf20003b1",
+      "response_model": "deepseek-v4-flash-0731",
+      "requested_model": "deepseek-v4-flash-0731",
+      "enable_thinking": false,
+      "returned_total_tokens": 4179,
+      "usage_unknown": false,
+      "error_code": null
+    },
+    {
+      "source": "paired-diagnostics/1066/treatment.api-attempt.json",
+      "http_status": 200,
+      "response_id": "chatcmpl-1b2a2c59-415a-9c3f-993d-6255700123bd",
+      "response_model": "deepseek-v4-flash-0731",
+      "requested_model": "deepseek-v4-flash-0731",
+      "enable_thinking": false,
+      "returned_total_tokens": 4140,
+      "usage_unknown": false,
+      "error_code": null
+    },
+    {
+      "source": "paired-diagnostics/231/control.api-attempt.json",
+      "http_status": 200,
+      "response_id": "chatcmpl-284ddae6-3574-9349-ae6b-955e3a8c4196",
+      "response_model": "deepseek-v4-flash-0731",
+      "requested_model": "deepseek-v4-flash-0731",
+      "enable_thinking": false,
+      "returned_total_tokens": 3602,
+      "usage_unknown": false,
+      "error_code": null
+    },
+    {
+      "source": "paired-diagnostics/231/treatment.api-attempt.json",
+      "http_status": 200,
+      "response_id": "chatcmpl-3256a969-8ad4-9a49-a6df-a1aee44e5505",
+      "response_model": "deepseek-v4-flash-0731",
+      "requested_model": "deepseek-v4-flash-0731",
+      "enable_thinking": false,
+      "returned_total_tokens": 3680,
+      "usage_unknown": false,
+      "error_code": null
+    },
+    {
+      "source": "paired-diagnostics/390/control.api-attempt.json",
+      "http_status": 200,
+      "response_id": "chatcmpl-721615d2-01b0-9c87-910c-23493056e058",
+      "response_model": "deepseek-v4-flash-0731",
+      "requested_model": "deepseek-v4-flash-0731",
+      "enable_thinking": false,
+      "returned_total_tokens": 3466,
+      "usage_unknown": false,
+      "error_code": null
+    },
+    {
+      "source": "paired-diagnostics/390/treatment.api-attempt.json",
+      "http_status": 200,
+      "response_id": "chatcmpl-86cb5a7c-275f-99e8-a2e3-3002492643f7",
+      "response_model": "deepseek-v4-flash-0731",
+      "requested_model": "deepseek-v4-flash-0731",
+      "enable_thinking": false,
+      "returned_total_tokens": 3519,
+      "usage_unknown": false,
+      "error_code": null
+    },
+    {
+      "source": "paired-diagnostics/58/control.api-attempt.json",
+      "http_status": 200,
+      "response_id": "chatcmpl-3986d3a9-3573-9660-8473-3265bc5fe05a",
+      "response_model": "deepseek-v4-flash-0731",
+      "requested_model": "deepseek-v4-flash-0731",
+      "enable_thinking": false,
+      "returned_total_tokens": 3581,
+      "usage_unknown": false,
+      "error_code": null
+    },
+    {
+      "source": "paired-diagnostics/58/treatment.api-attempt.json",
+      "http_status": 200,
+      "response_id": "chatcmpl-0d9c1bfc-72cb-9a7f-a6c9-072217f4100f",
+      "response_model": "deepseek-v4-flash-0731",
+      "requested_model": "deepseek-v4-flash-0731",
+      "enable_thinking": false,
+      "returned_total_tokens": 3640,
+      "usage_unknown": false,
+      "error_code": null
+    },
+    {
+      "source": "paired-diagnostics/64/control.api-attempt.json",
+      "http_status": 200,
+      "response_id": "chatcmpl-4c18e30b-c6ee-9540-977c-18d120c74820",
+      "response_model": "deepseek-v4-flash-0731",
+      "requested_model": "deepseek-v4-flash-0731",
+      "enable_thinking": false,
+      "returned_total_tokens": 3425,
+      "usage_unknown": false,
+      "error_code": null
+    },
+    {
+      "source": "paired-diagnostics/64/treatment.api-attempt.json",
+      "http_status": 200,
+      "response_id": "chatcmpl-63db853a-acb1-95e8-96e4-8d063bd37635",
+      "response_model": "deepseek-v4-flash-0731",
+      "requested_model": "deepseek-v4-flash-0731",
+      "enable_thinking": false,
+      "returned_total_tokens": 3474,
+      "usage_unknown": false,
+      "error_code": null
+    }
+  ]
+}

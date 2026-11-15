@@ -1,0 +1,23 @@
+{
+  "test_collection_count": 155,
+  "passed": 150,
+  "skipped": 5,
+  "failed": 0,
+  "full_pytest_exit_code": 0,
+  "public_scripts_ruff_exit_code": 0,
+  "historical_prediction_unchanged": true,
+  "first_five_baseline_records_byte_unchanged": true,
+  "restored_nine_valid": true,
+  "final_recovery_pending": 0,
+  "paired_api_requests": 10,
+  "paired_http_200": 10,
+  "public_formatted_validators_equal_original_outputs": 6,
+  "metric_field_caveat": {
+    "citation_passed": "Legacy counter includes empty answers; only 2 nonempty baseline answers exercised citation-source checks. This is not semantic correctness.",
+    "failed": "Legacy metric counts 7 valid model abstentions here; all 9 canonical runs are protocol-valid."
+  },
+  "encrypted_evidence_authenticated_decryption": true,
+  "archive_files_verified": 581,
+  "logical_paths_restored_and_hash_verified": 580,
+  "path_map_sha256": "31b1abae46bb4108e1be5cb38ee90aaf4b7488b6c2de5549eb13b8ce3d8e541d"
+}

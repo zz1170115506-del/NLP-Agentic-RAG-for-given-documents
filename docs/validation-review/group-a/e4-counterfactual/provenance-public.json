@@ -1,0 +1,103 @@
+{
+  "type": "post_hoc_reference_assisted_diagnostic_not_blind_or_online_agent_success",
+  "api_calls_performed": 0,
+  "question_id": "64",
+  "control_api_sequence": 51,
+  "state_sequence": 47,
+  "pinned_evidence_id": "E4",
+  "replaced_evidence_id": "E7",
+  "pinned_span": {
+    "doc_id": "10744",
+    "chunk_id": "10744:0:900",
+    "offset": 0,
+    "end": 900,
+    "text_sha256": "695024e5955b7a36cdd141eb40c288570aebb24469bf9dcbb037ab4103c416e0"
+  },
+  "earlier_tool_observations": [
+    {
+      "sequence": 8,
+      "rank": 4,
+      "call_id": "call_28ae9eb710ef4591b31e2f39"
+    },
+    {
+      "sequence": 15,
+      "rank": 2,
+      "call_id": "call_a4f044b896a141cfbfd342cb"
+    },
+    {
+      "sequence": 22,
+      "rank": 2,
+      "call_id": "call_1f2b4ece1a11451d986a8d0b"
+    },
+    {
+      "sequence": 29,
+      "rank": 1,
+      "call_id": "call_a33ff0da0e224affa06dc603"
+    },
+    {
+      "sequence": 36,
+      "rank": 1,
+      "call_id": "call_cda6edc623644ac3be958012"
+    },
+    {
+      "sequence": 45,
+      "rank": 3,
+      "call_id": "call_b51f82186c5145ed87be5dba"
+    }
+  ],
+  "control_reproduces_actual_messages_exactly": true,
+  "only_snapshot_evidence_changed": true,
+  "all_treatment_spans_previously_observed": true,
+  "no_reference_answer_or_evaluator_label_added_to_payload": true,
+  "change": "Exactly one selected evidence substitution; unchanged order and seven other observations; frozen allocator allowance verified",
+  "evidence_allowance_chars": 8758,
+  "control_evidence_used_chars": 8715,
+  "treatment_evidence_used_chars": 8683,
+  "configured_context_chars": 24000,
+  "context_builder_budget_chars": 23600,
+  "control_request_chars": 14722,
+  "treatment_request_chars": 14716,
+  "control_context_info": {
+    "dropped_groups": 6,
+    "selected_evidence": 8,
+    "characters": 14479,
+    "managed": true
+  },
+  "treatment_context_info": {
+    "dropped_groups": 6,
+    "selected_evidence": 8,
+    "characters": 14473,
+    "managed": true
+  },
+  "control_selected_ids": [
+    "E6",
+    "E1",
+    "E8",
+    "E19",
+    "E28",
+    "E30",
+    "E7",
+    "E10"
+  ],
+  "treatment_selected_ids": [
+    "E6",
+    "E1",
+    "E8",
+    "E19",
+    "E28",
+    "E30",
+    "E4",
+    "E10"
+  ],
+  "tool_choice": "none",
+  "max_tokens": 1024,
+  "model": "deepseek-v4-flash-0731",
+  "enable_thinking": false,
+  "frozen_context_file_sha256": "049570c0ac9977b4f63421ef907bdefcc7690f6ed46fa869d1e8fca169129867",
+  "record_file_sha256": "78ef64e568a01dc4be30b38269fab06cf14d0a86f61fd05ce9203235cb24f6dc",
+  "control_payload_sha256": "f795ed6249018eb3ff7bdd0b267d7a1aa66c6e9f176c372cc2d135748a996595",
+  "treatment_payload_sha256": "d3b97a43949e5addb59a8c84972e693ef796eb058bae565fc8fd5164e25a6fa6",
+  "canonical_hash_note": "SHA256 of UTF-8 json.dumps ensure_ascii=False separators=(',', ':')",
+  "preparation_status": "This offline script creates payloads only; it never sends API requests.",
+  "actual_execution_result_file": "paired-results-public.json"
+}

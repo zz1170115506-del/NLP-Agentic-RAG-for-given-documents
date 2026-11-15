@@ -1,0 +1,133 @@
+{
+  "1155": [
+    {
+      "sequence": 0,
+      "kind": "run_start",
+      "description": "启动baseline；config_id=900fc3b95b775d2a；sparse，固定语料。"
+    },
+    {
+      "sequence": 1,
+      "kind": "user",
+      "description": "Question(id, question)进入Agent；原题仅保留在私有附件。"
+    },
+    {
+      "sequence": 2,
+      "kind": "context",
+      "description": "上下文选择；移除历史组0，选证据0，2354字符。该事件是程序摘要，实际输入以随后api_attempt为准。"
+    },
+    {
+      "sequence": 3,
+      "kind": "request",
+      "description": "程序准备请求事件；不把此副本当成实际模型输入证据。"
+    },
+    {
+      "sequence": 4,
+      "kind": "api_attempt",
+      "description": "首请求HTTP400，Arrearage；无模型答题回复，usage_unknown=True。实际输入只认本事件request.messages。"
+    },
+    {
+      "sequence": 5,
+      "kind": "error",
+      "description": "服务商账户错误被记录；没有Agent答题决定。"
+    },
+    {
+      "sequence": 6,
+      "kind": "run_end",
+      "description": "provider_error结束，reported_tokens=0，工具0，EM未测；不与充值后运行拼接。"
+    }
+  ],
+  "1066": [
+    {
+      "sequence": 0,
+      "kind": "run_start",
+      "description": "启动baseline；config_id=900fc3b95b775d2a；sparse，固定语料。"
+    },
+    {
+      "sequence": 1,
+      "kind": "user",
+      "description": "Question(id, question)进入Agent；原题仅保留在私有附件。"
+    },
+    {
+      "sequence": 2,
+      "kind": "skill_selected",
+      "description": "skill_selected：multi-clue-decomposition，来源automatic。"
+    },
+    {
+      "sequence": 3,
+      "kind": "skill_loaded",
+      "description": "skill_loaded：multi-clue-decomposition，来源automatic。"
+    },
+    {
+      "sequence": 4,
+      "kind": "context",
+      "description": "上下文选择；移除历史组0，选证据0，3856字符。该事件是程序摘要，实际输入以随后api_attempt为准。"
+    },
+    {
+      "sequence": 5,
+      "kind": "request",
+      "description": "程序准备请求事件；不把此副本当成实际模型输入证据。"
+    },
+    {
+      "sequence": 6,
+      "kind": "api_attempt",
+      "description": "首请求HTTP400，Arrearage；无模型答题回复，usage_unknown=True。实际输入只认本事件request.messages。"
+    },
+    {
+      "sequence": 7,
+      "kind": "error",
+      "description": "服务商账户错误被记录；没有Agent答题决定。"
+    },
+    {
+      "sequence": 8,
+      "kind": "run_end",
+      "description": "provider_error结束，reported_tokens=0，工具0，EM未测；不与充值后运行拼接。"
+    }
+  ],
+  "788": [
+    {
+      "sequence": 0,
+      "kind": "run_start",
+      "description": "启动baseline；config_id=900fc3b95b775d2a；sparse，固定语料。"
+    },
+    {
+      "sequence": 1,
+      "kind": "user",
+      "description": "Question(id, question)进入Agent；原题仅保留在私有附件。"
+    },
+    {
+      "sequence": 2,
+      "kind": "skill_selected",
+      "description": "skill_selected：multi-clue-decomposition，来源automatic。"
+    },
+    {
+      "sequence": 3,
+      "kind": "skill_loaded",
+      "description": "skill_loaded：multi-clue-decomposition，来源automatic。"
+    },
+    {
+      "sequence": 4,
+      "kind": "context",
+      "description": "上下文选择；移除历史组0，选证据0，3867字符。该事件是程序摘要，实际输入以随后api_attempt为准。"
+    },
+    {
+      "sequence": 5,
+      "kind": "request",
+      "description": "程序准备请求事件；不把此副本当成实际模型输入证据。"
+    },
+    {
+      "sequence": 6,
+      "kind": "api_attempt",
+      "description": "首请求HTTP400，Arrearage；无模型答题回复，usage_unknown=True。实际输入只认本事件request.messages。"
+    },
+    {
+      "sequence": 7,
+      "kind": "error",
+      "description": "服务商账户错误被记录；没有Agent答题决定。"
+    },
+    {
+      "sequence": 8,
+      "kind": "run_end",
+      "description": "provider_error结束，reported_tokens=0，工具0，EM未测；不与充值后运行拼接。"
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "historical_prediction_unchanged": true,
+  "historical_prediction_sha256": "17fdcf79dcf7ee09d5d14329fd272ee27d23db64d42ad4044890d691db59acf8",
+  "private_manifest_files": 45,
+  "all_private_manifest_hashes_match": true,
+  "public_files_scanned": 14,
+  "no_secret_or_absolute_local_path": true,
+  "no_exact_reference_names_in_public": true,
+  "historical_bm25_replays": 72,
+  "historical_prefix_checks": 44,
+  "historical_prefix_exact": true,
+  "post_hoc_and_locators": 5,
+  "public_markdown_action_table_checks": [
+    {
+      "id": "960",
+      "phase": "historical",
+      "count": 10,
+      "exact_sequence_and_event_match": true
+    },
+    {
+      "id": "960",
+      "phase": "bailian",
+      "count": 26,
+      "exact_sequence_and_event_match": true
+    },
+    {
+      "id": "1035",
+      "phase": "historical",
+      "count": 14,
+      "exact_sequence_and_event_match": true
+    },
+    {
+      "id": "1035",
+      "phase": "bailian",
+      "count": 18,
+      "exact_sequence_and_event_match": true
+    },
+    {
+      "id": "64",
+      "phase": "historical",
+      "count": 26,
+      "exact_sequence_and_event_match": true
+    },
+    {
+      "id": "64",
+      "phase": "bailian",
+      "count": 26,
+      "exact_sequence_and_event_match": true
+    }
+  ],
+  "all_api_assistant_tool_rows_covered": true,
+  "historical_action_rows": 50,
+  "bailian_baseline_action_rows": 70,
+  "e4_counterfactual_one_evidence_item_changed": true,
+  "e4_control_frozen_replay_exact": true,
+  "offline_auditor_api_calls_performed": 0,
+  "actual_pair_response_count": 2,
+  "actual_pair_total_tokens": 6899,
+  "actual_pair_em": [
+    0,
+    1
+  ],
+  "actual_pair_payloads_exact": true,
+  "actual_pair_schema_and_citations_valid": true,
+  "actual_pair_scope": "one frozen final-turn response per arm; not full Agent rerun",
+  "bailian_baseline_three_saved_records_unchanged_after_recovery": true,
+  "six_python_scripts_ruff_check": "passed"
+}

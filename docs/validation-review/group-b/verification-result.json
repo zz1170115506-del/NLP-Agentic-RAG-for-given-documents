@@ -1,0 +1,53 @@
+{
+  "paired_live_api_attempts": 6,
+  "paired_live_assistant_response_rows": 6,
+  "paired_scope": "separate final turns on old observed history",
+  "passed": true,
+  "coverage": {
+    "historical": {
+      "231": {
+        "events": 27,
+        "api_attempt": 3,
+        "assistant": 3,
+        "tool": 4
+      },
+      "390": {
+        "events": 48,
+        "api_attempt": 6,
+        "assistant": 6,
+        "tool": 10
+      },
+      "58": {
+        "events": 48,
+        "api_attempt": 6,
+        "assistant": 6,
+        "tool": 10
+      }
+    },
+    "bailian": {
+      "231": {
+        "events": 27,
+        "api_attempt": 3,
+        "assistant": 3,
+        "tool": 4
+      },
+      "390": {
+        "events": 48,
+        "api_attempt": 6,
+        "assistant": 6,
+        "tool": 10
+      },
+      "58": {
+        "events": 41,
+        "api_attempt": 5,
+        "assistant": 5,
+        "tool": 8
+      }
+    }
+  },
+  "public_redaction_files_checked": 29,
+  "historical_exact_message_replays": 15,
+  "hook_exact_replays": 30,
+  "no_new_api_calls": true,
+  "private_permissions": "directory700/files600"
+}

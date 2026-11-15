@@ -1,0 +1,128 @@
+{
+  "api_or_model_calls": 0,
+  "rows": {
+    "1155": {
+      "trajectory_events": 25,
+      "public_timeline_events": 25,
+      "api_requests": 3,
+      "agent_decisions": 3,
+      "tool_calls": 4,
+      "actual_usage_sum": 8679,
+      "historical_tool_hits_exact_source": 40,
+      "condition_excerpts_exact_source": 5,
+      "conditions": 4,
+      "context_replays_exact": 2,
+      "original_model_already_empty": true,
+      "processing_errors": 0
+    },
+    "1066": {
+      "trajectory_events": 41,
+      "public_timeline_events": 41,
+      "api_requests": 5,
+      "agent_decisions": 5,
+      "tool_calls": 8,
+      "actual_usage_sum": 17843,
+      "historical_tool_hits_exact_source": 80,
+      "condition_excerpts_exact_source": 8,
+      "conditions": 5,
+      "context_replays_exact": 4,
+      "original_model_already_empty": true,
+      "processing_errors": 0
+    },
+    "788": {
+      "trajectory_events": 55,
+      "public_timeline_events": 55,
+      "api_requests": 7,
+      "agent_decisions": 7,
+      "tool_calls": 12,
+      "actual_usage_sum": 26364,
+      "historical_tool_hits_exact_source": 90,
+      "condition_excerpts_exact_source": 11,
+      "conditions": 5,
+      "context_replays_exact": 6,
+      "original_model_already_empty": true,
+      "processing_errors": 0
+    }
+  },
+  "privacy": {
+    "checked_files": [
+      "public/1066-pair-review.md",
+      "public/1066-review.md",
+      "public/1155-review.md",
+      "public/788-review.md",
+      "public/group-c-bailian-review.md",
+      "public/group-c-review.md",
+      "public/1066-pair-audit.json",
+      "public/coverage-verification.json",
+      "public/group-c-bailian-summary.json",
+      "public/group-c-bailian-timelines.json",
+      "public/group-c-initial-failure-timelines.json",
+      "public/group-c-summary.json",
+      "public/group-c-timelines.json",
+      "append_bailian_baseline.py",
+      "audit_retention_pair.py",
+      "prepare_retention_pair.py",
+      "render_bailian_appendix.py",
+      "render_group_c.py",
+      "render_pair_appendix.py",
+      "replay_context_selection.py",
+      "reproduce_group_c.py",
+      "verify_group_c.py",
+      "README.md"
+    ],
+    "absolute_user_paths": false,
+    "key_like_strings": false,
+    "exact_questions": false,
+    "normalized_reference_answers": false
+  },
+  "semantic_scope": "manual condition judgments, with programmatically checked exact source spans",
+  "bailian_baseline": {
+    "1155": {
+      "trajectory_events": 39,
+      "initial_failed_events": 7,
+      "api_requests": 5,
+      "agent_decisions": 5,
+      "tool_calls": 8,
+      "actual_usage_sum": 16671,
+      "tool_hits_exact_source": 40,
+      "condition_excerpts_exact_source": 4,
+      "final_model_answer_equals_export": true,
+      "processing_errors": 0
+    },
+    "1066": {
+      "trajectory_events": 27,
+      "initial_failed_events": 9,
+      "api_requests": 3,
+      "agent_decisions": 3,
+      "tool_calls": 4,
+      "actual_usage_sum": 9082,
+      "tool_hits_exact_source": 20,
+      "condition_excerpts_exact_source": 8,
+      "final_model_answer_equals_export": true,
+      "processing_errors": 0
+    },
+    "788": {
+      "trajectory_events": 49,
+      "initial_failed_events": 9,
+      "api_requests": 6,
+      "agent_decisions": 6,
+      "tool_calls": 11,
+      "actual_usage_sum": 22139,
+      "tool_hits_exact_source": 55,
+      "condition_excerpts_exact_source": 11,
+      "final_model_answer_equals_export": true,
+      "processing_errors": 0
+    }
+  },
+  "paired_next_action": {
+    "arms": 2,
+    "api_requests": 2,
+    "agent_decisions": 2,
+    "offline_searches": 4,
+    "tool_hits_exact_source": 20,
+    "actual_requests_equal_prepared_after_same_adaptation": true,
+    "results_sent_to_model": false,
+    "final_em": null
+  },
+  "all_checks_passed": true
+}

@@ -1,0 +1,46 @@
+{
+  "valid": true,
+  "scope": "fixed_validation_diagnostic",
+  "course_100_question_submission": false,
+  "structural_and_grounding": {
+    "valid": true,
+    "formal": false,
+    "official_compat": false,
+    "strict_grounding": true,
+    "errors": [],
+    "records": 9,
+    "expected": 9,
+    "completed": 2,
+    "failed": 7,
+    "citation_passed": 9,
+    "citation_errors": {},
+    "tool_calls": 77,
+    "total_tokens": 167499,
+    "config_ids": [
+      "900fc3b95b775d2a"
+    ]
+  },
+  "per_record_formal_errors": {
+    "960": [],
+    "1035": [],
+    "64": [],
+    "231": [],
+    "390": [],
+    "58": [],
+    "1155": [],
+    "1066": [],
+    "788": []
+  },
+  "valid_record_ids": [
+    "960",
+    "1035",
+    "64",
+    "231",
+    "390",
+    "58",
+    "1155",
+    "1066",
+    "788"
+  ],
+  "errors": []
+}

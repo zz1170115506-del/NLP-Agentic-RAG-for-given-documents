@@ -1,0 +1,370 @@
+{
+  "source_commit_reported_by_root": "8c8e545126e329919d2c16b18cacea6e139ebb29",
+  "config_id": "900fc3b95b775d2a",
+  "requested_and_success_response_model": "deepseek-v4-flash-0731",
+  "source_path": "outputs/validation-review/bailian-baseline/prediction.jsonl",
+  "source_sha256": "c2abcd99c0c2c062584441aafc7200ffe8c00cab96d3c098ca194cb6261984cc",
+  "evaluation_sha256": "581db29d34145b4b5b9315c93f1248103e72b9483f684e2e97ebe6847c11bfb9",
+  "new_api_calls_by_this_audit": 0,
+  "coverage_events": 116,
+  "coverage_api_attempts": 14,
+  "questions": [
+    {
+      "id": "231",
+      "row_sha256": "d63e1ff099ad2409919abca690f045fcb6e96ae7081a7bf0673008d4cf1b3df8",
+      "row_bytes": 170564,
+      "config_id": "900fc3b95b775d2a",
+      "event_count": 27,
+      "api_calls": [
+        {
+          "sequence": 6,
+          "type": "api_attempt",
+          "elapsed_seconds": 2.739744,
+          "http_status": 200,
+          "actual_request_target_passages": [],
+          "usage": {
+            "prompt_tokens": 1618,
+            "completion_tokens": 218,
+            "total_tokens": 1836,
+            "prompt_tokens_details": {
+              "cached_tokens": 1280
+            }
+          },
+          "error_code": null,
+          "response_model": "deepseek-v4-flash-0731",
+          "context_sequence": 4
+        },
+        {
+          "sequence": 13,
+          "type": "api_attempt",
+          "elapsed_seconds": 5.742281,
+          "http_status": 200,
+          "actual_request_target_passages": [],
+          "usage": {
+            "prompt_tokens": 4262,
+            "completion_tokens": 93,
+            "total_tokens": 4355,
+            "prompt_tokens_details": {
+              "cached_tokens": 1280
+            }
+          },
+          "error_code": null,
+          "response_model": "deepseek-v4-flash-0731",
+          "context_sequence": 11
+        },
+        {
+          "sequence": 23,
+          "type": "api_attempt",
+          "elapsed_seconds": 8.7463,
+          "http_status": 200,
+          "actual_request_target_passages": [],
+          "usage": {
+            "prompt_tokens": 3386,
+            "completion_tokens": 110,
+            "total_tokens": 3496,
+            "prompt_tokens_details": {
+              "cached_tokens": 768
+            }
+          },
+          "error_code": null,
+          "response_model": "deepseek-v4-flash-0731",
+          "context_sequence": 21
+        }
+      ],
+      "raw_target_hits": [],
+      "status": "insufficient_evidence",
+      "tokens": 9687,
+      "tool_calls": 4,
+      "normalized_em": 0,
+      "model_abstention": true,
+      "has_answer_event": true,
+      "narrative": "新百炼运行3次HTTP200，使用4次工具、9687 token，以search_stalled进入最后轮次后由模型直接空答，解析/导出一致。与旧轨迹的区别是：本次原工具返回中没有参考串，也没有旧doc43835:0片段；不能套用旧E9在state到context丢失的诊断。已有定向hook严格要求片段先被观察到，因此对此运行是空操作；检索路线需要另行单变量复测，不应偷加旧轨迹的证据。"
+    },
+    {
+      "id": "390",
+      "row_sha256": "9d9aac1e49af5b88a999cca6bb6bcd4c05eaad2dc1fdbc9cea2a7162b453b3f8",
+      "row_bytes": 441254,
+      "config_id": "900fc3b95b775d2a",
+      "event_count": 48,
+      "api_calls": [
+        {
+          "sequence": 6,
+          "type": "api_attempt",
+          "elapsed_seconds": 2.305976,
+          "http_status": 200,
+          "actual_request_target_passages": [],
+          "usage": {
+            "prompt_tokens": 1655,
+            "completion_tokens": 221,
+            "total_tokens": 1876,
+            "prompt_tokens_details": {
+              "cached_tokens": 1280
+            }
+          },
+          "error_code": null,
+          "response_model": "deepseek-v4-flash-0731",
+          "context_sequence": 4
+        },
+        {
+          "sequence": 13,
+          "type": "api_attempt",
+          "elapsed_seconds": 5.451946,
+          "http_status": 200,
+          "actual_request_target_passages": [],
+          "usage": {
+            "prompt_tokens": 4019,
+            "completion_tokens": 287,
+            "total_tokens": 4306,
+            "prompt_tokens_details": {
+              "cached_tokens": 1280
+            }
+          },
+          "error_code": null,
+          "response_model": "deepseek-v4-flash-0731",
+          "context_sequence": 11
+        },
+        {
+          "sequence": 20,
+          "type": "api_attempt",
+          "elapsed_seconds": 8.285486,
+          "http_status": 200,
+          "actual_request_target_passages": [],
+          "usage": {
+            "prompt_tokens": 4114,
+            "completion_tokens": 238,
+            "total_tokens": 4352,
+            "prompt_tokens_details": {
+              "cached_tokens": 1280
+            }
+          },
+          "error_code": null,
+          "response_model": "deepseek-v4-flash-0731",
+          "context_sequence": 18
+        },
+        {
+          "sequence": 27,
+          "type": "api_attempt",
+          "elapsed_seconds": 11.496851,
+          "http_status": 200,
+          "actual_request_target_passages": [],
+          "usage": {
+            "prompt_tokens": 4128,
+            "completion_tokens": 256,
+            "total_tokens": 4384,
+            "prompt_tokens_details": {
+              "cached_tokens": 1280
+            }
+          },
+          "error_code": null,
+          "response_model": "deepseek-v4-flash-0731",
+          "context_sequence": 25
+        },
+        {
+          "sequence": 36,
+          "type": "api_attempt",
+          "elapsed_seconds": 14.573274,
+          "http_status": 200,
+          "actual_request_target_passages": [
+            {
+              "evidence_id": "E15",
+              "doc_id": "3282",
+              "offset": 750
+            }
+          ],
+          "usage": {
+            "prompt_tokens": 4300,
+            "completion_tokens": 275,
+            "total_tokens": 4575,
+            "prompt_tokens_details": {
+              "cached_tokens": 1536
+            }
+          },
+          "error_code": null,
+          "response_model": "deepseek-v4-flash-0731",
+          "context_sequence": 34
+        },
+        {
+          "sequence": 44,
+          "type": "api_attempt",
+          "elapsed_seconds": 16.447082,
+          "http_status": 200,
+          "actual_request_target_passages": [
+            {
+              "evidence_id": "E15",
+              "doc_id": "3282",
+              "offset": 750
+            }
+          ],
+          "usage": {
+            "prompt_tokens": 3497,
+            "completion_tokens": 92,
+            "total_tokens": 3589,
+            "prompt_tokens_details": {
+              "cached_tokens": 768
+            }
+          },
+          "error_code": null,
+          "response_model": "deepseek-v4-flash-0731",
+          "context_sequence": 42
+        }
+      ],
+      "raw_target_hits": [
+        {
+          "sequence": 16,
+          "evidence_id": "E15",
+          "doc_id": "3282",
+          "offset": 750,
+          "length": 476,
+          "target_literal": true
+        },
+        {
+          "sequence": 23,
+          "evidence_id": "E18",
+          "doc_id": "20259",
+          "offset": 750,
+          "length": 633,
+          "target_literal": true
+        },
+        {
+          "sequence": 30,
+          "evidence_id": "E15",
+          "doc_id": "3282",
+          "offset": 750,
+          "length": 476,
+          "target_literal": true
+        },
+        {
+          "sequence": 38,
+          "evidence_id": "E15",
+          "doc_id": "3282",
+          "offset": 750,
+          "length": 476,
+          "target_literal": true
+        }
+      ],
+      "status": "insufficient_evidence",
+      "tokens": 23082,
+      "tool_calls": 10,
+      "normalized_em": 0,
+      "model_abstention": true,
+      "has_answer_event": true,
+      "narrative": "新百炼运行6次HTTP200，10次工具、23082 token，最终以reserve_final_usage进入收尾并由模型空答，解析/导出一致。新seq16取回doc3282:750，编号E15，seq20/27实际API中尚不可见；到seq36及最终seq44已经可见。故最终空答不能简单归因于歌名被隐藏。新seq23还取得doc20259:750，E18，其葡萄牙文段说明同名CD和对早年热门曲的重录，并不证明所问合辑的第3轨。模型最后明确指出缺合辑和第3轨对应关系，与语义证据缺口一致。继续强保留讣闻只改变排序，未为最终请求增添该线索；不能把这一次算作纯可见性修复样本。"
+    },
+    {
+      "id": "58",
+      "row_sha256": "f86c0836cb3bc0d7bf533d204aadcb69f3f3dc8dbe1d54053644fc80e0aee371",
+      "row_bytes": 341873,
+      "config_id": "900fc3b95b775d2a",
+      "event_count": 41,
+      "api_calls": [
+        {
+          "sequence": 6,
+          "type": "api_attempt",
+          "elapsed_seconds": 3.021036,
+          "http_status": 200,
+          "actual_request_target_passages": [],
+          "usage": {
+            "prompt_tokens": 1661,
+            "completion_tokens": 279,
+            "total_tokens": 1940,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          },
+          "error_code": null,
+          "response_model": "deepseek-v4-flash-0731",
+          "context_sequence": 4
+        },
+        {
+          "sequence": 13,
+          "type": "api_attempt",
+          "elapsed_seconds": 9.563942,
+          "http_status": 200,
+          "actual_request_target_passages": [],
+          "usage": {
+            "prompt_tokens": 4237,
+            "completion_tokens": 309,
+            "total_tokens": 4546,
+            "prompt_tokens_details": {
+              "cached_tokens": 1280
+            }
+          },
+          "error_code": null,
+          "response_model": "deepseek-v4-flash-0731",
+          "context_sequence": 11
+        },
+        {
+          "sequence": 20,
+          "type": "api_attempt",
+          "elapsed_seconds": 12.338978,
+          "http_status": 200,
+          "actual_request_target_passages": [],
+          "usage": {
+            "prompt_tokens": 4326,
+            "completion_tokens": 191,
+            "total_tokens": 4517,
+            "prompt_tokens_details": {
+              "cached_tokens": 1280
+            }
+          },
+          "error_code": null,
+          "response_model": "deepseek-v4-flash-0731",
+          "context_sequence": 18
+        },
+        {
+          "sequence": 27,
+          "type": "api_attempt",
+          "elapsed_seconds": 14.958008,
+          "http_status": 200,
+          "actual_request_target_passages": [],
+          "usage": {
+            "prompt_tokens": 4329,
+            "completion_tokens": 193,
+            "total_tokens": 4522,
+            "prompt_tokens_details": {
+              "cached_tokens": 1280
+            }
+          },
+          "error_code": null,
+          "response_model": "deepseek-v4-flash-0731",
+          "context_sequence": 25
+        },
+        {
+          "sequence": 37,
+          "type": "api_attempt",
+          "elapsed_seconds": 17.226976,
+          "http_status": 200,
+          "actual_request_target_passages": [],
+          "usage": {
+            "prompt_tokens": 3478,
+            "completion_tokens": 78,
+            "total_tokens": 3556,
+            "prompt_tokens_details": {
+              "cached_tokens": 512
+            }
+          },
+          "error_code": null,
+          "response_model": "deepseek-v4-flash-0731",
+          "context_sequence": 35
+        }
+      ],
+      "raw_target_hits": [],
+      "status": "insufficient_evidence",
+      "tokens": 19081,
+      "tool_calls": 8,
+      "normalized_em": 0,
+      "model_abstention": true,
+      "has_answer_event": true,
+      "narrative": "充值后重新运行的58已完整结束：5次HTTP200、8次工具均为search、19081 token，usage_complete=true。seq34因search_stalled=2提前收尾（剩14475 token），seq37发送最终请求，seq38模型明确返回空答，解析/导出一致，EM=0。与旧提供商历史的关键区别是：新工具结果从未出现所问奖项，也没有旧E30/E37的致谢窗口；只取到同doc28406的参考文献尾段（offset45750与50250），未检到4作者/3部门定位片段，也没有执行open/find。因此新58的首次缺口是检索与论文定位，不能套用旧上下文丢失诊断，focused-tool-first在此新轨迹没有可优先的定位窗口。旧账户中断的58另存attempt-0，仍标provider_error/Arrearage；本条有效弃答不覆盖或改写旧失败史。历史final-pair仅在旧观察集合上检验保留策略，不能视作修复新百炼完整运行。"
+    }
+  ],
+  "coverage": {
+    "events": 116,
+    "api_attempts": 14,
+    "http_200": 14,
+    "http_errors": 0,
+    "assistant": 14,
+    "tool": 22
+  },
+  "prior_58_provider_error_archive": "attempt-0/58-attempt-summary.json"
+}

@@ -1,0 +1,75 @@
+{
+  "arm": "original_response_offline_self_check",
+  "http_status": 200,
+  "outcome": "received",
+  "response_model": "deepseek-v4-flash-0731",
+  "requested_model": "deepseek-v4-flash-0731",
+  "exact_prepared_payload_match": true,
+  "expected_payload_sha256": "f795ed6249018eb3ff7bdd0b267d7a1aa66c6e9f176c372cc2d135748a996595",
+  "actual_payload_sha256": "f795ed6249018eb3ff7bdd0b267d7a1aa66c6e9f176c372cc2d135748a996595",
+  "response_sha256": "f42b33b4be2b5220e82f50390e750ee4221ee4cba1e51823c5fa806b4f1be7b4",
+  "model_matches_pinned_request": true,
+  "tool_choice": "none",
+  "enable_thinking": false,
+  "finish_reason": "stop",
+  "reported_usage": {
+    "prompt_tokens": 3331,
+    "completion_tokens": 113,
+    "total_tokens": 3444,
+    "prompt_tokens_details": {
+      "cached_tokens": 768
+    }
+  },
+  "usage_complete": true,
+  "pre_final_reported_tokens": 22926,
+  "counterfactual_accumulated_tokens": 26370,
+  "within_original_total_token_budget": true,
+  "final_schema_valid": true,
+  "production_final_validation_passed": true,
+  "production_validation_error_types": [],
+  "production_status": "completed",
+  "pipeline_eligible": true,
+  "nonempty_answer": true,
+  "normalized_em": 0,
+  "supporting_evidence_ids": [
+    "E28",
+    "E10",
+    "E30"
+  ],
+  "ids_visible_in_this_actual_request": {
+    "E28": true,
+    "E10": true,
+    "E30": true
+  },
+  "all_cited_ids_visible_now": true,
+  "all_resolved_spans_visible_now": true,
+  "current_evidence_ids": [
+    "E6",
+    "E1",
+    "E8",
+    "E19",
+    "E28",
+    "E30",
+    "E7",
+    "E10"
+  ],
+  "pinned_evidence_visible_now": false,
+  "resolved_citation_locations": [
+    {
+      "doc_id": "10744",
+      "offset": 5250,
+      "end": 6850
+    },
+    {
+      "doc_id": "50486",
+      "offset": 0,
+      "end": 127
+    },
+    {
+      "doc_id": "81158",
+      "offset": 1500,
+      "end": 2400
+    }
+  ],
+  "evaluation_note": "Production citation validation accepts previously shown evidence; latest-request visibility is separately checked. Neither check proves semantic entailment."
+}

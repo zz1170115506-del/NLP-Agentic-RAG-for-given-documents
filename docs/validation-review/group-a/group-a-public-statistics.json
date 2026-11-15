@@ -1,0 +1,2581 @@
+{
+  "scope": "group A IDs960/1035/64; historical source dab7646 config61d7; offline only",
+  "historical_prediction_sha256": "17fdcf79dcf7ee09d5d14329fd272ee27d23db64d42ad4044890d691db59acf8",
+  "bm25_replay_count": 72,
+  "bm25_replay_kinds": {
+    "original_query": 30,
+    "question_clues": 26,
+    "post_hoc_reference": 12,
+    "post_hoc_document_informed": 2,
+    "retrieved_entity_offline": 2
+  },
+  "historical_prefix_comparisons": 44,
+  "all_historical_prefixes_exact": true,
+  "cases": [
+    {
+      "id": "960",
+      "historical_em": 0,
+      "tools": 4,
+      "http_attempts": 3,
+      "total_tokens": 8307,
+      "raw_usage": {
+        "prompt_tokens": 7986,
+        "completion_tokens": 321,
+        "total_tokens": 8307,
+        "prompt_cache_hit_tokens": 2432,
+        "prompt_cache_miss_tokens": 5554
+      },
+      "exact_query_duplicates": 2,
+      "compat_errors": [],
+      "grounding_errors": [],
+      "all_event_count": 25,
+      "api_assistant_tool_coverage": {
+        "api_attempt": 3,
+        "assistant": 3,
+        "tool": 4
+      },
+      "actions": [
+        {
+          "sequence": 4,
+          "seconds": 1.356518,
+          "type": "api_attempt",
+          "request_round": 1,
+          "http_status": 200,
+          "tool_choice": "auto",
+          "message_chars": 2602,
+          "visible_evidence_ids": [],
+          "visible_chunks": [],
+          "tool_messages": 0,
+          "usage": {
+            "prompt_tokens": 1323,
+            "completion_tokens": 128,
+            "total_tokens": 1451,
+            "prompt_tokens_details": {
+              "cached_tokens": 1024
+            },
+            "prompt_cache_hit_tokens": 1024,
+            "prompt_cache_miss_tokens": 299
+          }
+        },
+        {
+          "sequence": 5,
+          "seconds": 1.356548,
+          "type": "assistant",
+          "request_round": 1,
+          "call_ids": [
+            "call_00_mbwIUGd7c1Nhnw9qLdiK2767",
+            "call_01_nwveVEF4rikx1VRiW2VG4124"
+          ],
+          "tool_names": [
+            "search",
+            "search"
+          ],
+          "final_empty_answer": false
+        },
+        {
+          "sequence": 6,
+          "seconds": 1.707522,
+          "type": "tool",
+          "request_round": 1,
+          "call_id": "call_00_mbwIUGd7c1Nhnw9qLdiK2767",
+          "tool_name": "search",
+          "actual_top_k": 10,
+          "results_count": 10,
+          "new_passages": 10,
+          "repeated_query": false,
+          "results": [
+            {
+              "rank": 1,
+              "doc_id": "38691",
+              "chunk_id": "38691:55500:900",
+              "offset": 55500,
+              "end": 56400,
+              "new_evidence": true
+            },
+            {
+              "rank": 2,
+              "doc_id": "8205",
+              "chunk_id": "8205:84750:900",
+              "offset": 84750,
+              "end": 85650,
+              "new_evidence": true
+            },
+            {
+              "rank": 3,
+              "doc_id": "41503",
+              "chunk_id": "41503:56250:900",
+              "offset": 56250,
+              "end": 57150,
+              "new_evidence": true
+            },
+            {
+              "rank": 4,
+              "doc_id": "2400",
+              "chunk_id": "2400:17250:900",
+              "offset": 17250,
+              "end": 18150,
+              "new_evidence": true
+            },
+            {
+              "rank": 5,
+              "doc_id": "41684",
+              "chunk_id": "41684:54000:900",
+              "offset": 54000,
+              "end": 54900,
+              "new_evidence": true
+            },
+            {
+              "rank": 6,
+              "doc_id": "72280",
+              "chunk_id": "72280:30750:900",
+              "offset": 30750,
+              "end": 31650,
+              "new_evidence": true
+            },
+            {
+              "rank": 7,
+              "doc_id": "7704",
+              "chunk_id": "7704:60750:900",
+              "offset": 60750,
+              "end": 61650,
+              "new_evidence": true
+            },
+            {
+              "rank": 8,
+              "doc_id": "67758",
+              "chunk_id": "67758:0:900",
+              "offset": 0,
+              "end": 900,
+              "new_evidence": true
+            },
+            {
+              "rank": 9,
+              "doc_id": "51078",
+              "chunk_id": "51078:54750:900",
+              "offset": 54750,
+              "end": 55650,
+              "new_evidence": true
+            },
+            {
+              "rank": 10,
+              "doc_id": "18314",
+              "chunk_id": "18314:56250:825",
+              "offset": 56250,
+              "end": 57075,
+              "new_evidence": true
+            }
+          ]
+        },
+        {
+          "sequence": 7,
+          "seconds": 3.740583,
+          "type": "tool",
+          "request_round": 1,
+          "call_id": "call_01_nwveVEF4rikx1VRiW2VG4124",
+          "tool_name": "search",
+          "actual_top_k": 10,
+          "results_count": 10,
+          "new_passages": 10,
+          "repeated_query": false,
+          "results": [
+            {
+              "rank": 1,
+              "doc_id": "76946",
+              "chunk_id": "76946:0:900",
+              "offset": 0,
+              "end": 900,
+              "new_evidence": true
+            },
+            {
+              "rank": 2,
+              "doc_id": "25210",
+              "chunk_id": "25210:68250:900",
+              "offset": 68250,
+              "end": 69150,
+              "new_evidence": true
+            },
+            {
+              "rank": 3,
+              "doc_id": "72186",
+              "chunk_id": "72186:0:900",
+              "offset": 0,
+              "end": 900,
+              "new_evidence": true
+            },
+            {
+              "rank": 4,
+              "doc_id": "19074",
+              "chunk_id": "19074:5250:900",
+              "offset": 5250,
+              "end": 6150,
+              "new_evidence": true
+            },
+            {
+              "rank": 5,
+              "doc_id": "1382",
+              "chunk_id": "1382:1104750:900",
+              "offset": 1104750,
+              "end": 1105650,
+              "new_evidence": true
+            },
+            {
+              "rank": 6,
+              "doc_id": "64768",
+              "chunk_id": "64768:33750:900",
+              "offset": 33750,
+              "end": 34650,
+              "new_evidence": true
+            },
+            {
+              "rank": 7,
+              "doc_id": "76946",
+              "chunk_id": "76946:750:900",
+              "offset": 750,
+              "end": 1650,
+              "new_evidence": true
+            },
+            {
+              "rank": 8,
+              "doc_id": "35810",
+              "chunk_id": "35810:3750:900",
+              "offset": 3750,
+              "end": 4650,
+              "new_evidence": true
+            },
+            {
+              "rank": 9,
+              "doc_id": "83351",
+              "chunk_id": "83351:1074000:900",
+              "offset": 1074000,
+              "end": 1074900,
+              "new_evidence": true
+            },
+            {
+              "rank": 10,
+              "doc_id": "72705",
+              "chunk_id": "72705:3000:900",
+              "offset": 3000,
+              "end": 3900,
+              "new_evidence": true
+            }
+          ]
+        },
+        {
+          "sequence": 11,
+          "seconds": 5.434224,
+          "type": "api_attempt",
+          "request_round": 2,
+          "http_status": 200,
+          "tool_choice": "auto",
+          "message_chars": 13149,
+          "visible_evidence_ids": [
+            "E3",
+            "E13",
+            "E1",
+            "E4",
+            "E11",
+            "E7",
+            "E12",
+            "E5",
+            "E8"
+          ],
+          "visible_chunks": [
+            "41503:56250:900",
+            "72186:0:900",
+            "38691:55500:900",
+            "2400:17250:900",
+            "76946:0:900",
+            "7704:60750:900",
+            "25210:68250:900",
+            "41684:54000:900",
+            "67758:0:900"
+          ],
+          "tool_messages": 0,
+          "usage": {
+            "prompt_tokens": 3725,
+            "completion_tokens": 131,
+            "total_tokens": 3856,
+            "prompt_tokens_details": {
+              "cached_tokens": 1024
+            },
+            "prompt_cache_hit_tokens": 1024,
+            "prompt_cache_miss_tokens": 2701
+          }
+        },
+        {
+          "sequence": 12,
+          "seconds": 5.434261,
+          "type": "assistant",
+          "request_round": 2,
+          "call_ids": [
+            "call_00_g64fNrKCZVnt06NfkNKO5930",
+            "call_01_mI6gUU6SyRX22FK3fpCK9256"
+          ],
+          "tool_names": [
+            "search",
+            "search"
+          ],
+          "final_empty_answer": false
+        },
+        {
+          "sequence": 13,
+          "seconds": 5.75555,
+          "type": "tool",
+          "request_round": 2,
+          "call_id": "call_00_g64fNrKCZVnt06NfkNKO5930",
+          "tool_name": "search",
+          "actual_top_k": 10,
+          "results_count": 10,
+          "new_passages": 0,
+          "repeated_query": true,
+          "results": [
+            {
+              "rank": 1,
+              "doc_id": "38691",
+              "chunk_id": "38691:55500:900",
+              "offset": 55500,
+              "end": 56400,
+              "new_evidence": false
+            },
+            {
+              "rank": 2,
+              "doc_id": "8205",
+              "chunk_id": "8205:84750:900",
+              "offset": 84750,
+              "end": 85650,
+              "new_evidence": false
+            },
+            {
+              "rank": 3,
+              "doc_id": "41503",
+              "chunk_id": "41503:56250:900",
+              "offset": 56250,
+              "end": 57150,
+              "new_evidence": false
+            },
+            {
+              "rank": 4,
+              "doc_id": "2400",
+              "chunk_id": "2400:17250:900",
+              "offset": 17250,
+              "end": 18150,
+              "new_evidence": false
+            },
+            {
+              "rank": 5,
+              "doc_id": "41684",
+              "chunk_id": "41684:54000:900",
+              "offset": 54000,
+              "end": 54900,
+              "new_evidence": false
+            },
+            {
+              "rank": 6,
+              "doc_id": "72280",
+              "chunk_id": "72280:30750:900",
+              "offset": 30750,
+              "end": 31650,
+              "new_evidence": false
+            },
+            {
+              "rank": 7,
+              "doc_id": "7704",
+              "chunk_id": "7704:60750:900",
+              "offset": 60750,
+              "end": 61650,
+              "new_evidence": false
+            },
+            {
+              "rank": 8,
+              "doc_id": "67758",
+              "chunk_id": "67758:0:900",
+              "offset": 0,
+              "end": 900,
+              "new_evidence": false
+            },
+            {
+              "rank": 9,
+              "doc_id": "51078",
+              "chunk_id": "51078:54750:900",
+              "offset": 54750,
+              "end": 55650,
+              "new_evidence": false
+            },
+            {
+              "rank": 10,
+              "doc_id": "18314",
+              "chunk_id": "18314:56250:825",
+              "offset": 56250,
+              "end": 57075,
+              "new_evidence": false
+            }
+          ]
+        },
+        {
+          "sequence": 14,
+          "seconds": 7.199434,
+          "type": "tool",
+          "request_round": 2,
+          "call_id": "call_01_mI6gUU6SyRX22FK3fpCK9256",
+          "tool_name": "search",
+          "actual_top_k": 10,
+          "results_count": 10,
+          "new_passages": 0,
+          "repeated_query": true,
+          "results": [
+            {
+              "rank": 1,
+              "doc_id": "76946",
+              "chunk_id": "76946:0:900",
+              "offset": 0,
+              "end": 900,
+              "new_evidence": false
+            },
+            {
+              "rank": 2,
+              "doc_id": "25210",
+              "chunk_id": "25210:68250:900",
+              "offset": 68250,
+              "end": 69150,
+              "new_evidence": false
+            },
+            {
+              "rank": 3,
+              "doc_id": "72186",
+              "chunk_id": "72186:0:900",
+              "offset": 0,
+              "end": 900,
+              "new_evidence": false
+            },
+            {
+              "rank": 4,
+              "doc_id": "19074",
+              "chunk_id": "19074:5250:900",
+              "offset": 5250,
+              "end": 6150,
+              "new_evidence": false
+            },
+            {
+              "rank": 5,
+              "doc_id": "1382",
+              "chunk_id": "1382:1104750:900",
+              "offset": 1104750,
+              "end": 1105650,
+              "new_evidence": false
+            },
+            {
+              "rank": 6,
+              "doc_id": "64768",
+              "chunk_id": "64768:33750:900",
+              "offset": 33750,
+              "end": 34650,
+              "new_evidence": false
+            },
+            {
+              "rank": 7,
+              "doc_id": "76946",
+              "chunk_id": "76946:750:900",
+              "offset": 750,
+              "end": 1650,
+              "new_evidence": false
+            },
+            {
+              "rank": 8,
+              "doc_id": "35810",
+              "chunk_id": "35810:3750:900",
+              "offset": 3750,
+              "end": 4650,
+              "new_evidence": false
+            },
+            {
+              "rank": 9,
+              "doc_id": "83351",
+              "chunk_id": "83351:1074000:900",
+              "offset": 1074000,
+              "end": 1074900,
+              "new_evidence": false
+            },
+            {
+              "rank": 10,
+              "doc_id": "72705",
+              "chunk_id": "72705:3000:900",
+              "offset": 3000,
+              "end": 3900,
+              "new_evidence": false
+            }
+          ]
+        },
+        {
+          "sequence": 21,
+          "seconds": 8.10246,
+          "type": "api_attempt",
+          "request_round": 3,
+          "http_status": 200,
+          "tool_choice": "none",
+          "message_chars": 13626,
+          "visible_evidence_ids": [
+            "E3",
+            "E13",
+            "E1",
+            "E4",
+            "E11",
+            "E7",
+            "E12",
+            "E5"
+          ],
+          "visible_chunks": [
+            "41503:56250:900",
+            "72186:0:900",
+            "38691:55500:900",
+            "2400:17250:900",
+            "76946:0:900",
+            "7704:60750:900",
+            "25210:68250:900",
+            "41684:54000:900"
+          ],
+          "tool_messages": 0,
+          "usage": {
+            "prompt_tokens": 2938,
+            "completion_tokens": 62,
+            "total_tokens": 3000,
+            "prompt_tokens_details": {
+              "cached_tokens": 384
+            },
+            "prompt_cache_hit_tokens": 384,
+            "prompt_cache_miss_tokens": 2554
+          }
+        },
+        {
+          "sequence": 22,
+          "seconds": 8.10249,
+          "type": "assistant",
+          "request_round": 3,
+          "call_ids": [],
+          "tool_names": [],
+          "final_empty_answer": true
+        }
+      ]
+    },
+    {
+      "id": "1035",
+      "historical_em": 0,
+      "tools": 6,
+      "http_attempts": 4,
+      "total_tokens": 13189,
+      "raw_usage": {
+        "prompt_tokens": 12568,
+        "completion_tokens": 621,
+        "total_tokens": 13189,
+        "prompt_cache_hit_tokens": 4864,
+        "prompt_cache_miss_tokens": 7704
+      },
+      "exact_query_duplicates": 2,
+      "compat_errors": [],
+      "grounding_errors": [],
+      "all_event_count": 34,
+      "api_assistant_tool_coverage": {
+        "api_attempt": 4,
+        "assistant": 4,
+        "tool": 6
+      },
+      "actions": [
+        {
+          "sequence": 6,
+          "seconds": 1.359132,
+          "type": "api_attempt",
+          "request_round": 1,
+          "http_status": 200,
+          "tool_choice": "auto",
+          "message_chars": 4061,
+          "visible_evidence_ids": [],
+          "visible_chunks": [],
+          "tool_messages": 0,
+          "usage": {
+            "prompt_tokens": 1610,
+            "completion_tokens": 194,
+            "total_tokens": 1804,
+            "prompt_tokens_details": {
+              "cached_tokens": 1408
+            },
+            "prompt_cache_hit_tokens": 1408,
+            "prompt_cache_miss_tokens": 202
+          }
+        },
+        {
+          "sequence": 7,
+          "seconds": 1.359176,
+          "type": "assistant",
+          "request_round": 1,
+          "call_ids": [
+            "call_00_Zg7GGweVHKt4Nz6Wcf5n6084",
+            "call_01_psA585Y6mngpyPNPGroj6165"
+          ],
+          "tool_names": [
+            "search",
+            "search"
+          ],
+          "final_empty_answer": false
+        },
+        {
+          "sequence": 8,
+          "seconds": 2.844648,
+          "type": "tool",
+          "request_round": 1,
+          "call_id": "call_00_Zg7GGweVHKt4Nz6Wcf5n6084",
+          "tool_name": "search",
+          "actual_top_k": 10,
+          "results_count": 10,
+          "new_passages": 10,
+          "repeated_query": false,
+          "results": [
+            {
+              "rank": 1,
+              "doc_id": "91457",
+              "chunk_id": "91457:7500:900",
+              "offset": 7500,
+              "end": 8400,
+              "new_evidence": true
+            },
+            {
+              "rank": 2,
+              "doc_id": "7331",
+              "chunk_id": "7331:10500:900",
+              "offset": 10500,
+              "end": 11400,
+              "new_evidence": true
+            },
+            {
+              "rank": 3,
+              "doc_id": "28905",
+              "chunk_id": "28905:3000:900",
+              "offset": 3000,
+              "end": 3900,
+              "new_evidence": true
+            },
+            {
+              "rank": 4,
+              "doc_id": "91457",
+              "chunk_id": "91457:21000:900",
+              "offset": 21000,
+              "end": 21900,
+              "new_evidence": true
+            },
+            {
+              "rank": 5,
+              "doc_id": "55716",
+              "chunk_id": "55716:10500:900",
+              "offset": 10500,
+              "end": 11400,
+              "new_evidence": true
+            },
+            {
+              "rank": 6,
+              "doc_id": "70622",
+              "chunk_id": "70622:86250:900",
+              "offset": 86250,
+              "end": 87150,
+              "new_evidence": true
+            },
+            {
+              "rank": 7,
+              "doc_id": "5089",
+              "chunk_id": "5089:3000:621",
+              "offset": 3000,
+              "end": 3621,
+              "new_evidence": true
+            },
+            {
+              "rank": 8,
+              "doc_id": "23419",
+              "chunk_id": "23419:0:900",
+              "offset": 0,
+              "end": 900,
+              "new_evidence": true
+            },
+            {
+              "rank": 9,
+              "doc_id": "66529",
+              "chunk_id": "66529:6000:900",
+              "offset": 6000,
+              "end": 6900,
+              "new_evidence": true
+            },
+            {
+              "rank": 10,
+              "doc_id": "17770",
+              "chunk_id": "17770:8250:900",
+              "offset": 8250,
+              "end": 9150,
+              "new_evidence": true
+            }
+          ]
+        },
+        {
+          "sequence": 9,
+          "seconds": 4.727402,
+          "type": "tool",
+          "request_round": 1,
+          "call_id": "call_01_psA585Y6mngpyPNPGroj6165",
+          "tool_name": "search",
+          "actual_top_k": 10,
+          "results_count": 10,
+          "new_passages": 9,
+          "repeated_query": false,
+          "results": [
+            {
+              "rank": 1,
+              "doc_id": "57017",
+              "chunk_id": "57017:5250:900",
+              "offset": 5250,
+              "end": 6150,
+              "new_evidence": true
+            },
+            {
+              "rank": 2,
+              "doc_id": "72939",
+              "chunk_id": "72939:2250:900",
+              "offset": 2250,
+              "end": 3150,
+              "new_evidence": true
+            },
+            {
+              "rank": 3,
+              "doc_id": "50131",
+              "chunk_id": "50131:6750:900",
+              "offset": 6750,
+              "end": 7650,
+              "new_evidence": true
+            },
+            {
+              "rank": 4,
+              "doc_id": "6885",
+              "chunk_id": "6885:208500:900",
+              "offset": 208500,
+              "end": 209400,
+              "new_evidence": true
+            },
+            {
+              "rank": 5,
+              "doc_id": "18746",
+              "chunk_id": "18746:3000:900",
+              "offset": 3000,
+              "end": 3900,
+              "new_evidence": true
+            },
+            {
+              "rank": 6,
+              "doc_id": "155",
+              "chunk_id": "155:5250:900",
+              "offset": 5250,
+              "end": 6150,
+              "new_evidence": true
+            },
+            {
+              "rank": 7,
+              "doc_id": "7331",
+              "chunk_id": "7331:10500:900",
+              "offset": 10500,
+              "end": 11400,
+              "new_evidence": false
+            },
+            {
+              "rank": 8,
+              "doc_id": "33939",
+              "chunk_id": "33939:12000:900",
+              "offset": 12000,
+              "end": 12900,
+              "new_evidence": true
+            },
+            {
+              "rank": 9,
+              "doc_id": "68273",
+              "chunk_id": "68273:24000:900",
+              "offset": 24000,
+              "end": 24900,
+              "new_evidence": true
+            },
+            {
+              "rank": 10,
+              "doc_id": "49511",
+              "chunk_id": "49511:0:900",
+              "offset": 0,
+              "end": 900,
+              "new_evidence": true
+            }
+          ]
+        },
+        {
+          "sequence": 13,
+          "seconds": 6.284205,
+          "type": "api_attempt",
+          "request_round": 2,
+          "http_status": 200,
+          "tool_choice": "auto",
+          "message_chars": 13512,
+          "visible_evidence_ids": [
+            "E2",
+            "E11",
+            "E3",
+            "E4",
+            "E1",
+            "E5",
+            "E16",
+            "E9"
+          ],
+          "visible_chunks": [
+            "7331:10500:900",
+            "57017:5250:900",
+            "28905:3000:900",
+            "91457:21000:900",
+            "91457:7500:900",
+            "55716:10500:900",
+            "155:5250:900",
+            "66529:6000:900"
+          ],
+          "tool_messages": 0,
+          "usage": {
+            "prompt_tokens": 3863,
+            "completion_tokens": 152,
+            "total_tokens": 4015,
+            "prompt_tokens_details": {
+              "cached_tokens": 1408
+            },
+            "prompt_cache_hit_tokens": 1408,
+            "prompt_cache_miss_tokens": 2455
+          }
+        },
+        {
+          "sequence": 14,
+          "seconds": 6.284244,
+          "type": "assistant",
+          "request_round": 2,
+          "call_ids": [
+            "call_00_ti1hCTAVrRp3QlF8sl1V0011",
+            "call_01_EXoWsSfSMAhtauMGBWoI8787"
+          ],
+          "tool_names": [
+            "search",
+            "search"
+          ],
+          "final_empty_answer": false
+        },
+        {
+          "sequence": 15,
+          "seconds": 7.396626,
+          "type": "tool",
+          "request_round": 2,
+          "call_id": "call_00_ti1hCTAVrRp3QlF8sl1V0011",
+          "tool_name": "search",
+          "actual_top_k": 10,
+          "results_count": 10,
+          "new_passages": 3,
+          "repeated_query": false,
+          "results": [
+            {
+              "rank": 1,
+              "doc_id": "91457",
+              "chunk_id": "91457:7500:900",
+              "offset": 7500,
+              "end": 8400,
+              "new_evidence": false
+            },
+            {
+              "rank": 2,
+              "doc_id": "91457",
+              "chunk_id": "91457:21000:900",
+              "offset": 21000,
+              "end": 21900,
+              "new_evidence": false
+            },
+            {
+              "rank": 3,
+              "doc_id": "55716",
+              "chunk_id": "55716:10500:900",
+              "offset": 10500,
+              "end": 11400,
+              "new_evidence": false
+            },
+            {
+              "rank": 4,
+              "doc_id": "7331",
+              "chunk_id": "7331:10500:900",
+              "offset": 10500,
+              "end": 11400,
+              "new_evidence": false
+            },
+            {
+              "rank": 5,
+              "doc_id": "5089",
+              "chunk_id": "5089:3000:621",
+              "offset": 3000,
+              "end": 3621,
+              "new_evidence": false
+            },
+            {
+              "rank": 6,
+              "doc_id": "23419",
+              "chunk_id": "23419:0:900",
+              "offset": 0,
+              "end": 900,
+              "new_evidence": false
+            },
+            {
+              "rank": 7,
+              "doc_id": "70622",
+              "chunk_id": "70622:11250:900",
+              "offset": 11250,
+              "end": 12150,
+              "new_evidence": true
+            },
+            {
+              "rank": 8,
+              "doc_id": "28905",
+              "chunk_id": "28905:3000:900",
+              "offset": 3000,
+              "end": 3900,
+              "new_evidence": false
+            },
+            {
+              "rank": 9,
+              "doc_id": "45561",
+              "chunk_id": "45561:6000:900",
+              "offset": 6000,
+              "end": 6900,
+              "new_evidence": true
+            },
+            {
+              "rank": 10,
+              "doc_id": "5089",
+              "chunk_id": "5089:2250:900",
+              "offset": 2250,
+              "end": 3150,
+              "new_evidence": true
+            }
+          ]
+        },
+        {
+          "sequence": 16,
+          "seconds": 8.719388,
+          "type": "tool",
+          "request_round": 2,
+          "call_id": "call_01_EXoWsSfSMAhtauMGBWoI8787",
+          "tool_name": "search",
+          "actual_top_k": 10,
+          "results_count": 10,
+          "new_passages": 4,
+          "repeated_query": false,
+          "results": [
+            {
+              "rank": 1,
+              "doc_id": "57017",
+              "chunk_id": "57017:5250:900",
+              "offset": 5250,
+              "end": 6150,
+              "new_evidence": false
+            },
+            {
+              "rank": 2,
+              "doc_id": "50131",
+              "chunk_id": "50131:6750:900",
+              "offset": 6750,
+              "end": 7650,
+              "new_evidence": false
+            },
+            {
+              "rank": 3,
+              "doc_id": "33939",
+              "chunk_id": "33939:12000:900",
+              "offset": 12000,
+              "end": 12900,
+              "new_evidence": false
+            },
+            {
+              "rank": 4,
+              "doc_id": "68273",
+              "chunk_id": "68273:24000:900",
+              "offset": 24000,
+              "end": 24900,
+              "new_evidence": false
+            },
+            {
+              "rank": 5,
+              "doc_id": "43566",
+              "chunk_id": "43566:93000:900",
+              "offset": 93000,
+              "end": 93900,
+              "new_evidence": true
+            },
+            {
+              "rank": 6,
+              "doc_id": "6885",
+              "chunk_id": "6885:208500:900",
+              "offset": 208500,
+              "end": 209400,
+              "new_evidence": false
+            },
+            {
+              "rank": 7,
+              "doc_id": "64712",
+              "chunk_id": "64712:7500:900",
+              "offset": 7500,
+              "end": 8400,
+              "new_evidence": true
+            },
+            {
+              "rank": 8,
+              "doc_id": "40371",
+              "chunk_id": "40371:180000:900",
+              "offset": 180000,
+              "end": 180900,
+              "new_evidence": true
+            },
+            {
+              "rank": 9,
+              "doc_id": "18746",
+              "chunk_id": "18746:3000:900",
+              "offset": 3000,
+              "end": 3900,
+              "new_evidence": false
+            },
+            {
+              "rank": 10,
+              "doc_id": "17977",
+              "chunk_id": "17977:144750:900",
+              "offset": 144750,
+              "end": 145650,
+              "new_evidence": true
+            }
+          ]
+        },
+        {
+          "sequence": 20,
+          "seconds": 10.050227,
+          "type": "api_attempt",
+          "request_round": 3,
+          "http_status": 200,
+          "tool_choice": "auto",
+          "message_chars": 13839,
+          "visible_evidence_ids": [
+            "E2",
+            "E11",
+            "E21",
+            "E3",
+            "E4",
+            "E1",
+            "E5",
+            "E16"
+          ],
+          "visible_chunks": [
+            "7331:10500:900",
+            "57017:5250:900",
+            "45561:6000:900",
+            "28905:3000:900",
+            "91457:21000:900",
+            "91457:7500:900",
+            "55716:10500:900",
+            "155:5250:900"
+          ],
+          "tool_messages": 0,
+          "usage": {
+            "prompt_tokens": 3946,
+            "completion_tokens": 153,
+            "total_tokens": 4099,
+            "prompt_tokens_details": {
+              "cached_tokens": 1408
+            },
+            "prompt_cache_hit_tokens": 1408,
+            "prompt_cache_miss_tokens": 2538
+          }
+        },
+        {
+          "sequence": 21,
+          "seconds": 10.050256,
+          "type": "assistant",
+          "request_round": 3,
+          "call_ids": [
+            "call_00_4jtFrWZQpKvNmIL8XPRB3325",
+            "call_01_0uRVDqUYw4D8PeHdhFvY6067"
+          ],
+          "tool_names": [
+            "search",
+            "search"
+          ],
+          "final_empty_answer": false
+        },
+        {
+          "sequence": 22,
+          "seconds": 11.0855,
+          "type": "tool",
+          "request_round": 3,
+          "call_id": "call_00_4jtFrWZQpKvNmIL8XPRB3325",
+          "tool_name": "search",
+          "actual_top_k": 10,
+          "results_count": 10,
+          "new_passages": 0,
+          "repeated_query": true,
+          "results": [
+            {
+              "rank": 1,
+              "doc_id": "91457",
+              "chunk_id": "91457:7500:900",
+              "offset": 7500,
+              "end": 8400,
+              "new_evidence": false
+            },
+            {
+              "rank": 2,
+              "doc_id": "91457",
+              "chunk_id": "91457:21000:900",
+              "offset": 21000,
+              "end": 21900,
+              "new_evidence": false
+            },
+            {
+              "rank": 3,
+              "doc_id": "55716",
+              "chunk_id": "55716:10500:900",
+              "offset": 10500,
+              "end": 11400,
+              "new_evidence": false
+            },
+            {
+              "rank": 4,
+              "doc_id": "7331",
+              "chunk_id": "7331:10500:900",
+              "offset": 10500,
+              "end": 11400,
+              "new_evidence": false
+            },
+            {
+              "rank": 5,
+              "doc_id": "5089",
+              "chunk_id": "5089:3000:621",
+              "offset": 3000,
+              "end": 3621,
+              "new_evidence": false
+            },
+            {
+              "rank": 6,
+              "doc_id": "23419",
+              "chunk_id": "23419:0:900",
+              "offset": 0,
+              "end": 900,
+              "new_evidence": false
+            },
+            {
+              "rank": 7,
+              "doc_id": "70622",
+              "chunk_id": "70622:11250:900",
+              "offset": 11250,
+              "end": 12150,
+              "new_evidence": false
+            },
+            {
+              "rank": 8,
+              "doc_id": "28905",
+              "chunk_id": "28905:3000:900",
+              "offset": 3000,
+              "end": 3900,
+              "new_evidence": false
+            },
+            {
+              "rank": 9,
+              "doc_id": "45561",
+              "chunk_id": "45561:6000:900",
+              "offset": 6000,
+              "end": 6900,
+              "new_evidence": false
+            },
+            {
+              "rank": 10,
+              "doc_id": "5089",
+              "chunk_id": "5089:2250:900",
+              "offset": 2250,
+              "end": 3150,
+              "new_evidence": false
+            }
+          ]
+        },
+        {
+          "sequence": 23,
+          "seconds": 12.365467,
+          "type": "tool",
+          "request_round": 3,
+          "call_id": "call_01_0uRVDqUYw4D8PeHdhFvY6067",
+          "tool_name": "search",
+          "actual_top_k": 10,
+          "results_count": 10,
+          "new_passages": 0,
+          "repeated_query": true,
+          "results": [
+            {
+              "rank": 1,
+              "doc_id": "57017",
+              "chunk_id": "57017:5250:900",
+              "offset": 5250,
+              "end": 6150,
+              "new_evidence": false
+            },
+            {
+              "rank": 2,
+              "doc_id": "50131",
+              "chunk_id": "50131:6750:900",
+              "offset": 6750,
+              "end": 7650,
+              "new_evidence": false
+            },
+            {
+              "rank": 3,
+              "doc_id": "33939",
+              "chunk_id": "33939:12000:900",
+              "offset": 12000,
+              "end": 12900,
+              "new_evidence": false
+            },
+            {
+              "rank": 4,
+              "doc_id": "68273",
+              "chunk_id": "68273:24000:900",
+              "offset": 24000,
+              "end": 24900,
+              "new_evidence": false
+            },
+            {
+              "rank": 5,
+              "doc_id": "43566",
+              "chunk_id": "43566:93000:900",
+              "offset": 93000,
+              "end": 93900,
+              "new_evidence": false
+            },
+            {
+              "rank": 6,
+              "doc_id": "6885",
+              "chunk_id": "6885:208500:900",
+              "offset": 208500,
+              "end": 209400,
+              "new_evidence": false
+            },
+            {
+              "rank": 7,
+              "doc_id": "64712",
+              "chunk_id": "64712:7500:900",
+              "offset": 7500,
+              "end": 8400,
+              "new_evidence": false
+            },
+            {
+              "rank": 8,
+              "doc_id": "40371",
+              "chunk_id": "40371:180000:900",
+              "offset": 180000,
+              "end": 180900,
+              "new_evidence": false
+            },
+            {
+              "rank": 9,
+              "doc_id": "18746",
+              "chunk_id": "18746:3000:900",
+              "offset": 3000,
+              "end": 3900,
+              "new_evidence": false
+            },
+            {
+              "rank": 10,
+              "doc_id": "17977",
+              "chunk_id": "17977:144750:900",
+              "offset": 144750,
+              "end": 145650,
+              "new_evidence": false
+            }
+          ]
+        },
+        {
+          "sequence": 30,
+          "seconds": 13.989316,
+          "type": "api_attempt",
+          "request_round": 4,
+          "http_status": 200,
+          "tool_choice": "none",
+          "message_chars": 14345,
+          "visible_evidence_ids": [
+            "E2",
+            "E11",
+            "E21",
+            "E3",
+            "E4",
+            "E1",
+            "E5"
+          ],
+          "visible_chunks": [
+            "7331:10500:900",
+            "57017:5250:900",
+            "45561:6000:900",
+            "28905:3000:900",
+            "91457:21000:900",
+            "91457:7500:900",
+            "55716:10500:900"
+          ],
+          "tool_messages": 0,
+          "usage": {
+            "prompt_tokens": 3149,
+            "completion_tokens": 122,
+            "total_tokens": 3271,
+            "prompt_tokens_details": {
+              "cached_tokens": 640
+            },
+            "prompt_cache_hit_tokens": 640,
+            "prompt_cache_miss_tokens": 2509
+          }
+        },
+        {
+          "sequence": 31,
+          "seconds": 13.989347,
+          "type": "assistant",
+          "request_round": 4,
+          "call_ids": [],
+          "tool_names": [],
+          "final_empty_answer": true
+        }
+      ]
+    },
+    {
+      "id": "64",
+      "historical_em": 0,
+      "tools": 12,
+      "http_attempts": 7,
+      "total_tokens": 26263,
+      "raw_usage": {
+        "prompt_tokens": 25325,
+        "completion_tokens": 938,
+        "total_tokens": 26263,
+        "prompt_cache_hit_tokens": 9472,
+        "prompt_cache_miss_tokens": 15853
+      },
+      "exact_query_duplicates": 3,
+      "compat_errors": [],
+      "grounding_errors": [],
+      "all_event_count": 55,
+      "api_assistant_tool_coverage": {
+        "api_attempt": 7,
+        "assistant": 7,
+        "tool": 12
+      },
+      "actions": [
+        {
+          "sequence": 6,
+          "seconds": 1.555735,
+          "type": "api_attempt",
+          "request_round": 1,
+          "http_status": 200,
+          "tool_choice": "auto",
+          "message_chars": 3780,
+          "visible_evidence_ids": [],
+          "visible_chunks": [],
+          "tool_messages": 0,
+          "usage": {
+            "prompt_tokens": 1547,
+            "completion_tokens": 134,
+            "total_tokens": 1681,
+            "prompt_tokens_details": {
+              "cached_tokens": 1408
+            },
+            "prompt_cache_hit_tokens": 1408,
+            "prompt_cache_miss_tokens": 139
+          }
+        },
+        {
+          "sequence": 7,
+          "seconds": 1.555771,
+          "type": "assistant",
+          "request_round": 1,
+          "call_ids": [
+            "call_00_k8l56aWldQNCnLZelDv05384",
+            "call_01_6evi0xhNy5TQnKdKYStG0964"
+          ],
+          "tool_names": [
+            "search",
+            "search"
+          ],
+          "final_empty_answer": false
+        },
+        {
+          "sequence": 8,
+          "seconds": 3.192563,
+          "type": "tool",
+          "request_round": 1,
+          "call_id": "call_00_k8l56aWldQNCnLZelDv05384",
+          "tool_name": "search",
+          "actual_top_k": 10,
+          "results_count": 10,
+          "new_passages": 10,
+          "repeated_query": false,
+          "results": [
+            {
+              "rank": 1,
+              "doc_id": "96854",
+              "chunk_id": "96854:2250:900",
+              "offset": 2250,
+              "end": 3150,
+              "new_evidence": true
+            },
+            {
+              "rank": 2,
+              "doc_id": "51931",
+              "chunk_id": "51931:750:900",
+              "offset": 750,
+              "end": 1650,
+              "new_evidence": true
+            },
+            {
+              "rank": 3,
+              "doc_id": "31726",
+              "chunk_id": "31726:750:900",
+              "offset": 750,
+              "end": 1650,
+              "new_evidence": true
+            },
+            {
+              "rank": 4,
+              "doc_id": "51931",
+              "chunk_id": "51931:3000:900",
+              "offset": 3000,
+              "end": 3900,
+              "new_evidence": true
+            },
+            {
+              "rank": 5,
+              "doc_id": "31726",
+              "chunk_id": "31726:0:900",
+              "offset": 0,
+              "end": 900,
+              "new_evidence": true
+            },
+            {
+              "rank": 6,
+              "doc_id": "72363",
+              "chunk_id": "72363:0:900",
+              "offset": 0,
+              "end": 900,
+              "new_evidence": true
+            },
+            {
+              "rank": 7,
+              "doc_id": "53809",
+              "chunk_id": "53809:1500:900",
+              "offset": 1500,
+              "end": 2400,
+              "new_evidence": true
+            },
+            {
+              "rank": 8,
+              "doc_id": "72383",
+              "chunk_id": "72383:33000:900",
+              "offset": 33000,
+              "end": 33900,
+              "new_evidence": true
+            },
+            {
+              "rank": 9,
+              "doc_id": "96854",
+              "chunk_id": "96854:3750:900",
+              "offset": 3750,
+              "end": 4650,
+              "new_evidence": true
+            },
+            {
+              "rank": 10,
+              "doc_id": "72383",
+              "chunk_id": "72383:27000:900",
+              "offset": 27000,
+              "end": 27900,
+              "new_evidence": true
+            }
+          ]
+        },
+        {
+          "sequence": 9,
+          "seconds": 3.585212,
+          "type": "tool",
+          "request_round": 1,
+          "call_id": "call_01_6evi0xhNy5TQnKdKYStG0964",
+          "tool_name": "search",
+          "actual_top_k": 10,
+          "results_count": 10,
+          "new_passages": 8,
+          "repeated_query": false,
+          "results": [
+            {
+              "rank": 1,
+              "doc_id": "64232",
+              "chunk_id": "64232:4500:188",
+              "offset": 4500,
+              "end": 4688,
+              "new_evidence": true
+            },
+            {
+              "rank": 2,
+              "doc_id": "75973",
+              "chunk_id": "75973:58500:900",
+              "offset": 58500,
+              "end": 59400,
+              "new_evidence": true
+            },
+            {
+              "rank": 3,
+              "doc_id": "64232",
+              "chunk_id": "64232:3750:900",
+              "offset": 3750,
+              "end": 4650,
+              "new_evidence": true
+            },
+            {
+              "rank": 4,
+              "doc_id": "81158",
+              "chunk_id": "81158:1500:900",
+              "offset": 1500,
+              "end": 2400,
+              "new_evidence": true
+            },
+            {
+              "rank": 5,
+              "doc_id": "96854",
+              "chunk_id": "96854:2250:900",
+              "offset": 2250,
+              "end": 3150,
+              "new_evidence": false
+            },
+            {
+              "rank": 6,
+              "doc_id": "81158",
+              "chunk_id": "81158:0:900",
+              "offset": 0,
+              "end": 900,
+              "new_evidence": true
+            },
+            {
+              "rank": 7,
+              "doc_id": "96854",
+              "chunk_id": "96854:3000:900",
+              "offset": 3000,
+              "end": 3900,
+              "new_evidence": true
+            },
+            {
+              "rank": 8,
+              "doc_id": "66829",
+              "chunk_id": "66829:13500:900",
+              "offset": 13500,
+              "end": 14400,
+              "new_evidence": true
+            },
+            {
+              "rank": 9,
+              "doc_id": "43119",
+              "chunk_id": "43119:48000:900",
+              "offset": 48000,
+              "end": 48900,
+              "new_evidence": true
+            },
+            {
+              "rank": 10,
+              "doc_id": "31726",
+              "chunk_id": "31726:750:900",
+              "offset": 750,
+              "end": 1650,
+              "new_evidence": false
+            }
+          ]
+        },
+        {
+          "sequence": 13,
+          "seconds": 4.68441,
+          "type": "api_attempt",
+          "request_round": 2,
+          "http_status": 200,
+          "tool_choice": "auto",
+          "message_chars": 13598,
+          "visible_evidence_ids": [
+            "E9",
+            "E3",
+            "E5",
+            "E7",
+            "E10",
+            "E8",
+            "E14",
+            "E16",
+            "E11"
+          ],
+          "visible_chunks": [
+            "96854:3750:900",
+            "31726:750:900",
+            "31726:0:900",
+            "53809:1500:900",
+            "72383:27000:900",
+            "72383:33000:900",
+            "81158:1500:900",
+            "96854:3000:900",
+            "64232:4500:188"
+          ],
+          "tool_messages": 0,
+          "usage": {
+            "prompt_tokens": 4024,
+            "completion_tokens": 127,
+            "total_tokens": 4151,
+            "prompt_tokens_details": {
+              "cached_tokens": 1408
+            },
+            "prompt_cache_hit_tokens": 1408,
+            "prompt_cache_miss_tokens": 2616
+          }
+        },
+        {
+          "sequence": 14,
+          "seconds": 4.684471,
+          "type": "assistant",
+          "request_round": 2,
+          "call_ids": [
+            "call_00_s6EETpuv3TtqrGgNduLj0969",
+            "call_01_Isds8ReBoe8rTZyjPeDj1380"
+          ],
+          "tool_names": [
+            "search",
+            "search"
+          ],
+          "final_empty_answer": false
+        },
+        {
+          "sequence": 15,
+          "seconds": 4.813708,
+          "type": "tool",
+          "request_round": 2,
+          "call_id": "call_00_s6EETpuv3TtqrGgNduLj0969",
+          "tool_name": "search",
+          "actual_top_k": 10,
+          "results_count": 10,
+          "new_passages": 5,
+          "repeated_query": false,
+          "results": [
+            {
+              "rank": 1,
+              "doc_id": "31726",
+              "chunk_id": "31726:750:900",
+              "offset": 750,
+              "end": 1650,
+              "new_evidence": false
+            },
+            {
+              "rank": 2,
+              "doc_id": "96854",
+              "chunk_id": "96854:2250:900",
+              "offset": 2250,
+              "end": 3150,
+              "new_evidence": false
+            },
+            {
+              "rank": 3,
+              "doc_id": "96854",
+              "chunk_id": "96854:3000:900",
+              "offset": 3000,
+              "end": 3900,
+              "new_evidence": false
+            },
+            {
+              "rank": 4,
+              "doc_id": "51931",
+              "chunk_id": "51931:750:900",
+              "offset": 750,
+              "end": 1650,
+              "new_evidence": false
+            },
+            {
+              "rank": 5,
+              "doc_id": "86711",
+              "chunk_id": "86711:1500:900",
+              "offset": 1500,
+              "end": 2400,
+              "new_evidence": true
+            },
+            {
+              "rank": 6,
+              "doc_id": "63816",
+              "chunk_id": "63816:58500:900",
+              "offset": 58500,
+              "end": 59400,
+              "new_evidence": true
+            },
+            {
+              "rank": 7,
+              "doc_id": "80866",
+              "chunk_id": "80866:4500:900",
+              "offset": 4500,
+              "end": 5400,
+              "new_evidence": true
+            },
+            {
+              "rank": 8,
+              "doc_id": "92127",
+              "chunk_id": "92127:13500:900",
+              "offset": 13500,
+              "end": 14400,
+              "new_evidence": true
+            },
+            {
+              "rank": 9,
+              "doc_id": "51931",
+              "chunk_id": "51931:3000:900",
+              "offset": 3000,
+              "end": 3900,
+              "new_evidence": false
+            },
+            {
+              "rank": 10,
+              "doc_id": "77320",
+              "chunk_id": "77320:0:900",
+              "offset": 0,
+              "end": 900,
+              "new_evidence": true
+            }
+          ]
+        },
+        {
+          "sequence": 16,
+          "seconds": 6.606178,
+          "type": "tool",
+          "request_round": 2,
+          "call_id": "call_01_Isds8ReBoe8rTZyjPeDj1380",
+          "tool_name": "search",
+          "actual_top_k": 5,
+          "results_count": 5,
+          "new_passages": 1,
+          "repeated_query": false,
+          "results": [
+            {
+              "rank": 1,
+              "doc_id": "64232",
+              "chunk_id": "64232:3750:900",
+              "offset": 3750,
+              "end": 4650,
+              "new_evidence": false
+            },
+            {
+              "rank": 2,
+              "doc_id": "81158",
+              "chunk_id": "81158:0:900",
+              "offset": 0,
+              "end": 900,
+              "new_evidence": false
+            },
+            {
+              "rank": 3,
+              "doc_id": "64232",
+              "chunk_id": "64232:4500:188",
+              "offset": 4500,
+              "end": 4688,
+              "new_evidence": false
+            },
+            {
+              "rank": 4,
+              "doc_id": "81158",
+              "chunk_id": "81158:1500:900",
+              "offset": 1500,
+              "end": 2400,
+              "new_evidence": false
+            },
+            {
+              "rank": 5,
+              "doc_id": "64232",
+              "chunk_id": "64232:0:900",
+              "offset": 0,
+              "end": 900,
+              "new_evidence": true
+            }
+          ]
+        },
+        {
+          "sequence": 20,
+          "seconds": 7.986134,
+          "type": "api_attempt",
+          "request_round": 3,
+          "http_status": 200,
+          "tool_choice": "auto",
+          "message_chars": 13717,
+          "visible_evidence_ids": [
+            "E9",
+            "E3",
+            "E5",
+            "E7",
+            "E10",
+            "E19",
+            "E23",
+            "E8",
+            "E11"
+          ],
+          "visible_chunks": [
+            "96854:3750:900",
+            "31726:750:900",
+            "31726:0:900",
+            "53809:1500:900",
+            "72383:27000:900",
+            "86711:1500:900",
+            "77320:0:900",
+            "72383:33000:900",
+            "64232:4500:188"
+          ],
+          "tool_messages": 0,
+          "usage": {
+            "prompt_tokens": 4030,
+            "completion_tokens": 128,
+            "total_tokens": 4158,
+            "prompt_tokens_details": {
+              "cached_tokens": 1408
+            },
+            "prompt_cache_hit_tokens": 1408,
+            "prompt_cache_miss_tokens": 2622
+          }
+        },
+        {
+          "sequence": 21,
+          "seconds": 7.986169,
+          "type": "assistant",
+          "request_round": 3,
+          "call_ids": [
+            "call_00_TlUegzCcszDTXACeGZHx0698",
+            "call_01_LjI041vO7HHIR37ZOnc46432"
+          ],
+          "tool_names": [
+            "search",
+            "search"
+          ],
+          "final_empty_answer": false
+        },
+        {
+          "sequence": 22,
+          "seconds": 9.480117,
+          "type": "tool",
+          "request_round": 3,
+          "call_id": "call_00_TlUegzCcszDTXACeGZHx0698",
+          "tool_name": "search",
+          "actual_top_k": 5,
+          "results_count": 5,
+          "new_passages": 1,
+          "repeated_query": false,
+          "results": [
+            {
+              "rank": 1,
+              "doc_id": "64232",
+              "chunk_id": "64232:3750:900",
+              "offset": 3750,
+              "end": 4650,
+              "new_evidence": false
+            },
+            {
+              "rank": 2,
+              "doc_id": "81158",
+              "chunk_id": "81158:0:900",
+              "offset": 0,
+              "end": 900,
+              "new_evidence": false
+            },
+            {
+              "rank": 3,
+              "doc_id": "81158",
+              "chunk_id": "81158:1500:900",
+              "offset": 1500,
+              "end": 2400,
+              "new_evidence": false
+            },
+            {
+              "rank": 4,
+              "doc_id": "64232",
+              "chunk_id": "64232:4500:188",
+              "offset": 4500,
+              "end": 4688,
+              "new_evidence": false
+            },
+            {
+              "rank": 5,
+              "doc_id": "17305",
+              "chunk_id": "17305:6000:900",
+              "offset": 6000,
+              "end": 6900,
+              "new_evidence": true
+            }
+          ]
+        },
+        {
+          "sequence": 23,
+          "seconds": 9.580602,
+          "type": "tool",
+          "request_round": 3,
+          "call_id": "call_01_LjI041vO7HHIR37ZOnc46432",
+          "tool_name": "search",
+          "actual_top_k": 5,
+          "results_count": 5,
+          "new_passages": 0,
+          "repeated_query": true,
+          "results": [
+            {
+              "rank": 1,
+              "doc_id": "31726",
+              "chunk_id": "31726:750:900",
+              "offset": 750,
+              "end": 1650,
+              "new_evidence": false
+            },
+            {
+              "rank": 2,
+              "doc_id": "96854",
+              "chunk_id": "96854:2250:900",
+              "offset": 2250,
+              "end": 3150,
+              "new_evidence": false
+            },
+            {
+              "rank": 3,
+              "doc_id": "96854",
+              "chunk_id": "96854:3000:900",
+              "offset": 3000,
+              "end": 3900,
+              "new_evidence": false
+            },
+            {
+              "rank": 4,
+              "doc_id": "51931",
+              "chunk_id": "51931:750:900",
+              "offset": 750,
+              "end": 1650,
+              "new_evidence": false
+            },
+            {
+              "rank": 5,
+              "doc_id": "86711",
+              "chunk_id": "86711:1500:900",
+              "offset": 1500,
+              "end": 2400,
+              "new_evidence": false
+            }
+          ]
+        },
+        {
+          "sequence": 29,
+          "seconds": 10.705653,
+          "type": "api_attempt",
+          "request_round": 4,
+          "http_status": 200,
+          "tool_choice": "auto",
+          "message_chars": 14667,
+          "visible_evidence_ids": [
+            "E9",
+            "E3",
+            "E5",
+            "E7",
+            "E10",
+            "E19",
+            "E23",
+            "E8"
+          ],
+          "visible_chunks": [
+            "96854:3750:900",
+            "31726:750:900",
+            "31726:0:900",
+            "53809:1500:900",
+            "72383:27000:900",
+            "86711:1500:900",
+            "77320:0:900",
+            "72383:33000:900"
+          ],
+          "tool_messages": 0,
+          "usage": {
+            "prompt_tokens": 4157,
+            "completion_tokens": 151,
+            "total_tokens": 4308,
+            "prompt_tokens_details": {
+              "cached_tokens": 1536
+            },
+            "prompt_cache_hit_tokens": 1536,
+            "prompt_cache_miss_tokens": 2621
+          }
+        },
+        {
+          "sequence": 30,
+          "seconds": 10.705715,
+          "type": "assistant",
+          "request_round": 4,
+          "call_ids": [
+            "call_00_rJvb9bGA6UYo8RAqECmU1437",
+            "call_01_1StBWM7EVzfwbIXp8KBS2890"
+          ],
+          "tool_names": [
+            "search",
+            "search"
+          ],
+          "final_empty_answer": false
+        },
+        {
+          "sequence": 31,
+          "seconds": 10.825658,
+          "type": "tool",
+          "request_round": 4,
+          "call_id": "call_00_rJvb9bGA6UYo8RAqECmU1437",
+          "tool_name": "search",
+          "actual_top_k": 10,
+          "results_count": 10,
+          "new_passages": 8,
+          "repeated_query": false,
+          "results": [
+            {
+              "rank": 1,
+              "doc_id": "28846",
+              "chunk_id": "28846:33750:900",
+              "offset": 33750,
+              "end": 34650,
+              "new_evidence": true
+            },
+            {
+              "rank": 2,
+              "doc_id": "86711",
+              "chunk_id": "86711:1500:900",
+              "offset": 1500,
+              "end": 2400,
+              "new_evidence": false
+            },
+            {
+              "rank": 3,
+              "doc_id": "82763",
+              "chunk_id": "82763:6000:900",
+              "offset": 6000,
+              "end": 6900,
+              "new_evidence": true
+            },
+            {
+              "rank": 4,
+              "doc_id": "70474",
+              "chunk_id": "70474:3750:900",
+              "offset": 3750,
+              "end": 4650,
+              "new_evidence": true
+            },
+            {
+              "rank": 5,
+              "doc_id": "55089",
+              "chunk_id": "55089:6000:900",
+              "offset": 6000,
+              "end": 6900,
+              "new_evidence": true
+            },
+            {
+              "rank": 6,
+              "doc_id": "63012",
+              "chunk_id": "63012:10500:900",
+              "offset": 10500,
+              "end": 11400,
+              "new_evidence": true
+            },
+            {
+              "rank": 7,
+              "doc_id": "99969",
+              "chunk_id": "99969:5250:900",
+              "offset": 5250,
+              "end": 6150,
+              "new_evidence": true
+            },
+            {
+              "rank": 8,
+              "doc_id": "19888",
+              "chunk_id": "19888:95250:900",
+              "offset": 95250,
+              "end": 96150,
+              "new_evidence": true
+            },
+            {
+              "rank": 9,
+              "doc_id": "30639",
+              "chunk_id": "30639:15000:900",
+              "offset": 15000,
+              "end": 15900,
+              "new_evidence": true
+            },
+            {
+              "rank": 10,
+              "doc_id": "31726",
+              "chunk_id": "31726:750:900",
+              "offset": 750,
+              "end": 1650,
+              "new_evidence": false
+            }
+          ]
+        },
+        {
+          "sequence": 32,
+          "seconds": 12.394229,
+          "type": "tool",
+          "request_round": 4,
+          "call_id": "call_01_1StBWM7EVzfwbIXp8KBS2890",
+          "tool_name": "search",
+          "actual_top_k": 10,
+          "results_count": 10,
+          "new_passages": 3,
+          "repeated_query": false,
+          "results": [
+            {
+              "rank": 1,
+              "doc_id": "64232",
+              "chunk_id": "64232:3750:900",
+              "offset": 3750,
+              "end": 4650,
+              "new_evidence": false
+            },
+            {
+              "rank": 2,
+              "doc_id": "81158",
+              "chunk_id": "81158:0:900",
+              "offset": 0,
+              "end": 900,
+              "new_evidence": false
+            },
+            {
+              "rank": 3,
+              "doc_id": "64232",
+              "chunk_id": "64232:4500:188",
+              "offset": 4500,
+              "end": 4688,
+              "new_evidence": false
+            },
+            {
+              "rank": 4,
+              "doc_id": "81158",
+              "chunk_id": "81158:1500:900",
+              "offset": 1500,
+              "end": 2400,
+              "new_evidence": false
+            },
+            {
+              "rank": 5,
+              "doc_id": "75973",
+              "chunk_id": "75973:58500:900",
+              "offset": 58500,
+              "end": 59400,
+              "new_evidence": false
+            },
+            {
+              "rank": 6,
+              "doc_id": "17305",
+              "chunk_id": "17305:750:900",
+              "offset": 750,
+              "end": 1650,
+              "new_evidence": true
+            },
+            {
+              "rank": 7,
+              "doc_id": "64232",
+              "chunk_id": "64232:0:900",
+              "offset": 0,
+              "end": 900,
+              "new_evidence": false
+            },
+            {
+              "rank": 8,
+              "doc_id": "17305",
+              "chunk_id": "17305:6000:900",
+              "offset": 6000,
+              "end": 6900,
+              "new_evidence": false
+            },
+            {
+              "rank": 9,
+              "doc_id": "75973",
+              "chunk_id": "75973:61500:900",
+              "offset": 61500,
+              "end": 62400,
+              "new_evidence": true
+            },
+            {
+              "rank": 10,
+              "doc_id": "75973",
+              "chunk_id": "75973:50250:900",
+              "offset": 50250,
+              "end": 51150,
+              "new_evidence": true
+            }
+          ]
+        },
+        {
+          "sequence": 36,
+          "seconds": 13.708339,
+          "type": "api_attempt",
+          "request_round": 5,
+          "http_status": 200,
+          "tool_choice": "auto",
+          "message_chars": 14672,
+          "visible_evidence_ids": [
+            "E9",
+            "E3",
+            "E29",
+            "E5",
+            "E7",
+            "E10",
+            "E19",
+            "E23"
+          ],
+          "visible_chunks": [
+            "96854:3750:900",
+            "31726:750:900",
+            "55089:6000:900",
+            "31726:0:900",
+            "53809:1500:900",
+            "72383:27000:900",
+            "86711:1500:900",
+            "77320:0:900"
+          ],
+          "tool_messages": 0,
+          "usage": {
+            "prompt_tokens": 4179,
+            "completion_tokens": 126,
+            "total_tokens": 4305,
+            "prompt_tokens_details": {
+              "cached_tokens": 1536
+            },
+            "prompt_cache_hit_tokens": 1536,
+            "prompt_cache_miss_tokens": 2643
+          }
+        },
+        {
+          "sequence": 37,
+          "seconds": 13.708398,
+          "type": "assistant",
+          "request_round": 5,
+          "call_ids": [
+            "call_00_joXj802y6l8d3ksdGztY7987",
+            "call_01_h5FxMjZHDkf0DGMKovVt0791"
+          ],
+          "tool_names": [
+            "search",
+            "search"
+          ],
+          "final_empty_answer": false
+        },
+        {
+          "sequence": 38,
+          "seconds": 15.298719,
+          "type": "tool",
+          "request_round": 5,
+          "call_id": "call_00_joXj802y6l8d3ksdGztY7987",
+          "tool_name": "search",
+          "actual_top_k": 5,
+          "results_count": 5,
+          "new_passages": 0,
+          "repeated_query": false,
+          "results": [
+            {
+              "rank": 1,
+              "doc_id": "81158",
+              "chunk_id": "81158:0:900",
+              "offset": 0,
+              "end": 900,
+              "new_evidence": false
+            },
+            {
+              "rank": 2,
+              "doc_id": "64232",
+              "chunk_id": "64232:3750:900",
+              "offset": 3750,
+              "end": 4650,
+              "new_evidence": false
+            },
+            {
+              "rank": 3,
+              "doc_id": "17305",
+              "chunk_id": "17305:750:900",
+              "offset": 750,
+              "end": 1650,
+              "new_evidence": false
+            },
+            {
+              "rank": 4,
+              "doc_id": "17305",
+              "chunk_id": "17305:6000:900",
+              "offset": 6000,
+              "end": 6900,
+              "new_evidence": false
+            },
+            {
+              "rank": 5,
+              "doc_id": "75973",
+              "chunk_id": "75973:61500:900",
+              "offset": 61500,
+              "end": 62400,
+              "new_evidence": false
+            }
+          ]
+        },
+        {
+          "sequence": 39,
+          "seconds": 16.846135,
+          "type": "tool",
+          "request_round": 5,
+          "call_id": "call_01_h5FxMjZHDkf0DGMKovVt0791",
+          "tool_name": "search",
+          "actual_top_k": 5,
+          "results_count": 5,
+          "new_passages": 2,
+          "repeated_query": false,
+          "results": [
+            {
+              "rank": 1,
+              "doc_id": "55089",
+              "chunk_id": "55089:6000:900",
+              "offset": 6000,
+              "end": 6900,
+              "new_evidence": false
+            },
+            {
+              "rank": 2,
+              "doc_id": "82763",
+              "chunk_id": "82763:6000:900",
+              "offset": 6000,
+              "end": 6900,
+              "new_evidence": false
+            },
+            {
+              "rank": 3,
+              "doc_id": "86711",
+              "chunk_id": "86711:1500:900",
+              "offset": 1500,
+              "end": 2400,
+              "new_evidence": false
+            },
+            {
+              "rank": 4,
+              "doc_id": "66829",
+              "chunk_id": "66829:12000:900",
+              "offset": 12000,
+              "end": 12900,
+              "new_evidence": true
+            },
+            {
+              "rank": 5,
+              "doc_id": "50901",
+              "chunk_id": "50901:6000:900",
+              "offset": 6000,
+              "end": 6900,
+              "new_evidence": true
+            }
+          ]
+        },
+        {
+          "sequence": 43,
+          "seconds": 18.275909,
+          "type": "api_attempt",
+          "request_round": 6,
+          "http_status": 200,
+          "tool_choice": "auto",
+          "message_chars": 14640,
+          "visible_evidence_ids": [
+            "E9",
+            "E3",
+            "E29",
+            "E5",
+            "E7",
+            "E10",
+            "E19",
+            "E23"
+          ],
+          "visible_chunks": [
+            "96854:3750:900",
+            "31726:750:900",
+            "55089:6000:900",
+            "31726:0:900",
+            "53809:1500:900",
+            "72383:27000:900",
+            "86711:1500:900",
+            "77320:0:900"
+          ],
+          "tool_messages": 0,
+          "usage": {
+            "prompt_tokens": 4174,
+            "completion_tokens": 158,
+            "total_tokens": 4332,
+            "prompt_tokens_details": {
+              "cached_tokens": 1536
+            },
+            "prompt_cache_hit_tokens": 1536,
+            "prompt_cache_miss_tokens": 2638
+          }
+        },
+        {
+          "sequence": 44,
+          "seconds": 18.275941,
+          "type": "assistant",
+          "request_round": 6,
+          "call_ids": [
+            "call_00_PyQyNjhsdlTcCqgGK3sd8293",
+            "call_01_wZffkol1u7l9vX7En6O36933"
+          ],
+          "tool_names": [
+            "search",
+            "search"
+          ],
+          "final_empty_answer": false
+        },
+        {
+          "sequence": 45,
+          "seconds": 19.759909,
+          "type": "tool",
+          "request_round": 6,
+          "call_id": "call_00_PyQyNjhsdlTcCqgGK3sd8293",
+          "tool_name": "search",
+          "actual_top_k": 5,
+          "results_count": 5,
+          "new_passages": 0,
+          "repeated_query": true,
+          "results": [
+            {
+              "rank": 1,
+              "doc_id": "81158",
+              "chunk_id": "81158:0:900",
+              "offset": 0,
+              "end": 900,
+              "new_evidence": false
+            },
+            {
+              "rank": 2,
+              "doc_id": "64232",
+              "chunk_id": "64232:3750:900",
+              "offset": 3750,
+              "end": 4650,
+              "new_evidence": false
+            },
+            {
+              "rank": 3,
+              "doc_id": "17305",
+              "chunk_id": "17305:750:900",
+              "offset": 750,
+              "end": 1650,
+              "new_evidence": false
+            },
+            {
+              "rank": 4,
+              "doc_id": "17305",
+              "chunk_id": "17305:6000:900",
+              "offset": 6000,
+              "end": 6900,
+              "new_evidence": false
+            },
+            {
+              "rank": 5,
+              "doc_id": "75973",
+              "chunk_id": "75973:61500:900",
+              "offset": 61500,
+              "end": 62400,
+              "new_evidence": false
+            }
+          ]
+        },
+        {
+          "sequence": 46,
+          "seconds": 21.231086,
+          "type": "tool",
+          "request_round": 6,
+          "call_id": "call_01_wZffkol1u7l9vX7En6O36933",
+          "tool_name": "search",
+          "actual_top_k": 5,
+          "results_count": 5,
+          "new_passages": 0,
+          "repeated_query": true,
+          "results": [
+            {
+              "rank": 1,
+              "doc_id": "55089",
+              "chunk_id": "55089:6000:900",
+              "offset": 6000,
+              "end": 6900,
+              "new_evidence": false
+            },
+            {
+              "rank": 2,
+              "doc_id": "82763",
+              "chunk_id": "82763:6000:900",
+              "offset": 6000,
+              "end": 6900,
+              "new_evidence": false
+            },
+            {
+              "rank": 3,
+              "doc_id": "86711",
+              "chunk_id": "86711:1500:900",
+              "offset": 1500,
+              "end": 2400,
+              "new_evidence": false
+            },
+            {
+              "rank": 4,
+              "doc_id": "66829",
+              "chunk_id": "66829:12000:900",
+              "offset": 12000,
+              "end": 12900,
+              "new_evidence": false
+            },
+            {
+              "rank": 5,
+              "doc_id": "50901",
+              "chunk_id": "50901:6000:900",
+              "offset": 6000,
+              "end": 6900,
+              "new_evidence": false
+            }
+          ]
+        },
+        {
+          "sequence": 51,
+          "seconds": 22.809269,
+          "type": "api_attempt",
+          "request_round": 7,
+          "http_status": 200,
+          "tool_choice": "none",
+          "message_chars": 14184,
+          "visible_evidence_ids": [
+            "E9",
+            "E3",
+            "E29",
+            "E5",
+            "E7",
+            "E10",
+            "E19",
+            "E11"
+          ],
+          "visible_chunks": [
+            "96854:3750:900",
+            "31726:750:900",
+            "55089:6000:900",
+            "31726:0:900",
+            "53809:1500:900",
+            "72383:27000:900",
+            "86711:1500:900",
+            "64232:4500:188"
+          ],
+          "tool_messages": 0,
+          "usage": {
+            "prompt_tokens": 3214,
+            "completion_tokens": 114,
+            "total_tokens": 3328,
+            "prompt_tokens_details": {
+              "cached_tokens": 640
+            },
+            "prompt_cache_hit_tokens": 640,
+            "prompt_cache_miss_tokens": 2574
+          }
+        },
+        {
+          "sequence": 52,
+          "seconds": 22.809307,
+          "type": "assistant",
+          "request_round": 7,
+          "call_ids": [],
+          "tool_names": [],
+          "final_empty_answer": true
+        }
+      ]
+    }
+  ]
+}

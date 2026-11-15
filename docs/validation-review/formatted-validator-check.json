@@ -1,0 +1,32 @@
+[
+  {
+    "case": "231",
+    "arm": "control",
+    "formatted_validator_output_equal": true
+  },
+  {
+    "case": "231",
+    "arm": "treatment",
+    "formatted_validator_output_equal": true
+  },
+  {
+    "case": "390",
+    "arm": "control",
+    "formatted_validator_output_equal": true
+  },
+  {
+    "case": "390",
+    "arm": "treatment",
+    "formatted_validator_output_equal": true
+  },
+  {
+    "case": "58",
+    "arm": "control",
+    "formatted_validator_output_equal": true
+  },
+  {
+    "case": "58",
+    "arm": "treatment",
+    "formatted_validator_output_equal": true
+  }
+]

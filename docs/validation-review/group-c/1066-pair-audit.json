@@ -1,0 +1,250 @@
+{
+  "id": "1066",
+  "historical_api_sequence": 20,
+  "status": "EXECUTED_NEXT_ACTION_ONLY",
+  "offline_api_calls": 0,
+  "model_calls_by_this_script": 0,
+  "arms": {
+    "control": {
+      "http_status": 200,
+      "response_model": "deepseek-v4-flash-0731",
+      "usage": {
+        "prompt_tokens": 4074,
+        "completion_tokens": 105,
+        "total_tokens": 4179,
+        "prompt_tokens_details": {
+          "cached_tokens": 1280
+        }
+      },
+      "finish_reason": "tool_calls",
+      "api_attempt_sha256": "ebfea3589d46a5be80f948028c4b6799bfa6b39d614dece99494893f3a5be531",
+      "prepared_request_sha256": "91169a329037de6924f372929a3ca9de628ab932ebfd585ba08ce0304b1e620f",
+      "exact_expected_request_after_provider_adaptation": true,
+      "calls": [
+        {
+          "index": 1,
+          "tool_call_id": "call_257f73ed40964e2598a07e02",
+          "query_sha256": "c18112055061ef877e661d955b14525d8cfea9596119bf050e82aa7ff737732c",
+          "seconds": 2.675695290963631,
+          "offline_only": true,
+          "sent_back_to_model": false,
+          "top_k": 5,
+          "hits": [
+            {
+              "rank": 1,
+              "doc_id": "41005",
+              "offset": 2250,
+              "end": 3150,
+              "exact_preannotated_condition_spans": []
+            },
+            {
+              "rank": 2,
+              "doc_id": "12060",
+              "offset": 0,
+              "end": 696,
+              "exact_preannotated_condition_spans": []
+            },
+            {
+              "rank": 3,
+              "doc_id": "15322",
+              "offset": 54750,
+              "end": 55650,
+              "exact_preannotated_condition_spans": []
+            },
+            {
+              "rank": 4,
+              "doc_id": "53440",
+              "offset": 91500,
+              "end": 92400,
+              "exact_preannotated_condition_spans": []
+            },
+            {
+              "rank": 5,
+              "doc_id": "44637",
+              "offset": 3000,
+              "end": 3900,
+              "exact_preannotated_condition_spans": []
+            }
+          ]
+        },
+        {
+          "index": 2,
+          "tool_call_id": "call_be932a777ee947b4b5a77107",
+          "query_sha256": "2eee2ddd5c15010e0341e50348ae036967b01743d83764ca0460a1170fd1caf7",
+          "seconds": 0.7385239170398563,
+          "offline_only": true,
+          "sent_back_to_model": false,
+          "top_k": 5,
+          "hits": [
+            {
+              "rank": 1,
+              "doc_id": "64336",
+              "offset": 27000,
+              "end": 27900,
+              "exact_preannotated_condition_spans": []
+            },
+            {
+              "rank": 2,
+              "doc_id": "26814",
+              "offset": 0,
+              "end": 726,
+              "exact_preannotated_condition_spans": [
+                3,
+                4
+              ]
+            },
+            {
+              "rank": 3,
+              "doc_id": "90881",
+              "offset": 88500,
+              "end": 89400,
+              "exact_preannotated_condition_spans": []
+            },
+            {
+              "rank": 4,
+              "doc_id": "8930",
+              "offset": 252000,
+              "end": 252900,
+              "exact_preannotated_condition_spans": []
+            },
+            {
+              "rank": 5,
+              "doc_id": "35113",
+              "offset": 3000,
+              "end": 3900,
+              "exact_preannotated_condition_spans": []
+            }
+          ]
+        }
+      ]
+    },
+    "treatment": {
+      "http_status": 200,
+      "response_model": "deepseek-v4-flash-0731",
+      "usage": {
+        "prompt_tokens": 4023,
+        "completion_tokens": 117,
+        "total_tokens": 4140,
+        "prompt_tokens_details": {
+          "cached_tokens": 3328
+        }
+      },
+      "finish_reason": "tool_calls",
+      "api_attempt_sha256": "477a9620e6bf1a506ed325a0acbb656b1a3d0400c9ccf7256dcd53ead557c2d9",
+      "prepared_request_sha256": "dcd37d29f8bb953f346b15f2b9afcd3eb6004a38841bd82ae5637c07bbcc5dd4",
+      "exact_expected_request_after_provider_adaptation": true,
+      "calls": [
+        {
+          "index": 1,
+          "tool_call_id": "call_37b22e866bba4f778f1a599b",
+          "query_sha256": "c18112055061ef877e661d955b14525d8cfea9596119bf050e82aa7ff737732c",
+          "seconds": 0.806367915996816,
+          "offline_only": true,
+          "sent_back_to_model": false,
+          "top_k": 5,
+          "hits": [
+            {
+              "rank": 1,
+              "doc_id": "41005",
+              "offset": 2250,
+              "end": 3150,
+              "exact_preannotated_condition_spans": []
+            },
+            {
+              "rank": 2,
+              "doc_id": "12060",
+              "offset": 0,
+              "end": 696,
+              "exact_preannotated_condition_spans": []
+            },
+            {
+              "rank": 3,
+              "doc_id": "15322",
+              "offset": 54750,
+              "end": 55650,
+              "exact_preannotated_condition_spans": []
+            },
+            {
+              "rank": 4,
+              "doc_id": "53440",
+              "offset": 91500,
+              "end": 92400,
+              "exact_preannotated_condition_spans": []
+            },
+            {
+              "rank": 5,
+              "doc_id": "44637",
+              "offset": 3000,
+              "end": 3900,
+              "exact_preannotated_condition_spans": []
+            }
+          ]
+        },
+        {
+          "index": 2,
+          "tool_call_id": "call_c37cd022c6e140239ccc7358",
+          "query_sha256": "f322b5a6711c32cb81f2be797c9c7d0af16412e54fb866a69cf17d4749d3177f",
+          "seconds": 0.3354067920008674,
+          "offline_only": true,
+          "sent_back_to_model": false,
+          "top_k": 5,
+          "hits": [
+            {
+              "rank": 1,
+              "doc_id": "26814",
+              "offset": 0,
+              "end": 726,
+              "exact_preannotated_condition_spans": [
+                3,
+                4
+              ]
+            },
+            {
+              "rank": 2,
+              "doc_id": "71762",
+              "offset": 13500,
+              "end": 14400,
+              "exact_preannotated_condition_spans": []
+            },
+            {
+              "rank": 3,
+              "doc_id": "23031",
+              "offset": 6000,
+              "end": 6900,
+              "exact_preannotated_condition_spans": []
+            },
+            {
+              "rank": 4,
+              "doc_id": "61101",
+              "offset": 1500,
+              "end": 1880,
+              "exact_preannotated_condition_spans": [
+                1
+              ]
+            },
+            {
+              "rank": 5,
+              "doc_id": "46411",
+              "offset": 23250,
+              "end": 24150,
+              "exact_preannotated_condition_spans": []
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "final_em": null,
+  "historical_evidence_budget": 9568,
+  "context_limit": 24000,
+  "single_evidence_slot_swap": 7,
+  "retained_evidence": "E12",
+  "removed_evidence": "E9",
+  "provider_adaptation_same_both_arms": {
+    "model": "deepseek-v4-flash-0731",
+    "enable_thinking": false,
+    "removed_field": "thinking",
+    "all_other_payload_fields_match_prepared_pair": true
+  },
+  "interpretation": "Both responses choose two search calls. The first query is identical; the treatment's second query uses the retained candidate and director, while control remains broad. Searches were executed only offline and never returned to the model; final EM is unmeasured. One pair measures a local next-action difference, not full-run accuracy or statistical reliability."
+}

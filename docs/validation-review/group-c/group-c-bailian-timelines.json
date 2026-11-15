@@ -1,0 +1,583 @@
+{
+  "1155": [
+    {
+      "sequence": 0,
+      "kind": "run_start",
+      "description": "启动baseline；config_id=900fc3b95b775d2a；sparse，固定语料。"
+    },
+    {
+      "sequence": 1,
+      "kind": "user",
+      "description": "Question(id, question)进入Agent；原题仅保留在私有附件。"
+    },
+    {
+      "sequence": 2,
+      "kind": "context",
+      "description": "上下文选择；移除历史组0，选证据0，2354字符。该事件是程序摘要，实际输入以随后api_attempt为准。"
+    },
+    {
+      "sequence": 3,
+      "kind": "request",
+      "description": "程序准备请求事件；不把此副本当成实际模型输入证据。"
+    },
+    {
+      "sequence": 4,
+      "kind": "api_attempt",
+      "description": "真实API#1；HTTP 200；usage=1425；tool_choice=auto；实际messages=2354字符；证据[]；参考字面串在messages/证据=False/False。输入仅按api_attempt.request.messages审计。"
+    },
+    {
+      "sequence": 5,
+      "kind": "assistant",
+      "description": "模型决定发起工具；call_e7dbd780cc884a6b9d78acd1:search, call_0ec79b47398d4803855de3e9:search"
+    },
+    {
+      "sequence": 6,
+      "kind": "tool",
+      "description": "search call_e7dbd780cc884a6b9d78acd1；query SHA256=a8ea7b9879b727d7，top_k=None；ok=True，返回5，新证据5，完全重复查询=False；#1 56790:0+900(E1); #2 44164:750+900(E2); #3 90811:0+900(E3); #4 46699:25500+900(E4); #5 96616:9000+900(E5)"
+    },
+    {
+      "sequence": 7,
+      "kind": "tool",
+      "description": "search call_0ec79b47398d4803855de3e9；query SHA256=e4e0f2ce54cb3b58，top_k=None；ok=True，返回5，新证据5，完全重复查询=False；#1 78676:3750+900(E6); #2 17323:3000+900(E7); #3 88797:16500+900(E8); #4 3094:583500+900(E9); #5 8865:1500+900(E10)"
+    },
+    {
+      "sequence": 8,
+      "kind": "state",
+      "description": "步骤1，工具2，累计token1425，stalled_searches=0；完整state证据数10，candidate_answer仍空。"
+    },
+    {
+      "sequence": 9,
+      "kind": "context",
+      "description": "上下文选择；移除历史组1，选证据9，12679字符。该事件是程序摘要，实际输入以随后api_attempt为准。"
+    },
+    {
+      "sequence": 10,
+      "kind": "request",
+      "description": "程序准备请求事件；不把此副本当成实际模型输入证据。"
+    },
+    {
+      "sequence": 11,
+      "kind": "api_attempt",
+      "description": "真实API#2；HTTP 200；usage=4008；tool_choice=auto；实际messages=12679字符；证据[E3,E4,E5,E2,E9,E10,E1,E7,E8]；参考字面串在messages/证据=False/False。输入仅按api_attempt.request.messages审计。"
+    },
+    {
+      "sequence": 12,
+      "kind": "assistant",
+      "description": "模型决定发起工具；call_471a7eea426342ccbcfdda83:search, call_28bd026eb11941c48ea63b12:search"
+    },
+    {
+      "sequence": 13,
+      "kind": "tool",
+      "description": "search call_471a7eea426342ccbcfdda83；query SHA256=b06e0e79bba1473b，top_k=None；ok=True，返回5，新证据2，完全重复查询=False；#1 8865:1500+900(E10); #2 78245:63000+900(E11); #3 3094:583500+900(E9); #4 56790:0+900(E1); #5 3094:143250+900(E12)"
+    },
+    {
+      "sequence": 14,
+      "kind": "tool",
+      "description": "search call_28bd026eb11941c48ea63b12；query SHA256=cc2a0f1f8a5d8e97，top_k=None；ok=True，返回5，新证据1，完全重复查询=False；#1 44164:750+900(E2); #2 46699:25500+900(E4); #3 8865:1500+900(E10); #4 3094:583500+900(E9); #5 69407:11250+900(E13)"
+    },
+    {
+      "sequence": 15,
+      "kind": "state",
+      "description": "步骤2，工具4，累计token5433，stalled_searches=0；完整state证据数13，candidate_answer仍空。"
+    },
+    {
+      "sequence": 16,
+      "kind": "context",
+      "description": "上下文选择；移除历史组2，选证据9，12886字符。该事件是程序摘要，实际输入以随后api_attempt为准。"
+    },
+    {
+      "sequence": 17,
+      "kind": "request",
+      "description": "程序准备请求事件；不把此副本当成实际模型输入证据。"
+    },
+    {
+      "sequence": 18,
+      "kind": "api_attempt",
+      "description": "真实API#3；HTTP 200；usage=4048；tool_choice=auto；实际messages=12886字符；证据[E3,E4,E5,E2,E11,E9,E10,E13,E1]；参考字面串在messages/证据=False/False。输入仅按api_attempt.request.messages审计。"
+    },
+    {
+      "sequence": 19,
+      "kind": "assistant",
+      "description": "模型决定发起工具；call_05929a6a57cf4e5da6e25944:search, call_a703d0c8c7874ec79343e316:search"
+    },
+    {
+      "sequence": 20,
+      "kind": "tool",
+      "description": "search call_05929a6a57cf4e5da6e25944；query SHA256=b06e0e79bba1473b，top_k=None；ok=True，返回5，新证据0，完全重复查询=True；#1 8865:1500+900(E10); #2 78245:63000+900(E11); #3 3094:583500+900(E9); #4 56790:0+900(E1); #5 3094:143250+900(E12)"
+    },
+    {
+      "sequence": 21,
+      "kind": "tool",
+      "description": "search call_a703d0c8c7874ec79343e316；query SHA256=d83718f97e4cf6d2，top_k=None；ok=True，返回5，新证据3，完全重复查询=False；#1 3094:583500+900(E9); #2 8865:1500+900(E10); #3 8865:2250+900(E14); #4 50983:1215000+900(E15); #5 32144:1215000+900(E16)"
+    },
+    {
+      "sequence": 22,
+      "kind": "state",
+      "description": "步骤3，工具6，累计token9481，stalled_searches=0；完整state证据数16，candidate_answer仍空。"
+    },
+    {
+      "sequence": 23,
+      "kind": "context",
+      "description": "上下文选择；移除历史组3，选证据9，12905字符。该事件是程序摘要，实际输入以随后api_attempt为准。"
+    },
+    {
+      "sequence": 24,
+      "kind": "request",
+      "description": "程序准备请求事件；不把此副本当成实际模型输入证据。"
+    },
+    {
+      "sequence": 25,
+      "kind": "api_attempt",
+      "description": "真实API#4；HTTP 200；usage=4050；tool_choice=auto；实际messages=12905字符；证据[E3,E4,E5,E2,E11,E9,E10,E13,E1]；参考字面串在messages/证据=False/False。输入仅按api_attempt.request.messages审计。"
+    },
+    {
+      "sequence": 26,
+      "kind": "assistant",
+      "description": "模型决定发起工具；call_2edf49b4c2fe43bab9f5250f:search, call_3bb9760ae8df4f63ad35d1d1:search"
+    },
+    {
+      "sequence": 27,
+      "kind": "tool",
+      "description": "search call_2edf49b4c2fe43bab9f5250f；query SHA256=73714810d1da07fd，top_k=None；ok=True，返回5，新证据0，完全重复查询=False；#1 8865:1500+900(E10); #2 78245:63000+900(E11); #3 3094:583500+900(E9); #4 56790:0+900(E1); #5 3094:143250+900(E12)"
+    },
+    {
+      "sequence": 28,
+      "kind": "tool",
+      "description": "search call_3bb9760ae8df4f63ad35d1d1；query SHA256=272ba403c0e30dc9，top_k=None；ok=True，返回5，新证据0，完全重复查询=False；#1 3094:583500+900(E9); #2 8865:1500+900(E10); #3 8865:2250+900(E14); #4 50983:1215000+900(E15); #5 32144:1215000+900(E16)"
+    },
+    {
+      "sequence": 29,
+      "kind": "state",
+      "description": "步骤4，工具8，累计token13531，stalled_searches=2；完整state证据数16，candidate_answer仍空。"
+    },
+    {
+      "sequence": 30,
+      "kind": "skill_selected",
+      "description": "skill_selected：search-recovery，来源automatic。"
+    },
+    {
+      "sequence": 31,
+      "kind": "skill_loaded",
+      "description": "skill_loaded：search-recovery，来源automatic。"
+    },
+    {
+      "sequence": 32,
+      "kind": "finalization",
+      "description": "进入收尾：search_stalled；剩余已报告token预算=16469；下一请求工具禁用。"
+    },
+    {
+      "sequence": 33,
+      "kind": "context",
+      "description": "上下文选择；移除历史组4，选证据8，13435字符。该事件是程序摘要，实际输入以随后api_attempt为准。"
+    },
+    {
+      "sequence": 34,
+      "kind": "request",
+      "description": "程序准备请求事件；不把此副本当成实际模型输入证据。"
+    },
+    {
+      "sequence": 35,
+      "kind": "api_attempt",
+      "description": "真实API#5；HTTP 200；usage=3140；tool_choice=none；实际messages=13435字符；证据[E3,E4,E5,E2,E11,E9,E10,E13]；参考字面串在messages/证据=False/False。输入仅按api_attempt.request.messages审计。"
+    },
+    {
+      "sequence": 36,
+      "kind": "assistant",
+      "description": "模型最终决定：原始content中的answer为非空候选。"
+    },
+    {
+      "sequence": 37,
+      "kind": "answer",
+      "description": "JSON解析接受原始非空answer；supporting_evidence=['E2', 'E13']；引用片段坐标验证通过。坐标有效不代表全部条件语义成立。"
+    },
+    {
+      "sequence": 38,
+      "kind": "run_end",
+      "description": "运行结束status=completed；usage_complete=True；导出answer保留非空候选。"
+    }
+  ],
+  "1066": [
+    {
+      "sequence": 0,
+      "kind": "run_start",
+      "description": "启动baseline；config_id=900fc3b95b775d2a；sparse，固定语料。"
+    },
+    {
+      "sequence": 1,
+      "kind": "user",
+      "description": "Question(id, question)进入Agent；原题仅保留在私有附件。"
+    },
+    {
+      "sequence": 2,
+      "kind": "skill_selected",
+      "description": "skill_selected：multi-clue-decomposition，来源automatic。"
+    },
+    {
+      "sequence": 3,
+      "kind": "skill_loaded",
+      "description": "skill_loaded：multi-clue-decomposition，来源automatic。"
+    },
+    {
+      "sequence": 4,
+      "kind": "context",
+      "description": "上下文选择；移除历史组0，选证据0，3856字符。该事件是程序摘要，实际输入以随后api_attempt为准。"
+    },
+    {
+      "sequence": 5,
+      "kind": "request",
+      "description": "程序准备请求事件；不把此副本当成实际模型输入证据。"
+    },
+    {
+      "sequence": 6,
+      "kind": "api_attempt",
+      "description": "真实API#1；HTTP 200；usage=1691；tool_choice=auto；实际messages=3856字符；证据[]；参考字面串在messages/证据=False/False。输入仅按api_attempt.request.messages审计。"
+    },
+    {
+      "sequence": 7,
+      "kind": "assistant",
+      "description": "模型决定发起工具；call_8c32c4c2b6e44116b5f2e39d:search, call_ea8c00adf6884322b1aaf4f6:search"
+    },
+    {
+      "sequence": 8,
+      "kind": "tool",
+      "description": "search call_8c32c4c2b6e44116b5f2e39d；query SHA256=a7919dd5f324e149，top_k=None；ok=True，返回5，新证据5，完全重复查询=False；#1 41005:2250+900(E1); #2 12060:0+696(E2); #3 15322:54750+900(E3); #4 53440:91500+900(E4); #5 44637:3000+900(E5)"
+    },
+    {
+      "sequence": 9,
+      "kind": "tool",
+      "description": "search call_ea8c00adf6884322b1aaf4f6；query SHA256=3574029b5d213bbf，top_k=None；ok=True，返回5，新证据5，完全重复查询=False；#1 71762:13500+900(E6); #2 74534:3221250+900(E7); #3 57799:3000+900(E8); #4 82975:124500+900(E9); #5 15322:89250+900(E10)"
+    },
+    {
+      "sequence": 10,
+      "kind": "state",
+      "description": "步骤1，工具2，累计token1691，stalled_searches=0；完整state证据数10，candidate_answer仍空。"
+    },
+    {
+      "sequence": 11,
+      "kind": "context",
+      "description": "上下文选择；移除历史组1，选证据9，13917字符。该事件是程序摘要，实际输入以随后api_attempt为准。"
+    },
+    {
+      "sequence": 12,
+      "kind": "request",
+      "description": "程序准备请求事件；不把此副本当成实际模型输入证据。"
+    },
+    {
+      "sequence": 13,
+      "kind": "api_attempt",
+      "description": "真实API#2；HTTP 200；usage=4116；tool_choice=auto；实际messages=13917字符；证据[E1,E4,E5,E2,E8,E10,E7,E9,E3]；参考字面串在messages/证据=False/False。输入仅按api_attempt.request.messages审计。"
+    },
+    {
+      "sequence": 14,
+      "kind": "assistant",
+      "description": "模型决定发起工具；call_60294c07ec4f4a13b4e2a891:search, call_9084a1bcbbd8424fa5814495:search"
+    },
+    {
+      "sequence": 15,
+      "kind": "tool",
+      "description": "search call_60294c07ec4f4a13b4e2a891；query SHA256=a7919dd5f324e149，top_k=None；ok=True，返回5，新证据0，完全重复查询=True；#1 41005:2250+900(E1); #2 12060:0+696(E2); #3 15322:54750+900(E3); #4 53440:91500+900(E4); #5 44637:3000+900(E5)"
+    },
+    {
+      "sequence": 16,
+      "kind": "tool",
+      "description": "search call_9084a1bcbbd8424fa5814495；query SHA256=3574029b5d213bbf，top_k=None；ok=True，返回5，新证据0，完全重复查询=True；#1 71762:13500+900(E6); #2 74534:3221250+900(E7); #3 57799:3000+900(E8); #4 82975:124500+900(E9); #5 15322:89250+900(E10)"
+    },
+    {
+      "sequence": 17,
+      "kind": "state",
+      "description": "步骤2，工具4，累计token5807，stalled_searches=2；完整state证据数10，candidate_answer仍空。"
+    },
+    {
+      "sequence": 18,
+      "kind": "skill_selected",
+      "description": "skill_selected：search-recovery，来源automatic。"
+    },
+    {
+      "sequence": 19,
+      "kind": "skill_loaded",
+      "description": "skill_loaded：search-recovery，来源automatic。"
+    },
+    {
+      "sequence": 20,
+      "kind": "finalization",
+      "description": "进入收尾：search_stalled；剩余已报告token预算=24193；下一请求工具禁用。"
+    },
+    {
+      "sequence": 21,
+      "kind": "context",
+      "description": "上下文选择；移除历史组2，选证据8，14425字符。该事件是程序摘要，实际输入以随后api_attempt为准。"
+    },
+    {
+      "sequence": 22,
+      "kind": "request",
+      "description": "程序准备请求事件；不把此副本当成实际模型输入证据。"
+    },
+    {
+      "sequence": 23,
+      "kind": "api_attempt",
+      "description": "真实API#3；HTTP 200；usage=3275；tool_choice=none；实际messages=14425字符；证据[E1,E4,E5,E2,E8,E10,E7,E9]；参考字面串在messages/证据=False/False。输入仅按api_attempt.request.messages审计。"
+    },
+    {
+      "sequence": 24,
+      "kind": "assistant",
+      "description": "模型最终决定：原始content中的answer已经为空。"
+    },
+    {
+      "sequence": 25,
+      "kind": "answer",
+      "description": "JSON解析接受原始空answer；supporting_evidence=[]；空答提前返回，未执行非空答案引用解析。"
+    },
+    {
+      "sequence": 26,
+      "kind": "run_end",
+      "description": "运行结束status=insufficient_evidence；usage_complete=True；导出answer为空。"
+    }
+  ],
+  "788": [
+    {
+      "sequence": 0,
+      "kind": "run_start",
+      "description": "启动baseline；config_id=900fc3b95b775d2a；sparse，固定语料。"
+    },
+    {
+      "sequence": 1,
+      "kind": "user",
+      "description": "Question(id, question)进入Agent；原题仅保留在私有附件。"
+    },
+    {
+      "sequence": 2,
+      "kind": "skill_selected",
+      "description": "skill_selected：multi-clue-decomposition，来源automatic。"
+    },
+    {
+      "sequence": 3,
+      "kind": "skill_loaded",
+      "description": "skill_loaded：multi-clue-decomposition，来源automatic。"
+    },
+    {
+      "sequence": 4,
+      "kind": "context",
+      "description": "上下文选择；移除历史组0，选证据0，3867字符。该事件是程序摘要，实际输入以随后api_attempt为准。"
+    },
+    {
+      "sequence": 5,
+      "kind": "request",
+      "description": "程序准备请求事件；不把此副本当成实际模型输入证据。"
+    },
+    {
+      "sequence": 6,
+      "kind": "api_attempt",
+      "description": "真实API#1；HTTP 200；usage=1693；tool_choice=auto；实际messages=3867字符；证据[]；参考字面串在messages/证据=False/False。输入仅按api_attempt.request.messages审计。"
+    },
+    {
+      "sequence": 7,
+      "kind": "assistant",
+      "description": "模型决定发起工具；call_c0c074dc3bab4bcf840f9ba7:search, call_6fbe8a43f451462c8c4f6670:search"
+    },
+    {
+      "sequence": 8,
+      "kind": "tool",
+      "description": "search call_c0c074dc3bab4bcf840f9ba7；query SHA256=73499f6a8aa51879，top_k=None；ok=True，返回5，新证据5，完全重复查询=False；#1 96357:0+562(E1); #2 45789:3750+900(E2); #3 45789:6000+900(E3); #4 1823:0+900(E4); #5 45789:4500+900(E5)"
+    },
+    {
+      "sequence": 9,
+      "kind": "tool",
+      "description": "search call_6fbe8a43f451462c8c4f6670；query SHA256=93039dd2845f1f48，top_k=None；ok=True，返回5，新证据2，完全重复查询=False；#1 45789:3000+900(E6); #2 45789:750+900(E7); #3 45789:3750+900(E2); #4 45789:6000+900(E3); #5 96357:0+562(E1)"
+    },
+    {
+      "sequence": 10,
+      "kind": "state",
+      "description": "步骤1，工具2，累计token1693，stalled_searches=0；完整state证据数7，candidate_answer仍空。"
+    },
+    {
+      "sequence": 11,
+      "kind": "context",
+      "description": "上下文选择；移除历史组1，选证据7，11436字符。该事件是程序摘要，实际输入以随后api_attempt为准。"
+    },
+    {
+      "sequence": 12,
+      "kind": "request",
+      "description": "程序准备请求事件；不把此副本当成实际模型输入证据。"
+    },
+    {
+      "sequence": 13,
+      "kind": "api_attempt",
+      "description": "真实API#2；HTTP 200；usage=3752；tool_choice=auto；实际messages=11436字符；证据[E3,E2,E7,E1,E6,E4,E5]；参考字面串在messages/证据=True/True。输入仅按api_attempt.request.messages审计。"
+    },
+    {
+      "sequence": 14,
+      "kind": "assistant",
+      "description": "模型决定发起工具；call_084cb95f57b54a479d51dea3:search, call_6d39746e5fe74e82bf29fbe3:search"
+    },
+    {
+      "sequence": 15,
+      "kind": "tool",
+      "description": "search call_084cb95f57b54a479d51dea3；query SHA256=72308db62b519e0e，top_k=None；ok=True，返回5，新证据5，完全重复查询=False；#1 6743:0+900(E8); #2 70534:750+900(E9); #3 56202:0+900(E10); #4 70534:3000+900(E11); #5 70534:0+900(E12)"
+    },
+    {
+      "sequence": 16,
+      "kind": "tool",
+      "description": "search call_6d39746e5fe74e82bf29fbe3；query SHA256=74f4c295e31f6117，top_k=None；ok=True，返回5，新证据0，完全重复查询=False；#1 6743:0+900(E8); #2 70534:3000+900(E11); #3 56202:0+900(E10); #4 96357:0+562(E1); #5 70534:750+900(E9)"
+    },
+    {
+      "sequence": 17,
+      "kind": "state",
+      "description": "步骤2，工具4，累计token5445，stalled_searches=1；完整state证据数12，candidate_answer仍空。"
+    },
+    {
+      "sequence": 18,
+      "kind": "skill_selected",
+      "description": "skill_selected：search-recovery，来源automatic。"
+    },
+    {
+      "sequence": 19,
+      "kind": "skill_loaded",
+      "description": "skill_loaded：search-recovery，来源automatic。"
+    },
+    {
+      "sequence": 20,
+      "kind": "context",
+      "description": "上下文选择；移除历史组2，选证据8，14081字符。该事件是程序摘要，实际输入以随后api_attempt为准。"
+    },
+    {
+      "sequence": 21,
+      "kind": "request",
+      "description": "程序准备请求事件；不把此副本当成实际模型输入证据。"
+    },
+    {
+      "sequence": 22,
+      "kind": "api_attempt",
+      "description": "真实API#3；HTTP 200；usage=4416；tool_choice=auto；实际messages=14081字符；证据[E3,E2,E7,E1,E6,E4,E5,E10]；参考字面串在messages/证据=True/True。输入仅按api_attempt.request.messages审计。"
+    },
+    {
+      "sequence": 23,
+      "kind": "assistant",
+      "description": "模型决定发起工具；call_e0df5c6253b8499b8fa1c735:search, call_6f194b2b30d54acdbb5f54b7:search"
+    },
+    {
+      "sequence": 24,
+      "kind": "tool",
+      "description": "search call_e0df5c6253b8499b8fa1c735；query SHA256=13e364d3b2898d3d，top_k=None；ok=True，返回5，新证据1，完全重复查询=False；#1 70534:3000+900(E11); #2 70534:750+900(E9); #3 6743:0+900(E8); #4 70534:0+900(E12); #5 56202:2250+900(E13)"
+    },
+    {
+      "sequence": 25,
+      "kind": "tool",
+      "description": "search call_6f194b2b30d54acdbb5f54b7；query SHA256=40f6e1b38607172d，top_k=None；ok=True，返回5，新证据0，完全重复查询=False；#1 6743:0+900(E8); #2 70534:3000+900(E11); #3 56202:0+900(E10); #4 96357:0+562(E1); #5 70534:750+900(E9)"
+    },
+    {
+      "sequence": 26,
+      "kind": "state",
+      "description": "步骤3，工具6，累计token9861，stalled_searches=1；完整state证据数13，candidate_answer仍空。"
+    },
+    {
+      "sequence": 27,
+      "kind": "context",
+      "description": "上下文选择；移除历史组3，选证据8，14110字符。该事件是程序摘要，实际输入以随后api_attempt为准。"
+    },
+    {
+      "sequence": 28,
+      "kind": "request",
+      "description": "程序准备请求事件；不把此副本当成实际模型输入证据。"
+    },
+    {
+      "sequence": 29,
+      "kind": "api_attempt",
+      "description": "真实API#4；HTTP 200；usage=4382；tool_choice=auto；实际messages=14110字符；证据[E3,E2,E7,E1,E6,E4,E5,E10]；参考字面串在messages/证据=True/True。输入仅按api_attempt.request.messages审计。"
+    },
+    {
+      "sequence": 30,
+      "kind": "assistant",
+      "description": "模型决定发起工具；call_cff66a9309954ac190fb627c:search, call_7f0397840ccb40b6907c2423:search, call_ccc94847a51240c7833ef705:search"
+    },
+    {
+      "sequence": 31,
+      "kind": "tool",
+      "description": "search call_cff66a9309954ac190fb627c；query SHA256=3047b4430113895f，top_k=None；ok=True，返回5，新证据0，完全重复查询=False；#1 6743:0+900(E8); #2 70534:3000+900(E11); #3 70534:0+900(E12); #4 70534:750+900(E9); #5 56202:0+900(E10)"
+    },
+    {
+      "sequence": 32,
+      "kind": "tool",
+      "description": "search call_7f0397840ccb40b6907c2423；query SHA256=2c6f1e31875a9773，top_k=None；ok=True，返回5，新证据0，完全重复查询=False；#1 6743:0+900(E8); #2 70534:3000+900(E11); #3 56202:0+900(E10); #4 96357:0+562(E1); #5 70534:750+900(E9)"
+    },
+    {
+      "sequence": 33,
+      "kind": "tool",
+      "description": "search call_ccc94847a51240c7833ef705；query SHA256=c76d2bef63361748，top_k=None；ok=True，返回5，新证据1，完全重复查询=False；#1 6743:0+900(E8); #2 70534:3000+900(E11); #3 56202:0+900(E10); #4 56188:0+900(E14); #5 70534:750+900(E9)"
+    },
+    {
+      "sequence": 34,
+      "kind": "state",
+      "description": "步骤4，工具9，累计token14243，stalled_searches=0；完整state证据数14，candidate_answer仍空。"
+    },
+    {
+      "sequence": 35,
+      "kind": "context",
+      "description": "上下文选择；移除历史组4，选证据8，14116字符。该事件是程序摘要，实际输入以随后api_attempt为准。"
+    },
+    {
+      "sequence": 36,
+      "kind": "request",
+      "description": "程序准备请求事件；不把此副本当成实际模型输入证据。"
+    },
+    {
+      "sequence": 37,
+      "kind": "api_attempt",
+      "description": "真实API#5；HTTP 200；usage=4394；tool_choice=auto；实际messages=14116字符；证据[E3,E2,E7,E1,E6,E4,E5,E10]；参考字面串在messages/证据=True/True。输入仅按api_attempt.request.messages审计。"
+    },
+    {
+      "sequence": 38,
+      "kind": "assistant",
+      "description": "模型决定发起工具；call_ddaf83ff17274935a8221fc9:search, call_8a6166da6f47472a95cc0b85:search"
+    },
+    {
+      "sequence": 39,
+      "kind": "tool",
+      "description": "search call_ddaf83ff17274935a8221fc9；query SHA256=e958ac387b9d4dad，top_k=None；ok=True，返回5，新证据0，完全重复查询=False；#1 70534:3000+900(E11); #2 70534:750+900(E9); #3 6743:0+900(E8); #4 70534:0+900(E12); #5 56202:2250+900(E13)"
+    },
+    {
+      "sequence": 40,
+      "kind": "tool",
+      "description": "search call_8a6166da6f47472a95cc0b85；query SHA256=2c6f1e31875a9773，top_k=None；ok=True，返回5，新证据0，完全重复查询=True；#1 6743:0+900(E8); #2 70534:3000+900(E11); #3 56202:0+900(E10); #4 96357:0+562(E1); #5 70534:750+900(E9)"
+    },
+    {
+      "sequence": 41,
+      "kind": "state",
+      "description": "步骤5，工具11，累计token18637，stalled_searches=2；完整state证据数14，candidate_answer仍空。"
+    },
+    {
+      "sequence": 42,
+      "kind": "finalization",
+      "description": "进入收尾：search_stalled；剩余已报告token预算=11363；下一请求工具禁用。"
+    },
+    {
+      "sequence": 43,
+      "kind": "context",
+      "description": "上下文选择；移除历史组5，选证据8，14348字符。该事件是程序摘要，实际输入以随后api_attempt为准。"
+    },
+    {
+      "sequence": 44,
+      "kind": "request",
+      "description": "程序准备请求事件；不把此副本当成实际模型输入证据。"
+    },
+    {
+      "sequence": 45,
+      "kind": "api_attempt",
+      "description": "真实API#6；HTTP 200；usage=3502；tool_choice=none；实际messages=14348字符；证据[E3,E2,E7,E1,E6,E4,E5,E10]；参考字面串在messages/证据=True/True。输入仅按api_attempt.request.messages审计。"
+    },
+    {
+      "sequence": 46,
+      "kind": "assistant",
+      "description": "模型最终决定：原始content中的answer已经为空。"
+    },
+    {
+      "sequence": 47,
+      "kind": "answer",
+      "description": "JSON解析接受原始空answer；supporting_evidence=[]；空答提前返回，未执行非空答案引用解析。"
+    },
+    {
+      "sequence": 48,
+      "kind": "run_end",
+      "description": "运行结束status=insufficient_evidence；usage_complete=True；导出answer为空。"
+    }
+  ]
+}

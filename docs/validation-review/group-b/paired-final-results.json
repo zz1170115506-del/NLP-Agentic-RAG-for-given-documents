@@ -1,0 +1,455 @@
+{
+  "frozen_source_commit": "dab7646158fef729c3bf3e0f37b7f302727fc568",
+  "hook_sha256": "26a7c71df8d271f889ae7bf0168c258a4de0ba63e5ccc5d7df037fb15abdae86",
+  "validator_sha256": "5bdfddc496f9d0126b30b436e93b82b441f2405bb1222e69d21a4ecfa02f8255",
+  "pair_input_manifest_sha256": "a27a1cf6c23e82a75bc1c6409cb98e444028c0722ed3edad15461ddf61c5e1e0",
+  "provider_translation_equal_both_arms": {
+    "model": "deepseek-v4-flash-0731",
+    "removed": "thinking",
+    "added": {
+      "enable_thinking": false
+    }
+  },
+  "actual_api_calls_performed_by_root": 6,
+  "new_api_calls_by_this_summarizer": 0,
+  "validation_processes": 6,
+  "calls_all_http_200": true,
+  "calls_all_response_model_exact": true,
+  "calls_all_actual_messages_match_prepared": true,
+  "calls_all_schema_passed": true,
+  "answer_changed_empty_to_reference_match_cases": [
+    "58"
+  ],
+  "public_results_exclude_answers_and_labels": true,
+  "cases": [
+    {
+      "case_id": "231",
+      "scope": "one isolated final turn on old observed history; not fresh complete-agent evaluation",
+      "condition": "observed-span-diagnostic",
+      "reference_assisted": true,
+      "same_budget": {
+        "context_total_chars": 24000,
+        "selector_final_chars": 23600,
+        "max_output_tokens": 1024,
+        "temperature": 0,
+        "tools_disabled": true
+      },
+      "only_messages_differ": true,
+      "changed_message_indices": [
+        1
+      ],
+      "all_other_provider_converted_fields_identical": true,
+      "selection_changes": {
+        "newly_visible_ids": [
+          "E9"
+        ],
+        "no_longer_visible_ids": [
+          "E19"
+        ]
+      },
+      "arms": {
+        "control": {
+          "http_status": 200,
+          "request_model": "deepseek-v4-flash-0731",
+          "response_model": "deepseek-v4-flash-0731",
+          "status": "insufficient_evidence",
+          "model_abstention": true,
+          "normalized_em": 0,
+          "schema_check": "passed",
+          "citation_gate": "not_required_for_empty_answer",
+          "raw_answer_matches_saved_parsed_answer": true,
+          "full_batch_prediction_export_executed": false,
+          "supporting_evidence_ids": [],
+          "resolved_evidence_ids": [],
+          "selected_evidence_ids": [
+            "E6",
+            "E18",
+            "E13",
+            "E14",
+            "E3",
+            "E1",
+            "E17",
+            "E19"
+          ],
+          "actual_request_characters": 14855,
+          "usage": {
+            "prompt_tokens": 3504,
+            "completion_tokens": 98,
+            "total_tokens": 3602,
+            "prompt_tokens_details": {
+              "cached_tokens": 768
+            }
+          },
+          "finish_reason": "stop",
+          "api_record_file": "private/231-control.api-attempt.json",
+          "api_record_file_sha256": "81a2cbbce7a0e8c9fe80105e621c072f1c0c6b92d350473ea6d6d12ba2a136db",
+          "actual_canonical_request_sha256": "7f6392ea985df3942e287cba40ff73d5357fa88f99006872f398a8b800346342",
+          "actual_messages_sha256": "16d5c7f6bdb07e336fb852b26780dc492b69d2a08ccf3024431ceb858eafa570",
+          "response_sha256": "2b27d329b5dbbfbd4ff48a8c64dc9521107987a01e64bc8e798bcbb87062ed6d",
+          "validation_file": "private/231-control.response-validation.json",
+          "validation_sha256": "ae539d7837efe91d64574259da466f6abca627c14c8b0c33e5033166feef306a",
+          "actual_request_supplied": true
+        },
+        "treatment": {
+          "http_status": 200,
+          "request_model": "deepseek-v4-flash-0731",
+          "response_model": "deepseek-v4-flash-0731",
+          "status": "insufficient_evidence",
+          "model_abstention": true,
+          "normalized_em": 0,
+          "schema_check": "passed",
+          "citation_gate": "not_required_for_empty_answer",
+          "raw_answer_matches_saved_parsed_answer": true,
+          "full_batch_prediction_export_executed": false,
+          "supporting_evidence_ids": [],
+          "resolved_evidence_ids": [],
+          "selected_evidence_ids": [
+            "E9",
+            "E6",
+            "E18",
+            "E13",
+            "E14",
+            "E3",
+            "E1",
+            "E17"
+          ],
+          "actual_request_characters": 14931,
+          "usage": {
+            "prompt_tokens": 3552,
+            "completion_tokens": 128,
+            "total_tokens": 3680,
+            "prompt_tokens_details": {
+              "cached_tokens": 768
+            }
+          },
+          "finish_reason": "stop",
+          "api_record_file": "private/231-treatment.api-attempt.json",
+          "api_record_file_sha256": "afc52bfd14375809eb1e4633aae2e7b68d13bb2709348e1cf71cf045b4e6d885",
+          "actual_canonical_request_sha256": "b7c5f67273699cf3137d46227daec256bf440b8e3d7ac6afc18579b3cfe6e53e",
+          "actual_messages_sha256": "c2b18062416aec6fcfb60bf42329acbd1564935490e8769b8c2453f5978994a1",
+          "response_sha256": "1e43d2de38bd4771a372eed0ad6d07b61c53332fa5ab3036a3b96e748d524be7",
+          "validation_file": "private/231-treatment.response-validation.json",
+          "validation_sha256": "f11dd4e9db3c24aaf8086ca60e91871c8500bfbc439c492a0d04903d5f8f74f2",
+          "actual_request_supplied": true
+        }
+      },
+      "semantic_interpretation": "control沿用错误出生月份的人物候选并称没有歌曲桥接；treatment明确认出正确出生/星座及合作歌曲候选，说明E9确已被理解，但仍指出缺入帮年龄及专辑/发行关系，最终answer保持空串。候选识别改善，没有达到EM或全部约束通过；不能把explanation中出现候选名计为answer正确。"
+    },
+    {
+      "case_id": "390",
+      "scope": "one isolated final turn on old observed history; not fresh complete-agent evaluation",
+      "condition": "observed-span-diagnostic",
+      "reference_assisted": true,
+      "same_budget": {
+        "context_total_chars": 24000,
+        "selector_final_chars": 23600,
+        "max_output_tokens": 1024,
+        "temperature": 0,
+        "tools_disabled": true
+      },
+      "only_messages_differ": true,
+      "changed_message_indices": [
+        1
+      ],
+      "all_other_provider_converted_fields_identical": true,
+      "selection_changes": {
+        "newly_visible_ids": [
+          "E43"
+        ],
+        "no_longer_visible_ids": [
+          "E31"
+        ]
+      },
+      "arms": {
+        "control": {
+          "http_status": 200,
+          "request_model": "deepseek-v4-flash-0731",
+          "response_model": "deepseek-v4-flash-0731",
+          "status": "insufficient_evidence",
+          "model_abstention": true,
+          "normalized_em": 0,
+          "schema_check": "passed",
+          "citation_gate": "not_required_for_empty_answer",
+          "raw_answer_matches_saved_parsed_answer": true,
+          "full_batch_prediction_export_executed": false,
+          "supporting_evidence_ids": [],
+          "resolved_evidence_ids": [],
+          "selected_evidence_ids": [
+            "E8",
+            "E25",
+            "E30",
+            "E32",
+            "E36",
+            "E1",
+            "E2",
+            "E31"
+          ],
+          "actual_request_characters": 14923,
+          "usage": {
+            "prompt_tokens": 3388,
+            "completion_tokens": 78,
+            "total_tokens": 3466,
+            "prompt_tokens_details": {
+              "cached_tokens": 768
+            }
+          },
+          "finish_reason": "stop",
+          "api_record_file": "private/390-control.api-attempt.json",
+          "api_record_file_sha256": "a57d66b1468bca2ccfda764c91dc85ebb2ae0a736045d4237cc0dd95321552b8",
+          "actual_canonical_request_sha256": "35ebb89d3f05fdd70ee7dd0d16aadd7f2f75cf1756b745efd245fdb4fe278ae9",
+          "actual_messages_sha256": "56c00ed99416c4f7a71666b80ef14bd7a1d887896166fff7629ca6b64cf8d2c7",
+          "response_sha256": "2b6bbc1870fc999d091606b287ba945d296edc25fe6f081bee307576d2df984d",
+          "validation_file": "private/390-control.response-validation.json",
+          "validation_sha256": "b10af8466f9399612d73672626d2938518cc129a2b0a282e0978d7af1ec555e5",
+          "actual_request_supplied": true
+        },
+        "treatment": {
+          "http_status": 200,
+          "request_model": "deepseek-v4-flash-0731",
+          "response_model": "deepseek-v4-flash-0731",
+          "status": "insufficient_evidence",
+          "model_abstention": true,
+          "normalized_em": 0,
+          "schema_check": "passed",
+          "citation_gate": "not_required_for_empty_answer",
+          "raw_answer_matches_saved_parsed_answer": true,
+          "full_batch_prediction_export_executed": false,
+          "supporting_evidence_ids": [],
+          "resolved_evidence_ids": [],
+          "selected_evidence_ids": [
+            "E43",
+            "E8",
+            "E25",
+            "E30",
+            "E32",
+            "E36",
+            "E1",
+            "E2"
+          ],
+          "actual_request_characters": 14900,
+          "usage": {
+            "prompt_tokens": 3412,
+            "completion_tokens": 107,
+            "total_tokens": 3519,
+            "prompt_tokens_details": {
+              "cached_tokens": 768
+            }
+          },
+          "finish_reason": "stop",
+          "api_record_file": "private/390-treatment.api-attempt.json",
+          "api_record_file_sha256": "d8b52b46393205042ca16d1b80741cc9f2e8c5839be269c767ca49a25f43bac1",
+          "actual_canonical_request_sha256": "9c550a35d829f777bf365c761ce8cac4af22a533efb82097bc107d5df4d30e3b",
+          "actual_messages_sha256": "1883cd24b44e382ee07cf0a8084ad7a6d9b4a69fecdd7b61523e578eeceac887",
+          "response_sha256": "28ae18470b756727fcc3f8fb9903dec8026ac33bc554efa0b3fdd27962ddd68b",
+          "validation_file": "private/390-treatment.response-validation.json",
+          "validation_sha256": "c13dfe1a1211b5115761fb2fc467ed73ce7edad523e1b4c5b9e6d9ebc877ed03",
+          "actual_request_supplied": true
+        }
+      },
+      "semantic_interpretation": "control缺合辑及人物关联；treatment明确引用E43的人物死亡线索，但仍指出未把该人物或代表作连接到所问合辑和第三轨。讣闻中的字面歌名没有补上轨次关系，空答符合现有语义证据缺口；不应通过要求模型放宽断言来制造EM提升。"
+    },
+    {
+      "case_id": "58",
+      "scope": "one isolated final turn on old observed history; not fresh complete-agent evaluation",
+      "condition": "focused-tool-first",
+      "reference_assisted": false,
+      "same_budget": {
+        "context_total_chars": 24000,
+        "selector_final_chars": 23600,
+        "max_output_tokens": 1024,
+        "temperature": 0,
+        "tools_disabled": true
+      },
+      "only_messages_differ": true,
+      "changed_message_indices": [
+        1
+      ],
+      "all_other_provider_converted_fields_identical": true,
+      "selection_changes": {
+        "newly_visible_ids": [
+          "E33",
+          "E37"
+        ],
+        "no_longer_visible_ids": [
+          "E25"
+        ]
+      },
+      "arms": {
+        "control": {
+          "http_status": 200,
+          "request_model": "deepseek-v4-flash-0731",
+          "response_model": "deepseek-v4-flash-0731",
+          "status": "insufficient_evidence",
+          "model_abstention": true,
+          "normalized_em": 0,
+          "schema_check": "passed",
+          "citation_gate": "not_required_for_empty_answer",
+          "raw_answer_matches_saved_parsed_answer": true,
+          "full_batch_prediction_export_executed": false,
+          "supporting_evidence_ids": [],
+          "resolved_evidence_ids": [],
+          "selected_evidence_ids": [
+            "E1",
+            "E12",
+            "E2",
+            "E6",
+            "E7",
+            "E11",
+            "E25"
+          ],
+          "actual_request_characters": 14477,
+          "usage": {
+            "prompt_tokens": 3471,
+            "completion_tokens": 110,
+            "total_tokens": 3581,
+            "prompt_tokens_details": {
+              "cached_tokens": 768
+            }
+          },
+          "finish_reason": "stop",
+          "api_record_file": "private/58-control.api-attempt.json",
+          "api_record_file_sha256": "c68e035617034afecd953f03ef19d71d57e3006984d8c85dda5bee0d1cc88244",
+          "actual_canonical_request_sha256": "e632436b6dbfc0fc511d3ca96b95cef13eaee1b23ed94e56609bed62659f4cb7",
+          "actual_messages_sha256": "fcad9ccc9146bf22d06b12ca50b0c74c830bf425f7dfa034561a364addb47e0e",
+          "response_sha256": "d7573a6d264b89eeafc0942124cd978a674ead6e2df07ba903bb9aedf3f9d1bd",
+          "validation_file": "private/58-control.response-validation.json",
+          "validation_sha256": "e3863575da84812c327d908b1463407970a3efe03bb9c6b817705c1cd44c4383",
+          "actual_request_supplied": true
+        },
+        "treatment": {
+          "http_status": 200,
+          "request_model": "deepseek-v4-flash-0731",
+          "response_model": "deepseek-v4-flash-0731",
+          "status": "completed",
+          "model_abstention": false,
+          "normalized_em": 1,
+          "schema_check": "passed",
+          "citation_gate": "passed_original_observed_visible_and_exact_corpus",
+          "raw_answer_matches_saved_parsed_answer": true,
+          "full_batch_prediction_export_executed": false,
+          "supporting_evidence_ids": [
+            "E37"
+          ],
+          "resolved_evidence_ids": [
+            "E37"
+          ],
+          "selected_evidence_ids": [
+            "E37",
+            "E1",
+            "E12",
+            "E2",
+            "E6",
+            "E7",
+            "E11",
+            "E33"
+          ],
+          "actual_request_characters": 15056,
+          "usage": {
+            "prompt_tokens": 3580,
+            "completion_tokens": 60,
+            "total_tokens": 3640,
+            "prompt_tokens_details": {
+              "cached_tokens": 1024
+            }
+          },
+          "finish_reason": "stop",
+          "api_record_file": "private/58-treatment.api-attempt.json",
+          "api_record_file_sha256": "182e91c560192a2ac605f2fba5df6a207683d59c4d555d5878d397cb4a70ea5d",
+          "actual_canonical_request_sha256": "aabd681f19509f1d245b3ed6a3ab06985dae6adf12ac9005bf4a09ff5535811c",
+          "actual_messages_sha256": "1fb7ca1cdb88e5202a2bc61856884e2d53591b64c5f78804df9fda64a1da5006",
+          "response_sha256": "cdad5b29a410589d780384d8161f49e37da1a13f526e47f3e5111d9349dcdbeb",
+          "validation_file": "private/58-treatment.response-validation.json",
+          "validation_sha256": "2983d43cf80ff075ca3a2ec9b8f6434bb46b8b1a16d95155535334a7122d3008",
+          "actual_request_supplied": true
+        }
+      },
+      "semantic_interpretation": "control已识别论文，但表示未见致谢奖项而空答；treatment给出奖项答案并选择E37，冻结引用门控核对原成功find结果、真实请求可见性、SQLite原文/坐标/URL均通过，规范化EM由0变1。该奖项在同论文Funding段直接出现，语义支持充分。此结果支持旧观察集合下的上下文保留政策影响最终回答；新百炼完整运行未取到该段的问题仍未被解决。treatment因同一装箱排序变化也增加E33并移出E25，不能描述成只多了一句话，也未单独排除其他片段交互。"
+    }
+  ],
+  "events": [
+    {
+      "location": "231/control/api_attempt",
+      "type": "API",
+      "case_id": "231",
+      "arm": "control",
+      "description": "HTTP200；输入14855字符；模型0731；usage={\"prompt_tokens\": 3504, \"completion_tokens\": 98, \"total_tokens\": 3602, \"prompt_tokens_details\": {\"cached_tokens\": 768}}；实际request SHA=7f6392ea985df3942e287cba40ff73d5357fa88f99006872f398a8b800346342"
+    },
+    {
+      "location": "231/control/response.choices[0].message",
+      "type": "assistant",
+      "case_id": "231",
+      "arm": "control",
+      "description": "原始空答；schema通过；citation=not_required_for_empty_answer；EM=0；引用IDs=[]；finish_reason=stop"
+    },
+    {
+      "location": "231/treatment/api_attempt",
+      "type": "API",
+      "case_id": "231",
+      "arm": "treatment",
+      "description": "HTTP200；输入14931字符；模型0731；usage={\"prompt_tokens\": 3552, \"completion_tokens\": 128, \"total_tokens\": 3680, \"prompt_tokens_details\": {\"cached_tokens\": 768}}；实际request SHA=b7c5f67273699cf3137d46227daec256bf440b8e3d7ac6afc18579b3cfe6e53e"
+    },
+    {
+      "location": "231/treatment/response.choices[0].message",
+      "type": "assistant",
+      "case_id": "231",
+      "arm": "treatment",
+      "description": "原始空答；schema通过；citation=not_required_for_empty_answer；EM=0；引用IDs=[]；finish_reason=stop"
+    },
+    {
+      "location": "390/control/api_attempt",
+      "type": "API",
+      "case_id": "390",
+      "arm": "control",
+      "description": "HTTP200；输入14923字符；模型0731；usage={\"prompt_tokens\": 3388, \"completion_tokens\": 78, \"total_tokens\": 3466, \"prompt_tokens_details\": {\"cached_tokens\": 768}}；实际request SHA=35ebb89d3f05fdd70ee7dd0d16aadd7f2f75cf1756b745efd245fdb4fe278ae9"
+    },
+    {
+      "location": "390/control/response.choices[0].message",
+      "type": "assistant",
+      "case_id": "390",
+      "arm": "control",
+      "description": "原始空答；schema通过；citation=not_required_for_empty_answer；EM=0；引用IDs=[]；finish_reason=stop"
+    },
+    {
+      "location": "390/treatment/api_attempt",
+      "type": "API",
+      "case_id": "390",
+      "arm": "treatment",
+      "description": "HTTP200；输入14900字符；模型0731；usage={\"prompt_tokens\": 3412, \"completion_tokens\": 107, \"total_tokens\": 3519, \"prompt_tokens_details\": {\"cached_tokens\": 768}}；实际request SHA=9c550a35d829f777bf365c761ce8cac4af22a533efb82097bc107d5df4d30e3b"
+    },
+    {
+      "location": "390/treatment/response.choices[0].message",
+      "type": "assistant",
+      "case_id": "390",
+      "arm": "treatment",
+      "description": "原始空答；schema通过；citation=not_required_for_empty_answer；EM=0；引用IDs=[]；finish_reason=stop"
+    },
+    {
+      "location": "58/control/api_attempt",
+      "type": "API",
+      "case_id": "58",
+      "arm": "control",
+      "description": "HTTP200；输入14477字符；模型0731；usage={\"prompt_tokens\": 3471, \"completion_tokens\": 110, \"total_tokens\": 3581, \"prompt_tokens_details\": {\"cached_tokens\": 768}}；实际request SHA=e632436b6dbfc0fc511d3ca96b95cef13eaee1b23ed94e56609bed62659f4cb7"
+    },
+    {
+      "location": "58/control/response.choices[0].message",
+      "type": "assistant",
+      "case_id": "58",
+      "arm": "control",
+      "description": "原始空答；schema通过；citation=not_required_for_empty_answer；EM=0；引用IDs=[]；finish_reason=stop"
+    },
+    {
+      "location": "58/treatment/api_attempt",
+      "type": "API",
+      "case_id": "58",
+      "arm": "treatment",
+      "description": "HTTP200；输入15056字符；模型0731；usage={\"prompt_tokens\": 3580, \"completion_tokens\": 60, \"total_tokens\": 3640, \"prompt_tokens_details\": {\"cached_tokens\": 1024}}；实际request SHA=aabd681f19509f1d245b3ed6a3ab06985dae6adf12ac9005bf4a09ff5535811c"
+    },
+    {
+      "location": "58/treatment/response.choices[0].message",
+      "type": "assistant",
+      "case_id": "58",
+      "arm": "treatment",
+      "description": "原始非空答案；schema通过；citation=passed_original_observed_visible_and_exact_corpus；EM=1；引用IDs=['E37']；finish_reason=stop"
+    }
+  ]
+}
