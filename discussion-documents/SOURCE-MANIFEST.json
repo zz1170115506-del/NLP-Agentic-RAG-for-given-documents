@@ -22,7 +22,7 @@
       "kind": "local-prompt",
       "source": "local project prompts/task_NLP-Agentic-RAG-for-given-documents_Roman问题复盘资料移交_prompt_1.md",
       "redacted_credentials": 0,
-      "sha256": "b174ae31de9f708155fe4313285b3cd959b3d049d49a7f398bf587a481130193"
+      "sha256": "bf6bcf7a97e5c7171fecfe46ed615999cba97e23cd3f10d780c38f623a3be664"
     },
     {
       "path": "astra-prompts/task_NLP-Agentic-RAG-for-given-documents_三类弃答根因自主修复_prompt_1.md",
