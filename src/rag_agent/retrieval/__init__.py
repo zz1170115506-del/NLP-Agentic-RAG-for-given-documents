@@ -1,5 +1,6 @@
 """Public retrieval facade shared by tools, CLI, and UI."""
 from pathlib import Path
+from threading import Lock
 import time
 from rag_agent.config import Settings
 from rag_agent.data import DocumentStore
@@ -63,6 +64,8 @@ class SearchService:
         self.store = DocumentStore(settings.store_path)
         self._retrievers = {}
         self._reranker = None
+        self._qwen4b = None
+        self._qwen4b_init_lock = Lock()
         self.last_diagnostics = {}
         self._fingerprint = self.store.fingerprint
         if not self._fingerprint:
@@ -81,7 +84,7 @@ class SearchService:
         try:
             if self.store.fingerprint != self._fingerprint:
                 raise ValueError("Corpus changed after loading this service; reload matching indexes")
-            if method not in (*METHODS, "hybrid"):
+            if method not in (*METHODS, "hybrid", "qwen4b_candidates"):
                 raise ValueError("Unknown retrieval method")
             if not isinstance(query, str) or not query.strip() or len(query) > 12000:
                 raise ValueError("query must contain 1-12000 characters")
@@ -103,11 +106,14 @@ class SearchService:
         """
         self._validate_query(query, top_k, method)
         depth = candidate_depth if candidate_depth is not None else self.settings.candidate_depth
-        depth = min(top_k * 3, 60) if depth is None else depth
+        if depth is None:
+            depth = 32 if method == "qwen4b_candidates" else min(top_k * 3, 60)
         if not isinstance(depth, int) or isinstance(depth, bool) or not 1 <= depth <= 1000:
             self.last_diagnostics = {"status": "error", "method": method,
                 "error_type": "ValueError", "rerank": {"status": "not_run"}}
             raise ValueError("candidate_depth must be an integer between 1 and 1000")
+        if method == "qwen4b_candidates":
+            return self._rank_qwen4b(query, top_k, max(depth, top_k))
         started = time.perf_counter()
         self.last_diagnostics = {"status": "running", "method": method, "candidate_depth": depth,
                                  "routes": {}, "rerank": {"status": "not_run"}}
@@ -132,6 +138,36 @@ class SearchService:
             self.last_diagnostics.update({"status": "error", "error_type": type(exc).__name__,
                                           "retrieval_seconds": time.perf_counter() - started})
             raise
+
+    def warm_qwen4b(self):
+        """Load and authenticate the local 4B model before an interactive run."""
+        with self._qwen4b_init_lock:
+            if self._qwen4b is None:
+                from .qwen4b_candidates import CandidateRanker
+                self._qwen4b = CandidateRanker(self.settings)
+            return dict(self._qwen4b.encoder.identity)
+
+    def save_qwen4b_vectors(self, path):
+        if self._qwen4b is None:
+            raise ValueError("No Qwen candidate retrieval has run")
+        return self._qwen4b.save_vectors(Path(path))
+
+    def _rank_qwen4b(self, query, top_k, depth):
+        started = time.perf_counter()
+        try:
+            pool = self.candidates(query, top_k, depth, method="sparse")
+            self.last_diagnostics.update({"method": "qwen4b_candidates", "status": "running"})
+            self.warm_qwen4b()
+            ranked, diagnostics = self._qwen4b.rank(query, pool)
+            self.last_diagnostics.update({"status": "success", "qwen4b": diagnostics,
+                "final_ids": [[hit.doc_id, hit.chunk_id] for hit in ranked[:top_k]]})
+            return ranked
+        except Exception as exc:
+            self.last_diagnostics.update({"method": "qwen4b_candidates", "status": "error",
+                                          "error_type": type(exc).__name__})
+            raise
+        finally:
+            self.last_diagnostics["total_seconds"] = time.perf_counter() - started
 
     def rerank_candidates(self, query: str, candidates: list[SearchHit], top_k: int = 5) -> list[SearchHit]:
         """Apply configured reranking to a frozen pool, then take final top_k."""
@@ -158,7 +194,9 @@ class SearchService:
     def search(self, query: str, top_k: int = 5, method: str = "hybrid") -> list[SearchHit]:
         self._validate_query(query, top_k, method)
         started = time.perf_counter()
-        if method == "hybrid":
+        if method == "qwen4b_candidates":
+            result = self.candidates(query, top_k, method=method)[:top_k]
+        elif method == "hybrid":
             # Internal calls do not increment the agent's tool-call count.
             pool = self.candidates(query, top_k)
             result = self.rerank_candidates(query, pool, top_k)

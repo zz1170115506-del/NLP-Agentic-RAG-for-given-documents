@@ -12,7 +12,7 @@ class Input(BaseModel):
 class SearchInput(Input):
     query: str = Field(min_length=1, max_length=2000)
     top_k: int = Field(default=5, ge=1, le=20)
-    method: Literal["sparse", "encoder", "instruction", "hybrid"] = "hybrid"
+    method: Literal["sparse", "encoder", "instruction", "hybrid", "qwen4b_candidates"] = "hybrid"
 
 
 class OpenInput(Input):
@@ -101,6 +101,8 @@ class ToolRegistry:
                 parameters["properties"]["top_k"]["default"] = self.top_k
                 if self.method != "hybrid":
                     parameters["properties"]["method"]["enum"] = [self.method]
+                else:
+                    parameters["properties"]["method"]["enum"].remove("qwen4b_candidates")
             tools.append({"type": "function", "function": {"name": name, "description": description, "parameters": parameters}})
         return tools
 
@@ -118,7 +120,9 @@ class ToolRegistry:
                 raw = {"method": self.method, "top_k": self.top_k, **raw}
             args = self.specs[name][0].model_validate(raw)
             if name == "search":
-                if self.method != "hybrid" and args.method != self.method:
+                if (self.method != "hybrid" and args.method != self.method) or (
+                    self.method == "hybrid" and args.method == "qwen4b_candidates"
+                ):
                     return self.error("invalid_arguments", f"This comparison configuration permits only method={self.method}")
                 if not args.query.strip():
                     return self.error("invalid_arguments", "query cannot contain only whitespace")

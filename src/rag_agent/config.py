@@ -17,7 +17,7 @@ class Settings(BaseModel):
     store_path: str = "data/documents.sqlite"
     index_dir: str = "indexes/default"
     skills_dir: str = "skills"
-    method: Literal["sparse", "encoder", "instruction", "hybrid"] = "hybrid"
+    method: Literal["sparse", "encoder", "instruction", "hybrid", "qwen4b_candidates"] = "hybrid"
     chunk_size: int = Field(default=900, ge=64, le=100000)
     chunk_overlap: int = Field(default=150, ge=0)
     batch_size: int = Field(default=16, ge=1, le=1024)
@@ -25,6 +25,8 @@ class Settings(BaseModel):
     rrf_k: int = Field(default=60, ge=1)
     # None retains the original min(top_k * 3, 60) depth independently per route.
     candidate_depth: int | None = Field(default=None, ge=1, le=1000)
+    qwen4b_dimension: int | None = Field(default=None, ge=32, le=2560, exclude_if=lambda value: value is None)
+    qwen4b_compare_floats: bool = Field(default=False, exclude_if=lambda value: not value)
     rerank_enabled: bool = False
     rerank_model: str = "cross-encoder/ms-marco-MiniLM-L6-v2"
     rerank_revision: str = "main"
@@ -71,6 +73,11 @@ class Settings(BaseModel):
     @property
     def config_id(self) -> str:
         config = self.model_dump()
+        if self.method == "qwen4b_candidates":
+            config["qwen4b_dimension"] = self.qwen4b_dimension or 256
+        else:
+            config.pop("qwen4b_dimension", None)
+            config.pop("qwen4b_compare_floats", None)
         # Existing baseline predictions and resume manifests predate this setting.
         if self.agent_engine == "baseline":
             config.pop("agent_engine")

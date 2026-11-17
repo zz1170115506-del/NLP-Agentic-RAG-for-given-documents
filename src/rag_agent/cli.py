@@ -32,7 +32,7 @@ def main(argv=None):
             s.add_argument("--max-new-shards", type=int, help="Checkpoint each dense route after this many NEW shards; incomplete indexes remain unsearchable")
         elif name == "search":
             s.add_argument("query")
-            s.add_argument("--method", choices=["sparse", "encoder", "instruction", "hybrid"])
+            s.add_argument("--method", choices=["sparse", "encoder", "instruction", "hybrid", "qwen4b_candidates"])
         elif name == "ask":
             s.add_argument("question")
             s.add_argument("--id", default="single")

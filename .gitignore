@@ -25,4 +25,5 @@ dist/
 *.safetensors
 *.bin
 *.pt
+models/qwen4b
 *.log
