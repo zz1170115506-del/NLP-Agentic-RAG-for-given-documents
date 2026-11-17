@@ -1,0 +1,2105 @@
+{
+  "baseline_256": {
+    "prediction_sha256": "745a5df310e56a0e116739cada2483a03ef55df1dab6705400b8b9290525e6e1",
+    "input_sha256": "dd829d11a47ce9c4d7c150c0e75fbdbcf57341b5197f3221c162dfe00fb60ce9",
+    "cases": {
+      "58": {
+        "dimension": 256,
+        "prediction_nonempty": false,
+        "answer_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "cited_ids": [],
+        "actual_final_request": 28,
+        "tool_counts": {
+          "search": 6
+        },
+        "evidence": {
+          "funding_window": {
+            "doc_id": "28406",
+            "offset": 38806,
+            "end": 39216,
+            "chars": 410,
+            "text_sha256": "30e950c39578a499fc5297c9f95e1b6e5a6e8a84db3be3f3f5bcf167b57bcf28",
+            "union_tool_chars": 0,
+            "tool_events": [],
+            "api_views": [
+              {
+                "api_sequence": 6,
+                "chars": 0,
+                "budget_omitted_anchor_ids": []
+              },
+              {
+                "api_sequence": 13,
+                "chars": 0,
+                "budget_omitted_anchor_ids": []
+              },
+              {
+                "api_sequence": 20,
+                "chars": 0,
+                "budget_omitted_anchor_ids": []
+              },
+              {
+                "api_sequence": 28,
+                "chars": 0,
+                "budget_omitted_anchor_ids": []
+              }
+            ],
+            "final_chars": 0,
+            "cited_final_chars": 0,
+            "overlapping_cited_ids": []
+          },
+          "award_and_grant": {
+            "doc_id": "28406",
+            "offset": 38992,
+            "end": 39072,
+            "chars": 80,
+            "text_sha256": "5072403959035f3f3f79e07af73b7d58d0b851914b806add998dd52153775b06",
+            "union_tool_chars": 0,
+            "tool_events": [],
+            "api_views": [
+              {
+                "api_sequence": 6,
+                "chars": 0,
+                "budget_omitted_anchor_ids": []
+              },
+              {
+                "api_sequence": 13,
+                "chars": 0,
+                "budget_omitted_anchor_ids": []
+              },
+              {
+                "api_sequence": 20,
+                "chars": 0,
+                "budget_omitted_anchor_ids": []
+              },
+              {
+                "api_sequence": 28,
+                "chars": 0,
+                "budget_omitted_anchor_ids": []
+              }
+            ],
+            "final_chars": 0,
+            "cited_final_chars": 0,
+            "overlapping_cited_ids": []
+          }
+        },
+        "searches": [
+          {
+            "index": 1,
+            "tool_sequence": 8,
+            "query_sha256": "ae81f59eb3cd82c239e5180ed140170e861e0a0b885e9794217c9f2488b5af67",
+            "pool_sha256": "025539b679abb977b2a5ee08800919ae13fb4a091cb01ad641d16d61cca00d7a",
+            "pool_size": 32,
+            "returned": [
+              "97102:12000:900",
+              "59287:14250:900",
+              "97102:30750:900",
+              "59287:36000:900",
+              "28406:0:900"
+            ],
+            "matches": []
+          },
+          {
+            "index": 2,
+            "tool_sequence": 9,
+            "query_sha256": "befffbde7e0b7868201d0a7507483f46ff233735abcf3a99de258183c66e3157",
+            "pool_sha256": "b1e8cf97be89edea6e9edf7f5ff08adbf65a6319dd11907890bff15a03582c62",
+            "pool_size": 32,
+            "returned": [
+              "21297:39000:900",
+              "4619:2250:900",
+              "28406:26250:900",
+              "30746:750:900",
+              "30746:3000:900"
+            ],
+            "matches": []
+          },
+          {
+            "index": 3,
+            "tool_sequence": 15,
+            "query_sha256": "e923519c5c466f3e63e0b8a291d7b76fbaa12e022fae7ca071cff105f22d0bd6",
+            "pool_sha256": "b1e8cf97be89edea6e9edf7f5ff08adbf65a6319dd11907890bff15a03582c62",
+            "pool_size": 32,
+            "returned": [
+              "21297:39000:900",
+              "28406:26250:900",
+              "34320:174750:900",
+              "34320:174000:900",
+              "28406:45750:900"
+            ],
+            "matches": []
+          },
+          {
+            "index": 4,
+            "tool_sequence": 16,
+            "query_sha256": "001c0a63aca33b626ba95c24e2806b16a5eba787ac8d58809f86ef84d3106c93",
+            "pool_sha256": "e23d62d8d7f2eef75c477b12f8525aa3210d692b18e173f9a2edd9441e39f209",
+            "pool_size": 32,
+            "returned": [
+              "28406:9000:900",
+              "27484:11250:900",
+              "27484:10500:900",
+              "79075:1500:900",
+              "4619:0:900"
+            ],
+            "matches": [
+              {
+                "anchor": "funding_window",
+                "chunk": "28406:38250:900",
+                "overlapping_chars": 344,
+                "bm25_rank": 1,
+                "int8_rank": 31,
+                "native_fp_rank": 15,
+                "returned": false
+              },
+              {
+                "anchor": "award_and_grant",
+                "chunk": "28406:38250:900",
+                "overlapping_chars": 80,
+                "bm25_rank": 1,
+                "int8_rank": 31,
+                "native_fp_rank": 15,
+                "returned": false
+              }
+            ]
+          },
+          {
+            "index": 5,
+            "tool_sequence": 22,
+            "query_sha256": "0026f0bca9108b8ab8bb15c29b103a27a8b08dc89c1a310d6565de98c16a19e7",
+            "pool_sha256": "c8604d61eaaa6c504fd7f4bad2999c5abc4f9dd8f9663604cbcc792f73011ee2",
+            "pool_size": 32,
+            "returned": [
+              "28406:44250:900",
+              "27484:11250:900",
+              "79075:0:900",
+              "4619:750:900",
+              "4619:0:900"
+            ],
+            "matches": [
+              {
+                "anchor": "funding_window",
+                "chunk": "28406:38250:900",
+                "overlapping_chars": 344,
+                "bm25_rank": 13,
+                "int8_rank": 30,
+                "native_fp_rank": 10,
+                "returned": false
+              },
+              {
+                "anchor": "award_and_grant",
+                "chunk": "28406:38250:900",
+                "overlapping_chars": 80,
+                "bm25_rank": 13,
+                "int8_rank": 30,
+                "native_fp_rank": 10,
+                "returned": false
+              }
+            ]
+          },
+          {
+            "index": 6,
+            "tool_sequence": 23,
+            "query_sha256": "46ff7201cb82e270a55c3d904087661f2b4d97bc94f8a1d1a6fdcb801d11a7e3",
+            "pool_sha256": "3c96fa700b5619c88d843caf8f0dcac82049cf20a7705b391e6a945b1c8d2647",
+            "pool_size": 32,
+            "returned": [
+              "28406:44250:900",
+              "4619:0:900",
+              "4619:750:900",
+              "79075:0:900",
+              "68816:29250:900"
+            ],
+            "matches": [
+              {
+                "anchor": "funding_window",
+                "chunk": "28406:39000:900",
+                "overlapping_chars": 216,
+                "bm25_rank": 20,
+                "int8_rank": 20,
+                "native_fp_rank": 14,
+                "returned": false
+              },
+              {
+                "anchor": "award_and_grant",
+                "chunk": "28406:39000:900",
+                "overlapping_chars": 72,
+                "bm25_rank": 20,
+                "int8_rank": 20,
+                "native_fp_rank": 14,
+                "returned": false
+              }
+            ]
+          }
+        ]
+      },
+      "788": {
+        "dimension": 256,
+        "prediction_nonempty": true,
+        "answer_sha256": "a361af37adcd8009edd4fb18134d3f393c1767763efe4ba24944e9065a895506",
+        "cited_ids": [
+          "E11",
+          "E15",
+          "E26",
+          "E16"
+        ],
+        "actual_final_request": 35,
+        "tool_counts": {
+          "search": 7,
+          "open_document": 1
+        },
+        "evidence": {
+          "hospital_before_1927": {
+            "doc_id": "57904",
+            "offset": 586,
+            "end": 684,
+            "chars": 98,
+            "text_sha256": "be5d634ae960d9dbef18832fd32455e38f0e7a2cdbd3869ce926994343707489",
+            "union_tool_chars": 0,
+            "tool_events": [],
+            "api_views": [
+              {
+                "api_sequence": 6,
+                "chars": 0,
+                "budget_omitted_anchor_ids": []
+              },
+              {
+                "api_sequence": 13,
+                "chars": 0,
+                "budget_omitted_anchor_ids": []
+              },
+              {
+                "api_sequence": 20,
+                "chars": 0,
+                "budget_omitted_anchor_ids": []
+              },
+              {
+                "api_sequence": 27,
+                "chars": 0,
+                "budget_omitted_anchor_ids": []
+              },
+              {
+                "api_sequence": 35,
+                "chars": 0,
+                "budget_omitted_anchor_ids": []
+              }
+            ],
+            "final_chars": 0,
+            "cited_final_chars": 0,
+            "overlapping_cited_ids": []
+          },
+          "other_mosque_built_1860": {
+            "doc_id": "95802",
+            "offset": 120,
+            "end": 182,
+            "chars": 62,
+            "text_sha256": "606627b82f9cb4f8c60461a0e3b9e333cb5d6da9f4c25b541110f44c7f689dab",
+            "union_tool_chars": 0,
+            "tool_events": [],
+            "api_views": [
+              {
+                "api_sequence": 6,
+                "chars": 0,
+                "budget_omitted_anchor_ids": []
+              },
+              {
+                "api_sequence": 13,
+                "chars": 0,
+                "budget_omitted_anchor_ids": []
+              },
+              {
+                "api_sequence": 20,
+                "chars": 0,
+                "budget_omitted_anchor_ids": []
+              },
+              {
+                "api_sequence": 27,
+                "chars": 0,
+                "budget_omitted_anchor_ids": []
+              },
+              {
+                "api_sequence": 35,
+                "chars": 0,
+                "budget_omitted_anchor_ids": []
+              }
+            ],
+            "final_chars": 0,
+            "cited_final_chars": 0,
+            "overlapping_cited_ids": []
+          },
+          "target_completion_1958": {
+            "doc_id": "70534",
+            "offset": 1930,
+            "end": 1967,
+            "chars": 37,
+            "text_sha256": "83a8e7c42286c616f03ef99e0f62d847599aecd4cdcae6725d515325f11012cc",
+            "union_tool_chars": 37,
+            "tool_events": [
+              {
+                "sequence": 16,
+                "method": "search",
+                "chars": 37,
+                "ids": [
+                  "E12"
+                ]
+              },
+              {
+                "sequence": 22,
+                "method": "search",
+                "chars": 37,
+                "ids": [
+                  "E12"
+                ]
+              },
+              {
+                "sequence": 29,
+                "method": "search",
+                "chars": 37,
+                "ids": [
+                  "E12"
+                ]
+              }
+            ],
+            "api_views": [
+              {
+                "api_sequence": 6,
+                "chars": 0,
+                "budget_omitted_anchor_ids": []
+              },
+              {
+                "api_sequence": 13,
+                "chars": 0,
+                "budget_omitted_anchor_ids": []
+              },
+              {
+                "api_sequence": 20,
+                "chars": 37,
+                "budget_omitted_anchor_ids": []
+              },
+              {
+                "api_sequence": 27,
+                "chars": 0,
+                "budget_omitted_anchor_ids": [
+                  "E12"
+                ]
+              },
+              {
+                "api_sequence": 35,
+                "chars": 0,
+                "budget_omitted_anchor_ids": [
+                  "E12"
+                ]
+              }
+            ],
+            "final_chars": 0,
+            "cited_final_chars": 0,
+            "overlapping_cited_ids": []
+          },
+          "target_completion_1985": {
+            "doc_id": "56202",
+            "offset": 3638,
+            "end": 3756,
+            "chars": 118,
+            "text_sha256": "56e04a196c1ef01a2b060177601efa4e94d0d45fbbdd9290a5abbcc7652f67ae",
+            "union_tool_chars": 6,
+            "tool_events": [
+              {
+                "sequence": 16,
+                "method": "search",
+                "chars": 6,
+                "ids": [
+                  "E15"
+                ]
+              },
+              {
+                "sequence": 29,
+                "method": "search",
+                "chars": 6,
+                "ids": [
+                  "E15"
+                ]
+              }
+            ],
+            "api_views": [
+              {
+                "api_sequence": 6,
+                "chars": 0,
+                "budget_omitted_anchor_ids": []
+              },
+              {
+                "api_sequence": 13,
+                "chars": 0,
+                "budget_omitted_anchor_ids": []
+              },
+              {
+                "api_sequence": 20,
+                "chars": 6,
+                "budget_omitted_anchor_ids": []
+              },
+              {
+                "api_sequence": 27,
+                "chars": 6,
+                "budget_omitted_anchor_ids": []
+              },
+              {
+                "api_sequence": 35,
+                "chars": 6,
+                "budget_omitted_anchor_ids": []
+              }
+            ],
+            "final_chars": 6,
+            "cited_final_chars": 6,
+            "overlapping_cited_ids": [
+              "E15"
+            ]
+          },
+          "distance_list_origin": {
+            "doc_id": "6743",
+            "offset": 11,
+            "end": 50,
+            "chars": 39,
+            "text_sha256": "125bd3f080e7f6b98e0b53e5f0b62db60593a6437fb040737b997c75fbbb0d41",
+            "union_tool_chars": 0,
+            "tool_events": [],
+            "api_views": [
+              {
+                "api_sequence": 6,
+                "chars": 0,
+                "budget_omitted_anchor_ids": []
+              },
+              {
+                "api_sequence": 13,
+                "chars": 0,
+                "budget_omitted_anchor_ids": []
+              },
+              {
+                "api_sequence": 20,
+                "chars": 0,
+                "budget_omitted_anchor_ids": []
+              },
+              {
+                "api_sequence": 27,
+                "chars": 0,
+                "budget_omitted_anchor_ids": []
+              },
+              {
+                "api_sequence": 35,
+                "chars": 0,
+                "budget_omitted_anchor_ids": []
+              }
+            ],
+            "final_chars": 0,
+            "cited_final_chars": 0,
+            "overlapping_cited_ids": []
+          },
+          "distance_list_hospital": {
+            "doc_id": "6743",
+            "offset": 723,
+            "end": 746,
+            "chars": 23,
+            "text_sha256": "927411cca4a3efe1ffd6ca6d58238e4264c7c01ce5e5c79aefb3fb957141703d",
+            "union_tool_chars": 0,
+            "tool_events": [],
+            "api_views": [
+              {
+                "api_sequence": 6,
+                "chars": 0,
+                "budget_omitted_anchor_ids": []
+              },
+              {
+                "api_sequence": 13,
+                "chars": 0,
+                "budget_omitted_anchor_ids": []
+              },
+              {
+                "api_sequence": 20,
+                "chars": 0,
+                "budget_omitted_anchor_ids": []
+              },
+              {
+                "api_sequence": 27,
+                "chars": 0,
+                "budget_omitted_anchor_ids": []
+              },
+              {
+                "api_sequence": 35,
+                "chars": 0,
+                "budget_omitted_anchor_ids": []
+              }
+            ],
+            "final_chars": 0,
+            "cited_final_chars": 0,
+            "overlapping_cited_ids": []
+          },
+          "distance_list_target": {
+            "doc_id": "6743",
+            "offset": 885,
+            "end": 906,
+            "chars": 21,
+            "text_sha256": "e6a77a0442c65e85ca64319bd9185a2a2c41ce7446efe72c302afc84426351ea",
+            "union_tool_chars": 21,
+            "tool_events": [
+              {
+                "sequence": 22,
+                "method": "search",
+                "chars": 21,
+                "ids": [
+                  "E16"
+                ]
+              },
+              {
+                "sequence": 23,
+                "method": "search",
+                "chars": 21,
+                "ids": [
+                  "E16"
+                ]
+              }
+            ],
+            "api_views": [
+              {
+                "api_sequence": 6,
+                "chars": 0,
+                "budget_omitted_anchor_ids": []
+              },
+              {
+                "api_sequence": 13,
+                "chars": 0,
+                "budget_omitted_anchor_ids": []
+              },
+              {
+                "api_sequence": 20,
+                "chars": 0,
+                "budget_omitted_anchor_ids": []
+              },
+              {
+                "api_sequence": 27,
+                "chars": 21,
+                "budget_omitted_anchor_ids": []
+              },
+              {
+                "api_sequence": 35,
+                "chars": 21,
+                "budget_omitted_anchor_ids": []
+              }
+            ],
+            "final_chars": 21,
+            "cited_final_chars": 21,
+            "overlapping_cited_ids": [
+              "E16"
+            ]
+          }
+        },
+        "searches": [
+          {
+            "index": 1,
+            "tool_sequence": 8,
+            "query_sha256": "f822cd7be70fae9ab5238a0a6095f912e52fe2e03d032061e915e23a45341ed4",
+            "pool_sha256": "c27481ad6b6add13fddd4f4f5670264f8a30d3fd37f40b86bc75ee63f7897be2",
+            "pool_size": 32,
+            "returned": [
+              "72467:5250:900",
+              "1823:0:900",
+              "64289:39750:900",
+              "100170:6750:900",
+              "45789:0:900"
+            ],
+            "matches": []
+          },
+          {
+            "index": 2,
+            "tool_sequence": 9,
+            "query_sha256": "2ee1c2f9a4d0afeea137d008e0c5bbf4a957eae4017855a097a86789f6526347",
+            "pool_sha256": "a92d835e2931cc683971efd8bb43e4074a27830e0c40d482871d36cf2d5d11ce",
+            "pool_size": 32,
+            "returned": [
+              "38198:6000:900",
+              "27311:1500:900",
+              "81783:3000:900",
+              "81783:4500:900",
+              "81783:7500:900"
+            ],
+            "matches": []
+          },
+          {
+            "index": 3,
+            "tool_sequence": 16,
+            "query_sha256": "5a99651e44639f65bad8759b336ec8dd6f1ba69651ae2ce10d1591da1472a827",
+            "pool_sha256": "3468762f8e3327fa24e7f64027ad058042de8f6f84bb179e59f6501cb1a04351",
+            "pool_size": 32,
+            "returned": [
+              "70534:1500:900",
+              "56202:14250:478",
+              "1823:0:900",
+              "56202:5250:900",
+              "56202:3750:900"
+            ],
+            "matches": [
+              {
+                "anchor": "target_completion_1958",
+                "chunk": "70534:1500:900",
+                "overlapping_chars": 37,
+                "bm25_rank": 32,
+                "int8_rank": 1,
+                "native_fp_rank": 1,
+                "returned": true
+              },
+              {
+                "anchor": "target_completion_1985",
+                "chunk": "56202:3750:900",
+                "overlapping_chars": 6,
+                "bm25_rank": 24,
+                "int8_rank": 5,
+                "native_fp_rank": 9,
+                "returned": true
+              },
+              {
+                "anchor": "target_completion_1985",
+                "chunk": "56202:3000:900",
+                "overlapping_chars": 118,
+                "bm25_rank": 29,
+                "int8_rank": 9,
+                "native_fp_rank": 8,
+                "returned": false
+              },
+              {
+                "anchor": "distance_list_origin",
+                "chunk": "6743:0:900",
+                "overlapping_chars": 39,
+                "bm25_rank": 9,
+                "int8_rank": 15,
+                "native_fp_rank": 13,
+                "returned": false
+              },
+              {
+                "anchor": "distance_list_hospital",
+                "chunk": "6743:0:900",
+                "overlapping_chars": 23,
+                "bm25_rank": 9,
+                "int8_rank": 15,
+                "native_fp_rank": 13,
+                "returned": false
+              },
+              {
+                "anchor": "distance_list_target",
+                "chunk": "6743:0:900",
+                "overlapping_chars": 15,
+                "bm25_rank": 9,
+                "int8_rank": 15,
+                "native_fp_rank": 13,
+                "returned": false
+              },
+              {
+                "anchor": "distance_list_target",
+                "chunk": "6743:750:238",
+                "overlapping_chars": 21,
+                "bm25_rank": 21,
+                "int8_rank": 7,
+                "native_fp_rank": 7,
+                "returned": false
+              }
+            ]
+          },
+          {
+            "index": 4,
+            "tool_sequence": 22,
+            "query_sha256": "6f7e55da262c7907073a62abdd6cf09063fbd1acfb92cb531ce58eec59d4b466",
+            "pool_sha256": "5ff172dab2411650f22b9e5599076d34888d62a0fcbc81c2661b90d5a4e7457e",
+            "pool_size": 32,
+            "returned": [
+              "70534:1500:900",
+              "6743:750:238",
+              "44812:39000:900",
+              "44812:37500:900",
+              "56202:5250:900"
+            ],
+            "matches": [
+              {
+                "anchor": "target_completion_1958",
+                "chunk": "70534:1500:900",
+                "overlapping_chars": 37,
+                "bm25_rank": 29,
+                "int8_rank": 1,
+                "native_fp_rank": 1,
+                "returned": true
+              },
+              {
+                "anchor": "target_completion_1985",
+                "chunk": "56202:3750:900",
+                "overlapping_chars": 6,
+                "bm25_rank": 23,
+                "int8_rank": 10,
+                "native_fp_rank": 17,
+                "returned": false
+              },
+              {
+                "anchor": "target_completion_1985",
+                "chunk": "56202:3000:900",
+                "overlapping_chars": 118,
+                "bm25_rank": 30,
+                "int8_rank": 21,
+                "native_fp_rank": 21,
+                "returned": false
+              },
+              {
+                "anchor": "distance_list_origin",
+                "chunk": "6743:0:900",
+                "overlapping_chars": 39,
+                "bm25_rank": 3,
+                "int8_rank": 6,
+                "native_fp_rank": 6,
+                "returned": false
+              },
+              {
+                "anchor": "distance_list_hospital",
+                "chunk": "6743:0:900",
+                "overlapping_chars": 23,
+                "bm25_rank": 3,
+                "int8_rank": 6,
+                "native_fp_rank": 6,
+                "returned": false
+              },
+              {
+                "anchor": "distance_list_target",
+                "chunk": "6743:0:900",
+                "overlapping_chars": 15,
+                "bm25_rank": 3,
+                "int8_rank": 6,
+                "native_fp_rank": 6,
+                "returned": false
+              },
+              {
+                "anchor": "distance_list_target",
+                "chunk": "6743:750:238",
+                "overlapping_chars": 21,
+                "bm25_rank": 28,
+                "int8_rank": 2,
+                "native_fp_rank": 2,
+                "returned": true
+              }
+            ]
+          },
+          {
+            "index": 5,
+            "tool_sequence": 23,
+            "query_sha256": "df93ccff823f7775271197ee70d023097d7f0415d59f90ad5b8815d41c194d42",
+            "pool_sha256": "98b5c6e2af859901a75f2c757d25b6125f163fa19c224f232585d50b0a0b4747",
+            "pool_size": 32,
+            "returned": [
+              "6743:750:238",
+              "56202:13500:900",
+              "56202:5250:900",
+              "44812:14250:900",
+              "56202:12000:900"
+            ],
+            "matches": [
+              {
+                "anchor": "target_completion_1985",
+                "chunk": "56202:3750:900",
+                "overlapping_chars": 6,
+                "bm25_rank": 28,
+                "int8_rank": 10,
+                "native_fp_rank": 16,
+                "returned": false
+              },
+              {
+                "anchor": "distance_list_origin",
+                "chunk": "6743:0:900",
+                "overlapping_chars": 39,
+                "bm25_rank": 3,
+                "int8_rank": 7,
+                "native_fp_rank": 6,
+                "returned": false
+              },
+              {
+                "anchor": "distance_list_hospital",
+                "chunk": "6743:0:900",
+                "overlapping_chars": 23,
+                "bm25_rank": 3,
+                "int8_rank": 7,
+                "native_fp_rank": 6,
+                "returned": false
+              },
+              {
+                "anchor": "distance_list_target",
+                "chunk": "6743:0:900",
+                "overlapping_chars": 15,
+                "bm25_rank": 3,
+                "int8_rank": 7,
+                "native_fp_rank": 6,
+                "returned": false
+              },
+              {
+                "anchor": "distance_list_target",
+                "chunk": "6743:750:238",
+                "overlapping_chars": 21,
+                "bm25_rank": 14,
+                "int8_rank": 1,
+                "native_fp_rank": 1,
+                "returned": true
+              }
+            ]
+          },
+          {
+            "index": 6,
+            "tool_sequence": 29,
+            "query_sha256": "9221b3012a571f87fab4987743628bc502e35fc631c25e1da861263dd475b8f2",
+            "pool_sha256": "7b7c51eaeb064d415704840b0f346a6445cf220726ad792f2909817e8d63ddf7",
+            "pool_size": 32,
+            "returned": [
+              "70534:1500:900",
+              "56202:3750:900",
+              "1823:0:900",
+              "56202:12000:900",
+              "56202:13500:900"
+            ],
+            "matches": [
+              {
+                "anchor": "target_completion_1958",
+                "chunk": "70534:1500:900",
+                "overlapping_chars": 37,
+                "bm25_rank": 32,
+                "int8_rank": 1,
+                "native_fp_rank": 1,
+                "returned": true
+              },
+              {
+                "anchor": "target_completion_1985",
+                "chunk": "56202:3750:900",
+                "overlapping_chars": 6,
+                "bm25_rank": 20,
+                "int8_rank": 2,
+                "native_fp_rank": 8,
+                "returned": true
+              },
+              {
+                "anchor": "target_completion_1985",
+                "chunk": "56202:3000:900",
+                "overlapping_chars": 118,
+                "bm25_rank": 24,
+                "int8_rank": 6,
+                "native_fp_rank": 10,
+                "returned": false
+              },
+              {
+                "anchor": "distance_list_origin",
+                "chunk": "6743:0:900",
+                "overlapping_chars": 39,
+                "bm25_rank": 9,
+                "int8_rank": 17,
+                "native_fp_rank": 13,
+                "returned": false
+              },
+              {
+                "anchor": "distance_list_hospital",
+                "chunk": "6743:0:900",
+                "overlapping_chars": 23,
+                "bm25_rank": 9,
+                "int8_rank": 17,
+                "native_fp_rank": 13,
+                "returned": false
+              },
+              {
+                "anchor": "distance_list_target",
+                "chunk": "6743:0:900",
+                "overlapping_chars": 15,
+                "bm25_rank": 9,
+                "int8_rank": 17,
+                "native_fp_rank": 13,
+                "returned": false
+              },
+              {
+                "anchor": "distance_list_target",
+                "chunk": "6743:750:238",
+                "overlapping_chars": 21,
+                "bm25_rank": 22,
+                "int8_rank": 11,
+                "native_fp_rank": 5,
+                "returned": false
+              }
+            ]
+          },
+          {
+            "index": 7,
+            "tool_sequence": 30,
+            "query_sha256": "046e135491e639eba0e83b92fe53e7ca38b32cd71a46fef8b7825eb767cc86a7",
+            "pool_sha256": "6e81b9c375439238935340b9a66c236ddf482e0ca21178b3ded832f618a81073",
+            "pool_size": 32,
+            "returned": [
+              "51679:67500:900",
+              "49204:707250:900",
+              "27311:750:900",
+              "14065:0:900",
+              "96357:0:562"
+            ],
+            "matches": [
+              {
+                "anchor": "other_mosque_built_1860",
+                "chunk": "95802:0:827",
+                "overlapping_chars": 62,
+                "bm25_rank": 2,
+                "int8_rank": 6,
+                "native_fp_rank": 2,
+                "returned": false
+              },
+              {
+                "anchor": "distance_list_origin",
+                "chunk": "6743:0:900",
+                "overlapping_chars": 39,
+                "bm25_rank": 1,
+                "int8_rank": 8,
+                "native_fp_rank": 3,
+                "returned": false
+              },
+              {
+                "anchor": "distance_list_hospital",
+                "chunk": "6743:0:900",
+                "overlapping_chars": 23,
+                "bm25_rank": 1,
+                "int8_rank": 8,
+                "native_fp_rank": 3,
+                "returned": false
+              },
+              {
+                "anchor": "distance_list_target",
+                "chunk": "6743:0:900",
+                "overlapping_chars": 15,
+                "bm25_rank": 1,
+                "int8_rank": 8,
+                "native_fp_rank": 3,
+                "returned": false
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "candidate_2560": {
+    "prediction_sha256": "5887d5187890a0d2c8a6c72a0ca8b62927298910454948020cad0a3e0d916837",
+    "input_sha256": "dd829d11a47ce9c4d7c150c0e75fbdbcf57341b5197f3221c162dfe00fb60ce9",
+    "cases": {
+      "58": {
+        "dimension": 2560,
+        "prediction_nonempty": false,
+        "answer_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "cited_ids": [],
+        "actual_final_request": 28,
+        "tool_counts": {
+          "search": 5,
+          "open_document": 1
+        },
+        "evidence": {
+          "funding_window": {
+            "doc_id": "28406",
+            "offset": 38806,
+            "end": 39216,
+            "chars": 410,
+            "text_sha256": "30e950c39578a499fc5297c9f95e1b6e5a6e8a84db3be3f3f5bcf167b57bcf28",
+            "union_tool_chars": 0,
+            "tool_events": [],
+            "api_views": [
+              {
+                "api_sequence": 6,
+                "chars": 0,
+                "budget_omitted_anchor_ids": []
+              },
+              {
+                "api_sequence": 13,
+                "chars": 0,
+                "budget_omitted_anchor_ids": []
+              },
+              {
+                "api_sequence": 20,
+                "chars": 0,
+                "budget_omitted_anchor_ids": []
+              },
+              {
+                "api_sequence": 28,
+                "chars": 0,
+                "budget_omitted_anchor_ids": []
+              }
+            ],
+            "final_chars": 0,
+            "cited_final_chars": 0,
+            "overlapping_cited_ids": []
+          },
+          "award_and_grant": {
+            "doc_id": "28406",
+            "offset": 38992,
+            "end": 39072,
+            "chars": 80,
+            "text_sha256": "5072403959035f3f3f79e07af73b7d58d0b851914b806add998dd52153775b06",
+            "union_tool_chars": 0,
+            "tool_events": [],
+            "api_views": [
+              {
+                "api_sequence": 6,
+                "chars": 0,
+                "budget_omitted_anchor_ids": []
+              },
+              {
+                "api_sequence": 13,
+                "chars": 0,
+                "budget_omitted_anchor_ids": []
+              },
+              {
+                "api_sequence": 20,
+                "chars": 0,
+                "budget_omitted_anchor_ids": []
+              },
+              {
+                "api_sequence": 28,
+                "chars": 0,
+                "budget_omitted_anchor_ids": []
+              }
+            ],
+            "final_chars": 0,
+            "cited_final_chars": 0,
+            "overlapping_cited_ids": []
+          }
+        },
+        "searches": [
+          {
+            "index": 1,
+            "tool_sequence": 8,
+            "query_sha256": "496f5c80b2bb7e0576dc3828fe7e99fbd03f89b4f4d9e4a4ef3b9f6c73389d00",
+            "pool_sha256": "439087d58dcb9dc7e0e6892b16e7d76dce23a4c854c08af6e8f0f2e4b46d3b4f",
+            "pool_size": 32,
+            "returned": [
+              "97102:12000:900",
+              "59287:14250:900",
+              "85657:45000:900",
+              "4619:2250:900",
+              "27484:10500:900"
+            ],
+            "matches": []
+          },
+          {
+            "index": 2,
+            "tool_sequence": 9,
+            "query_sha256": "8a7ad0ee92a69c22a240ee3b779bdf9d1462b68ada687e60f284d75e933e2250",
+            "pool_sha256": "3559eea43f5a65f2ab33cedeb1c54298bcb0fa9f87d5fa5db66d1e29aadc50b3",
+            "pool_size": 32,
+            "returned": [
+              "4619:7500:900",
+              "4619:0:900",
+              "28406:26250:900",
+              "4619:36750:900",
+              "30746:750:900"
+            ],
+            "matches": [
+              {
+                "anchor": "funding_window",
+                "chunk": "28406:38250:900",
+                "overlapping_chars": 344,
+                "bm25_rank": 29,
+                "int8_rank": 26,
+                "native_fp_rank": 26,
+                "returned": false
+              },
+              {
+                "anchor": "award_and_grant",
+                "chunk": "28406:38250:900",
+                "overlapping_chars": 80,
+                "bm25_rank": 29,
+                "int8_rank": 26,
+                "native_fp_rank": 26,
+                "returned": false
+              }
+            ]
+          },
+          {
+            "index": 3,
+            "tool_sequence": 15,
+            "query_sha256": "c6c8a2a796c14803e9742995190c9c0adf70f1b10641a955de992c2ccb5bd923",
+            "pool_sha256": "13ba734ace94cbe302d08db591e07c868e3b6dfce75300f3aa1fd1359dc42e09",
+            "pool_size": 32,
+            "returned": [
+              "79075:0:900",
+              "27484:11250:900",
+              "21297:31500:900",
+              "4619:0:900",
+              "27484:10500:900"
+            ],
+            "matches": [
+              {
+                "anchor": "funding_window",
+                "chunk": "28406:38250:900",
+                "overlapping_chars": 344,
+                "bm25_rank": 30,
+                "int8_rank": 25,
+                "native_fp_rank": 25,
+                "returned": false
+              },
+              {
+                "anchor": "award_and_grant",
+                "chunk": "28406:38250:900",
+                "overlapping_chars": 80,
+                "bm25_rank": 30,
+                "int8_rank": 25,
+                "native_fp_rank": 25,
+                "returned": false
+              }
+            ]
+          },
+          {
+            "index": 4,
+            "tool_sequence": 16,
+            "query_sha256": "91ca6aeffe57b3091a092666e924ff48e13f1c87d290a17ade1b59cb1d246595",
+            "pool_sha256": "053337eb947e4632acb22a11f78429daf78c95615ae462856800202c5784fa37",
+            "pool_size": 32,
+            "returned": [
+              "79075:0:900",
+              "15448:0:900",
+              "21297:31500:900",
+              "97102:236250:900",
+              "68816:0:900"
+            ],
+            "matches": []
+          },
+          {
+            "index": 5,
+            "tool_sequence": 23,
+            "query_sha256": "d65951cf3e6d8ca588292a08056d09fd3734a4a6eb5ee2426e9c7b381e7a5782",
+            "pool_sha256": "75c6f4fab7eb185ae9d9f73c5877c466c8f533157d7ee1937b21135ad4c907ac",
+            "pool_size": 32,
+            "returned": [
+              "4619:0:900",
+              "79075:0:900",
+              "4619:750:900",
+              "70222:95250:900",
+              "59287:270000:900"
+            ],
+            "matches": [
+              {
+                "anchor": "funding_window",
+                "chunk": "28406:38250:900",
+                "overlapping_chars": 344,
+                "bm25_rank": 28,
+                "int8_rank": 31,
+                "native_fp_rank": 31,
+                "returned": false
+              },
+              {
+                "anchor": "award_and_grant",
+                "chunk": "28406:38250:900",
+                "overlapping_chars": 80,
+                "bm25_rank": 28,
+                "int8_rank": 31,
+                "native_fp_rank": 31,
+                "returned": false
+              }
+            ]
+          }
+        ]
+      },
+      "788": {
+        "dimension": 2560,
+        "prediction_nonempty": true,
+        "answer_sha256": "a361af37adcd8009edd4fb18134d3f393c1767763efe4ba24944e9065a895506",
+        "cited_ids": [
+          "E3",
+          "E11"
+        ],
+        "actual_final_request": 36,
+        "tool_counts": {
+          "search": 9
+        },
+        "evidence": {
+          "hospital_before_1927": {
+            "doc_id": "57904",
+            "offset": 586,
+            "end": 684,
+            "chars": 98,
+            "text_sha256": "be5d634ae960d9dbef18832fd32455e38f0e7a2cdbd3869ce926994343707489",
+            "union_tool_chars": 98,
+            "tool_events": [
+              {
+                "sequence": 24,
+                "method": "search",
+                "chars": 98,
+                "ids": [
+                  "E24"
+                ]
+              }
+            ],
+            "api_views": [
+              {
+                "api_sequence": 6,
+                "chars": 0,
+                "budget_omitted_anchor_ids": []
+              },
+              {
+                "api_sequence": 13,
+                "chars": 0,
+                "budget_omitted_anchor_ids": []
+              },
+              {
+                "api_sequence": 20,
+                "chars": 0,
+                "budget_omitted_anchor_ids": []
+              },
+              {
+                "api_sequence": 28,
+                "chars": 0,
+                "budget_omitted_anchor_ids": [
+                  "E24"
+                ]
+              },
+              {
+                "api_sequence": 36,
+                "chars": 0,
+                "budget_omitted_anchor_ids": [
+                  "E24"
+                ]
+              }
+            ],
+            "final_chars": 0,
+            "cited_final_chars": 0,
+            "overlapping_cited_ids": []
+          },
+          "other_mosque_built_1860": {
+            "doc_id": "95802",
+            "offset": 120,
+            "end": 182,
+            "chars": 62,
+            "text_sha256": "606627b82f9cb4f8c60461a0e3b9e333cb5d6da9f4c25b541110f44c7f689dab",
+            "union_tool_chars": 62,
+            "tool_events": [
+              {
+                "sequence": 23,
+                "method": "search",
+                "chars": 62,
+                "ids": [
+                  "E21"
+                ]
+              }
+            ],
+            "api_views": [
+              {
+                "api_sequence": 6,
+                "chars": 0,
+                "budget_omitted_anchor_ids": []
+              },
+              {
+                "api_sequence": 13,
+                "chars": 0,
+                "budget_omitted_anchor_ids": []
+              },
+              {
+                "api_sequence": 20,
+                "chars": 0,
+                "budget_omitted_anchor_ids": []
+              },
+              {
+                "api_sequence": 28,
+                "chars": 62,
+                "budget_omitted_anchor_ids": []
+              },
+              {
+                "api_sequence": 36,
+                "chars": 0,
+                "budget_omitted_anchor_ids": [
+                  "E21"
+                ]
+              }
+            ],
+            "final_chars": 0,
+            "cited_final_chars": 0,
+            "overlapping_cited_ids": []
+          },
+          "target_completion_1958": {
+            "doc_id": "70534",
+            "offset": 1930,
+            "end": 1967,
+            "chars": 37,
+            "text_sha256": "83a8e7c42286c616f03ef99e0f62d847599aecd4cdcae6725d515325f11012cc",
+            "union_tool_chars": 0,
+            "tool_events": [],
+            "api_views": [
+              {
+                "api_sequence": 6,
+                "chars": 0,
+                "budget_omitted_anchor_ids": []
+              },
+              {
+                "api_sequence": 13,
+                "chars": 0,
+                "budget_omitted_anchor_ids": []
+              },
+              {
+                "api_sequence": 20,
+                "chars": 0,
+                "budget_omitted_anchor_ids": []
+              },
+              {
+                "api_sequence": 28,
+                "chars": 0,
+                "budget_omitted_anchor_ids": []
+              },
+              {
+                "api_sequence": 36,
+                "chars": 0,
+                "budget_omitted_anchor_ids": []
+              }
+            ],
+            "final_chars": 0,
+            "cited_final_chars": 0,
+            "overlapping_cited_ids": []
+          },
+          "target_completion_1985": {
+            "doc_id": "56202",
+            "offset": 3638,
+            "end": 3756,
+            "chars": 118,
+            "text_sha256": "56e04a196c1ef01a2b060177601efa4e94d0d45fbbdd9290a5abbcc7652f67ae",
+            "union_tool_chars": 0,
+            "tool_events": [],
+            "api_views": [
+              {
+                "api_sequence": 6,
+                "chars": 0,
+                "budget_omitted_anchor_ids": []
+              },
+              {
+                "api_sequence": 13,
+                "chars": 0,
+                "budget_omitted_anchor_ids": []
+              },
+              {
+                "api_sequence": 20,
+                "chars": 0,
+                "budget_omitted_anchor_ids": []
+              },
+              {
+                "api_sequence": 28,
+                "chars": 0,
+                "budget_omitted_anchor_ids": []
+              },
+              {
+                "api_sequence": 36,
+                "chars": 0,
+                "budget_omitted_anchor_ids": []
+              }
+            ],
+            "final_chars": 0,
+            "cited_final_chars": 0,
+            "overlapping_cited_ids": []
+          },
+          "distance_list_origin": {
+            "doc_id": "6743",
+            "offset": 11,
+            "end": 50,
+            "chars": 39,
+            "text_sha256": "125bd3f080e7f6b98e0b53e5f0b62db60593a6437fb040737b997c75fbbb0d41",
+            "union_tool_chars": 0,
+            "tool_events": [],
+            "api_views": [
+              {
+                "api_sequence": 6,
+                "chars": 0,
+                "budget_omitted_anchor_ids": []
+              },
+              {
+                "api_sequence": 13,
+                "chars": 0,
+                "budget_omitted_anchor_ids": []
+              },
+              {
+                "api_sequence": 20,
+                "chars": 0,
+                "budget_omitted_anchor_ids": []
+              },
+              {
+                "api_sequence": 28,
+                "chars": 0,
+                "budget_omitted_anchor_ids": []
+              },
+              {
+                "api_sequence": 36,
+                "chars": 0,
+                "budget_omitted_anchor_ids": []
+              }
+            ],
+            "final_chars": 0,
+            "cited_final_chars": 0,
+            "overlapping_cited_ids": []
+          },
+          "distance_list_hospital": {
+            "doc_id": "6743",
+            "offset": 723,
+            "end": 746,
+            "chars": 23,
+            "text_sha256": "927411cca4a3efe1ffd6ca6d58238e4264c7c01ce5e5c79aefb3fb957141703d",
+            "union_tool_chars": 0,
+            "tool_events": [],
+            "api_views": [
+              {
+                "api_sequence": 6,
+                "chars": 0,
+                "budget_omitted_anchor_ids": []
+              },
+              {
+                "api_sequence": 13,
+                "chars": 0,
+                "budget_omitted_anchor_ids": []
+              },
+              {
+                "api_sequence": 20,
+                "chars": 0,
+                "budget_omitted_anchor_ids": []
+              },
+              {
+                "api_sequence": 28,
+                "chars": 0,
+                "budget_omitted_anchor_ids": []
+              },
+              {
+                "api_sequence": 36,
+                "chars": 0,
+                "budget_omitted_anchor_ids": []
+              }
+            ],
+            "final_chars": 0,
+            "cited_final_chars": 0,
+            "overlapping_cited_ids": []
+          },
+          "distance_list_target": {
+            "doc_id": "6743",
+            "offset": 885,
+            "end": 906,
+            "chars": 21,
+            "text_sha256": "e6a77a0442c65e85ca64319bd9185a2a2c41ce7446efe72c302afc84426351ea",
+            "union_tool_chars": 21,
+            "tool_events": [
+              {
+                "sequence": 15,
+                "method": "search",
+                "chars": 21,
+                "ids": [
+                  "E13"
+                ]
+              },
+              {
+                "sequence": 22,
+                "method": "search",
+                "chars": 21,
+                "ids": [
+                  "E13"
+                ]
+              },
+              {
+                "sequence": 24,
+                "method": "search",
+                "chars": 21,
+                "ids": [
+                  "E13"
+                ]
+              },
+              {
+                "sequence": 31,
+                "method": "search",
+                "chars": 21,
+                "ids": [
+                  "E13"
+                ]
+              }
+            ],
+            "api_views": [
+              {
+                "api_sequence": 6,
+                "chars": 0,
+                "budget_omitted_anchor_ids": []
+              },
+              {
+                "api_sequence": 13,
+                "chars": 0,
+                "budget_omitted_anchor_ids": []
+              },
+              {
+                "api_sequence": 20,
+                "chars": 21,
+                "budget_omitted_anchor_ids": []
+              },
+              {
+                "api_sequence": 28,
+                "chars": 21,
+                "budget_omitted_anchor_ids": []
+              },
+              {
+                "api_sequence": 36,
+                "chars": 0,
+                "budget_omitted_anchor_ids": [
+                  "E13"
+                ]
+              }
+            ],
+            "final_chars": 0,
+            "cited_final_chars": 0,
+            "overlapping_cited_ids": []
+          }
+        },
+        "searches": [
+          {
+            "index": 1,
+            "tool_sequence": 8,
+            "query_sha256": "f822cd7be70fae9ab5238a0a6095f912e52fe2e03d032061e915e23a45341ed4",
+            "pool_sha256": "c27481ad6b6add13fddd4f4f5670264f8a30d3fd37f40b86bc75ee63f7897be2",
+            "pool_size": 32,
+            "returned": [
+              "38198:49500:900",
+              "100170:6750:900",
+              "1823:0:900",
+              "45789:0:900",
+              "77912:1500:326"
+            ],
+            "matches": []
+          },
+          {
+            "index": 2,
+            "tool_sequence": 9,
+            "query_sha256": "2ee1c2f9a4d0afeea137d008e0c5bbf4a957eae4017855a097a86789f6526347",
+            "pool_sha256": "a92d835e2931cc683971efd8bb43e4074a27830e0c40d482871d36cf2d5d11ce",
+            "pool_size": 32,
+            "returned": [
+              "27311:1500:900",
+              "38198:6000:900",
+              "81783:3750:900",
+              "45789:3000:900",
+              "45789:6000:900"
+            ],
+            "matches": []
+          },
+          {
+            "index": 3,
+            "tool_sequence": 15,
+            "query_sha256": "8a044e10d328a145b9ec124626502ea842dc9234f1b3e064ab1b2dc1ca02b106",
+            "pool_sha256": "ac39000349198cd38d2ef92d94d064609f66bd513f8e537d84c4f61ae952966c",
+            "pool_size": 32,
+            "returned": [
+              "44812:37500:900",
+              "56202:13500:900",
+              "6743:750:238",
+              "56202:14250:478",
+              "56202:11250:900"
+            ],
+            "matches": [
+              {
+                "anchor": "target_completion_1958",
+                "chunk": "70534:1500:900",
+                "overlapping_chars": 37,
+                "bm25_rank": 29,
+                "int8_rank": 8,
+                "native_fp_rank": 8,
+                "returned": false
+              },
+              {
+                "anchor": "target_completion_1985",
+                "chunk": "56202:3750:900",
+                "overlapping_chars": 6,
+                "bm25_rank": 23,
+                "int8_rank": 16,
+                "native_fp_rank": 16,
+                "returned": false
+              },
+              {
+                "anchor": "target_completion_1985",
+                "chunk": "56202:3000:900",
+                "overlapping_chars": 118,
+                "bm25_rank": 30,
+                "int8_rank": 10,
+                "native_fp_rank": 11,
+                "returned": false
+              },
+              {
+                "anchor": "distance_list_origin",
+                "chunk": "6743:0:900",
+                "overlapping_chars": 39,
+                "bm25_rank": 2,
+                "int8_rank": 7,
+                "native_fp_rank": 7,
+                "returned": false
+              },
+              {
+                "anchor": "distance_list_hospital",
+                "chunk": "6743:0:900",
+                "overlapping_chars": 23,
+                "bm25_rank": 2,
+                "int8_rank": 7,
+                "native_fp_rank": 7,
+                "returned": false
+              },
+              {
+                "anchor": "distance_list_target",
+                "chunk": "6743:0:900",
+                "overlapping_chars": 15,
+                "bm25_rank": 2,
+                "int8_rank": 7,
+                "native_fp_rank": 7,
+                "returned": false
+              },
+              {
+                "anchor": "distance_list_target",
+                "chunk": "6743:750:238",
+                "overlapping_chars": 21,
+                "bm25_rank": 25,
+                "int8_rank": 3,
+                "native_fp_rank": 3,
+                "returned": true
+              }
+            ]
+          },
+          {
+            "index": 4,
+            "tool_sequence": 16,
+            "query_sha256": "1318a8834a2fc55ebcc02e8ffcbb91be0873be5627a16101a95a76e55142ad99",
+            "pool_sha256": "107f56da106ded17a16ac846b7eb524bb77f3601b29831104ea23c67d4bed617",
+            "pool_size": 32,
+            "returned": [
+              "44812:14250:900",
+              "44812:37500:900",
+              "56202:13500:900",
+              "56202:14250:478",
+              "56202:12000:900"
+            ],
+            "matches": [
+              {
+                "anchor": "target_completion_1985",
+                "chunk": "56202:3750:900",
+                "overlapping_chars": 6,
+                "bm25_rank": 29,
+                "int8_rank": 18,
+                "native_fp_rank": 18,
+                "returned": false
+              },
+              {
+                "anchor": "target_completion_1985",
+                "chunk": "56202:3000:900",
+                "overlapping_chars": 118,
+                "bm25_rank": 31,
+                "int8_rank": 10,
+                "native_fp_rank": 10,
+                "returned": false
+              },
+              {
+                "anchor": "distance_list_origin",
+                "chunk": "6743:0:900",
+                "overlapping_chars": 39,
+                "bm25_rank": 5,
+                "int8_rank": 6,
+                "native_fp_rank": 6,
+                "returned": false
+              },
+              {
+                "anchor": "distance_list_hospital",
+                "chunk": "6743:0:900",
+                "overlapping_chars": 23,
+                "bm25_rank": 5,
+                "int8_rank": 6,
+                "native_fp_rank": 6,
+                "returned": false
+              },
+              {
+                "anchor": "distance_list_target",
+                "chunk": "6743:0:900",
+                "overlapping_chars": 15,
+                "bm25_rank": 5,
+                "int8_rank": 6,
+                "native_fp_rank": 6,
+                "returned": false
+              },
+              {
+                "anchor": "distance_list_target",
+                "chunk": "6743:750:238",
+                "overlapping_chars": 21,
+                "bm25_rank": 22,
+                "int8_rank": 7,
+                "native_fp_rank": 7,
+                "returned": false
+              }
+            ]
+          },
+          {
+            "index": 5,
+            "tool_sequence": 22,
+            "query_sha256": "8cbba1f739c40bc02871ef78af0c75967b8a99d4a1edb790872e5c9c390b7c8a",
+            "pool_sha256": "032d5f29582dd96ea91406b81390b5c783fff3bf5b9599e213e3486f04d804c5",
+            "pool_size": 32,
+            "returned": [
+              "44812:37500:900",
+              "56202:13500:900",
+              "56202:14250:478",
+              "56202:12000:900",
+              "6743:750:238"
+            ],
+            "matches": [
+              {
+                "anchor": "target_completion_1958",
+                "chunk": "70534:1500:900",
+                "overlapping_chars": 37,
+                "bm25_rank": 32,
+                "int8_rank": 9,
+                "native_fp_rank": 9,
+                "returned": false
+              },
+              {
+                "anchor": "target_completion_1985",
+                "chunk": "56202:3750:900",
+                "overlapping_chars": 6,
+                "bm25_rank": 25,
+                "int8_rank": 20,
+                "native_fp_rank": 20,
+                "returned": false
+              },
+              {
+                "anchor": "target_completion_1985",
+                "chunk": "56202:3000:900",
+                "overlapping_chars": 118,
+                "bm25_rank": 30,
+                "int8_rank": 7,
+                "native_fp_rank": 8,
+                "returned": false
+              },
+              {
+                "anchor": "distance_list_origin",
+                "chunk": "6743:0:900",
+                "overlapping_chars": 39,
+                "bm25_rank": 9,
+                "int8_rank": 6,
+                "native_fp_rank": 6,
+                "returned": false
+              },
+              {
+                "anchor": "distance_list_hospital",
+                "chunk": "6743:0:900",
+                "overlapping_chars": 23,
+                "bm25_rank": 9,
+                "int8_rank": 6,
+                "native_fp_rank": 6,
+                "returned": false
+              },
+              {
+                "anchor": "distance_list_target",
+                "chunk": "6743:0:900",
+                "overlapping_chars": 15,
+                "bm25_rank": 9,
+                "int8_rank": 6,
+                "native_fp_rank": 6,
+                "returned": false
+              },
+              {
+                "anchor": "distance_list_target",
+                "chunk": "6743:750:238",
+                "overlapping_chars": 21,
+                "bm25_rank": 21,
+                "int8_rank": 5,
+                "native_fp_rank": 5,
+                "returned": true
+              }
+            ]
+          },
+          {
+            "index": 6,
+            "tool_sequence": 23,
+            "query_sha256": "902a0eefb44ec50588ed0b325f2dc34a971328b346b47a3623266d01f0681f36",
+            "pool_sha256": "9e4173ddbdb74f40ecf58fb5e5cabe52a543dfe291045d0701763be3e96965da",
+            "pool_size": 32,
+            "returned": [
+              "51679:238500:900",
+              "44812:37500:900",
+              "51679:67500:900",
+              "24895:0:900",
+              "95802:0:827"
+            ],
+            "matches": [
+              {
+                "anchor": "other_mosque_built_1860",
+                "chunk": "95802:0:827",
+                "overlapping_chars": 62,
+                "bm25_rank": 2,
+                "int8_rank": 5,
+                "native_fp_rank": 5,
+                "returned": true
+              },
+              {
+                "anchor": "distance_list_origin",
+                "chunk": "6743:0:900",
+                "overlapping_chars": 39,
+                "bm25_rank": 1,
+                "int8_rank": 8,
+                "native_fp_rank": 8,
+                "returned": false
+              },
+              {
+                "anchor": "distance_list_hospital",
+                "chunk": "6743:0:900",
+                "overlapping_chars": 23,
+                "bm25_rank": 1,
+                "int8_rank": 8,
+                "native_fp_rank": 8,
+                "returned": false
+              },
+              {
+                "anchor": "distance_list_target",
+                "chunk": "6743:0:900",
+                "overlapping_chars": 15,
+                "bm25_rank": 1,
+                "int8_rank": 8,
+                "native_fp_rank": 8,
+                "returned": false
+              }
+            ]
+          },
+          {
+            "index": 7,
+            "tool_sequence": 24,
+            "query_sha256": "c34e5fbcd2e43cc40efd5ed5f26af179958d614553fe638bca602ca590cf557e",
+            "pool_sha256": "798aa6a4d22996b2dff63dd39afcdd38ea15d390be5e7fc8d87c1fc8a41d0b0d",
+            "pool_size": 32,
+            "returned": [
+              "44812:37500:900",
+              "6743:750:238",
+              "56188:750:309",
+              "69358:11250:900",
+              "57904:0:900"
+            ],
+            "matches": [
+              {
+                "anchor": "hospital_before_1927",
+                "chunk": "57904:0:900",
+                "overlapping_chars": 98,
+                "bm25_rank": 1,
+                "int8_rank": 5,
+                "native_fp_rank": 5,
+                "returned": true
+              },
+              {
+                "anchor": "other_mosque_built_1860",
+                "chunk": "95802:0:827",
+                "overlapping_chars": 62,
+                "bm25_rank": 24,
+                "int8_rank": 18,
+                "native_fp_rank": 18,
+                "returned": false
+              },
+              {
+                "anchor": "distance_list_origin",
+                "chunk": "6743:0:900",
+                "overlapping_chars": 39,
+                "bm25_rank": 3,
+                "int8_rank": 13,
+                "native_fp_rank": 13,
+                "returned": false
+              },
+              {
+                "anchor": "distance_list_hospital",
+                "chunk": "6743:0:900",
+                "overlapping_chars": 23,
+                "bm25_rank": 3,
+                "int8_rank": 13,
+                "native_fp_rank": 13,
+                "returned": false
+              },
+              {
+                "anchor": "distance_list_target",
+                "chunk": "6743:0:900",
+                "overlapping_chars": 15,
+                "bm25_rank": 3,
+                "int8_rank": 13,
+                "native_fp_rank": 13,
+                "returned": false
+              },
+              {
+                "anchor": "distance_list_target",
+                "chunk": "6743:750:238",
+                "overlapping_chars": 21,
+                "bm25_rank": 7,
+                "int8_rank": 2,
+                "native_fp_rank": 2,
+                "returned": true
+              }
+            ]
+          },
+          {
+            "index": 8,
+            "tool_sequence": 30,
+            "query_sha256": "354a56250ef97c62b3d44bd455a4d99e7f4197afce302e0cdb86455da617c109",
+            "pool_sha256": "4c73811711644f57cbcb68bbbb112306426c0372ba28c4802b7fb5715bf20436",
+            "pool_size": 32,
+            "returned": [
+              "44812:14250:900",
+              "44812:37500:900",
+              "56202:13500:900",
+              "56202:12000:900",
+              "56202:14250:478"
+            ],
+            "matches": [
+              {
+                "anchor": "target_completion_1958",
+                "chunk": "70534:1500:900",
+                "overlapping_chars": 37,
+                "bm25_rank": 24,
+                "int8_rank": 10,
+                "native_fp_rank": 10,
+                "returned": false
+              },
+              {
+                "anchor": "target_completion_1985",
+                "chunk": "56202:3750:900",
+                "overlapping_chars": 6,
+                "bm25_rank": 16,
+                "int8_rank": 8,
+                "native_fp_rank": 9,
+                "returned": false
+              },
+              {
+                "anchor": "target_completion_1985",
+                "chunk": "56202:3000:900",
+                "overlapping_chars": 118,
+                "bm25_rank": 21,
+                "int8_rank": 11,
+                "native_fp_rank": 11,
+                "returned": false
+              },
+              {
+                "anchor": "distance_list_origin",
+                "chunk": "6743:0:900",
+                "overlapping_chars": 39,
+                "bm25_rank": 17,
+                "int8_rank": 14,
+                "native_fp_rank": 13,
+                "returned": false
+              },
+              {
+                "anchor": "distance_list_hospital",
+                "chunk": "6743:0:900",
+                "overlapping_chars": 23,
+                "bm25_rank": 17,
+                "int8_rank": 14,
+                "native_fp_rank": 13,
+                "returned": false
+              },
+              {
+                "anchor": "distance_list_target",
+                "chunk": "6743:750:238",
+                "overlapping_chars": 21,
+                "bm25_rank": 11,
+                "int8_rank": 6,
+                "native_fp_rank": 6,
+                "returned": false
+              },
+              {
+                "anchor": "distance_list_target",
+                "chunk": "6743:0:900",
+                "overlapping_chars": 15,
+                "bm25_rank": 17,
+                "int8_rank": 14,
+                "native_fp_rank": 13,
+                "returned": false
+              }
+            ]
+          },
+          {
+            "index": 9,
+            "tool_sequence": 31,
+            "query_sha256": "3cec1072150405a58849a6770f96c147a2a6eff840bf2a6ba951b1a9f755ea38",
+            "pool_sha256": "798aa6a4d22996b2dff63dd39afcdd38ea15d390be5e7fc8d87c1fc8a41d0b0d",
+            "pool_size": 32,
+            "returned": [
+              "44812:37500:900",
+              "6743:750:238",
+              "69358:11250:900",
+              "56188:750:309",
+              "66322:16500:900"
+            ],
+            "matches": [
+              {
+                "anchor": "hospital_before_1927",
+                "chunk": "57904:0:900",
+                "overlapping_chars": 98,
+                "bm25_rank": 1,
+                "int8_rank": 7,
+                "native_fp_rank": 7,
+                "returned": false
+              },
+              {
+                "anchor": "other_mosque_built_1860",
+                "chunk": "95802:0:827",
+                "overlapping_chars": 62,
+                "bm25_rank": 24,
+                "int8_rank": 9,
+                "native_fp_rank": 9,
+                "returned": false
+              },
+              {
+                "anchor": "distance_list_origin",
+                "chunk": "6743:0:900",
+                "overlapping_chars": 39,
+                "bm25_rank": 3,
+                "int8_rank": 8,
+                "native_fp_rank": 8,
+                "returned": false
+              },
+              {
+                "anchor": "distance_list_hospital",
+                "chunk": "6743:0:900",
+                "overlapping_chars": 23,
+                "bm25_rank": 3,
+                "int8_rank": 8,
+                "native_fp_rank": 8,
+                "returned": false
+              },
+              {
+                "anchor": "distance_list_target",
+                "chunk": "6743:0:900",
+                "overlapping_chars": 15,
+                "bm25_rank": 3,
+                "int8_rank": 8,
+                "native_fp_rank": 8,
+                "returned": false
+              },
+              {
+                "anchor": "distance_list_target",
+                "chunk": "6743:750:238",
+                "overlapping_chars": 21,
+                "bm25_rank": 7,
+                "int8_rank": 2,
+                "native_fp_rank": 2,
+                "returned": true
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "paired_queries": {
+    "58": {
+      "matched_occurrences": [],
+      "distinct_shared_queries": 0,
+      "unmatched_occurrences_256": 6,
+      "unmatched_occurrences_2560": 5
+    },
+    "788": {
+      "matched_occurrences": [
+        {
+          "query_sha256": "2ee1c2f9a4d0afeea137d008e0c5bbf4a957eae4017855a097a86789f6526347",
+          "search_256": 2,
+          "search_2560": 2,
+          "same_pool": true,
+          "top_k_overlap": 2
+        },
+        {
+          "query_sha256": "f822cd7be70fae9ab5238a0a6095f912e52fe2e03d032061e915e23a45341ed4",
+          "search_256": 1,
+          "search_2560": 1,
+          "same_pool": true,
+          "top_k_overlap": 3
+        }
+      ],
+      "distinct_shared_queries": 2,
+      "unmatched_occurrences_256": 5,
+      "unmatched_occurrences_2560": 7
+    }
+  }
+}

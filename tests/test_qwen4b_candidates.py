@@ -101,6 +101,39 @@ def test_no_fallback_and_empty_pool_do_not_reuse_previous_diagnostics(route):
     assert "final_ids" not in service.last_diagnostics and "qwen4b" not in service.last_diagnostics
 
 
+def test_live_configs_use_tail_dimensions_only_in_full_width_run(tmp_path):
+    from pathlib import Path
+    from rag_agent.schemas import SearchHit
+
+    class TailEncoder:
+        identity = {"model_id": "synthetic-test-only"}
+
+        def encode_full(self, texts, query=False):
+            vectors = np.zeros((len(texts), NATIVE_DIM), dtype=np.float32)
+            for i, text in enumerate(texts):
+                vectors[i, 0] = 1
+                vectors[i, -1] = 2 if query or text == "tail match" else -2
+            return vectors / np.linalg.norm(vectors, axis=1, keepdims=True)
+
+    pool = [SearchHit(doc_id=str(i), chunk_id=f"{i}:0", text=text, offset=0, score=0, method="sparse")
+            for i, text in enumerate(["prefix tie", "tail match"])]
+    cases = [("qwen4b-compressed-nine", 256, "0"), ("qwen4b-2560-int8-nine", 2560, "1")]
+    controls = []
+    for config, dimension, winner in cases:
+        settings = Settings(**yaml.safe_load(Path(f"configs/{config}.yaml").read_text()))
+        controls.append(settings.model_dump(exclude={"qwen4b_dimension"}))
+        ranker = CandidateRanker(settings, encoder=TailEncoder())
+        ranked, diagnostics = ranker.rank("query", pool)
+        assert diagnostics["dimension"] == dimension
+        assert ranked[0].doc_id == winner
+        path = tmp_path / f"vectors-{dimension}.npz"
+        ranker.save_vectors(path)
+        with np.load(path, allow_pickle=False) as data:
+            assert data["codes"].shape == (len(pool), dimension)
+            assert data["codes"].nbytes + data["scales"].nbytes == len(pool) * (dimension + 4)
+    assert controls[0] == controls[1]
+
+
 def test_baseline_identity_and_existing_schema_enums_preserved():
     with open("configs/validation-review-bailian.yaml", encoding="utf-8") as source:
         settings = Settings(**yaml.safe_load(source))

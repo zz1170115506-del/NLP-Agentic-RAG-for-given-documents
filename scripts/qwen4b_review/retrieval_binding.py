@@ -64,13 +64,13 @@ def check(ok, what):
         raise ValueError('Retrieval identity check failed: ' + what)
 
 
-def verify_search(run_row, tool, coords):
+def verify_search(run_row, tool, coords, expected_dimension=256):
     diag = run_row['diagnostics']
     core = diag['qwen4b']
     model = core['encoder_identity']
     check(diag['status'] == 'success' and diag['method'] == run_row['method'] == METHOD, 'success/method')
     check(core['fallback'] is False and model['snapshot_verified'] is True, 'no fallback/pinned weights')
-    check((model['model_id'], model['revision'], model['native_dimension'], core['dimension']) == (MODEL, REVISION, 2560, 256), 'model identity or dimensions')
+    check((model['model_id'], model['revision'], model['native_dimension'], core['dimension']) == (MODEL, REVISION, 2560, expected_dimension), 'model identity or dimensions')
     check(core['compression'] == 'mrl-prefix-l2-symmetric-int8-per-row-float32-scale-v1', 'int8 formula')
     envelope = json.loads(tool['content'])
     if not envelope['ok']:

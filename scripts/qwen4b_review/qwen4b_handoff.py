@@ -55,6 +55,7 @@ def inspect_vectors(archive):
     if sorted(archive.namelist()) != sorted(names):
         raise ValueError("Unexpected fields in compact Qwen vector cache")
     headers = {}
+    payload_bytes = {}
     for name in names:
         with archive.open(name) as stream:
             if stream.read(6) != b"\x93NUMPY":
@@ -66,14 +67,44 @@ def inspect_vectors(archive):
             if n > 65536:
                 raise ValueError("Unexpected vector header length")
             headers[name] = ast.literal_eval(stream.read(n).decode("utf-8"))
+            payload_bytes[name] = archive.getinfo(name).file_size - stream.tell()
     nrows, ndim = headers["codes.npy"]["shape"]
     if not 32 <= ndim <= 2560 or nrows < 1 or headers["codes.npy"]["descr"] != "|i1":
         raise ValueError("Expected compact int8 vector rows")
     if headers["scales.npy"]["descr"] not in {"<f4", ">f4"} or headers["scales.npy"]["shape"] != (nrows,):
         raise ValueError("Expected one float32 scale per compact vector")
+    if payload_bytes["codes.npy"] != nrows * ndim or payload_bytes["scales.npy"] != nrows * 4:
+        raise ValueError("Vector cache payload length differs from declared shape or dtype")
     for name in names[:2]:
         if not re.fullmatch(r"[<>=|](?:[USiu])\d+", headers[name]["descr"]) or headers[name]["shape"] != (nrows,):
             raise ValueError("Expected plain document/chunk identifiers in compact vector cache")
+    return nrows, ndim
+
+
+def verify_live_run(run, dimension, question_ids, question_hash):
+    """Bind each labeled run to its actual vector width, questions and post-run assessment."""
+    for name in ("events.jsonl", "retrieval.jsonl", "question-executions.jsonl"):
+        if (run/name).stat().st_size == 0:
+            raise ValueError(f"Missing live run records: {name}")
+    with zipfile.ZipFile(run/"vectors.npz") as archive:
+        _, observed_dimension = inspect_vectors(archive)
+    if observed_dimension != dimension:
+        raise ValueError(f"Requested dimension {dimension} differs from saved vector width {observed_dimension}")
+    pred = run/"prediction.jsonl"
+    ids = [str(json.loads(line)["id"]) for line in pred.read_text().splitlines()]
+    meta = json.loads((run/"prediction.jsonl.meta.json").read_bytes())
+    if (ids != question_ids or meta["mode"] != "live" or meta["source_sha256"] != question_hash
+            or meta["input_count"] != len(ids)):
+        raise ValueError("Live prediction identities differ from the ordered question input")
+    scores = json.loads((run/"evaluation/metrics.json").read_bytes())
+    evaluated = json.loads((run/"evaluation/evaluation-identity.json").read_bytes())
+    if (not scores["valid"] or scores["records"] != len(ids) or scores["expected"] != len(ids)
+            or evaluated["prediction_sha256"] != sha(pred) or not evaluated["evaluated_after_run_completed"]):
+        raise ValueError("Post-run evaluation does not match all live predictions")
+    selected_ref = run/"evaluation/selected-validation-reference-private.jsonl"
+    if sha(selected_ref) != evaluated["selected_reference_sha256"]:
+        raise ValueError("Post-run reference identity differs from the selected answers")
+    return evaluated["reference_source_sha256"], evaluated["selected_reference_sha256"]
 
 
 def selected(roots):
@@ -156,8 +187,27 @@ def restore(repo, crypto, assets, key, work, expected):
 
 def pack(args):
     output, work = args.output.resolve(), args.work.resolve()
-    run, baseline, audit = args.run.resolve(), args.baseline.resolve(), args.audit.resolve()
-    roots = [("run", run), ("baseline-v2", baseline), ("audit", audit)]
+    run, baseline = args.run.resolve(), args.baseline.resolve()
+    baseline_label, package_label = "baseline-v2", "qwen4b-nine-evidence"
+    if args.paired_int8_dimensions:
+        old_dim, new_dim = args.paired_int8_dimensions
+        if old_dim == new_dim or not args.questions:
+            raise ValueError("Paired-dimension handoff requires two different widths and the questions file")
+        ids = [str(json.loads(line)["id"]) for line in args.questions.read_text().splitlines()]
+        if len(ids) != 9 or len(set(ids)) != 9:
+            raise ValueError("Expected exactly nine unique question IDs")
+        question_hash = sha(args.questions)
+        old_ref = verify_live_run(baseline, old_dim, ids, question_hash)
+        new_ref = verify_live_run(run, new_dim, ids, question_hash)
+        if old_ref != new_ref:
+            raise ValueError("Paired evaluations used different answer references")
+        baseline_label = f"baseline-int8-{old_dim}"
+        package_label = f"qwen4b-int8-{old_dim}-vs-{new_dim}"
+    elif not args.audit:
+        raise ValueError("The original baseline-v2 handoff requires its audit directory")
+    roots = [("run", run), (baseline_label, baseline)]
+    if args.audit:
+        roots.append(("audit", args.audit))
     if args.questions:
         roots.append(("inputs/nine-questions.jsonl", args.questions))
     for value in args.add:
@@ -215,7 +265,7 @@ def pack(args):
     invoke(sys.executable, scripts/"pack_selected_files.py", "--source", stage, "--include-list", include,
            "--output", work/"volumes")
     invoke(args.crypto_python, scripts/"handoff_crypto.py", "encrypt", "--volumes", work/"volumes/VOLUMES.json",
-           "--output", assets, "--key-file", key, "--label", "qwen4b-nine-evidence")
+           "--output", assets, "--key-file", key, "--label", package_label)
     if (key.stat().st_mode & 0o777) != 0o600 or (private.stat().st_mode & 0o777) != 0o700:
         raise ValueError("Unexpected key or directory mode")
     outer_path = assets/"ENCRYPTED_VOLUMES.json"
@@ -242,9 +292,12 @@ def main():
         sub.add_argument("--repo", type=Path, required=True, help="Source checkout containing scripts/handoff")
         sub.add_argument("--crypto-python", type=Path, required=True, help="Python with cryptography installed")
         sub.add_argument("--work", type=Path, required=True, help="New local private work directory")
-    for field in ("run", "baseline", "audit", "output"):
+    for field in ("run", "baseline", "output"):
         packer.add_argument("--"+field, type=Path, required=True)
+    packer.add_argument("--audit", type=Path, help="Audit evidence directory (required for the original v2 baseline)")
     packer.add_argument("--questions", type=Path)
+    packer.add_argument("--paired-int8-dimensions", type=int, nargs=2, metavar=("BASELINE", "CANDIDATE"),
+                        help="Validate and package two independently evaluated live int8 runs")
     packer.add_argument("--add", action="append", default=[], metavar="LOGICAL_PATH=LOCAL_PATH")
     verifier.add_argument("--assets", type=Path, required=True)
     verifier.add_argument("--key", type=Path, required=True)
