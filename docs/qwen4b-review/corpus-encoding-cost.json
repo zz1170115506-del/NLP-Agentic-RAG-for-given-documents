@@ -1,0 +1,39 @@
+{
+  "sample_design": "midpoint of each equal-width sequential corpus stratum",
+  "sample_chunks": 128,
+  "corpus_chunks": 4345592,
+  "sample_position_sha256": "cea1d20242cdf382e6ecead122ef06aeb5aa23396980d45440ae272a57e28815",
+  "model": {
+    "model_id": "Qwen/Qwen3-Embedding-4B",
+    "revision": "5cf2132abc99cad020ac570b19d031efec650f2b",
+    "native_dimension": 2560,
+    "snapshot_verified": true,
+    "pooling": "last-nonpadding-token",
+    "device": "mps",
+    "weight_dtype": "float16",
+    "batch_size": 4,
+    "max_length": 2048,
+    "instruction": "Given a factual question, retrieve passages that contain evidence",
+    "backend": "transformers",
+    "transformers_version": "4.57.3",
+    "torch_version": "2.9.1"
+  },
+  "load_verify_warm_seconds": 8.33648462498968,
+  "embedding_and_compaction_seconds": 25.55077462500776,
+  "sample_character_range": [
+    329,
+    900
+  ],
+  "native_payload_bytes": 1310720,
+  "compact_payload_bytes": 33280,
+  "chunks_per_second": 5.009632853742144,
+  "linear_full_encoding_days": 10.039898166615734,
+  "projection_scope": "single-device encoding and compaction; excludes persistent writes, index build, search and interruptions",
+  "process_peak_rss_bytes": 9664233472,
+  "gpu_memory_snapshot": {
+    "driver_allocated_bytes_after_encode": 11177377792,
+    "current_tensor_bytes_after_encode": 8043548928,
+    "recommended_max_bytes": 19069665280
+  },
+  "finite_rows": 128
+}

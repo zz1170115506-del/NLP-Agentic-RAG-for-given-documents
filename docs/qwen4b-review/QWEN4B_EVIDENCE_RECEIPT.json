@@ -1,0 +1,16 @@
+{
+  "format_version": 1,
+  "algorithm": "AES-256-GCM-framed-v1",
+  "key_id": "e5fd65a70c2b0817e4e75264",
+  "evidence_files": 34,
+  "plaintext_bytes": 11422719,
+  "path_map_sha256": "429268523979ab3a81a28d35703e5e82a0f58090c2fce33197e68274b94e326d",
+  "encrypted_manifest_sha256": "6de3d163726d117518a20c2e46c771be6ef70143f7805465347add1d932f74f4",
+  "encrypted_parts": [
+    {
+      "name": "qwen4b-nine-evidence.course-data.tar.gz.part00001.aead",
+      "bytes": 2547260,
+      "sha256": "a449381e90a4f80e7935b6883b7b70a3704e4fc3debd53fba6e612d86f7f889a"
+    }
+  ]
+}

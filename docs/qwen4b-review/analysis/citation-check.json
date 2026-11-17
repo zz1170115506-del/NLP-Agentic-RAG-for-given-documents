@@ -1,0 +1,278 @@
+{
+  "baseline_sparse_v2": {
+    "verified_citations": 12,
+    "cases": [
+      {
+        "id": "960",
+        "citations": [],
+        "final_api_sequence": 35
+      },
+      {
+        "id": "1035",
+        "citations": [],
+        "final_api_sequence": 30
+      },
+      {
+        "id": "64",
+        "citations": [
+          {
+            "evidence_id": "E4",
+            "doc_id": "10744",
+            "offset": 0,
+            "end": 900,
+            "corpus_exact": true,
+            "last_request_exact": true
+          },
+          {
+            "evidence_id": "E11",
+            "doc_id": "50486",
+            "offset": 0,
+            "end": 127,
+            "corpus_exact": true,
+            "last_request_exact": true
+          },
+          {
+            "evidence_id": "E13",
+            "doc_id": "10744",
+            "offset": 5250,
+            "end": 6150,
+            "corpus_exact": true,
+            "last_request_exact": true
+          },
+          {
+            "evidence_id": "E15",
+            "doc_id": "64232",
+            "offset": 1500,
+            "end": 2400,
+            "corpus_exact": true,
+            "last_request_exact": true
+          }
+        ],
+        "final_api_sequence": 34
+      },
+      {
+        "id": "231",
+        "citations": [],
+        "final_api_sequence": 35
+      },
+      {
+        "id": "390",
+        "citations": [],
+        "final_api_sequence": 35
+      },
+      {
+        "id": "58",
+        "citations": [
+          {
+            "evidence_id": "E15",
+            "doc_id": "28406",
+            "offset": 38806,
+            "end": 39216,
+            "corpus_exact": true,
+            "last_request_exact": true
+          },
+          {
+            "evidence_id": "E16",
+            "doc_id": "28406",
+            "offset": 38823,
+            "end": 39230,
+            "corpus_exact": true,
+            "last_request_exact": true
+          },
+          {
+            "evidence_id": "E17",
+            "doc_id": "28406",
+            "offset": 38800,
+            "end": 39000,
+            "corpus_exact": true,
+            "last_request_exact": true
+          }
+        ],
+        "final_api_sequence": 34
+      },
+      {
+        "id": "1155",
+        "citations": [],
+        "final_api_sequence": 28
+      },
+      {
+        "id": "1066",
+        "citations": [],
+        "final_api_sequence": 23
+      },
+      {
+        "id": "788",
+        "citations": [
+          {
+            "evidence_id": "E13",
+            "doc_id": "70534",
+            "offset": 0,
+            "end": 900,
+            "corpus_exact": true,
+            "last_request_exact": true
+          },
+          {
+            "evidence_id": "E2",
+            "doc_id": "96357",
+            "offset": 0,
+            "end": 562,
+            "corpus_exact": true,
+            "last_request_exact": true
+          },
+          {
+            "evidence_id": "E17",
+            "doc_id": "56188",
+            "offset": 0,
+            "end": 900,
+            "corpus_exact": true,
+            "last_request_exact": true
+          },
+          {
+            "evidence_id": "E16",
+            "doc_id": "56188",
+            "offset": 750,
+            "end": 1059,
+            "corpus_exact": true,
+            "last_request_exact": true
+          },
+          {
+            "evidence_id": "E14",
+            "doc_id": "57904",
+            "offset": 0,
+            "end": 900,
+            "corpus_exact": true,
+            "last_request_exact": true
+          }
+        ],
+        "final_api_sequence": 37
+      }
+    ]
+  },
+  "candidate": {
+    "verified_citations": 9,
+    "cases": [
+      {
+        "id": "960",
+        "citations": [],
+        "final_api_sequence": 35
+      },
+      {
+        "id": "1035",
+        "citations": [],
+        "final_api_sequence": 23
+      },
+      {
+        "id": "64",
+        "citations": [
+          {
+            "evidence_id": "E24",
+            "doc_id": "10744",
+            "offset": 0,
+            "end": 1600,
+            "corpus_exact": true,
+            "last_request_exact": true
+          },
+          {
+            "evidence_id": "E21",
+            "doc_id": "50486",
+            "offset": 0,
+            "end": 127,
+            "corpus_exact": true,
+            "last_request_exact": true
+          },
+          {
+            "evidence_id": "E6",
+            "doc_id": "88159",
+            "offset": 2250,
+            "end": 3150,
+            "corpus_exact": true,
+            "last_request_exact": true
+          }
+        ],
+        "final_api_sequence": 35
+      },
+      {
+        "id": "231",
+        "citations": [
+          {
+            "evidence_id": "E2",
+            "doc_id": "43835",
+            "offset": 0,
+            "end": 900,
+            "corpus_exact": true,
+            "last_request_exact": true
+          },
+          {
+            "evidence_id": "E12",
+            "doc_id": "88699",
+            "offset": 0,
+            "end": 900,
+            "corpus_exact": true,
+            "last_request_exact": true
+          }
+        ],
+        "final_api_sequence": 30
+      },
+      {
+        "id": "390",
+        "citations": [],
+        "final_api_sequence": 37
+      },
+      {
+        "id": "58",
+        "citations": [],
+        "final_api_sequence": 28
+      },
+      {
+        "id": "1155",
+        "citations": [],
+        "final_api_sequence": 21
+      },
+      {
+        "id": "1066",
+        "citations": [],
+        "final_api_sequence": 23
+      },
+      {
+        "id": "788",
+        "citations": [
+          {
+            "evidence_id": "E11",
+            "doc_id": "1823",
+            "offset": 0,
+            "end": 2400,
+            "corpus_exact": true,
+            "last_request_exact": true
+          },
+          {
+            "evidence_id": "E15",
+            "doc_id": "56202",
+            "offset": 3750,
+            "end": 4650,
+            "corpus_exact": true,
+            "last_request_exact": true
+          },
+          {
+            "evidence_id": "E26",
+            "doc_id": "96357",
+            "offset": 0,
+            "end": 562,
+            "corpus_exact": true,
+            "last_request_exact": true
+          },
+          {
+            "evidence_id": "E16",
+            "doc_id": "6743",
+            "offset": 750,
+            "end": 988,
+            "corpus_exact": true,
+            "last_request_exact": true
+          }
+        ],
+        "final_api_sequence": 35
+      }
+    ]
+  },
+  "source": "query-only SQLite connection to fixed local documents; earlier successful observations, final API message and recorded source coordinates compared",
+  "semantic_decisions": "see analysis-report.md"
+}

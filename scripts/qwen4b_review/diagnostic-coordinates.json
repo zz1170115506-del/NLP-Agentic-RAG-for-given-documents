@@ -1,0 +1,100 @@
+[
+  {
+    "case_id": "64",
+    "doc_id": "10744",
+    "offset": 0,
+    "end": 900,
+    "selection_basis": "historical_observed_support"
+  },
+  {
+    "case_id": "788",
+    "doc_id": "70534",
+    "offset": 0,
+    "end": 900,
+    "selection_basis": "historical_observed_support"
+  },
+  {
+    "case_id": "390",
+    "doc_id": "3282",
+    "offset": 750,
+    "end": 1226,
+    "selection_basis": "historical_observed_support"
+  },
+  {
+    "case_id": "58",
+    "doc_id": "28406",
+    "offset": 38250,
+    "end": 39150,
+    "selection_basis": "historical_observed_support"
+  },
+  {
+    "case_id": "58",
+    "doc_id": "28406",
+    "offset": 38806,
+    "end": 39216,
+    "selection_basis": "historical_observed_support"
+  },
+  {
+    "case_id": "1066",
+    "doc_id": "26814",
+    "offset": 0,
+    "end": 726,
+    "selection_basis": "historical_observed_support"
+  },
+  {
+    "case_id": "231",
+    "doc_id": "43835",
+    "offset": 0,
+    "end": 900,
+    "selection_basis": "historical_observed_support"
+  },
+  {
+    "case_id": "960",
+    "doc_id": "21800",
+    "offset": 3317,
+    "end": 5935,
+    "selection_basis": "posthoc_reference_assisted"
+  },
+  {
+    "case_id": "1035",
+    "doc_id": "44626",
+    "offset": 0,
+    "end": 750,
+    "selection_basis": "posthoc_reference_assisted"
+  },
+  {
+    "case_id": "788",
+    "doc_id": "57904",
+    "offset": 0,
+    "end": 900,
+    "selection_basis": "observed_run_v1_counterevidence_no_reference_needed"
+  },
+  {
+    "case_id": "788",
+    "doc_id": "95802",
+    "offset": 0,
+    "end": 827,
+    "selection_basis": "manual_coordinate"
+  },
+  {
+    "case_id": "1155",
+    "doc_id": "20784",
+    "offset": 73,
+    "end": 208,
+    "selection_basis": "manual_coordinate"
+  },
+  {
+    "case_id": "1155",
+    "doc_id": "62625",
+    "offset": 2207,
+    "end": 2371,
+    "selection_basis": "manual_coordinate"
+  },
+  {
+    "case_id": "1155",
+    "doc_id": "34133",
+    "offset": 1364,
+    "end": 1576,
+    "selection_basis": "manual_coordinate"
+  }
+]

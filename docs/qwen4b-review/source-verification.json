@@ -1,0 +1,75 @@
+{
+  "atomicity": {
+    "method": "Independent graph components from the last state before each API request; exact observed full-source rows from actual messages; union interval coverage.",
+    "production_context_metadata_read": false,
+    "production_context_selector_called": false,
+    "labels_read": false,
+    "new_api_calls_by_auditor": 0,
+    "records": 9,
+    "actual_api_requests": 37,
+    "component_request_pair_counts": {
+      "fully_visible": 374,
+      "fully_omitted": 46
+    },
+    "multi_member_component_request_pairs": 22,
+    "multi_member_fully_visible": 18,
+    "multi_member_fully_omitted": 4,
+    "all_visible_rows_are_complete_original_observations": true,
+    "all_components_fully_visible_or_fully_omitted": true,
+    "violations": []
+  },
+  "source_checked_by_question": [
+    {
+      "id": "960",
+      "source_spans": 22,
+      "final_citations": 0
+    },
+    {
+      "id": "1035",
+      "source_spans": 10,
+      "final_citations": 0
+    },
+    {
+      "id": "64",
+      "source_spans": 24,
+      "final_citations": 3
+    },
+    {
+      "id": "231",
+      "source_spans": 16,
+      "final_citations": 2
+    },
+    {
+      "id": "390",
+      "source_spans": 26,
+      "final_citations": 0
+    },
+    {
+      "id": "58",
+      "source_spans": 22,
+      "final_citations": 0
+    },
+    {
+      "id": "1155",
+      "source_spans": 10,
+      "final_citations": 0
+    },
+    {
+      "id": "1066",
+      "source_spans": 8,
+      "final_citations": 0
+    },
+    {
+      "id": "788",
+      "source_spans": 26,
+      "final_citations": 4
+    }
+  ],
+  "all_observed_spans_and_final_citations_match_readonly_corpus": true,
+  "source_span_count": 164,
+  "final_citations": 9,
+  "unique_exported_candidate_vectors": 858,
+  "packed_file_bytes": 303020,
+  "packed_vector_value_and_scale_bytes": 223080,
+  "packed_file_sha256": "82366152a5158d263be3ab8f3509af7bb1a8cf5b58cfcd5a817ad3888214ab34"
+}

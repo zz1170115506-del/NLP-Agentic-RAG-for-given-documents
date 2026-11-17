@@ -1,0 +1,2358 @@
+{
+  "design": "offline fixed-pool replay; query vectors FP32 and passages per-row int8; stable BM25 tie order",
+  "scope": "Retrieval rank agreement on the nine live trajectories. No QA prediction or answer score at alternative dimensions.",
+  "input_sha256": {
+    "events.jsonl": "6e7d16228735c6118a935282236a77e0207fca98b2950a0b500587b56df308fc",
+    "retrieval.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "actual_candidate_order_and_query_hash_checked": true,
+  "new_qa_calls": 0,
+  "reference_labels_read": false,
+  "cases": 9,
+  "queries": 52,
+  "unique_passages": 858,
+  "pool_sizes": [
+    32
+  ],
+  "top5_member_denominator": 260,
+  "native_fp32_passage_bytes": 10240,
+  "model": {
+    "model_id": "Qwen/Qwen3-Embedding-4B",
+    "revision": "5cf2132abc99cad020ac570b19d031efec650f2b",
+    "native_dimension": 2560,
+    "snapshot_verified": true,
+    "pooling": "last-nonpadding-token",
+    "device": "mps",
+    "weight_dtype": "float16",
+    "batch_size": 4,
+    "max_length": 2048,
+    "instruction": "Given a factual question, retrieve passages that contain evidence to answer it.",
+    "backend": "transformers",
+    "transformers_version": "4.57.3",
+    "torch_version": "2.9.1"
+  },
+  "dimensions": [
+    {
+      "dimension": 256,
+      "passage_bytes": 260,
+      "relative_to_native_fp32": {
+        "top5_members": 118,
+        "top1_queries": 22,
+        "identical_top5_order_queries": 0,
+        "identical_all_candidate_order_queries": 0
+      },
+      "relative_to_same_dimension_fp32": {
+        "top5_members": 259,
+        "top1_queries": 49,
+        "identical_top5_order_queries": 46,
+        "identical_all_candidate_order_queries": 17
+      }
+    },
+    {
+      "dimension": 512,
+      "passage_bytes": 516,
+      "relative_to_native_fp32": {
+        "top5_members": 163,
+        "top1_queries": 30,
+        "identical_top5_order_queries": 0,
+        "identical_all_candidate_order_queries": 0
+      },
+      "relative_to_same_dimension_fp32": {
+        "top5_members": 259,
+        "top1_queries": 52,
+        "identical_top5_order_queries": 49,
+        "identical_all_candidate_order_queries": 8
+      }
+    },
+    {
+      "dimension": 1024,
+      "passage_bytes": 1028,
+      "relative_to_native_fp32": {
+        "top5_members": 193,
+        "top1_queries": 43,
+        "identical_top5_order_queries": 0,
+        "identical_all_candidate_order_queries": 0
+      },
+      "relative_to_same_dimension_fp32": {
+        "top5_members": 260,
+        "top1_queries": 51,
+        "identical_top5_order_queries": 49,
+        "identical_all_candidate_order_queries": 16
+      }
+    },
+    {
+      "dimension": 2560,
+      "passage_bytes": 2564,
+      "relative_to_native_fp32": {
+        "top5_members": 258,
+        "top1_queries": 52,
+        "identical_top5_order_queries": 50,
+        "identical_all_candidate_order_queries": 20
+      },
+      "relative_to_same_dimension_fp32": {
+        "top5_members": 258,
+        "top1_queries": 52,
+        "identical_top5_order_queries": 50,
+        "identical_all_candidate_order_queries": 20
+      }
+    }
+  ],
+  "real_run_reproduction": {
+    "native-fp32": {
+      "top5_members": 260,
+      "top1_queries": 52,
+      "identical_top5_order_queries": 52,
+      "identical_all_candidate_order_queries": 52
+    },
+    "mrl256-int8": {
+      "top5_members": 260,
+      "top1_queries": 52,
+      "identical_top5_order_queries": 52,
+      "identical_all_candidate_order_queries": 52
+    }
+  },
+  "max_abs_cosine_reproduction_error": {
+    "native-fp32": 0.0,
+    "mrl256-int8": 0.0
+  },
+  "load_and_verify_seconds": 11.805710250002448,
+  "total_seconds": 223.87137037499633,
+  "queries_by_live_execution": [
+    {
+      "case_id": "960",
+      "search_index": 1,
+      "pool": 32,
+      "dimensions": {
+        "256": {
+          "top5_members": 2,
+          "top1_queries": 0,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "512": {
+          "top5_members": 4,
+          "top1_queries": 0,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "1024": {
+          "top5_members": 4,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "2560": {
+          "top5_members": 5,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 1,
+          "identical_all_candidate_order_queries": 1
+        }
+      },
+      "replayed_native_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      },
+      "replayed_256_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      }
+    },
+    {
+      "case_id": "960",
+      "search_index": 2,
+      "pool": 32,
+      "dimensions": {
+        "256": {
+          "top5_members": 3,
+          "top1_queries": 0,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "512": {
+          "top5_members": 2,
+          "top1_queries": 0,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "1024": {
+          "top5_members": 4,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "2560": {
+          "top5_members": 5,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 1,
+          "identical_all_candidate_order_queries": 1
+        }
+      },
+      "replayed_native_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      },
+      "replayed_256_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      }
+    },
+    {
+      "case_id": "960",
+      "search_index": 3,
+      "pool": 32,
+      "dimensions": {
+        "256": {
+          "top5_members": 2,
+          "top1_queries": 0,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "512": {
+          "top5_members": 3,
+          "top1_queries": 0,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "1024": {
+          "top5_members": 3,
+          "top1_queries": 0,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "2560": {
+          "top5_members": 5,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 1,
+          "identical_all_candidate_order_queries": 0
+        }
+      },
+      "replayed_native_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      },
+      "replayed_256_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      }
+    },
+    {
+      "case_id": "960",
+      "search_index": 4,
+      "pool": 32,
+      "dimensions": {
+        "256": {
+          "top5_members": 1,
+          "top1_queries": 0,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "512": {
+          "top5_members": 3,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "1024": {
+          "top5_members": 3,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "2560": {
+          "top5_members": 5,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 1,
+          "identical_all_candidate_order_queries": 0
+        }
+      },
+      "replayed_native_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      },
+      "replayed_256_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      }
+    },
+    {
+      "case_id": "960",
+      "search_index": 5,
+      "pool": 32,
+      "dimensions": {
+        "256": {
+          "top5_members": 2,
+          "top1_queries": 0,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "512": {
+          "top5_members": 2,
+          "top1_queries": 0,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "1024": {
+          "top5_members": 3,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "2560": {
+          "top5_members": 5,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 1,
+          "identical_all_candidate_order_queries": 0
+        }
+      },
+      "replayed_native_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      },
+      "replayed_256_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      }
+    },
+    {
+      "case_id": "960",
+      "search_index": 6,
+      "pool": 32,
+      "dimensions": {
+        "256": {
+          "top5_members": 3,
+          "top1_queries": 0,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "512": {
+          "top5_members": 3,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "1024": {
+          "top5_members": 4,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "2560": {
+          "top5_members": 5,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 1,
+          "identical_all_candidate_order_queries": 0
+        }
+      },
+      "replayed_native_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      },
+      "replayed_256_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      }
+    },
+    {
+      "case_id": "960",
+      "search_index": 7,
+      "pool": 32,
+      "dimensions": {
+        "256": {
+          "top5_members": 2,
+          "top1_queries": 0,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "512": {
+          "top5_members": 3,
+          "top1_queries": 0,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "1024": {
+          "top5_members": 3,
+          "top1_queries": 0,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "2560": {
+          "top5_members": 5,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 1,
+          "identical_all_candidate_order_queries": 0
+        }
+      },
+      "replayed_native_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      },
+      "replayed_256_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      }
+    },
+    {
+      "case_id": "960",
+      "search_index": 8,
+      "pool": 32,
+      "dimensions": {
+        "256": {
+          "top5_members": 1,
+          "top1_queries": 0,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "512": {
+          "top5_members": 3,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "1024": {
+          "top5_members": 3,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "2560": {
+          "top5_members": 5,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 1,
+          "identical_all_candidate_order_queries": 0
+        }
+      },
+      "replayed_native_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      },
+      "replayed_256_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      }
+    },
+    {
+      "case_id": "1035",
+      "search_index": 1,
+      "pool": 32,
+      "dimensions": {
+        "256": {
+          "top5_members": 2,
+          "top1_queries": 0,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "512": {
+          "top5_members": 4,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "1024": {
+          "top5_members": 3,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "2560": {
+          "top5_members": 4,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        }
+      },
+      "replayed_native_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      },
+      "replayed_256_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      }
+    },
+    {
+      "case_id": "1035",
+      "search_index": 2,
+      "pool": 32,
+      "dimensions": {
+        "256": {
+          "top5_members": 3,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "512": {
+          "top5_members": 3,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "1024": {
+          "top5_members": 4,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "2560": {
+          "top5_members": 5,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 1,
+          "identical_all_candidate_order_queries": 1
+        }
+      },
+      "replayed_native_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      },
+      "replayed_256_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      }
+    },
+    {
+      "case_id": "1035",
+      "search_index": 3,
+      "pool": 32,
+      "dimensions": {
+        "256": {
+          "top5_members": 3,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "512": {
+          "top5_members": 3,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "1024": {
+          "top5_members": 4,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "2560": {
+          "top5_members": 5,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 1,
+          "identical_all_candidate_order_queries": 1
+        }
+      },
+      "replayed_native_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      },
+      "replayed_256_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      }
+    },
+    {
+      "case_id": "1035",
+      "search_index": 4,
+      "pool": 32,
+      "dimensions": {
+        "256": {
+          "top5_members": 2,
+          "top1_queries": 0,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "512": {
+          "top5_members": 4,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "1024": {
+          "top5_members": 3,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "2560": {
+          "top5_members": 4,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        }
+      },
+      "replayed_native_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      },
+      "replayed_256_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      }
+    },
+    {
+      "case_id": "64",
+      "search_index": 1,
+      "pool": 32,
+      "dimensions": {
+        "256": {
+          "top5_members": 3,
+          "top1_queries": 0,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "512": {
+          "top5_members": 3,
+          "top1_queries": 0,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "1024": {
+          "top5_members": 3,
+          "top1_queries": 0,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "2560": {
+          "top5_members": 5,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 1,
+          "identical_all_candidate_order_queries": 1
+        }
+      },
+      "replayed_native_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      },
+      "replayed_256_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      }
+    },
+    {
+      "case_id": "64",
+      "search_index": 2,
+      "pool": 32,
+      "dimensions": {
+        "256": {
+          "top5_members": 3,
+          "top1_queries": 0,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "512": {
+          "top5_members": 3,
+          "top1_queries": 0,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "1024": {
+          "top5_members": 3,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "2560": {
+          "top5_members": 5,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 1,
+          "identical_all_candidate_order_queries": 0
+        }
+      },
+      "replayed_native_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      },
+      "replayed_256_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      }
+    },
+    {
+      "case_id": "64",
+      "search_index": 3,
+      "pool": 32,
+      "dimensions": {
+        "256": {
+          "top5_members": 2,
+          "top1_queries": 0,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "512": {
+          "top5_members": 2,
+          "top1_queries": 0,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "1024": {
+          "top5_members": 2,
+          "top1_queries": 0,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "2560": {
+          "top5_members": 5,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 1,
+          "identical_all_candidate_order_queries": 1
+        }
+      },
+      "replayed_native_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      },
+      "replayed_256_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      }
+    },
+    {
+      "case_id": "64",
+      "search_index": 4,
+      "pool": 32,
+      "dimensions": {
+        "256": {
+          "top5_members": 3,
+          "top1_queries": 0,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "512": {
+          "top5_members": 3,
+          "top1_queries": 0,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "1024": {
+          "top5_members": 4,
+          "top1_queries": 0,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "2560": {
+          "top5_members": 5,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 1,
+          "identical_all_candidate_order_queries": 0
+        }
+      },
+      "replayed_native_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      },
+      "replayed_256_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      }
+    },
+    {
+      "case_id": "64",
+      "search_index": 5,
+      "pool": 32,
+      "dimensions": {
+        "256": {
+          "top5_members": 2,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "512": {
+          "top5_members": 4,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "1024": {
+          "top5_members": 5,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "2560": {
+          "top5_members": 5,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 1,
+          "identical_all_candidate_order_queries": 0
+        }
+      },
+      "replayed_native_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      },
+      "replayed_256_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      }
+    },
+    {
+      "case_id": "231",
+      "search_index": 1,
+      "pool": 32,
+      "dimensions": {
+        "256": {
+          "top5_members": 2,
+          "top1_queries": 0,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "512": {
+          "top5_members": 3,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "1024": {
+          "top5_members": 3,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "2560": {
+          "top5_members": 5,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 1,
+          "identical_all_candidate_order_queries": 1
+        }
+      },
+      "replayed_native_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      },
+      "replayed_256_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      }
+    },
+    {
+      "case_id": "231",
+      "search_index": 2,
+      "pool": 32,
+      "dimensions": {
+        "256": {
+          "top5_members": 2,
+          "top1_queries": 0,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "512": {
+          "top5_members": 4,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "1024": {
+          "top5_members": 5,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "2560": {
+          "top5_members": 5,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 1,
+          "identical_all_candidate_order_queries": 1
+        }
+      },
+      "replayed_native_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      },
+      "replayed_256_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      }
+    },
+    {
+      "case_id": "231",
+      "search_index": 3,
+      "pool": 32,
+      "dimensions": {
+        "256": {
+          "top5_members": 2,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "512": {
+          "top5_members": 5,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "1024": {
+          "top5_members": 4,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "2560": {
+          "top5_members": 5,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 1,
+          "identical_all_candidate_order_queries": 0
+        }
+      },
+      "replayed_native_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      },
+      "replayed_256_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      }
+    },
+    {
+      "case_id": "231",
+      "search_index": 4,
+      "pool": 32,
+      "dimensions": {
+        "256": {
+          "top5_members": 3,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "512": {
+          "top5_members": 3,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "1024": {
+          "top5_members": 5,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "2560": {
+          "top5_members": 5,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 1,
+          "identical_all_candidate_order_queries": 1
+        }
+      },
+      "replayed_native_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      },
+      "replayed_256_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      }
+    },
+    {
+      "case_id": "231",
+      "search_index": 5,
+      "pool": 32,
+      "dimensions": {
+        "256": {
+          "top5_members": 2,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "512": {
+          "top5_members": 5,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "1024": {
+          "top5_members": 4,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "2560": {
+          "top5_members": 5,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 1,
+          "identical_all_candidate_order_queries": 0
+        }
+      },
+      "replayed_native_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      },
+      "replayed_256_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      }
+    },
+    {
+      "case_id": "231",
+      "search_index": 6,
+      "pool": 32,
+      "dimensions": {
+        "256": {
+          "top5_members": 3,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "512": {
+          "top5_members": 3,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "1024": {
+          "top5_members": 5,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "2560": {
+          "top5_members": 5,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 1,
+          "identical_all_candidate_order_queries": 1
+        }
+      },
+      "replayed_native_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      },
+      "replayed_256_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      }
+    },
+    {
+      "case_id": "390",
+      "search_index": 1,
+      "pool": 32,
+      "dimensions": {
+        "256": {
+          "top5_members": 2,
+          "top1_queries": 0,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "512": {
+          "top5_members": 3,
+          "top1_queries": 0,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "1024": {
+          "top5_members": 4,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "2560": {
+          "top5_members": 5,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 1,
+          "identical_all_candidate_order_queries": 1
+        }
+      },
+      "replayed_native_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      },
+      "replayed_256_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      }
+    },
+    {
+      "case_id": "390",
+      "search_index": 2,
+      "pool": 32,
+      "dimensions": {
+        "256": {
+          "top5_members": 3,
+          "top1_queries": 0,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "512": {
+          "top5_members": 3,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "1024": {
+          "top5_members": 5,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "2560": {
+          "top5_members": 5,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 1,
+          "identical_all_candidate_order_queries": 0
+        }
+      },
+      "replayed_native_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      },
+      "replayed_256_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      }
+    },
+    {
+      "case_id": "390",
+      "search_index": 3,
+      "pool": 32,
+      "dimensions": {
+        "256": {
+          "top5_members": 3,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "512": {
+          "top5_members": 4,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "1024": {
+          "top5_members": 4,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "2560": {
+          "top5_members": 5,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 1,
+          "identical_all_candidate_order_queries": 0
+        }
+      },
+      "replayed_native_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      },
+      "replayed_256_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      }
+    },
+    {
+      "case_id": "390",
+      "search_index": 4,
+      "pool": 32,
+      "dimensions": {
+        "256": {
+          "top5_members": 1,
+          "top1_queries": 0,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "512": {
+          "top5_members": 1,
+          "top1_queries": 0,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "1024": {
+          "top5_members": 3,
+          "top1_queries": 0,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "2560": {
+          "top5_members": 5,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 1,
+          "identical_all_candidate_order_queries": 0
+        }
+      },
+      "replayed_native_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      },
+      "replayed_256_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      }
+    },
+    {
+      "case_id": "390",
+      "search_index": 5,
+      "pool": 32,
+      "dimensions": {
+        "256": {
+          "top5_members": 1,
+          "top1_queries": 0,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "512": {
+          "top5_members": 1,
+          "top1_queries": 0,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "1024": {
+          "top5_members": 5,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "2560": {
+          "top5_members": 5,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 1,
+          "identical_all_candidate_order_queries": 0
+        }
+      },
+      "replayed_native_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      },
+      "replayed_256_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      }
+    },
+    {
+      "case_id": "390",
+      "search_index": 6,
+      "pool": 32,
+      "dimensions": {
+        "256": {
+          "top5_members": 3,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "512": {
+          "top5_members": 4,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "1024": {
+          "top5_members": 4,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "2560": {
+          "top5_members": 5,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 1,
+          "identical_all_candidate_order_queries": 0
+        }
+      },
+      "replayed_native_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      },
+      "replayed_256_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      }
+    },
+    {
+      "case_id": "390",
+      "search_index": 7,
+      "pool": 32,
+      "dimensions": {
+        "256": {
+          "top5_members": 2,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "512": {
+          "top5_members": 2,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "1024": {
+          "top5_members": 4,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "2560": {
+          "top5_members": 5,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 1,
+          "identical_all_candidate_order_queries": 1
+        }
+      },
+      "replayed_native_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      },
+      "replayed_256_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      }
+    },
+    {
+      "case_id": "390",
+      "search_index": 8,
+      "pool": 32,
+      "dimensions": {
+        "256": {
+          "top5_members": 2,
+          "top1_queries": 0,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "512": {
+          "top5_members": 3,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "1024": {
+          "top5_members": 4,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "2560": {
+          "top5_members": 5,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 1,
+          "identical_all_candidate_order_queries": 0
+        }
+      },
+      "replayed_native_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      },
+      "replayed_256_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      }
+    },
+    {
+      "case_id": "58",
+      "search_index": 1,
+      "pool": 32,
+      "dimensions": {
+        "256": {
+          "top5_members": 2,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "512": {
+          "top5_members": 2,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "1024": {
+          "top5_members": 4,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "2560": {
+          "top5_members": 5,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 1,
+          "identical_all_candidate_order_queries": 0
+        }
+      },
+      "replayed_native_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      },
+      "replayed_256_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      }
+    },
+    {
+      "case_id": "58",
+      "search_index": 2,
+      "pool": 32,
+      "dimensions": {
+        "256": {
+          "top5_members": 1,
+          "top1_queries": 0,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "512": {
+          "top5_members": 1,
+          "top1_queries": 0,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "1024": {
+          "top5_members": 4,
+          "top1_queries": 0,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "2560": {
+          "top5_members": 5,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 1,
+          "identical_all_candidate_order_queries": 0
+        }
+      },
+      "replayed_native_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      },
+      "replayed_256_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      }
+    },
+    {
+      "case_id": "58",
+      "search_index": 3,
+      "pool": 32,
+      "dimensions": {
+        "256": {
+          "top5_members": 1,
+          "top1_queries": 0,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "512": {
+          "top5_members": 3,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "1024": {
+          "top5_members": 5,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "2560": {
+          "top5_members": 5,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 1,
+          "identical_all_candidate_order_queries": 0
+        }
+      },
+      "replayed_native_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      },
+      "replayed_256_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      }
+    },
+    {
+      "case_id": "58",
+      "search_index": 4,
+      "pool": 32,
+      "dimensions": {
+        "256": {
+          "top5_members": 4,
+          "top1_queries": 0,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "512": {
+          "top5_members": 3,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "1024": {
+          "top5_members": 4,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "2560": {
+          "top5_members": 5,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 1,
+          "identical_all_candidate_order_queries": 0
+        }
+      },
+      "replayed_native_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      },
+      "replayed_256_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      }
+    },
+    {
+      "case_id": "58",
+      "search_index": 5,
+      "pool": 32,
+      "dimensions": {
+        "256": {
+          "top5_members": 2,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "512": {
+          "top5_members": 2,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "1024": {
+          "top5_members": 4,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "2560": {
+          "top5_members": 5,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 1,
+          "identical_all_candidate_order_queries": 0
+        }
+      },
+      "replayed_native_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      },
+      "replayed_256_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      }
+    },
+    {
+      "case_id": "58",
+      "search_index": 6,
+      "pool": 32,
+      "dimensions": {
+        "256": {
+          "top5_members": 2,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "512": {
+          "top5_members": 4,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "1024": {
+          "top5_members": 3,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "2560": {
+          "top5_members": 5,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 1,
+          "identical_all_candidate_order_queries": 1
+        }
+      },
+      "replayed_native_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      },
+      "replayed_256_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      }
+    },
+    {
+      "case_id": "1155",
+      "search_index": 1,
+      "pool": 32,
+      "dimensions": {
+        "256": {
+          "top5_members": 3,
+          "top1_queries": 0,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "512": {
+          "top5_members": 4,
+          "top1_queries": 0,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "1024": {
+          "top5_members": 5,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "2560": {
+          "top5_members": 5,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 1,
+          "identical_all_candidate_order_queries": 0
+        }
+      },
+      "replayed_native_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      },
+      "replayed_256_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      }
+    },
+    {
+      "case_id": "1155",
+      "search_index": 2,
+      "pool": 32,
+      "dimensions": {
+        "256": {
+          "top5_members": 3,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "512": {
+          "top5_members": 3,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "1024": {
+          "top5_members": 2,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "2560": {
+          "top5_members": 5,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 1,
+          "identical_all_candidate_order_queries": 0
+        }
+      },
+      "replayed_native_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      },
+      "replayed_256_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      }
+    },
+    {
+      "case_id": "1155",
+      "search_index": 3,
+      "pool": 32,
+      "dimensions": {
+        "256": {
+          "top5_members": 3,
+          "top1_queries": 0,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "512": {
+          "top5_members": 4,
+          "top1_queries": 0,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "1024": {
+          "top5_members": 5,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "2560": {
+          "top5_members": 5,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 1,
+          "identical_all_candidate_order_queries": 0
+        }
+      },
+      "replayed_native_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      },
+      "replayed_256_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      }
+    },
+    {
+      "case_id": "1155",
+      "search_index": 4,
+      "pool": 32,
+      "dimensions": {
+        "256": {
+          "top5_members": 3,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "512": {
+          "top5_members": 3,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "1024": {
+          "top5_members": 2,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "2560": {
+          "top5_members": 5,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 1,
+          "identical_all_candidate_order_queries": 0
+        }
+      },
+      "replayed_native_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      },
+      "replayed_256_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      }
+    },
+    {
+      "case_id": "1066",
+      "search_index": 1,
+      "pool": 32,
+      "dimensions": {
+        "256": {
+          "top5_members": 1,
+          "top1_queries": 0,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "512": {
+          "top5_members": 3,
+          "top1_queries": 0,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "1024": {
+          "top5_members": 2,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "2560": {
+          "top5_members": 5,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 1,
+          "identical_all_candidate_order_queries": 1
+        }
+      },
+      "replayed_native_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      },
+      "replayed_256_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      }
+    },
+    {
+      "case_id": "1066",
+      "search_index": 2,
+      "pool": 32,
+      "dimensions": {
+        "256": {
+          "top5_members": 2,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "512": {
+          "top5_members": 3,
+          "top1_queries": 0,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "1024": {
+          "top5_members": 4,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "2560": {
+          "top5_members": 5,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 1,
+          "identical_all_candidate_order_queries": 0
+        }
+      },
+      "replayed_native_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      },
+      "replayed_256_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      }
+    },
+    {
+      "case_id": "1066",
+      "search_index": 3,
+      "pool": 32,
+      "dimensions": {
+        "256": {
+          "top5_members": 1,
+          "top1_queries": 0,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "512": {
+          "top5_members": 3,
+          "top1_queries": 0,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "1024": {
+          "top5_members": 2,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "2560": {
+          "top5_members": 5,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 1,
+          "identical_all_candidate_order_queries": 1
+        }
+      },
+      "replayed_native_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      },
+      "replayed_256_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      }
+    },
+    {
+      "case_id": "1066",
+      "search_index": 4,
+      "pool": 32,
+      "dimensions": {
+        "256": {
+          "top5_members": 2,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "512": {
+          "top5_members": 3,
+          "top1_queries": 0,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "1024": {
+          "top5_members": 4,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "2560": {
+          "top5_members": 5,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 1,
+          "identical_all_candidate_order_queries": 0
+        }
+      },
+      "replayed_native_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      },
+      "replayed_256_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      }
+    },
+    {
+      "case_id": "788",
+      "search_index": 1,
+      "pool": 32,
+      "dimensions": {
+        "256": {
+          "top5_members": 3,
+          "top1_queries": 0,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "512": {
+          "top5_members": 3,
+          "top1_queries": 0,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "1024": {
+          "top5_members": 4,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "2560": {
+          "top5_members": 5,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 1,
+          "identical_all_candidate_order_queries": 1
+        }
+      },
+      "replayed_native_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      },
+      "replayed_256_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      }
+    },
+    {
+      "case_id": "788",
+      "search_index": 2,
+      "pool": 32,
+      "dimensions": {
+        "256": {
+          "top5_members": 2,
+          "top1_queries": 0,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "512": {
+          "top5_members": 4,
+          "top1_queries": 0,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "1024": {
+          "top5_members": 4,
+          "top1_queries": 0,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "2560": {
+          "top5_members": 5,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 1,
+          "identical_all_candidate_order_queries": 0
+        }
+      },
+      "replayed_native_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      },
+      "replayed_256_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      }
+    },
+    {
+      "case_id": "788",
+      "search_index": 3,
+      "pool": 32,
+      "dimensions": {
+        "256": {
+          "top5_members": 3,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "512": {
+          "top5_members": 4,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "1024": {
+          "top5_members": 3,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "2560": {
+          "top5_members": 5,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 1,
+          "identical_all_candidate_order_queries": 1
+        }
+      },
+      "replayed_native_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      },
+      "replayed_256_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      }
+    },
+    {
+      "case_id": "788",
+      "search_index": 4,
+      "pool": 32,
+      "dimensions": {
+        "256": {
+          "top5_members": 3,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "512": {
+          "top5_members": 4,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "1024": {
+          "top5_members": 3,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "2560": {
+          "top5_members": 5,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 1,
+          "identical_all_candidate_order_queries": 0
+        }
+      },
+      "replayed_native_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      },
+      "replayed_256_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      }
+    },
+    {
+      "case_id": "788",
+      "search_index": 5,
+      "pool": 32,
+      "dimensions": {
+        "256": {
+          "top5_members": 3,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "512": {
+          "top5_members": 5,
+          "top1_queries": 0,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "1024": {
+          "top5_members": 5,
+          "top1_queries": 0,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "2560": {
+          "top5_members": 5,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 1,
+          "identical_all_candidate_order_queries": 1
+        }
+      },
+      "replayed_native_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      },
+      "replayed_256_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      }
+    },
+    {
+      "case_id": "788",
+      "search_index": 6,
+      "pool": 32,
+      "dimensions": {
+        "256": {
+          "top5_members": 3,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "512": {
+          "top5_members": 3,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "1024": {
+          "top5_members": 4,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "2560": {
+          "top5_members": 5,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 1,
+          "identical_all_candidate_order_queries": 1
+        }
+      },
+      "replayed_native_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      },
+      "replayed_256_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      }
+    },
+    {
+      "case_id": "788",
+      "search_index": 7,
+      "pool": 32,
+      "dimensions": {
+        "256": {
+          "top5_members": 1,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "512": {
+          "top5_members": 3,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "1024": {
+          "top5_members": 3,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 0,
+          "identical_all_candidate_order_queries": 0
+        },
+        "2560": {
+          "top5_members": 5,
+          "top1_queries": 1,
+          "identical_top5_order_queries": 1,
+          "identical_all_candidate_order_queries": 1
+        }
+      },
+      "replayed_native_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      },
+      "replayed_256_vs_live": {
+        "top5_members": 5,
+        "top1_queries": 1,
+        "identical_top5_order_queries": 1,
+        "identical_all_candidate_order_queries": 1
+      }
+    }
+  ]
+}

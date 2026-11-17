@@ -1,0 +1,67 @@
+{
+  "scope": "synthetic_semantic_control_no_qa_api",
+  "identity": {
+    "model_id": "Qwen/Qwen3-Embedding-4B",
+    "revision": "5cf2132abc99cad020ac570b19d031efec650f2b",
+    "native_dimension": 2560,
+    "snapshot_verified": true,
+    "pooling": "last-nonpadding-token",
+    "device": "mps",
+    "weight_dtype": "float16",
+    "batch_size": 4,
+    "max_length": 2048,
+    "instruction": "Given a factual question, retrieve passages that contain evidence",
+    "backend": "transformers",
+    "transformers_version": "4.57.3",
+    "torch_version": "2.9.1"
+  },
+  "load_and_snapshot_sha_seconds": 18.737776875001146,
+  "embedding_seconds": 2.0839575410063844,
+  "queries": [
+    "Which instrument measures atmospheric pressure?",
+    "Why do the seas have tides?"
+  ],
+  "passages": [
+    "A barometer measures atmospheric pressure.",
+    "The Moon's gravity produces ocean tides.",
+    "Library books are sorted by classification and author."
+  ],
+  "native_cosine": [
+    [
+      0.7952145338058472,
+      0.22026346623897552,
+      0.2751648724079132
+    ],
+    [
+      0.24982449412345886,
+      0.6699120402336121,
+      0.2907988131046295
+    ]
+  ],
+  "compressed_cosine": [
+    [
+      0.7884427309036255,
+      0.35589492321014404,
+      0.28277909755706787
+    ],
+    [
+      0.2648361325263977,
+      0.7596657872200012,
+      0.29901206493377686
+    ]
+  ],
+  "expected_top1": [
+    0,
+    1
+  ],
+  "native_top1": [
+    0,
+    1
+  ],
+  "compressed_top1": [
+    0,
+    1
+  ],
+  "document_float32_payload_bytes": 30720,
+  "document_256int8_including_scales_bytes": 780
+}
