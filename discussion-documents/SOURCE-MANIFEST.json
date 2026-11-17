@@ -1,0 +1,231 @@
+{
+  "collected_on": "2026-11-17",
+  "timezone": "Asia/Hong_Kong",
+  "note": "Historical task documents and source-bound public reports for Roman. Current priorities are in ROMAN-GUIDE.md.",
+  "files": [
+    {
+      "path": "astra-prompts/archive/task_NLP-Agentic-RAG-for-given-documents_完整功能基础骨架_prompt_1.md",
+      "kind": "local-prompt",
+      "source": "local project prompts/archive/task_NLP-Agentic-RAG-for-given-documents_完整功能基础骨架_prompt_1.md",
+      "redacted_credentials": 0,
+      "sha256": "ab51d6c73c4bb09ff694c92bc1bc13166bd242bea84a286a972060eb941f4cdd"
+    },
+    {
+      "path": "astra-prompts/task_NLP-Agentic-RAG-for-given-documents_Qwen3-Embedding-4B向量压缩与九题复测_prompt_1.md",
+      "kind": "local-prompt",
+      "source": "local project prompts/task_NLP-Agentic-RAG-for-given-documents_Qwen3-Embedding-4B向量压缩与九题复测_prompt_1.md",
+      "redacted_credentials": 0,
+      "sha256": "abd3ba65af358a4a41cd31042383decbed97aaa894f6edbae6b3663e86aae685"
+    },
+    {
+      "path": "astra-prompts/task_NLP-Agentic-RAG-for-given-documents_Roman问题复盘资料移交_prompt_1.md",
+      "kind": "local-prompt",
+      "source": "local project prompts/task_NLP-Agentic-RAG-for-given-documents_Roman问题复盘资料移交_prompt_1.md",
+      "redacted_credentials": 0,
+      "sha256": "b174ae31de9f708155fe4313285b3cd959b3d049d49a7f398bf587a481130193"
+    },
+    {
+      "path": "astra-prompts/task_NLP-Agentic-RAG-for-given-documents_三类弃答根因自主修复_prompt_1.md",
+      "kind": "local-prompt",
+      "source": "local project prompts/task_NLP-Agentic-RAG-for-given-documents_三类弃答根因自主修复_prompt_1.md",
+      "redacted_credentials": 0,
+      "sha256": "d558191ccaf0c182b2b39725711ae9a6ac173a541b2eded5c6430290ff1c8324"
+    },
+    {
+      "path": "astra-prompts/task_NLP-Agentic-RAG-for-given-documents_全项目程序验收与缺口补齐_prompt_1.md",
+      "kind": "local-prompt",
+      "source": "local project prompts/task_NLP-Agentic-RAG-for-given-documents_全项目程序验收与缺口补齐_prompt_1.md",
+      "redacted_credentials": 0,
+      "sha256": "5f6f440ce1b7cafc9926a0a9a9744dbb102b92f7d60b35e76481b013cf98e60c",
+      "formatting": "one trailing newline"
+    },
+    {
+      "path": "astra-prompts/task_NLP-Agentic-RAG-for-given-documents_全项目程序验收与缺口补齐_prompt_2.md",
+      "kind": "local-prompt",
+      "source": "local project prompts/task_NLP-Agentic-RAG-for-given-documents_全项目程序验收与缺口补齐_prompt_2.md",
+      "redacted_credentials": 1,
+      "sha256": "4f14af5f035647e6f5e79a6c18cb879e840b5aa31973bda5f822372e55db2c25"
+    },
+    {
+      "path": "astra-prompts/task_NLP-Agentic-RAG-for-given-documents_原版DeepSeek-V4-Flash-API查找_prompt_1.md",
+      "kind": "local-prompt",
+      "source": "local project prompts/task_NLP-Agentic-RAG-for-given-documents_原版DeepSeek-V4-Flash-API查找_prompt_1.md",
+      "redacted_credentials": 0,
+      "sha256": "fd6aea9a507ec60e33154dc3486bdcecca9295f7651aa1637d2360a44ebf9550"
+    },
+    {
+      "path": "astra-prompts/task_NLP-Agentic-RAG-for-given-documents_本地重排与真实语料评估_prompt_1.md",
+      "kind": "local-prompt",
+      "source": "local project prompts/task_NLP-Agentic-RAG-for-given-documents_本地重排与真实语料评估_prompt_1.md",
+      "redacted_credentials": 0,
+      "sha256": "c92c65f54cd1d8503cda4a2435792be411e76b04f939dae04d780458e6be52f4"
+    },
+    {
+      "path": "astra-prompts/task_NLP-Agentic-RAG-for-given-documents_本地重排与真实语料评估_prompt_2.md",
+      "kind": "local-prompt",
+      "source": "local project prompts/task_NLP-Agentic-RAG-for-given-documents_本地重排与真实语料评估_prompt_2.md",
+      "redacted_credentials": 0,
+      "sha256": "1c64b3becd6830e80156ba7ca2f313e08d8fe83ca4daa1020e3f162661f0980d"
+    },
+    {
+      "path": "astra-prompts/task_NLP-Agentic-RAG-for-given-documents_验证集三类弃答逐题复盘_prompt_1.md",
+      "kind": "local-prompt",
+      "source": "local project prompts/task_NLP-Agentic-RAG-for-given-documents_验证集三类弃答逐题复盘_prompt_1.md",
+      "redacted_credentials": 0,
+      "sha256": "4fdc2711c32bdf1100e76025572c9bd735de9fcd720dfda521f8fa2f1aaf1137"
+    },
+    {
+      "path": "astra-records/task_NLP-Agentic-RAG-for-given-documents_全项目程序验收与缺口补齐_prompt_1return.md",
+      "kind": "astra-public-report",
+      "source": "https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/blob/b55b8a6c5c8d3b9ad7f573c7c5ad22a415041869/docs/task_NLP-Agentic-RAG-for-given-documents_%E5%85%A8%E9%A1%B9%E7%9B%AE%E7%A8%8B%E5%BA%8F%E9%AA%8C%E6%94%B6%E4%B8%8E%E7%BC%BA%E5%8F%A3%E8%A1%A5%E9%BD%90_prompt_1return.md",
+      "source_commit": "b55b8a6c5c8d3b9ad7f573c7c5ad22a415041869",
+      "redacted_credentials": 0,
+      "relative_links": "resolved to source commit",
+      "sha256": "80c33f1b26922196be7ad2a3d2eb08253d5943fbaff1a950e8169815d8b36021"
+    },
+    {
+      "path": "astra-records/task_NLP-Agentic-RAG-for-given-documents_全项目程序验收与缺口补齐_prompt_2return.md",
+      "kind": "astra-public-report",
+      "source": "https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/blob/b55b8a6c5c8d3b9ad7f573c7c5ad22a415041869/docs/task_NLP-Agentic-RAG-for-given-documents_%E5%85%A8%E9%A1%B9%E7%9B%AE%E7%A8%8B%E5%BA%8F%E9%AA%8C%E6%94%B6%E4%B8%8E%E7%BC%BA%E5%8F%A3%E8%A1%A5%E9%BD%90_prompt_2return.md",
+      "source_commit": "b55b8a6c5c8d3b9ad7f573c7c5ad22a415041869",
+      "redacted_credentials": 0,
+      "relative_links": "resolved to source commit",
+      "sha256": "e70ed86d972aaaeecdd83137a3b40534ba71692bbdef14eafa85977baa5bdbc1"
+    },
+    {
+      "path": "astra-records/acceptance_evidence/validation-stage-analysis.md",
+      "kind": "astra-public-report",
+      "source": "https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/blob/b55b8a6c5c8d3b9ad7f573c7c5ad22a415041869/docs/acceptance_evidence/validation-stage-analysis.md",
+      "source_commit": "b55b8a6c5c8d3b9ad7f573c7c5ad22a415041869",
+      "redacted_credentials": 0,
+      "relative_links": "resolved to source commit",
+      "sha256": "14464da4dfcd290026c4b502769db723ef8f2f10597c672b76f2228ca64c6c64"
+    },
+    {
+      "path": "astra-records/handoff/README.md",
+      "kind": "astra-public-report",
+      "source": "https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/blob/b55b8a6c5c8d3b9ad7f573c7c5ad22a415041869/docs/handoff/README.md",
+      "source_commit": "b55b8a6c5c8d3b9ad7f573c7c5ad22a415041869",
+      "redacted_credentials": 0,
+      "relative_links": "resolved to source commit",
+      "sha256": "2dece1e9c3e63e56e88521064cc87954c35d69c261265d070a76e43820c300df"
+    },
+    {
+      "path": "astra-records/task_NLP-Agentic-RAG-for-given-documents_验证集三类弃答逐题复盘_prompt_1return.md",
+      "kind": "astra-public-report",
+      "source": "https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/blob/e90397bb2e6af7657077c8fcee9189370a767a1f/docs/task_NLP-Agentic-RAG-for-given-documents_%E9%AA%8C%E8%AF%81%E9%9B%86%E4%B8%89%E7%B1%BB%E5%BC%83%E7%AD%94%E9%80%90%E9%A2%98%E5%A4%8D%E7%9B%98_prompt_1return.md",
+      "source_commit": "e90397bb2e6af7657077c8fcee9189370a767a1f",
+      "redacted_credentials": 0,
+      "relative_links": "resolved to source commit",
+      "sha256": "c6220053697d88ed6b42d418465d4db8caeb8010b8231a4b05f34ae195c54022"
+    },
+    {
+      "path": "astra-records/validation-review/HANDOFF.md",
+      "kind": "astra-public-report",
+      "source": "https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/blob/e90397bb2e6af7657077c8fcee9189370a767a1f/docs/validation-review/HANDOFF.md",
+      "source_commit": "e90397bb2e6af7657077c8fcee9189370a767a1f",
+      "redacted_credentials": 0,
+      "relative_links": "resolved to source commit",
+      "sha256": "33fca846d895786a238c58541d75563bd5edb348b7e6689e2927f14fbaa36c1a"
+    },
+    {
+      "path": "astra-records/evidence-retention/acceptance-report.md",
+      "kind": "astra-public-report",
+      "source": "https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/blob/b37c8fccae571ffa082d62e30a85b0ebd3b54b48/docs/evidence-retention/acceptance-report.md",
+      "source_commit": "b37c8fccae571ffa082d62e30a85b0ebd3b54b48",
+      "redacted_credentials": 0,
+      "relative_links": "resolved to source commit",
+      "sha256": "b1e68b62d106dea1e0ba1bf727f38091fce10fa97b96234b1254a50fc8b6868d"
+    },
+    {
+      "path": "astra-records/evidence-retention/v2-semantic-review-public.md",
+      "kind": "astra-public-report",
+      "source": "https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/blob/b37c8fccae571ffa082d62e30a85b0ebd3b54b48/docs/evidence-retention/v2-semantic-review-public.md",
+      "source_commit": "b37c8fccae571ffa082d62e30a85b0ebd3b54b48",
+      "redacted_credentials": 0,
+      "relative_links": "resolved to source commit",
+      "sha256": "f104d165124309503e5cd31291fb34a2f53208c47abdc831380ead3a8997dab7"
+    },
+    {
+      "path": "astra-records/evidence-retention/v2/independent-audit-public.md",
+      "kind": "astra-public-report",
+      "source": "https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/blob/b37c8fccae571ffa082d62e30a85b0ebd3b54b48/docs/evidence-retention/v2/independent-audit-public.md",
+      "source_commit": "b37c8fccae571ffa082d62e30a85b0ebd3b54b48",
+      "redacted_credentials": 0,
+      "relative_links": "resolved to source commit",
+      "sha256": "26c40694e46ff485055970ce30499b668cfa5b10750df20f816c506f69b1a29b"
+    },
+    {
+      "path": "astra-records/evidence-retention/HANDOFF.md",
+      "kind": "astra-public-report",
+      "source": "https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/blob/b37c8fccae571ffa082d62e30a85b0ebd3b54b48/docs/evidence-retention/HANDOFF.md",
+      "source_commit": "b37c8fccae571ffa082d62e30a85b0ebd3b54b48",
+      "redacted_credentials": 0,
+      "relative_links": "resolved to source commit",
+      "sha256": "363fd321443f0506017641a46c4a7995d28cb0516e9ee9860b857865c5b1bce7"
+    },
+    {
+      "path": "astra-records/task_NLP-Agentic-RAG-for-given-documents_Qwen3-Embedding-4B向量压缩与九题复测_prompt_1return.md",
+      "kind": "astra-public-report",
+      "source": "https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/blob/d2ad11129cca59217b4593aae2c5b37103451ab6/docs/task_NLP-Agentic-RAG-for-given-documents_Qwen3-Embedding-4B%E5%90%91%E9%87%8F%E5%8E%8B%E7%BC%A9%E4%B8%8E%E4%B9%9D%E9%A2%98%E5%A4%8D%E6%B5%8B_prompt_1return.md",
+      "source_commit": "d2ad11129cca59217b4593aae2c5b37103451ab6",
+      "redacted_credentials": 0,
+      "relative_links": "resolved to source commit",
+      "sha256": "0b907e4174b74268b02bbdba80e734bf3891c89a3a9e206b5d0670556be979f0"
+    },
+    {
+      "path": "astra-records/qwen4b-review/semantic-review.md",
+      "kind": "astra-public-report",
+      "source": "https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/blob/d2ad11129cca59217b4593aae2c5b37103451ab6/docs/qwen4b-review/semantic-review.md",
+      "source_commit": "d2ad11129cca59217b4593aae2c5b37103451ab6",
+      "redacted_credentials": 0,
+      "relative_links": "resolved to source commit",
+      "sha256": "d7fcd598cee15a535ac7dc3ee7e73014ba496ad9d49aeb89554180c31401d676"
+    },
+    {
+      "path": "astra-records/qwen4b-review/REPRODUCE.md",
+      "kind": "astra-public-report",
+      "source": "https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/blob/d2ad11129cca59217b4593aae2c5b37103451ab6/docs/qwen4b-review/REPRODUCE.md",
+      "source_commit": "d2ad11129cca59217b4593aae2c5b37103451ab6",
+      "redacted_credentials": 0,
+      "relative_links": "resolved to source commit",
+      "sha256": "785d47173bd49947bf5036b23f5194856430df29ec4c3cf975e7159681e04231"
+    },
+    {
+      "path": "astra-records/qwen4b-2560-review/task_NLP-Agentic-RAG-for-given-documents_Qwen3-Embedding-4B向量压缩与九题复测_prompt_1return.md",
+      "kind": "astra-public-report",
+      "source": "https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/blob/0eee841fa128cef160f7fde8f8ab483ff28b6428/docs/qwen4b-2560-review/task_NLP-Agentic-RAG-for-given-documents_Qwen3-Embedding-4B%E5%90%91%E9%87%8F%E5%8E%8B%E7%BC%A9%E4%B8%8E%E4%B9%9D%E9%A2%98%E5%A4%8D%E6%B5%8B_prompt_1return.md",
+      "source_commit": "0eee841fa128cef160f7fde8f8ab483ff28b6428",
+      "redacted_credentials": 0,
+      "relative_links": "resolved to source commit",
+      "sha256": "04e6ce6439cbc17a029ca1c6ab9f655a652a81e64c5d5d1167abe9d6a5cf2bd9"
+    },
+    {
+      "path": "astra-records/qwen4b-2560-review/comparison.md",
+      "kind": "astra-public-report",
+      "source": "https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/blob/0eee841fa128cef160f7fde8f8ab483ff28b6428/docs/qwen4b-2560-review/comparison.md",
+      "source_commit": "0eee841fa128cef160f7fde8f8ab483ff28b6428",
+      "redacted_credentials": 0,
+      "relative_links": "resolved to source commit",
+      "sha256": "f7ff62e2d56743e3bd9229af213164825dc9fb777bc811a46734cbb3c0a8cb75"
+    },
+    {
+      "path": "astra-records/qwen4b-2560-review/evidence-review.md",
+      "kind": "astra-public-report",
+      "source": "https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/blob/0eee841fa128cef160f7fde8f8ab483ff28b6428/docs/qwen4b-2560-review/evidence-review.md",
+      "source_commit": "0eee841fa128cef160f7fde8f8ab483ff28b6428",
+      "redacted_credentials": 0,
+      "relative_links": "resolved to source commit",
+      "sha256": "81dfbaad42ec304d47507606fbd203028bb028e7de57fefc87d06c8a7698ddfa"
+    },
+    {
+      "path": "astra-records/qwen4b-2560-review/REPRODUCE.md",
+      "kind": "astra-public-report",
+      "source": "https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/blob/0eee841fa128cef160f7fde8f8ab483ff28b6428/docs/qwen4b-2560-review/REPRODUCE.md",
+      "source_commit": "0eee841fa128cef160f7fde8f8ab483ff28b6428",
+      "redacted_credentials": 0,
+      "relative_links": "resolved to source commit",
+      "sha256": "f15dde43d77b95fb7158b7c41b7db52dfe1a7aeea841e940e150c02d66982b67"
+    }
+  ]
+}
