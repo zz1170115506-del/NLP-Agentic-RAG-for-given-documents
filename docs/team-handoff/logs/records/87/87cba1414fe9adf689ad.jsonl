@@ -1,0 +1,16 @@
+{"record_sha256":"87cba1414fe9adf689ad06d0aab450e5d3ecc69ca750bfacc3bfbf43cc5c45e2","id":"baseline-budget-close","category":"prediction","mode":"live","model":"deepseek-v4-flash","config_id":"eac78c52e762e574","answered":true,"status":"completed","events":15,"api_attempts":2,"http_statuses":{"200":2},"tool_events":1,"tool_calls":1,"total_tokens":1786}
+{"position":0,"kind":"run_start","sequence":0,"elapsed_seconds":0.00022,"provider":"http","model":"deepseek-v4-flash","mode":"live","config_id":"eac78c52e762e574","injected_provider":false}
+{"position":1,"kind":"user","sequence":1,"elapsed_seconds":0.000332}
+{"position":2,"kind":"context","sequence":2,"elapsed_seconds":0.011591,"characters":1664,"dropped_groups":0}
+{"position":3,"kind":"request","sequence":3,"elapsed_seconds":0.012508}
+{"position":4,"kind":"api_attempt","sequence":4,"elapsed_seconds":0.661633,"attempt":1,"http_status":200,"outcome":"received","request_model":"deepseek-v4-flash","response_model":"deepseek-flash","response_usage":{"prompt_tokens":1039,"completion_tokens":67,"total_tokens":1106,"prompt_cache_hit_tokens":384,"prompt_cache_miss_tokens":655},"request_message_count":3,"max_tokens":512}
+{"position":5,"kind":"assistant","sequence":5,"elapsed_seconds":0.661859,"finish_reason":"tool_calls","usage":{"prompt_tokens":1039,"completion_tokens":67,"total_tokens":1106,"prompt_cache_hit_tokens":384,"prompt_cache_miss_tokens":655},"calls":[{"tool":"search","top_k":10,"query_sha256":"5e9f14546d3af488ef6dba0f53145aa23a49bc74863451858346edc56a22cc96"}]}
+{"position":6,"kind":"tool","sequence":6,"elapsed_seconds":0.663055,"tool":"search","ok":true,"spans":[{"doc_id":"d3","chunk_id":"d3:0:63","evidence_id":"E1","method":"sparse","offset":0,"score":8.763780290302208,"text_chars":63}],"query_sha256":"5e9f14546d3af488ef6dba0f53145aa23a49bc74863451858346edc56a22cc96"}
+{"position":7,"kind":"state","sequence":7,"elapsed_seconds":0.663111}
+{"position":8,"kind":"finalization","sequence":8,"elapsed_seconds":0.663292,"reason":"last_step"}
+{"position":9,"kind":"context","sequence":9,"elapsed_seconds":0.663331,"characters":2982,"dropped_groups":0}
+{"position":10,"kind":"request","sequence":10,"elapsed_seconds":0.664717}
+{"position":11,"kind":"api_attempt","sequence":11,"elapsed_seconds":1.285849,"attempt":1,"http_status":200,"outcome":"received","request_model":"deepseek-v4-flash","response_model":"deepseek-flash","response_usage":{"prompt_tokens":647,"completion_tokens":33,"total_tokens":680,"prompt_cache_hit_tokens":0,"prompt_cache_miss_tokens":647},"request_message_count":6,"max_tokens":512}
+{"position":12,"kind":"assistant","sequence":12,"elapsed_seconds":1.286292,"finish_reason":"stop","usage":{"prompt_tokens":647,"completion_tokens":33,"total_tokens":680,"prompt_cache_hit_tokens":0,"prompt_cache_miss_tokens":647}}
+{"position":13,"kind":"answer","sequence":13,"elapsed_seconds":1.286578,"cited_evidence_ids":["E1"],"spans":[{"doc_id":"d3","offset":0,"text_chars":63}]}
+{"position":14,"kind":"run_end","sequence":14,"elapsed_seconds":1.28677,"status":"completed","stop_reason":"completed","eligible":false,"usage_complete":true}

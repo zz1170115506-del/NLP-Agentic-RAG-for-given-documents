@@ -1,0 +1,10 @@
+{"record_sha256":"ac102cee1178e25faf983f83d9f200b1b7efb9bcfc6654a7ec285a30b030d051","id":"864","category":"prediction","mode":"live","model":"hash-3535a3e7891af5ef","config_id":"2406e1d8eafcbb2a","answered":false,"status":"provider_error","events":9,"api_attempts":1,"http_statuses":{"402":1},"tool_events":0,"tool_calls":0,"total_tokens":0}
+{"position":0,"kind":"run_start","sequence":0,"elapsed_seconds":8.9e-05,"provider":"http","model":"hash-3535a3e7891af5ef","mode":"live","config_id":"2406e1d8eafcbb2a","injected_provider":false}
+{"position":1,"kind":"user","sequence":1,"elapsed_seconds":9.5e-05}
+{"position":2,"kind":"skill_selected","sequence":2,"elapsed_seconds":0.00767}
+{"position":3,"kind":"skill_loaded","sequence":3,"elapsed_seconds":0.007851}
+{"position":4,"kind":"context","sequence":4,"elapsed_seconds":0.007957,"characters":4361,"dropped_groups":0}
+{"position":5,"kind":"request","sequence":5,"elapsed_seconds":0.008595}
+{"position":6,"kind":"api_attempt","sequence":6,"elapsed_seconds":1.776405,"attempt":1,"http_status":402,"outcome":"http_error","request_model":"hash-3535a3e7891af5ef","response_usage":{},"request_message_count":3,"max_tokens":1024,"error_category":"402"}
+{"position":7,"kind":"error","sequence":7,"elapsed_seconds":1.776424}
+{"position":8,"kind":"run_end","sequence":8,"elapsed_seconds":1.776513,"status":"provider_error","stop_reason":"provider_error","eligible":false,"usage_complete":false}

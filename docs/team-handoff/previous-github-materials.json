@@ -1,0 +1,436 @@
+{
+  "previous_releases": [
+    {
+      "tag": "program-acceptance-20261115",
+      "release": "https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/releases/tag/program-acceptance-20261115",
+      "source_commit": "b55b8a6c5c8d3b9ad7f573c7c5ad22a415041869",
+      "assets": [
+        {
+          "name": "API.md",
+          "bytes": 2522,
+          "github_digest": "sha256:9cfd8d4ba0668eaf8ae4ebc4a539fe28b4f668a9125b7cdf882f46404bd8741d",
+          "download": "https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/releases/download/program-acceptance-20261115/API.md"
+        },
+        {
+          "name": "HANDOFF.md",
+          "bytes": 12630,
+          "github_digest": "sha256:f19e345bfe23185684770aac911b0d43621428142f083626133aa0457ad5e03a",
+          "download": "https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/releases/download/program-acceptance-20261115/HANDOFF.md"
+        },
+        {
+          "name": "LICENSE_AUDIT.md",
+          "bytes": 3646,
+          "github_digest": "sha256:b61ab35e12e15656f1f7826e180f70ed8cb934cc51a366b7cd9e62bb410fbaed",
+          "download": "https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/releases/download/program-acceptance-20261115/LICENSE_AUDIT.md"
+        },
+        {
+          "name": "MODEL_DOWNLOADS.json",
+          "bytes": 3743,
+          "github_digest": "sha256:6b5f14db9e270b2810c0c593bd77c44d5f0d0e2425ccdc1e6e4deafb4fe3c74e",
+          "download": "https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/releases/download/program-acceptance-20261115/MODEL_DOWNLOADS.json"
+        },
+        {
+          "name": "PUBLICATION.json",
+          "bytes": 20650,
+          "github_digest": "sha256:e56dc22e1d357fef802ae78cd3f045fc95ccd895cb0d25f4fbe8480f690862c7",
+          "download": "https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/releases/download/program-acceptance-20261115/PUBLICATION.json"
+        },
+        {
+          "name": "data-source-identity.json",
+          "bytes": 5022,
+          "github_digest": "sha256:0c461ea6d86ded102614a43d7e5d977c1136702a9c4ef4da7c66e9b7a598bdec",
+          "download": "https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/releases/download/program-acceptance-20261115/data-source-identity.json"
+        },
+        {
+          "name": "data-verification.json",
+          "bytes": 3524,
+          "github_digest": "sha256:0e091d8222491601a1a559e7ed0cecd9788910efd1a53ce1656f93a2f215e240",
+          "download": "https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/releases/download/program-acceptance-20261115/data-verification.json"
+        },
+        {
+          "name": "data.ENCRYPTED_VOLUMES.json",
+          "bytes": 2095,
+          "github_digest": "sha256:6ff06a80b1b4b03cd45a8f56fd9bddc7320c59e34e8fc07f0150f37736be7a9f",
+          "download": "https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/releases/download/program-acceptance-20261115/data.ENCRYPTED_VOLUMES.json"
+        },
+        {
+          "name": "data.SHA256SUMS",
+          "bytes": 782,
+          "github_digest": "sha256:f451ea9e3f0a58c19a980c4c9b1c8764f6da97a69056db7276bfbf6f82dae8ff",
+          "download": "https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/releases/download/program-acceptance-20261115/data.SHA256SUMS"
+        },
+        {
+          "name": "data.course-data.tar.gz.part00001.aead",
+          "bytes": 1900009655,
+          "github_digest": "sha256:fc77d082a8e697a12e4de12a65abb615cf38d5f01d27efefc59ab8294a198edd",
+          "download": "https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/releases/download/program-acceptance-20261115/data.course-data.tar.gz.part00001.aead"
+        },
+        {
+          "name": "data.course-data.tar.gz.part00002.aead",
+          "bytes": 1900009655,
+          "github_digest": "sha256:da54a967f2f58d9dfecdbe2d095f81cfe29a904f8f85a774e311a54890f63780",
+          "download": "https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/releases/download/program-acceptance-20261115/data.course-data.tar.gz.part00002.aead"
+        },
+        {
+          "name": "data.course-data.tar.gz.part00003.aead",
+          "bytes": 1900009655,
+          "github_digest": "sha256:784ecea4d6a8676a5d471af304d02f44a0cada0b74970d351cc38b789cf1b220",
+          "download": "https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/releases/download/program-acceptance-20261115/data.course-data.tar.gz.part00003.aead"
+        },
+        {
+          "name": "data.course-data.tar.gz.part00004.aead",
+          "bytes": 348571217,
+          "github_digest": "sha256:f098b47be092ac8dc381d0a31051d6af74ba629c66c430c68f8b4e5d708efce9",
+          "download": "https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/releases/download/program-acceptance-20261115/data.course-data.tar.gz.part00004.aead"
+        },
+        {
+          "name": "handoff_archive.py",
+          "bytes": 26511,
+          "github_digest": "sha256:3f82fc02e70e9f83667167b7405df57e2c29f675282730fffba39e9a89db4b77",
+          "download": "https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/releases/download/program-acceptance-20261115/handoff_archive.py"
+        },
+        {
+          "name": "handoff_crypto.py",
+          "bytes": 12568,
+          "github_digest": "sha256:ea969767a4cd0ed9aa1642c086c9d5948d326607e98296dbbe928f8347b3be1c",
+          "download": "https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/releases/download/program-acceptance-20261115/handoff_crypto.py"
+        },
+        {
+          "name": "handoff_paths.py",
+          "bytes": 309,
+          "github_digest": "sha256:ccaad6c78f58cdaa359fb44bc56503cc3fe9256dcc5afc9aee848497ec482145",
+          "download": "https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/releases/download/program-acceptance-20261115/handoff_paths.py"
+        },
+        {
+          "name": "independent-reuse-verification.json",
+          "bytes": 753,
+          "github_digest": "sha256:48860fd8de3e103e544ba25aaa900415381efdb2bb72f6f9136bef90c78c64dd",
+          "download": "https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/releases/download/program-acceptance-20261115/independent-reuse-verification.json"
+        },
+        {
+          "name": "program-source.zip",
+          "bytes": 1049650,
+          "github_digest": "sha256:e170182f597140601b241728ae0651dbbac198fb2eea75e63a55d74d2809d01f",
+          "download": "https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/releases/download/program-acceptance-20261115/program-source.zip"
+        },
+        {
+          "name": "run-evidence-restoration.json",
+          "bytes": 1812,
+          "github_digest": "sha256:bf71b2232524214fa283c2c93582cc630108f704e9d0b4290623e99bc8ec41f0",
+          "download": "https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/releases/download/program-acceptance-20261115/run-evidence-restoration.json"
+        },
+        {
+          "name": "run-evidence.ENCRYPTED_VOLUMES.json",
+          "bytes": 1033,
+          "github_digest": "sha256:ed8328a92a0392d11d9744447437be66be7d791e79714d347a1339b771d11bc3",
+          "download": "https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/releases/download/program-acceptance-20261115/run-evidence.ENCRYPTED_VOLUMES.json"
+        },
+        {
+          "name": "run-evidence.SHA256SUMS",
+          "bytes": 113,
+          "github_digest": "sha256:a2f6eda1ba6ef20cb452132acdd2847322786f38725b6c64995aac4a883ac183",
+          "download": "https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/releases/download/program-acceptance-20261115/run-evidence.SHA256SUMS"
+        },
+        {
+          "name": "run-evidence.course-data.tar.gz.part00001.aead",
+          "bytes": 44622175,
+          "github_digest": "sha256:5bb88f727bf7d4dc5cba5be45856b39565c55511c1f440d32f81bd5b418d0444",
+          "download": "https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/releases/download/program-acceptance-20261115/run-evidence.course-data.tar.gz.part00001.aead"
+        },
+        {
+          "name": "source-archive-verification.json",
+          "bytes": 1842,
+          "github_digest": "sha256:a2b96676d71970a9a680cbc4da11e4ab939f3f65529ab5c08d02f7b03d47eec1",
+          "download": "https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/releases/download/program-acceptance-20261115/source-archive-verification.json"
+        }
+      ]
+    },
+    {
+      "tag": "validation-failure-review-20261115",
+      "release": "https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/releases/tag/validation-failure-review-20261115",
+      "source_commit": "e90397bb2e6af7657077c8fcee9189370a767a1f",
+      "assets": [
+        {
+          "name": "ENCRYPTED_VOLUMES.json",
+          "bytes": 1039,
+          "github_digest": "sha256:beba9a85f6e18d0fb0b648295d99cdfa7a5444dd3f05d6b6a776e543b12eb1f2",
+          "download": "https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/releases/download/validation-failure-review-20261115/ENCRYPTED_VOLUMES.json"
+        },
+        {
+          "name": "HANDOFF.md",
+          "bytes": 2371,
+          "github_digest": "sha256:e90a3caf5b94de9414fa14de3a2a57560c42ac799db76f3f34aa609a2c1e2e66",
+          "download": "https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/releases/download/validation-failure-review-20261115/HANDOFF.md"
+        },
+        {
+          "name": "RELEASE_FILES.json",
+          "bytes": 1891,
+          "github_digest": "sha256:93750423fb41c17632b2bf0baa700abde7e07e62045d9ef696c83213781e3732",
+          "download": "https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/releases/download/validation-failure-review-20261115/RELEASE_FILES.json"
+        },
+        {
+          "name": "REPRODUCE.md",
+          "bytes": 8059,
+          "github_digest": "sha256:c0b88d8e51446c12e189a8c5d77b8eaf4f6ae0012c1b4eb731b17111ef9ae769",
+          "download": "https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/releases/download/validation-failure-review-20261115/REPRODUCE.md"
+        },
+        {
+          "name": "SHA256SUMS",
+          "bytes": 992,
+          "github_digest": "sha256:33490eb4913a55907f120f7320ac4d0e453a5e0506bb0d34fe8197c9a0017cde",
+          "download": "https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/releases/download/validation-failure-review-20261115/SHA256SUMS"
+        },
+        {
+          "name": "handoff_archive.py",
+          "bytes": 26511,
+          "github_digest": "sha256:3f82fc02e70e9f83667167b7405df57e2c29f675282730fffba39e9a89db4b77",
+          "download": "https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/releases/download/validation-failure-review-20261115/handoff_archive.py"
+        },
+        {
+          "name": "handoff_crypto.py",
+          "bytes": 12568,
+          "github_digest": "sha256:ea969767a4cd0ed9aa1642c086c9d5948d326607e98296dbbe928f8347b3be1c",
+          "download": "https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/releases/download/validation-failure-review-20261115/handoff_crypto.py"
+        },
+        {
+          "name": "handoff_paths.py",
+          "bytes": 309,
+          "github_digest": "sha256:ccaad6c78f58cdaa359fb44bc56503cc3fe9256dcc5afc9aee848497ec482145",
+          "download": "https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/releases/download/validation-failure-review-20261115/handoff_paths.py"
+        },
+        {
+          "name": "restore_validation_review_evidence.py",
+          "bytes": 2245,
+          "github_digest": "sha256:055b21d30730b2079838ef49291e4fa1d898bab58392c36a0071ac25ecac98d4",
+          "download": "https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/releases/download/validation-failure-review-20261115/restore_validation_review_evidence.py"
+        },
+        {
+          "name": "review-evidence.course-data.tar.gz.part00001.aead",
+          "bytes": 39726109,
+          "github_digest": "sha256:ffccf889e01b462f75af4deb1dddb229fdc228596cd3e71255612b9b7655fa8a",
+          "download": "https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/releases/download/validation-failure-review-20261115/review-evidence.course-data.tar.gz.part00001.aead"
+        },
+        {
+          "name": "validation-failure-review.md",
+          "bytes": 147314,
+          "github_digest": "sha256:c40373ca9ad973b49eda340ac427ed6e72de8469c9b817f49415d7298a80f3bc",
+          "download": "https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/releases/download/validation-failure-review-20261115/validation-failure-review.md"
+        },
+        {
+          "name": "validation-review-source.zip",
+          "bytes": 1315360,
+          "github_digest": "sha256:57bce27c4d9ffdf26972dea0a3590dba8070e8b4073d343eabba44cc9b2f4a8d",
+          "download": "https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/releases/download/validation-failure-review-20261115/validation-review-source.zip"
+        }
+      ]
+    },
+    {
+      "tag": "evidence-retention-fix-20261115",
+      "release": "https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/releases/tag/evidence-retention-fix-20261115",
+      "source_commit": "b37c8fccae571ffa082d62e30a85b0ebd3b54b48",
+      "assets": [
+        {
+          "name": "ENCRYPTED_VOLUMES.json",
+          "bytes": 1042,
+          "github_digest": "sha256:18118a4f880643ecf075b93440bdd6549359148d4c17feae29434ef5d8e5e647",
+          "download": "https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/releases/download/evidence-retention-fix-20261115/ENCRYPTED_VOLUMES.json"
+        },
+        {
+          "name": "HANDOFF.md",
+          "bytes": 2320,
+          "github_digest": "sha256:5280c3105c948b7a92d92948ecdbe9814401d891ee28b290db9adc62a052a27e",
+          "download": "https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/releases/download/evidence-retention-fix-20261115/HANDOFF.md"
+        },
+        {
+          "name": "RELEASE_FILES.json",
+          "bytes": 2480,
+          "github_digest": "sha256:36235cdc281e6a39a28e26dcf4719caff5397dc302fdd111466b3a63cec51382",
+          "download": "https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/releases/download/evidence-retention-fix-20261115/RELEASE_FILES.json"
+        },
+        {
+          "name": "REPRODUCE.md",
+          "bytes": 5740,
+          "github_digest": "sha256:b6e0d441899001f8eacec405d3f55dad2147fce599019eded16387312acfcd3c",
+          "download": "https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/releases/download/evidence-retention-fix-20261115/REPRODUCE.md"
+        },
+        {
+          "name": "SHA256SUMS",
+          "bytes": 1170,
+          "github_digest": "sha256:3c21e5678acadb04ebf9b840c8ced79f58a6197f631b34a39e8940cd104eda76",
+          "download": "https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/releases/download/evidence-retention-fix-20261115/SHA256SUMS"
+        },
+        {
+          "name": "acceptance-report.md",
+          "bytes": 11123,
+          "github_digest": "sha256:5e018eff2054e87cd17e4a9a3706335c2bfd1daa5aa70ca7c5ac8db6a4da2954",
+          "download": "https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/releases/download/evidence-retention-fix-20261115/acceptance-report.md"
+        },
+        {
+          "name": "comparison.json",
+          "bytes": 51862,
+          "github_digest": "sha256:ed30fb7a19a6c4db24bcdcc5149e490e5231496a807688c0149b554894898a43",
+          "download": "https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/releases/download/evidence-retention-fix-20261115/comparison.json"
+        },
+        {
+          "name": "encrypted-evidence-manifest.json",
+          "bytes": 835,
+          "github_digest": "sha256:15a1f604c8af55e220bc77f980239ab139a3385fa9def144229105b47e10345e",
+          "download": "https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/releases/download/evidence-retention-fix-20261115/encrypted-evidence-manifest.json"
+        },
+        {
+          "name": "evidence-retention-source.zip",
+          "bytes": 1585708,
+          "github_digest": "sha256:05141793f7350ea51bb120955c3fdee6605d5f6f937a78c9a8d206002ca1558b",
+          "download": "https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/releases/download/evidence-retention-fix-20261115/evidence-retention-source.zip"
+        },
+        {
+          "name": "handoff_archive.py",
+          "bytes": 26511,
+          "github_digest": "sha256:3f82fc02e70e9f83667167b7405df57e2c29f675282730fffba39e9a89db4b77",
+          "download": "https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/releases/download/evidence-retention-fix-20261115/handoff_archive.py"
+        },
+        {
+          "name": "handoff_crypto.py",
+          "bytes": 12568,
+          "github_digest": "sha256:ea969767a4cd0ed9aa1642c086c9d5948d326607e98296dbbe928f8347b3be1c",
+          "download": "https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/releases/download/evidence-retention-fix-20261115/handoff_crypto.py"
+        },
+        {
+          "name": "restore_validation_review_evidence.py",
+          "bytes": 2245,
+          "github_digest": "sha256:055b21d30730b2079838ef49291e4fa1d898bab58392c36a0071ac25ecac98d4",
+          "download": "https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/releases/download/evidence-retention-fix-20261115/restore_validation_review_evidence.py"
+        },
+        {
+          "name": "retention-evidence.course-data.tar.gz.part00001.aead",
+          "bytes": 9633941,
+          "github_digest": "sha256:94af228ef53c21ce7b1fcaeaf7813d907220383bb8235ef83f0a67af919b248c",
+          "download": "https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/releases/download/evidence-retention-fix-20261115/retention-evidence.course-data.tar.gz.part00001.aead"
+        },
+        {
+          "name": "verification.json",
+          "bytes": 827,
+          "github_digest": "sha256:281d66e5234acdc21a15886885f4e52033d8063d63c45473f704a54bac796bd0",
+          "download": "https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/releases/download/evidence-retention-fix-20261115/verification.json"
+        }
+      ]
+    },
+    {
+      "tag": "qwen4b-compression-nine-20261117",
+      "release": "https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/releases/tag/qwen4b-compression-nine-20261117",
+      "source_commit": "d2ad11129cca59217b4593aae2c5b37103451ab6",
+      "assets": [
+        {
+          "name": "ENCRYPTED_VOLUMES.json",
+          "bytes": 1046,
+          "github_digest": "sha256:6de3d163726d117518a20c2e46c771be6ef70143f7805465347add1d932f74f4",
+          "download": "https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/releases/download/qwen4b-compression-nine-20261117/ENCRYPTED_VOLUMES.json"
+        },
+        {
+          "name": "QWEN4B_EVIDENCE_RECEIPT.json",
+          "bytes": 568,
+          "github_digest": "sha256:394f1c576c2ab058a98f2496f8cdcca0b66f241c20917da20de551682b0930a7",
+          "download": "https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/releases/download/qwen4b-compression-nine-20261117/QWEN4B_EVIDENCE_RECEIPT.json"
+        },
+        {
+          "name": "RELEASE_FILES.json",
+          "bytes": 1424,
+          "github_digest": "sha256:91480ed65a47bdf5544a15adb9a7cab3a3f9920f62bd09ae09b976173687ba18",
+          "download": "https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/releases/download/qwen4b-compression-nine-20261117/RELEASE_FILES.json"
+        },
+        {
+          "name": "REPRODUCE.md",
+          "bytes": 5220,
+          "github_digest": "sha256:a783210d168a65d42906bf2dd13ae1cec67cd178d904f3833e819b5f72913e20",
+          "download": "https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/releases/download/qwen4b-compression-nine-20261117/REPRODUCE.md"
+        },
+        {
+          "name": "SHA256SUMS",
+          "bytes": 724,
+          "github_digest": "sha256:82805df3995e7e05b1285613c425d84533a9900c3c63bdeab56ea73efe9d7b9b",
+          "download": "https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/releases/download/qwen4b-compression-nine-20261117/SHA256SUMS"
+        },
+        {
+          "name": "acceptance-report.md",
+          "bytes": 11309,
+          "github_digest": "sha256:7127576ca780fff96aeeec1a7432b17bc574365ca96b2234d7943dbbaf1d7873",
+          "download": "https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/releases/download/qwen4b-compression-nine-20261117/acceptance-report.md"
+        },
+        {
+          "name": "qwen4b-nine-evidence.course-data.tar.gz.part00001.aead",
+          "bytes": 2547260,
+          "github_digest": "sha256:a449381e90a4f80e7935b6883b7b70a3704e4fc3debd53fba6e612d86f7f889a",
+          "download": "https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/releases/download/qwen4b-compression-nine-20261117/qwen4b-nine-evidence.course-data.tar.gz.part00001.aead"
+        },
+        {
+          "name": "qwen4b-source.zip",
+          "bytes": 1732287,
+          "github_digest": "sha256:63ada431d4cd2c13d5c0ae4e969b909cf1b991eb8fdc2318aa3c4b39ce782d3b",
+          "download": "https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/releases/download/qwen4b-compression-nine-20261117/qwen4b-source.zip"
+        },
+        {
+          "name": "qwen4b_handoff.py",
+          "bytes": 13813,
+          "github_digest": "sha256:924755b032fcb5a2673c11be4bfef5a7bdec00ede8e5ad227aa442339dac722b",
+          "download": "https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/releases/download/qwen4b-compression-nine-20261117/qwen4b_handoff.py"
+        }
+      ]
+    },
+    {
+      "tag": "qwen4b-2560-int8-nine-20261117",
+      "release": "https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/releases/tag/qwen4b-2560-int8-nine-20261117",
+      "source_commit": "0eee841fa128cef160f7fde8f8ab483ff28b6428",
+      "assets": [
+        {
+          "name": "ENCRYPTED_VOLUMES.json",
+          "bytes": 1052,
+          "github_digest": "sha256:af0e71000299282974010ec2084ed81518a25d5e1536462b1a74de6c1b8e6458",
+          "download": "https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/releases/download/qwen4b-2560-int8-nine-20261117/ENCRYPTED_VOLUMES.json"
+        },
+        {
+          "name": "QWEN4B_EVIDENCE_RECEIPT.json",
+          "bytes": 571,
+          "github_digest": "sha256:1caa769551d6cfd8d172b4648b25f1e17cf4af7e7461509f7a9575103ed45136",
+          "download": "https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/releases/download/qwen4b-2560-int8-nine-20261117/QWEN4B_EVIDENCE_RECEIPT.json"
+        },
+        {
+          "name": "REPORT-2560-vs-256.md",
+          "bytes": 8990,
+          "github_digest": "sha256:9a0397272031b142f5dab5b18febc95b1f878a596ced95cd0c81209487fdedc4",
+          "download": "https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/releases/download/qwen4b-2560-int8-nine-20261117/REPORT-2560-vs-256.md"
+        },
+        {
+          "name": "SHA256SUMS",
+          "bytes": 308,
+          "github_digest": "sha256:5edb5106ca098a2cc0137b4a180daa91dcad87645a55fb2cbb2e21aab116d992",
+          "download": "https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/releases/download/qwen4b-2560-int8-nine-20261117/SHA256SUMS"
+        },
+        {
+          "name": "qwen4b-int8-256-vs-2560.course-data.tar.gz.part00001.aead",
+          "bytes": 5378056,
+          "github_digest": "sha256:aec579651a06a30ecd04751c163d4055617d962cc6a3e5851f08d43ed92ff500",
+          "download": "https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/releases/download/qwen4b-2560-int8-nine-20261117/qwen4b-int8-256-vs-2560.course-data.tar.gz.part00001.aead"
+        },
+        {
+          "name": "qwen4b-nine-reports.zip",
+          "bytes": 21250,
+          "github_digest": "sha256:75f22b8ee2a1e43cc6a3dc50c07c119e410bca4921206e9725df9412fd5c89b3",
+          "download": "https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/releases/download/qwen4b-2560-int8-nine-20261117/qwen4b-nine-reports.zip"
+        }
+      ]
+    }
+  ],
+  "existing_branches": {
+    "codex/agent12-current-main": "f196aed663e3b4c1d62be73210103c7c3cc04848",
+    "codex/agent12-integration-20261111": "eda2ef76ff815ee1876f810ed7daad658f6670cd",
+    "codex/course-final-acceptance": "b55b8a6c5c8d3b9ad7f573c7c5ad22a415041869",
+    "codex/course-program-validation": "316c64ad6f6afda727d33b7d7ac2e97d4f6641e5",
+    "codex/evidence-retention-fix": "b37c8fccae571ffa082d62e30a85b0ebd3b54b48",
+    "codex/qwen4b-2560-nine": "0eee841fa128cef160f7fde8f8ab483ff28b6428",
+    "codex/qwen4b-compression-nine": "d2ad11129cca59217b4593aae2c5b37103451ab6",
+    "codex/roman-documents": "54c8397fe59a85943bfcff0528c5ea7f507abb99",
+    "codex/validation-failure-review": "e90397bb2e6af7657077c8fcee9189370a767a1f",
+    "feat/rag-rerank-evaluation": "e4810d3f96509661be527932c0584c0e98f3ebe1",
+    "main": "316c64ad6f6afda727d33b7d7ac2e97d4f6641e5"
+  }
+}

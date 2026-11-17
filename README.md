@@ -1,5 +1,7 @@
 # NLP-Agentic-RAG-for-given-documents
 
+[小组项目资料与日志](docs/team-handoff/README.md) · [逐题问答记录](docs/team-handoff/logs/) · [终端与测试记录](docs/team-handoff/operational/)
+
 COMP5423 2026 Fall **Skill-Augmented Search Agent**：从指定固定文档集合检索证据，由 DeepSeek-V4-Flash 通过工具进行多轮问答。现有代码包含三类真实检索实现、独立状态和上下文管理、两个原创 skills、Streamlit 网页、批处理、评测与打包入口。
 
 2026-11-15：固定语料 100,195 篇、4,345,592 个源分块与全量 BM25 已就绪。本轮按用户选择使用官方临时 API，请求 `deepseek-v4-flash`，实际响应保留为 `deepseek-flash`。完整验证集与无标签测试集各 100 题均已运行，六字段、真实 HTTP/usage 和引用校验均为 100/100；验证集 normalized EM 为 19%，测试集不报告准确率。E5 继续构建；Qwen 已按用户要求暂缓。当前证据与限制见[本轮验收回传](docs/task_NLP-Agentic-RAG-for-given-documents_全项目程序验收与缺口补齐_prompt_2return.md)。此前 OpenRouter 的 90/100 记录仅保留为历史，不混入本轮。

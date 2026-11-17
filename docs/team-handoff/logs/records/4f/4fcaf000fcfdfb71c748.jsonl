@@ -1,0 +1,2 @@
+{"record_sha256":"4fcaf000fcfdfb71c7485507a894d58ab149afa47da4ff2497c9416de06c8fd8","id":"390","category":"frozen_request","events":1,"api_attempts":1,"http_statuses":{"200":1},"tool_events":0}
+{"position":0,"kind":"api_attempt","attempt":1,"http_status":200,"outcome":"received","request_model":"deepseek-v4-flash-0731","response_model":"deepseek-v4-flash-0731","response_usage":{"prompt_tokens":3412,"completion_tokens":107,"total_tokens":3519},"request_message_count":4,"max_tokens":1024}

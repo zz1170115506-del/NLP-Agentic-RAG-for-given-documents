@@ -1,0 +1,8 @@
+{"record_sha256":"c8728cce3a4e7f65a39418addf3c72a5f2f18e9a0bca76b5500495a8c038b075","id":"1155","category":"prediction","mode":"live","model":"deepseek-v4-flash-0731","config_id":"900fc3b95b775d2a","answered":false,"status":"provider_error","events":7,"api_attempts":1,"http_statuses":{"400":1},"tool_events":0,"tool_calls":0,"total_tokens":0}
+{"position":0,"kind":"run_start","sequence":0,"elapsed_seconds":0.000119,"provider":"http","model":"deepseek-v4-flash-0731","mode":"live","config_id":"900fc3b95b775d2a","injected_provider":false}
+{"position":1,"kind":"user","sequence":1,"elapsed_seconds":0.000128}
+{"position":2,"kind":"context","sequence":2,"elapsed_seconds":0.011125,"characters":2354,"dropped_groups":0}
+{"position":3,"kind":"request","sequence":3,"elapsed_seconds":0.012061}
+{"position":4,"kind":"api_attempt","sequence":4,"elapsed_seconds":0.292765,"attempt":1,"http_status":400,"outcome":"http_error","request_model":"deepseek-v4-flash-0731","response_usage":{},"request_message_count":3,"max_tokens":1024,"error_category":"Arrearage"}
+{"position":5,"kind":"error","sequence":5,"elapsed_seconds":0.292784}
+{"position":6,"kind":"run_end","sequence":6,"elapsed_seconds":0.292876,"status":"provider_error","stop_reason":"provider_error","eligible":false,"usage_complete":false}

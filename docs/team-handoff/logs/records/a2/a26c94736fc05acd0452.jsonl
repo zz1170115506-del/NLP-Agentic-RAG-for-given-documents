@@ -1,0 +1,10 @@
+{"record_sha256":"a26c94736fc05acd045251cef158d932f2f5d53ef82a65c98a4ae25efb196259","id":"1066","category":"prediction","mode":"live","model":"deepseek-v4-flash-0731","config_id":"900fc3b95b775d2a","answered":false,"status":"provider_error","events":9,"api_attempts":1,"http_statuses":{"400":1},"tool_events":0,"tool_calls":0,"total_tokens":0}
+{"position":0,"kind":"run_start","sequence":0,"elapsed_seconds":0.00011,"provider":"http","model":"deepseek-v4-flash-0731","mode":"live","config_id":"900fc3b95b775d2a","injected_provider":false}
+{"position":1,"kind":"user","sequence":1,"elapsed_seconds":0.000117}
+{"position":2,"kind":"skill_selected","sequence":2,"elapsed_seconds":0.010846}
+{"position":3,"kind":"skill_loaded","sequence":3,"elapsed_seconds":0.011151}
+{"position":4,"kind":"context","sequence":4,"elapsed_seconds":0.01125,"characters":3856,"dropped_groups":0}
+{"position":5,"kind":"request","sequence":5,"elapsed_seconds":0.012937}
+{"position":6,"kind":"api_attempt","sequence":6,"elapsed_seconds":0.227955,"attempt":1,"http_status":400,"outcome":"http_error","request_model":"deepseek-v4-flash-0731","response_usage":{},"request_message_count":3,"max_tokens":1024,"error_category":"Arrearage"}
+{"position":7,"kind":"error","sequence":7,"elapsed_seconds":0.227973}
+{"position":8,"kind":"run_end","sequence":8,"elapsed_seconds":0.228118,"status":"provider_error","stop_reason":"provider_error","eligible":false,"usage_complete":false}

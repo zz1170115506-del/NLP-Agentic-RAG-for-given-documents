@@ -1,0 +1,29 @@
+{
+  "logical_entries": 3071,
+  "supplemental_unique_payloads": 579,
+  "supplemental_logical_paths": 608,
+  "supplemental_payload_bytes": 97438807,
+  "locations": {
+    "program-acceptance-20261115": 344,
+    "supplement": 608,
+    "git:0eee841fa128cef160f7fde8f8ab483ff28b6428": 283,
+    "evidence-retention-fix-20261115": 37,
+    "qwen4b-compression-nine-20261117": 14,
+    "validation-failure-review-20261115": 514,
+    "qwen4b-2560-int8-nine-20261117": 9,
+    "program-acceptance-20261115:data": 1262
+  },
+  "existing_release_mapping_files": [
+    346,
+    580,
+    76,
+    34,
+    26
+  ],
+  "restored_payloads_verified": true,
+  "files": {
+    "team-supplement.course-data.tar.gz.part00001.aead": "829771a9d57b7a6c34b1b4fcca8fdc6612e622ac458403e116f038d720329d63",
+    "team-supplement.ENCRYPTED_VOLUMES.json": "30c852106d9cf808e8a0762142b4d13d6d5528a787411f0ce77659deaa24a4a0"
+  },
+  "map_sha256": "4b4cb039028365c5711928f7e2eb5895e93f0ed76a2acbc98f093e055a6ee8c1"
+}
