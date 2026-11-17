@@ -1,5 +1,7 @@
 # NLP-Agentic-RAG-for-given-documents
 
+[小组资料与逐题日志](https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/blob/team-project-materials-20261117/docs/team-handoff/README.md) · [下载运行日志与组内分析附件](https://github.com/zz1170115506-del/NLP-Agentic-RAG-for-given-documents/releases/tag/team-project-materials-20261117)
+
 COMP5423 2026 Fall **Skill-Augmented Search Agent**：从指定固定文档集合检索证据，由 DeepSeek-V4-Flash 通过工具进行多轮问答。现有代码包含三类真实检索实现、独立状态和上下文管理、两个原创 skills、Streamlit 网页、批处理、评测与打包入口。
 
 当前已导入固定语料100,195篇并完成全量BM25。两路神经索引保留可恢复检查点；官方验证因服务HTTP 402停止于90/100题，其中86条通过单条记录校验、4条服务失败、10题未运行。主测试90项及Agent 1.2测试70项通过。完整神经索引、完整100题验收和课程最终交付仍未完成，详见[本轮验收回传](docs/task_NLP-Agentic-RAG-for-given-documents_全项目程序验收与缺口补齐_prompt_1return.md)。
