@@ -134,7 +134,10 @@ def batch_predict(input_path: str | Path, output_path: str | Path, settings: Set
         attempted, skipped, replaced = 0, 0, 0
         for question in questions:
             old = by_id.get(question.id)
-            if old is not None and (not rerun_failed or is_completed(old)):
+            keep_audited = (old is not None and settings.model_policy == "official_compat"
+                            and not validate_record(old, official_compat=True))
+            if old is not None and (not rerun_failed or keep_audited
+                                    or (settings.model_policy != "official_compat" and is_completed(old))):
                 skipped += 1
                 continue
             if max_questions is not None and attempted >= max_questions:
@@ -159,6 +162,13 @@ def batch_predict(input_path: str | Path, output_path: str | Path, settings: Set
             else:
                 _append(output_path, prediction)
                 by_id[question.id] = prediction
+            if settings.model_policy == "official_compat":
+                _, end = run_metadata(prediction)
+                if end.get("usage_complete") is not True or end.get("status") in {
+                    "provider_error", "api_error", "model_mismatch", "model_identity_unverified",
+                    "missing_usage", "uncaught_error", "invalid_trajectory",
+                }:
+                    break
     summary = validate_predictions(input_path, output_path)
     archived = []
     if attempts_path.exists():

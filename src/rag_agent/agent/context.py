@@ -16,8 +16,7 @@ When ready, output one JSON object and no Markdown: {"answer":"short answer only
 "explanation":"brief evidence-based explanation"}. Keep answer suitable for exact matching.
 Select evidence_id values from actual tool results or the state snapshot; the program
 resolves exact source text and coordinates. Do not rewrite quotations or offsets. Do not
-fabricate IDs. The legacy evidence span output remains accepted. If evidence is insufficient, return an empty answer and explain
-the missing support. You may recover from structured tool errors while budget remains.
+fabricate IDs. The legacy evidence span output remains accepted. If at least one candidate entity is supported by the observed evidence, commit to the single best-supported candidate and say which clue remains uncertain; return an empty answer only when no candidate entity appears at all. You may recover from structured tool errors while budget remains.
 """
 
 

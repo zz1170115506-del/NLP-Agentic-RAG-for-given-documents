@@ -1,0 +1,26 @@
+# A 12000-character real tool return must be compacted for an 8000-character context.
+mode: live
+model_policy: official_compat
+agent_engine: agent12
+llm_base_url: https://api.deepseek.com
+llm_model: deepseek-v4-flash
+model_verified: false
+model_verification_note: '2026-11-15: user-authorized temporary official API; preserve the returned model identity.'
+store_path: work/acceptance/features/documents.sqlite
+index_dir: work/acceptance/features/indexes
+skills_dir: skills
+method: sparse
+device: cpu
+top_k: 1
+use_skills: false
+manage_context: true
+iterative: true
+max_steps: 8
+max_tool_calls: 10
+max_total_tokens: 12000
+max_output_tokens: 512
+context_chars: 8000
+timeout_seconds: 60
+run_timeout_seconds: 180
+max_retries: 0
+graceful_finalization: true

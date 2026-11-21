@@ -1,5 +1,13 @@
 # 指定模型与服务映射
 
+## 2026-11-15 官方接口兼容模式
+
+显式选择 `model_policy: official_compat` 可以用官方 API 请求 `deepseek-v4-flash`，
+即使响应为另一个非空模型名也继续运行工具和多轮问答，并原样保留实际模型及用量。
+该模式限定官方地址，`model_verified` 保持 `false`；开发运行不再受原版模型身份限制阻塞，
+课程正式校验仍保留原要求。两种 Agent 的配置和复现命令见
+[官方接口兼容运行](deepseek_official_compat.md)。下文历史记录中的默认拒绝行为仅适用于未选择兼容模式的配置。
+
 ## 2026-11-14 实测更新
 
 本轮重新核对OpenRouter目录，继续固定`deepseek/deepseek-v4-flash-0731`；真实调用逐次保留原始HTTP请求、响应、模型ID、工具配对和usage。已修复基线与Agent 1.2的证据ID及正式记录审计，两端真实诊断复测均5/5通过，详情见[回传文档](task_NLP-Agentic-RAG-for-given-documents_全项目程序验收与缺口补齐_prompt_1return.md)。服务响应身份核对仍不等于独立鉴定权重。

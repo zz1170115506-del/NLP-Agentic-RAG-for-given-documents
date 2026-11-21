@@ -46,7 +46,14 @@ class TransformerEmbedder:
         if not revision:
             raise ValueError("Could not resolve embedding model to an immutable revision")
         # Resolve once, then pin BOTH tokenizer and weights to the same commit.
-        self.tokenizer = AutoTokenizer.from_pretrained(self.model_id, revision=revision, cache_dir=cache,
+        snapshot = cache / ("models--" + self.model_id.replace("/", "--")) / "snapshots" / revision
+        tokenizer_source, tokenizer_options = self.model_id, {"revision": revision, "cache_dir": cache}
+        if all((snapshot / name).is_file() for name in ("config.json", "tokenizer.json", "tokenizer_config.json")):
+            # Transformers 4.57.3 otherwise probes Hub metadata for large-vocabulary
+            # tokenizers even in offline mode. This exact resolved snapshot contains
+            # the same tokenizer files and lets its model type be inspected locally.
+            tokenizer_source, tokenizer_options = str(snapshot), {"local_files_only": True}
+        self.tokenizer = AutoTokenizer.from_pretrained(tokenizer_source, **tokenizer_options,
             padding_side="left" if method == "instruction" else "right", trust_remote_code=False)
         self.model = AutoModel.from_pretrained(self.model_id, revision=revision, cache_dir=cache,
             trust_remote_code=False).to(device).eval()

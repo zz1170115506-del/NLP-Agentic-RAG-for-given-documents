@@ -46,7 +46,9 @@ def main(argv=None):
             s.add_argument("--input", required=True)
             s.add_argument("--predictions", required=True)
             if name == "validate":
-                s.add_argument("--formal", action="store_true")
+                audit = s.add_mutually_exclusive_group()
+                audit.add_argument("--formal", action="store_true")
+                audit.add_argument("--official-compat", action="store_true", help="Audit official API records without asserting original course-model identity")
                 s.add_argument("--strict-grounding", action="store_true", help="Also require exact inspected citations; separate from course record validity")
     args = p.parse_args(argv)
     try:
@@ -94,7 +96,8 @@ def main(argv=None):
             emit(batch_predict(args.input, args.output, cfg, lambda q, settings: run_question(q, settings, store=store, search=search), resume=True, rerun_failed=args.rerun_failed, max_questions=args.limit))
         elif args.command in ("validate", "evaluate"):
             from rag_agent.evaluation import evaluate, validate_predictions
-            result = (validate_predictions(args.input, args.predictions, formal=args.formal, check_grounding=args.strict_grounding)
+            result = (validate_predictions(args.input, args.predictions, formal=args.formal,
+                                           check_grounding=args.strict_grounding, official_compat=args.official_compat)
                       if args.command == "validate" else evaluate(args.input, args.predictions))
             emit(result)
             if args.command == "validate" and not result["valid"]:

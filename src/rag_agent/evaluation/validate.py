@@ -114,6 +114,29 @@ def _formal_identity(start: dict, prediction: Prediction) -> list[str]:
     return errors
 
 
+def _official_compat_identity(start: dict, prediction: Prediction) -> list[str]:
+    """Audit the authorized official alias without asserting original V4 identity."""
+    try:
+        settings = Settings.model_validate(start.get("config"))
+        if settings.model_policy != "official_compat":
+            raise ValueError("official compatibility audit requires model_policy=official_compat")
+        settings.check_official_compat()
+    except (ValueError, TypeError) as error:
+        return [f"invalid official compatibility configuration: {error}"]
+    errors = []
+    if (settings.config_id != start.get("config_id") or settings.mode != start.get("mode")
+            or settings.llm_model != start.get("model")
+            or settings.model_verified != start.get("model_verified")
+            or settings.model_verification_note != start.get("model_verification_note")):
+        errors.append("official compatibility metadata contradicts the recorded configuration")
+    if start.get("audit_version", 1) < 2:
+        errors.append("official compatibility audit requires complete raw HTTP evidence (audit_version >= 2)")
+    for message in prediction.trajectory:
+        if message.get("role") == "assistant" and not settings.accepts_response_model(message.get("model")):
+            errors.append("official service response must retain a nonempty observed model ID")
+    return errors
+
+
 def _formal_grounding(prediction: Prediction) -> list[str]:
     """Check observable provenance; semantic entailment still needs evaluation."""
     shape = _message_shape_errors(prediction.trajectory, "trajectory")
@@ -294,7 +317,10 @@ def _check_pairing(messages: list[dict], label: str) -> tuple[list[str], int]:
     return errors, calls_count
 
 
-def validate_record(prediction: Prediction, *, formal: bool = False, check_grounding: bool = False) -> list[str]:
+def validate_record(prediction: Prediction, *, formal: bool = False, check_grounding: bool = False,
+                    official_compat: bool = False) -> list[str]:
+    if formal and official_compat:
+        raise ValueError("Choose formal course validation or official compatibility auditing, not both")
     shape_errors = _message_shape_errors(prediction.trajectory, "trajectory")
     for position, event in enumerate(prediction.trajectory):
         if event.get("event") == "request":
@@ -333,8 +359,8 @@ def validate_record(prediction: Prediction, *, formal: bool = False, check_groun
         errors.append("exactly one run_start and one run_end event are required")
     elif prediction.trajectory[0].get("event") != "run_start" or prediction.trajectory[-1].get("event") != "run_end":
         errors.append("run_start/run_end must delimit the complete trajectory")
-    if formal:
-        errors.extend(_formal_identity(start, prediction))
+    if formal or official_compat:
+        errors.extend((_formal_identity if formal else _official_compat_identity)(start, prediction))
         # Course validity is independent of citation quality and answer correctness.
         # Always bind the exported answer to the actual final model response.
         assistants_final = [row for row in prediction.trajectory if row.get("role") == "assistant"]
@@ -357,7 +383,7 @@ def validate_record(prediction: Prediction, *, formal: bool = False, check_groun
             errors.append("formal export requires live HTTP model execution, not demo/scripted output")
         if start.get("injected_provider") is not False:
             errors.append("formal export requires the production-owned HTTP provider, not an injected provider")
-        if start.get("model_verified") is not True or not start.get("model") or not start.get("model_verification_note"):
+        if formal and (start.get("model_verified") is not True or not start.get("model") or not start.get("model_verification_note")):
             errors.append("provider model ID must have documented DeepSeek-V4-Flash verification")
         if not start.get("config_id"):
             errors.append("missing reproducibility config_id")
@@ -375,7 +401,9 @@ def validate_record(prediction: Prediction, *, formal: bool = False, check_groun
 
 
 def validate_predictions(input_path: str | Path, prediction_path: str | Path, formal: bool = False,
-                         check_grounding: bool = False) -> dict[str, Any]:
+                         check_grounding: bool = False, *, official_compat: bool = False) -> dict[str, Any]:
+    if formal and official_compat:
+        raise ValueError("Choose formal course validation or official compatibility auditing, not both")
     errors = []
     try:
         questions = read_questions(input_path)
@@ -392,7 +420,8 @@ def validate_predictions(input_path: str | Path, prediction_path: str | Path, fo
             errors.append(f"unexpected prediction ID: {prediction.id!r}")
         elif prediction.question != expected[prediction.id]:
             errors.append(f"question mismatch for ID {prediction.id!r}")
-        errors.extend(f"ID {prediction.id!r}: {error}" for error in validate_record(prediction, formal=formal, check_grounding=check_grounding))
+        errors.extend(f"ID {prediction.id!r}: {error}" for error in validate_record(
+            prediction, formal=formal, check_grounding=check_grounding, official_compat=official_compat))
     missing = set(expected) - seen
     if missing:
         errors.append(f"missing prediction IDs: {sorted(missing)!r}")
@@ -400,12 +429,12 @@ def validate_predictions(input_path: str | Path, prediction_path: str | Path, fo
         errors.append("formal course validation requires exactly 100 input questions and 100 predictions")
     config_ids = sorted({value if isinstance(value, str) else "invalid-config-id"
                          for row in predictions for value in [run_metadata(row)[0].get("config_id", "unknown")]})
-    if formal and len(config_ids) != 1:
+    if (formal or official_compat) and len(config_ids) != 1:
         errors.append("formal batch must use one consistent recorded config_id")
     completed = sum(is_completed(row) for row in predictions)
     citation_errors = {row.id: _formal_grounding(row) for row in predictions}
     citation_passed = sum(not failures for failures in citation_errors.values())
-    return {"valid": not errors, "formal": formal, "strict_grounding": check_grounding,
+    return {"valid": not errors, "formal": formal, "official_compat": official_compat, "strict_grounding": check_grounding,
             "errors": errors, "records": len(predictions), "expected": len(questions), "completed": completed,
             "failed": len(predictions) - completed, "citation_passed": citation_passed,
             "citation_errors": {key: failures for key, failures in citation_errors.items() if failures},

@@ -14,7 +14,6 @@ import platform
 from pathlib import Path
 import resource
 import statistics
-import subprocess
 import sys
 import time
 
@@ -23,6 +22,7 @@ from rag_agent.data import DocumentStore
 from rag_agent.retrieval import SearchService
 from rag_agent.retrieval.rerank import LocalCrossEncoder
 from rag_agent.schemas import Question, SearchHit
+from rag_agent.source_provenance import optional_git_sha
 
 FORMAT_VERSION = 1
 
@@ -220,8 +220,8 @@ def run(args) -> dict:
     output = args.output.resolve()
     output.mkdir(parents=True, exist_ok=True)
     index_meta = manifest_indexes(settings.index_dir)
-    protocol = {"format_version": FORMAT_VERSION, "git_sha": subprocess.check_output(
-        ["git", "rev-parse", "HEAD"], cwd=root, text=True).strip(), "source_digest": source_digest(root),
+    protocol = {"format_version": FORMAT_VERSION, "git_sha": optional_git_sha(root),
+        "source_digest": source_digest(root),
         "config": settings.model_dump(), "config_id": settings.config_id,
         "questions_sha256": digest_bytes(args.questions.read_bytes()), "labels_sha256": digest_bytes(args.labels.read_bytes()),
         "sample_ids": [q.id for q in selected], "split": args.split, "top_k": top_k,
