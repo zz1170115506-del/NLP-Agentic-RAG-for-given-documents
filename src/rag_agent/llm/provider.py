@@ -55,7 +55,7 @@ class HTTPProvider:
         elif self.settings.model_policy == "official_compat":
             # Official DeepSeek otherwise enables thinking by default. This mode
             # explicitly uses the non-thinking tool protocol for both engines.
-            payload["thinking"] = {"type": "disabled"}
+            pass
         return payload
 
     def complete(self, messages, tools, max_tokens=None, *, allow_tools=True):

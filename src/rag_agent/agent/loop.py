@@ -198,7 +198,7 @@ def run_question(question: Question, settings: Settings, store=None, search=None
                 context_settings = settings.model_copy(update={"context_chars": settings.context_chars - 400}) if close_reason else settings
                 messages, context_info = build_context(state, catalog, groups, context_settings)
                 if close_reason:
-                    messages.append({"role": "user", "content": "Finish now using only evidence already observed. Tools are disabled for this final turn. Return the required answer JSON with observed evidence IDs. If support is insufficient, return an empty answer; do not guess."})
+                    messages.append({"role": "user", "content": "Finish now using only evidence already observed. Tools are disabled. Return the required answer JSON with observed evidence IDs. If any candidate entity is supported by the evidence, commit to the single best-supported candidate and answer it; do not return empty merely because one clue is unverified. Return empty only if no candidate entity appears at all."})
                     context_info["characters"] = message_size(messages)
                     emit({"event": "finalization", "reason": close_reason, "remaining_reported_tokens": remaining})
             except ValueError as exc:
