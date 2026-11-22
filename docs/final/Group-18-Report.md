@@ -17,9 +17,9 @@ explicit evidence citations, two runtime-loaded `SKILL.md` packs, context
 management, graceful finalisation, and a Streamlit "Evidence Desk" UI. On the
 100-question labelled validation split the final policy answers 84 questions,
 66 of them correctly (normalized EM 0.66, 78.6% precision among answers), and
-abstains on 16. The submitted test predictions apply the same 64k-first,
-96k-fallback policy with thinking enabled and answer 88 of 100 questions with
-1,004 tool calls and 7,612,685 API tokens. This is a deliberate
+abstains on 16. The submitted test predictions use a single 64k pass with
+final-answer thinking disabled and answer 85 of 100 questions with 991 tool
+calls and 7,040,451 API tokens. This is a deliberate
 coverage/precision trade-off: the frozen 2026-11-15 policy answered only 20
 questions at 95% precision, while the final policy trades some precision for
 more than four times the coverage. Our analysis shows that the remaining loss
@@ -212,12 +212,12 @@ so neither is used in the submitted batch.
 
 | Metric | Validation (100, labelled, 64k + 96k merged) | Test (100, submitted) |
 | --- | ---: | ---: |
-| Answered / abstained | 84 / 16 | 88 / 12 |
+| Answered / abstained | 84 / 16 | 85 / 15 |
 | Normalized EM | 0.660 | — (no labels) |
 | Precision among answers | 66/84 = 78.6% | — |
-| Tool calls | 1,140 | 1,004 |
-| Citations resolved | 100/100 | 92/100 |
-| API tokens (prompt + completion) | 7,999,864 | 7,612,685 |
+| Tool calls | 1,140 | 991 |
+| Citations resolved | 100/100 | 100/100 |
+| API tokens (prompt + completion) | 7,999,864 | 7,040,451 |
 | Median / P95 latency | — | — |
 | Estimated cost | — | — |
 
@@ -231,9 +231,9 @@ no-thinking 49%-EM run are kept in the evidence directory for comparison.
 The coverage/precision split is the central engineering trade-off. The
 conservative 2026-11-15 policy answered 20 questions at 95% precision; the
 thinking-enabled 64k policy answers 78 at 69.2% precision and the 96k fallback
-adds 6 answers, for 84 at 78.6% precision. Test and validation use the same
-two-pass policy, so the test batch answers 88 questions with 1,004 calls and
-7.61M tokens.
+adds 6 answers, for 84 at 78.6% precision. The submitted test batch uses the single 64k pass with final-answer thinking
+disabled, so it answers 85 questions with 991 calls and 7.04M tokens; unlike
+the validation batch it needs no 96k fallback.
 
 ### 4.3 Ablations
 
@@ -340,7 +340,7 @@ span. The first two changes target 72 of the 80 failures.
 **Coverage versus honesty.** The instructions explicitly allow
 `insufficient_evidence`. The conservative run reached 95% precision by
 abstaining on 80 questions; the final thinking policy answers 84 and reaches
-78.6% precision, and the submitted test batch answers 88 of 100. The performance
+78.6% precision, and the submitted test batch answers 85 of 100. The performance
 score is dominated by coverage, but the rerun shows that answer-rate prompts
 alone move the operating point rather than the retrieval ceiling, so the next
 iteration must improve retrieval and evidence selection.
@@ -373,8 +373,8 @@ so its Recall@5 is indicative, not a full-corpus estimate. The ablations use
 five questions and should be read as directional.
 
 **Reproducibility.** The submitted predictions were produced from frozen
-commit `dab7646` plus the checked-in commit prompt and the 64k/96k context
-configs, and are archived with SHA-256 `229bad39…` (113,182,809 bytes). The code
+commit `dab7646` plus the checked-in commit prompt and the context64 config,
+and are archived with SHA-256 `8d0d5898…` (109,300,422 bytes). The code
 archive includes `data/test.jsonl`, the configs, the
 skills, the tests, and the audit script; the corpus store and BM25 index are
 rebuilt by the README steps. No key or model weight is included.
@@ -386,7 +386,7 @@ document corpus. The system implements three retrieval categories, a
 four-tool iterative agent, two runtime skills, context management, graceful
 finalisation, and an evidence-first UI. On the labelled validation split the
 merged 64k+96k policy answers 84 questions and gets 66 right (EM 0.66, 78.6%
-precision); the test batch answers 88 of 100. The failure analysis locates the
+precision); the test batch answers 85 of 100. The failure analysis locates the
 remaining gap in retrieval and evidence visibility, not in answer correctness.
 The submitted test predictions are complete, auditable, and reproducible from
 the code and config in this package.
@@ -438,10 +438,12 @@ rag-agent validate --config configs/official-final.yaml \
   --official-compat
 ```
 
-The expected audit is 100 records, coverage 1.0, 88 answered, 12
-`insufficient_evidence`, 92/100 resolvable citations, 1,004 tool calls, and
-7,612,685 tokens. The batch merges a 64k pass and a 96k fallback, so it records
-two config ids and the formal export rejects it while `ordinary_valid` is true.
+The expected audit is 100 records, coverage 1.0, 85 answered, 15
+empty answers, 100/100 resolvable citations, 991 tool calls, and
+7,040,451 tokens. The batch uses one recorded config id
+(`af985bb241f6ca07`), so `valid=true`; `formal=false` only because the
+requested official-compatible model identity is not the verified original
+V4 weights.
 Token counts may vary with the model version; the schema,
 id order, and citation rules must not.
 

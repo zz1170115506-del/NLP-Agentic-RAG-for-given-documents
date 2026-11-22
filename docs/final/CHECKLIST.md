@@ -1,12 +1,12 @@
 # Group 18 提交清单与评分对照
 
-更新：2026-11-19　截止：**2026-11-26 23:59（香港时间）**，还剩约 7 天。
+更新：2026-11-22　截止：**2026-11-26 23:59（香港时间）**，还剩约 4 天。
 
 ## 1. 现在做到哪一步
 
 | 交付物 | 状态 | 位置 / 说明 |
 |---|---|---|
-| `test_prediction.jsonl` | ✅ 已完成并独立复核 | `Group-18/test_prediction.jsonl`，100 条、六字段、88 答/12 弃、1,004 工具、7,612,685 tokens；SHA `229bad39…`（64k + 96k 两遍合并，thinking 开启） |
+| `test_prediction.jsonl` | ✅ 已完成并独立复核 | `Group-18/test_prediction.jsonl`，100 条、六字段、85 答/15 空、991 工具、7,040,451 tokens；SHA `8d0d5898…`（单次 64k，最终作答关闭 thinking） |
 | `code/` | ✅ 已完成 | `Group-18/code/`，冻结提交 `dab7646`，含 README、config、skills、tests；约 3.2 MB |
 | 验证集预测与审计 | ✅ 已有 | `evidence/validation_prediction.jsonl`、`audit-test100.json`、`audit-validation100.json` |
 | 报告 | 🟡 草稿完成，待排版 PDF | `Group-18/report/Report-draft.md`（英文，含 5 张图、6 张表）；需按 Overleaf 模板排版，≥4 页（不含参考文献/贡献声明）；`Report-preview.pdf` 仅供页数预览 |
@@ -30,7 +30,7 @@
 | 视频 | 20 | `Video-script.md`；需 MP4 ≤5 分钟，演示系统/功能/代码结构 | 🟡 待录制 |
 | 性能：有效提交 | 10 | 100 条六字段、真实轨迹、citation 100/100、`ordinary_valid=true` | ✅ 模型身份为官方 V4.1 端点，老师已确认可接受 |
 | 性能：EM 百分位 | 6 | 验证合并口径 EM 66/100（84 答中 66 对，64k+96k + 扩展规范化） | 🟡 覆盖率升到 84%，精度 78.6%，百分位中等偏上 |
-| 性能：工具/Token 百分位 | 4 | 1,004 调用 / 7.61M tokens | 🟡 token 偏高（thinking + 两遍跑 + 96k 上下文），百分位不利 |
+| 性能：工具/Token 百分位 | 4 | 991 调用 / 7.04M tokens | 🟡 token 仍偏高（thinking + 64k 上下文），百分位不利 |
 
 **粗略估分**：系统实现 32–36/40；报告 0→预计 16–19；视频 0→预计 16–19；性能 10–14/20（取决于模型身份是否被接受、百分位）。补齐后约 **74–88/100**；若模型身份被判无效，约 **64–78**。
 
@@ -39,7 +39,7 @@
 ```
 Group-18.zip
 └── Group-18/
-    ├── test_prediction.jsonl      113,182,809 B（不要改字节）
+    ├── test_prediction.jsonl      109,300,422 B（不要改字节）
     ├── code/                      冻结提交 + README
     ├── Group-18-Report.pdf        Overleaf 导出，≥4 页
     └── Group-18-Video.mp4         ≤5:00，H.264
@@ -49,10 +49,10 @@ Group-18.zip
 
 ## 4. 组包前检查（逐条打勾）
 
-- [ ] `test_prediction.jsonl` 的 SHA-256 仍为 `229bad39d7cd474f9b2cb9d9da1bea45775d349535ce3787e95c05c8f3650c08`（`Get-FileHash`）。
+- [ ] `test_prediction.jsonl` 的 SHA-256 仍为 `8d0d58984e384aa69414ef37600cded705f75a93ce64c001fe2bc9daad512a80`（`Get-FileHash`）。
 - [ ] 100 行；每行恰好六字段；id 顺序与 `code/data/test.jsonl` 完全一致。
-- [ ] 抽查 88 条非空答案、12 条空答案；每条 `trajectory` 可读、含 `run_start`/`answer`/`run_end`。
-- [ ] `citation` 100/100；`ordinary_valid=true`。
+- [ ] 抽查 85 条非空答案、15 条空答案；每条 `trajectory` 可读、含 `run_start`/`answer`/`run_end`。
+- [ ] `citation` 100/100；`valid=true`。
 - [ ] `code/` 里没有 `.env`、`sk-`、`/Users/`、`E:\` 等敏感或本机路径；README 中的命令可照抄执行。
 - [ ] 报告 PDF：≥4 页（不含参考文献与贡献声明）；贡献表 4 人 × 25% = 100%；每人签名；含架构图、流程图、结果表、UI 截图。
 - [ ] 视频：≤5:00；能听到讲解；画面不出现密钥、余额、私人聊天/文件路径。
