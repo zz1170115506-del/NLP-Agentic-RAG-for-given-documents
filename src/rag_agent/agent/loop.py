@@ -211,7 +211,7 @@ def run_question(question: Question, settings: Settings, store=None, search=None
             emit({"event": "request", "messages": messages, "tools": schemas, "max_tokens": remaining_output})
             state.steps += 1
             if isinstance(provider, HTTPProvider):
-                response = provider.complete(messages, schemas, max_tokens=remaining_output, allow_tools=not bool(close_reason))
+                response = provider.complete(messages, schemas, max_tokens=remaining_output, allow_tools=not bool(close_reason), thinking=False if close_reason else None)
             else:
                 response = provider.complete(messages, schemas, max_tokens=remaining_output)
             usage = response.get("usage") if isinstance(response, dict) else None
@@ -304,9 +304,11 @@ def run_question(question: Question, settings: Settings, store=None, search=None
                         continue
                     break
                 continue
-            if state.stop_reason != "running":
-                break
             content = message.get("content")
+            if state.stop_reason != "running" and state.stop_reason != "token_budget":
+                break
+            if state.stop_reason == "token_budget" and not (isinstance(content, str) and content.strip()):
+                break
             try:
                 final, status = _validate_final(content, state, store, trajectory)
                 answer = final.answer.strip()
