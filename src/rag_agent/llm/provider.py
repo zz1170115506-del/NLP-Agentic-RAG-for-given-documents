@@ -43,7 +43,7 @@ class HTTPProvider:
         if self.owns_client:
             self.client.close()
 
-    def build_payload(self, messages, tools, max_tokens=None, *, allow_tools=True):
+    def build_payload(self, messages, tools, max_tokens=None, *, allow_tools=True, thinking=None):
         payload = {"model": self.settings.llm_model, "messages": messages, "tools": tools,
                    "tool_choice": "auto" if allow_tools else "none",
                    "max_tokens": max_tokens or self.settings.max_output_tokens,
@@ -52,10 +52,16 @@ class HTTPProvider:
             # This baseline uses the same backbone with thinking disabled. Avoid a
             # hidden reasoning block that would require replay across tool turns.
             payload["reasoning"] = {"enabled": False, "exclude": True}
+        elif self.settings.model_policy == "official_compat":
+            # Official DeepSeek otherwise enables thinking by default. This mode
+            # explicitly uses the non-thinking tool protocol for both engines.
+            pass
+        if thinking is False:
+            payload["thinking"] = {"type": "disabled"}
         return payload
 
-    def complete(self, messages, tools, max_tokens=None, *, allow_tools=True):
-        payload = self.build_payload(messages, tools, max_tokens, allow_tools=allow_tools)
+    def complete(self, messages, tools, max_tokens=None, *, allow_tools=True, thinking=None):
+        payload = self.build_payload(messages, tools, max_tokens, allow_tools=allow_tools, thinking=thinking)
         url = self.settings.llm_base_url.rstrip("/") + "/chat/completions"
         for attempt in range(self.settings.max_retries + 1):
             if time.monotonic() >= self.deadline:

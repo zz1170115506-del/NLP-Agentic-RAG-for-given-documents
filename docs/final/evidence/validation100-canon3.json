@@ -1,0 +1,7 @@
+{
+  "validation": {"records": 100, "answered": 84, "correct": 66, "em": 0.66, "precision": 0.786, "empty": 16},
+  "canonicalizer_rules": ["strip trailing legal suffix", "strip trailing duplicate parenthetical alias", "normalise digit-unit spacing", "reorder YYYY X to X YYYY"],
+  "fixed_ids": ["52", "276"],
+  "dropped_rule": "month-name to DD/MM/YYYY date conversion rejected: it broke ID 309",
+  "test": {"records": 100, "answered": 88, "empty": 12, "sha256": "229bad39d7cd474f9b2cb9d9da1bea45775d349535ce3787e95c05c8f3650c08", "bytes": 113182809}
+}

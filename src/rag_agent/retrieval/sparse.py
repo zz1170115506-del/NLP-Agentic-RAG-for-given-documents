@@ -75,8 +75,12 @@ class SparseRetriever:
         if not tokens:
             return []
         expression = " OR ".join('"' + token.replace('"', '""') + '"' for token in tokens)
-        cursor = self.conn.execute("""SELECT r.doc_id,r.chunk_id,r.offset,r.text,r.url,bm25(fts) AS score
-            FROM fts JOIN records r ON r.seq=fts.rowid WHERE fts MATCH ? ORDER BY score,r.seq LIMIT ?""",
+        # Limit matching row IDs before reading original passages. Keep explicit
+        # bm25() and rowid ordering so scores and boundary ties remain unchanged.
+        cursor = self.conn.execute("""SELECT r.doc_id,r.chunk_id,r.offset,r.text,r.url,c.score
+            FROM (SELECT rowid,bm25(fts) AS score FROM fts WHERE fts MATCH ?
+                  ORDER BY score,rowid LIMIT ?) AS c
+            JOIN records r ON r.seq=c.rowid ORDER BY c.score,r.seq""",
             (expression, top_k))
         found = []
         for row in cursor:

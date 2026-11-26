@@ -1,0 +1,33 @@
+{
+  "expected": 100,
+  "records": 100,
+  "coverage": 1.0,
+  "ordinary_valid": true,
+  "ordinary_error_count": 0,
+  "formal_batch_valid": false,
+  "formal_batch_error_count": 200,
+  "live_record_passed": 0,
+  "citation_passed": 100,
+  "statuses": {
+    "insufficient_evidence": 80,
+    "completed": 20
+  },
+  "tool_types": {
+    "search": 679,
+    "load_skill": 3,
+    "find_in_document": 5,
+    "open_document": 2
+  },
+  "tool_calls": 689,
+  "total_tokens": 1576143,
+  "http_attempts": 456,
+  "response_models": [
+    "deepseek-flash"
+  ],
+  "reported_cost_usd": 0.0,
+  "responses_with_cost": 0,
+  "responses_without_cost": 456,
+  "archived_attempts": 0,
+  "all_attempts_total_tokens": 1576143,
+  "all_attempts_tool_calls": 689
+}

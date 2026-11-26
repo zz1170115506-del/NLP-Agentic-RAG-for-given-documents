@@ -1,0 +1,24 @@
+# Official API compatibility check on the project's three synthetic documents.
+mode: live
+model_policy: official_compat
+agent_engine: baseline
+llm_base_url: https://api.deepseek.com
+llm_model: deepseek-v4-flash
+model_verified: false
+model_verification_note: '2026-11-15: official legacy alias; observed response deepseek-flash. https://api-docs.deepseek.com/zh-cn/quick_start/pricing/'
+store_path: data/deepseek-official-smoke.sqlite
+index_dir: indexes/deepseek-official-smoke
+skills_dir: skills
+method: sparse
+device: cpu
+top_k: 3
+use_skills: false
+max_steps: 8
+max_tool_calls: 8
+max_total_tokens: 12000
+max_output_tokens: 768
+context_chars: 16000
+timeout_seconds: 60
+run_timeout_seconds: 180
+max_retries: 0
+graceful_finalization: true

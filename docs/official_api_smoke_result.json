@@ -1,0 +1,102 @@
+{
+  "checked_at_hong_kong": "2026-11-15T12:36:39.286126+08:00",
+  "code_commit": "0503ca571b3df3db9f963b865107d40473ac30c8",
+  "base_commit": "316c64ad6f6afda727d33b7d7ac2e97d4f6641e5",
+  "corpus": "Three synthetic project fixtures; not course evaluation data",
+  "runs": {
+    "baseline": {
+      "status": "completed",
+      "answer": "1984",
+      "requested_model": "deepseek-v4-flash",
+      "response_models": [
+        "deepseek-flash"
+      ],
+      "response_system_fingerprints": [
+        "bc19ba97cbe016479903222bb1578db6"
+      ],
+      "config_id": "455937eb05d22a23",
+      "code_sha256": "fd838099ad0d3ac562b97ace21b93e32edb689d640f57a1b19a195cb3a3f7710",
+      "http_requests": 3,
+      "http_statuses": [
+        200,
+        200,
+        200
+      ],
+      "response_created_unix": [
+        1794717320,
+        1794717321,
+        1794717322
+      ],
+      "tool_names": [
+        "search",
+        "open_document"
+      ],
+      "tool_calls": 2,
+      "all_tool_results_in_followup_requests": true,
+      "total_tokens": 4444,
+      "prompt_tokens": 4242,
+      "completion_tokens": 202,
+      "cache_hit_tokens": 1536,
+      "usage_complete": true,
+      "record_errors": [],
+      "grounding_errors": [],
+      "raw_http_audit_errors": [],
+      "formal_errors": [
+        "official_compat records the official service's actual identity; it does not verify the original course model.",
+        "provider model ID must have documented DeepSeek-V4-Flash verification"
+      ],
+      "course_eligible": false
+    },
+    "agent12": {
+      "status": "completed",
+      "answer": "1984",
+      "requested_model": "deepseek-v4-flash",
+      "response_models": [
+        "deepseek-flash"
+      ],
+      "response_system_fingerprints": [
+        "bc19ba97cbe016479903222bb1578db6"
+      ],
+      "config_id": "6a3612ad061ddd37",
+      "code_sha256": "fd838099ad0d3ac562b97ace21b93e32edb689d640f57a1b19a195cb3a3f7710",
+      "http_requests": 3,
+      "http_statuses": [
+        200,
+        200,
+        200
+      ],
+      "response_created_unix": [
+        1794717355,
+        1794717356,
+        1794717357
+      ],
+      "tool_names": [
+        "search",
+        "open_document"
+      ],
+      "tool_calls": 2,
+      "all_tool_results_in_followup_requests": true,
+      "total_tokens": 4318,
+      "prompt_tokens": 4165,
+      "completion_tokens": 153,
+      "cache_hit_tokens": 1280,
+      "usage_complete": true,
+      "record_errors": [],
+      "grounding_errors": [],
+      "raw_http_audit_errors": [],
+      "formal_errors": [
+        "official_compat records the official service's actual identity; it does not verify the original course model.",
+        "provider model ID must have documented DeepSeek-V4-Flash verification"
+      ],
+      "course_eligible": false
+    }
+  },
+  "total_http_requests": 6,
+  "total_tokens": 8762,
+  "offline_checks": {
+    "main_pytest_passed": 124,
+    "agent12_pytest_passed": 70,
+    "agent12_subtests_passed": 4,
+    "ruff": "passed"
+  }
+}

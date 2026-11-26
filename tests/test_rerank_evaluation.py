@@ -3,6 +3,9 @@ import argparse
 import importlib.util
 import json
 from pathlib import Path
+import shutil
+import sys
+from types import SimpleNamespace
 
 import pytest
 
@@ -10,6 +13,7 @@ from rag_agent.config import Settings
 from rag_agent.data import DocumentStore
 from rag_agent.retrieval import build_indexes
 from rag_agent.schemas import Document, SearchHit
+from rag_agent import source_provenance
 
 SPEC = importlib.util.spec_from_file_location("evaluate_rerank", Path(__file__).parents[1] / "scripts/evaluate_rerank.py")
 evaluation = importlib.util.module_from_spec(SPEC)
@@ -90,7 +94,19 @@ class FakeReranker:
         return list(reversed(hits)), self.last_diagnostics
 
 
-def test_capture_resume_and_replay_preserve_pool_identity(tmp_path, monkeypatch):
+@pytest.mark.parametrize("git_available", [True, False])
+def test_capture_resume_and_replay_preserve_pool_identity(tmp_path, monkeypatch, git_available):
+    # An unpacked source archive must run without .git or a caller's .env.
+    monkeypatch.chdir(tmp_path)
+    if not git_available:
+        real_check_output = source_provenance.subprocess.check_output
+
+        def without_git(command, **kwargs):
+            if command == ["git", "rev-parse", "HEAD"]:
+                raise source_provenance.subprocess.CalledProcessError(128, command)
+            return real_check_output(command, **kwargs)
+
+        monkeypatch.setattr(source_provenance.subprocess, "check_output", without_git)
     config = Settings(method="sparse", store_path=str(tmp_path / "docs.sqlite"),
                       index_dir=str(tmp_path / "indexes"), chunk_size=64, chunk_overlap=10)
     source = DocumentStore(config.store_path)
@@ -108,6 +124,11 @@ def test_capture_resume_and_replay_preserve_pool_identity(tmp_path, monkeypatch)
                               split="dev", candidate_depth=50, rerank_depth=30, replay=None, rerun_failed=False)
     result = evaluation.run(args)
     assert result["samples"] == 1 and not result["failures"]
+    manifest = json.loads((args.output / "manifest.json").read_text())
+    assert manifest["source_digest"] == evaluation.source_digest(Path(evaluation.__file__).resolve().parents[1])
+    assert len(manifest["source_digest"]) == 64
+    if not git_available:
+        assert manifest["git_sha"] is None
     row = json.loads((args.output / "queries" / evaluation.sample_file("q")).read_text())
     assert row["groups"]["B"]["pool_sha256"] == row["groups"]["C"]["pool_sha256"]
     calls = FakeReranker.calls
@@ -122,3 +143,74 @@ def test_capture_resume_and_replay_preserve_pool_identity(tmp_path, monkeypatch)
     questions.write_text(json.dumps({"id": "q", "question": "Changed question"}) + "\n")
     with pytest.raises(ValueError, match="Resume identity mismatch"):
         evaluation.run(args)
+
+
+@pytest.mark.parametrize("script_name", ["benchmark_rerank", "run_rerank_agent"])
+def test_script_manifest_without_git_keeps_real_source_digest(tmp_path, monkeypatch, script_name):
+    """Execute each script through manifest creation, stopping before model work."""
+    root = Path(__file__).resolve().parents[1]
+    spec = importlib.util.spec_from_file_location(script_name, root / "scripts" / (script_name + ".py"))
+    script = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(script)
+    monkeypatch.chdir(tmp_path)
+    shutil.copytree(root / "src", tmp_path / "src")
+    monkeypatch.setenv("LLM_API_KEY", "synthetic-test-key")
+    for name in ("LLM_BASE_URL", "LLM_MODEL", "LLM_MODEL_VERIFIED", "LLM_MODEL_VERIFICATION_NOTE"):
+        monkeypatch.delenv(name, raising=False)
+    real_check_output = source_provenance.subprocess.check_output
+
+    def without_git(command, **kwargs):
+        if command == ["git", "rev-parse", "HEAD"]:
+            raise source_provenance.subprocess.CalledProcessError(128, command)
+        return real_check_output(command, **kwargs)
+
+    monkeypatch.setattr(source_provenance.subprocess, "check_output", without_git)
+    config = Settings(method="hybrid" if script_name == "benchmark_rerank" else "sparse",
+                      store_path=str(tmp_path / "docs.sqlite"), index_dir=str(tmp_path / "indexes"),
+                      model_policy="official_compat", llm_base_url="https://api.deepseek.com",
+                      llm_model="deepseek-v4-flash", model_verification_note="Synthetic protocol fixture")
+    source = DocumentStore(config.store_path)
+    source.import_documents([Document(doc_id="d", text="Synthetic text only.")])
+    source.close()
+    Path(config.index_dir).mkdir()
+    (Path(config.index_dir) / "sparse.sqlite").write_bytes(b"Synthetic checksum fixture; never queried")
+    configs = []
+    for i, changes in enumerate(({}, {"rerank_enabled": True}, {"rerank_enabled": True, "rerank_depth": 10})):
+        path = tmp_path / f"config-{i}.json"
+        path.write_text(config.model_copy(update=changes).model_dump_json())
+        configs.append(path)
+    questions = tmp_path / "questions.jsonl"
+    questions.write_text('{"id":"q","question":"Synthetic question?"}\n')
+    output = tmp_path / "result"
+
+    class ManifestRecorded(Exception):
+        pass
+
+    original_write = script.write_json
+
+    def stop_after_manifest(path, value):
+        original_write(path, value)
+        if path.name == "manifest.json":
+            raise ManifestRecorded
+
+    monkeypatch.setattr(script, "write_json", stop_after_manifest)
+    if script_name == "benchmark_rerank":
+        monkeypatch.setitem(sys.modules, "torch", SimpleNamespace(set_num_threads=lambda value: None,
+                            get_num_threads=lambda: 1, get_num_interop_threads=lambda: 1))
+        monkeypatch.setattr(script.importlib.metadata, "version", lambda name: "synthetic-metadata")
+        monkeypatch.setattr(script, "CapturedSearch", lambda settings: SimpleNamespace(
+            store=SimpleNamespace(metadata={"kind": "synthetic"}), close=lambda: None))
+        args = argparse.Namespace(threads=1, questions=questions, configs=configs, snapshots=None,
+                                  snapshot_groups=["B", "C", "D"], output=output, repeats=1)
+        with pytest.raises(ManifestRecorded):
+            script.run(args)
+    else:
+        monkeypatch.setattr(sys, "argv", [script_name, "--configs", *map(str, configs[:2]),
+                            "--questions", str(questions), "--output", str(output),
+                            "--env-file", str(tmp_path / "absent.env"), "--ledger", str(tmp_path / "ledger.json")])
+        with pytest.raises(ManifestRecorded):
+            script.main()
+    manifest = json.loads((output / "manifest.json").read_text())
+    assert manifest["git_sha"] is None
+    assert len(manifest["source_digest"]) == 64
+    assert manifest["questions_sha256"]

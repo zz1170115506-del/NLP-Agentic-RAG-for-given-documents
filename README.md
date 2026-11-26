@@ -2,7 +2,7 @@
 
 COMP5423 2026 Fall **Skill-Augmented Search Agent**：从指定固定文档集合检索证据，由 DeepSeek-V4-Flash 通过工具进行多轮问答。现有代码包含三类真实检索实现、独立状态和上下文管理、两个原创 skills、Streamlit 网页、批处理、评测与打包入口。
 
-当前已导入固定语料100,195篇并完成全量BM25。两路神经索引保留可恢复检查点；官方验证因服务HTTP 402停止于90/100题，其中86条通过单条记录校验、4条服务失败、10题未运行。主测试90项及Agent 1.2测试70项通过。完整神经索引、完整100题验收和课程最终交付仍未完成，详见[本轮验收回传](docs/task_NLP-Agentic-RAG-for-given-documents_全项目程序验收与缺口补齐_prompt_1return.md)。
+最终快照（2026-11-22）：验证集 100 题 84 答/66 对（EM 66%，已答精度 78.6%）；test v5 85 答/15 弃、991 调用、7,040,451 tokens、单一 config、citation 100/100。提交包、报告、证据与复现说明见 [docs/final/README.md](docs/final/README.md)；`test_prediction.jsonl` 因超过 GitHub 单文件限制，放在 Release `final-group18-20261122`。
 
 - [RAG 设计思路（中文，可分享给组员）](docs/RAG_设计思路.md)
 - [Agent 设计思路（中文，可分享给组员）](docs/Agent_设计思路.md)

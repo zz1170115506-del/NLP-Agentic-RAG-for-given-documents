@@ -2,6 +2,7 @@
 from __future__ import annotations
 import hashlib
 import json
+import bisect
 from itertools import islice
 from pathlib import Path
 import sqlite3
@@ -35,7 +36,7 @@ def _expected(settings, store, method):
             "requested_revision":settings.encoder_revision if method == "encoder" else settings.instruction_revision,
             "max_seq_length":settings.max_seq_length, "normalization":"l2", "dtype":"float32",
             "pooling":"attention_mask_mean" if method == "encoder" else "last_nonpadding_token",
-            "query_template":"query: {query}" if method == "encoder" else "Instruct: {instruction}\nQuery:{query}",
+            "query_template":"query: {query}" if method == "encoder" else "Instruct: {instruction}\nQuery: {query}",
             "instruction":settings.retrieval_instruction if method == "instruction" else None,
             "segment_policy":"recursive_char_halves_overlap_at_most_32_v1", "shard_chunks":SHARD_CHUNKS}
 
@@ -119,7 +120,7 @@ def _build_dense(settings, store, target, method, progress, embedder, max_new_sh
         if max_new_shards is not None and new_shards >= max_new_shards:
             break
         # At most 256 source chunks are staged; each embedding call has at most batch_size passages.
-        segments = [segment for chunk in group for segment in model.segments(chunk)]
+        segments = model.segments_many(group)
         if not segments:
             raise ValueError("Embedding produced no segments")
         vector_path = target / f"shard-{shard_number:06d}.npy"
@@ -192,40 +193,47 @@ class DenseRetriever:
         if not np.isfinite(q).all() or norm <= 0:
             raise ValueError("Invalid query embedding")
         q /= norm
+        if not hasattr(self, "_cache"):
+            total = sum(s["rows"] for s in self.manifest["shards"])
+            dim = self.manifest["dimension"]
+            arr = np.empty((total, dim), dtype="float32")
+            starts = []
+            pos = 0
+            for shard in self.manifest["shards"]:
+                vector_path = self.target / shard["vectors"]
+                vectors = np.load(vector_path, mmap_mode="r", allow_pickle=False)
+                if vectors.shape != (shard["rows"], dim):
+                    raise ValueError("Dense shard shape mismatch")
+                arr[pos:pos + len(vectors)] = vectors
+                starts.append(pos)
+                pos += len(vectors)
+            self._cache = arr
+            self._starts = starts
+            del arr
+        scores = self._cache @ q
+        k = min(len(scores), max(top_k * 40, 400))
+        top = np.argpartition(-scores, k - 1)[:k]
+        grouped = {}
+        for gi in top.tolist():
+            si = bisect.bisect_right(self._starts, gi) - 1
+            grouped.setdefault(si, set()).add(gi - self._starts[si])
         best: dict[tuple[str, str], SearchHit] = {}
-        for shard in self.manifest["shards"]:
-            vector_path, meta_path = self.target / shard["vectors"], self.target / shard["metadata"]
-            if not self._validated:
-                if _digest(vector_path) != shard["vectors_sha256"] or _digest(meta_path) != shard["metadata_sha256"]:
-                    raise ValueError("Dense shard checksum mismatch")
-            vectors = np.load(vector_path, mmap_mode="r", allow_pickle=False)
-            if vectors.shape != (shard["rows"], self.manifest["dimension"]):
-                raise ValueError("Dense shard shape mismatch")
-            scores = vectors @ q
-            # Read all metadata lines for integrity, but parse only possible top-k
-            # rows. Include ties so global doc/chunk ordering remains deterministic.
-            threshold = np.partition(scores, max(0, len(scores) - top_k))[max(0, len(scores) - top_k)]
-            candidates = set(np.flatnonzero(scores >= threshold).tolist())
-            count = 0
+        for si, rows in grouped.items():
+            shard = self.manifest["shards"][si]
+            meta_path = self.target / shard["metadata"]
             with meta_path.open(encoding="utf-8") as handle:
                 for row, line in enumerate(handle):
-                    if row >= len(scores):
-                        raise ValueError("Dense shard metadata has extra rows")
-                    count += 1
-                    if row not in candidates:
+                    if row not in rows:
                         continue
                     c = Chunk.model_validate_json(line)
                     if not c.text.strip():
                         continue
-                    score = float(scores[row])
+                    score = float(scores[self._starts[si] + row])
                     key = (c.doc_id, c.chunk_id)
                     prior = best.get(key)
                     if prior is None or score > prior.score:
                         best[key] = SearchHit(**c.model_dump(), score=score, method=self.method,
                             metadata={"model_id":self.manifest["model_id"], "revision":self.manifest["resolved_revision"]})
-            best = dict(sorted(best.items(), key=lambda x:(-x[1].score,x[0]))[:top_k])
-            if count != shard["rows"]:
-                raise ValueError("Dense shard metadata missing rows")
-            del vectors
         self._validated = True
         return sorted(best.values(), key=lambda hit: (-hit.score, hit.doc_id, hit.chunk_id))[:top_k]
+

@@ -56,6 +56,7 @@ class Settings(BaseModel):
     graceful_finalization: bool = False
     llm_base_url: str = "https://api.deepseek.com"
     llm_model: str = ""
+    model_policy: Literal["course_pinned", "official_compat"] = "course_pinned"
     model_verified: bool = False
     model_verification_note: str = ""
 
@@ -75,6 +76,8 @@ class Settings(BaseModel):
             config.pop("agent_engine")
         if not self.graceful_finalization:
             config.pop("graceful_finalization")
+        if self.model_policy == "course_pinned":
+            config.pop("model_policy")
         return hashlib.sha256(json.dumps(config, sort_keys=True).encode()).hexdigest()[:16]
 
     @classmethod
@@ -92,6 +95,9 @@ class Settings(BaseModel):
         return cls(**raw)
 
     def check_model_identity(self):
+        """Strict course identity check, including when auditing saved predictions."""
+        if self.model_policy != "course_pinned":
+            raise ValueError("official_compat records the official service's actual identity; it does not verify the original course model.")
         if urlparse(self.llm_base_url).hostname == "api.deepseek.com":
             raise ValueError("As checked 2026-11-10, api.deepseek.com routes legacy V4-Flash to V4.1. Select a provider explicitly serving the original DeepSeek-V4-Flash; see docs/provider.md.")
         if re.search(r"gpt|claude|gemini|qwen|llama|v4[._-]1|deepseek-v[23]|deepseek-chat|deepseek-reasoner|latest|vision", self.llm_model, re.I):
@@ -102,9 +108,33 @@ class Settings(BaseModel):
         if parsed.scheme != "https" or not parsed.hostname or parsed.username or parsed.password or parsed.query or parsed.fragment:
             raise ValueError("LLM_BASE_URL must be an HTTPS API endpoint without credentials, query strings or fragments.")
 
+    def check_official_compat(self):
+        """Allow the user's official alias without asserting an original V4 identity."""
+        if self.llm_base_url.rstrip("/") not in {"https://api.deepseek.com", "https://api.deepseek.com/v1"}:
+            raise ValueError("official_compat requires https://api.deepseek.com or https://api.deepseek.com/v1.")
+        if self.llm_model != "deepseek-v4-flash":
+            raise ValueError("official_compat requires the explicitly requested deepseek-v4-flash alias.")
+        if self.model_verified:
+            raise ValueError("official_compat must keep model_verified=false; the original course identity is not verified.")
+        if not self.model_verification_note.strip():
+            raise ValueError("official_compat requires a note documenting the alias and observed service identity.")
+
+    def accepts_response_model(self, actual) -> bool:
+        if not isinstance(actual, str) or not actual.strip():
+            return False
+        if self.model_policy == "official_compat":
+            self.check_official_compat()
+            # The official service may update its alias. Preserve its returned name
+            # in the trace rather than claiming an exact, pinned model identity.
+            return True
+        return actual == self.llm_model
+
     def check_live(self):
         if self.mode != "live":
             return
-        self.check_model_identity()
+        if self.model_policy == "official_compat":
+            self.check_official_compat()
+        else:
+            self.check_model_identity()
         if not os.getenv("LLM_API_KEY"):
             raise ValueError("Set LLM_API_KEY in your local .env; demo never substitutes for live mode.")

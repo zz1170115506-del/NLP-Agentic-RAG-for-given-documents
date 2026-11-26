@@ -22,9 +22,9 @@ class TransformerEmbedder:
         self.model_id = settings.encoder_model if method == "encoder" else settings.instruction_model
         requested = settings.encoder_revision if method == "encoder" else settings.instruction_revision
         self.requested_revision = requested
-        if method == "encoder" and not self.model_id.startswith("intfloat/e5-"):
+        if method == "encoder" and not (self.model_id.startswith("intfloat/e5-") or Path(self.model_id).is_dir()):
             raise ValueError("Encoder adapter implements intfloat/e5-* prefix/mean-pooling semantics only")
-        if method == "instruction" and not self.model_id.startswith("Qwen/Qwen3-Embedding-"):
+        if method == "instruction" and not (self.model_id.startswith("Qwen/Qwen3-Embedding-") or Path(self.model_id).is_dir()):
             raise ValueError("Instruction adapter implements Qwen/Qwen3-Embedding-* semantics only")
         cache = Path(settings.index_dir).resolve().parent / "model_cache"
         cache.mkdir(parents=True, exist_ok=True)
@@ -42,15 +42,25 @@ class TransformerEmbedder:
         revision = resolved_revision or requested
         config = AutoConfig.from_pretrained(self.model_id, revision=revision, cache_dir=cache,
                                             trust_remote_code=False)
-        revision = getattr(config, "_commit_hash", None)
+        revision = getattr(config, "_commit_hash", None) or requested
         if not revision:
             raise ValueError("Could not resolve embedding model to an immutable revision")
         # Resolve once, then pin BOTH tokenizer and weights to the same commit.
-        self.tokenizer = AutoTokenizer.from_pretrained(self.model_id, revision=revision, cache_dir=cache,
+        snapshot = cache / ("models--" + self.model_id.replace("/", "--")) / "snapshots" / revision
+        tokenizer_source, tokenizer_options = self.model_id, {"revision": revision, "cache_dir": cache}
+        if (snapshot / "config.json").is_file() and (snapshot / "tokenizer_config.json").is_file():
+            # Transformers 4.57.3 otherwise probes Hub metadata for large-vocabulary
+            # tokenizers even in offline mode. This exact resolved snapshot contains
+            # the same tokenizer files and lets its model type be inspected locally.
+            tokenizer_source, tokenizer_options = str(snapshot), {"local_files_only": True}
+        self.tokenizer = AutoTokenizer.from_pretrained(tokenizer_source, **tokenizer_options,
             padding_side="left" if method == "instruction" else "right", trust_remote_code=False)
+        load_kwargs = {}
+        if device == "cuda":
+            load_kwargs = {"torch_dtype": self.torch.float16, "attn_implementation": "sdpa"}
         self.model = AutoModel.from_pretrained(self.model_id, revision=revision, cache_dir=cache,
-            trust_remote_code=False).to(device).eval()
-        self.resolved_revision = getattr(self.model.config, "_commit_hash", None)
+            trust_remote_code=False, **load_kwargs).to(device).eval()
+        self.resolved_revision = getattr(self.model.config, "_commit_hash", None) or revision
         if not self.resolved_revision:
             raise ValueError("Could not resolve embedding model to an immutable revision")
         limit = int(getattr(self.model.config, "max_position_embeddings", settings.max_seq_length))
@@ -60,7 +70,7 @@ class TransformerEmbedder:
     def _format(self, text: str, query: bool) -> str:
         if self.method == "encoder":
             return ("query: " if query else "passage: ") + text
-        return f"Instruct: {self.settings.retrieval_instruction}\nQuery:{text}" if query else text
+        return f"Instruct: {self.settings.retrieval_instruction}\nQuery: {text}" if query else text
 
     def _length(self, text: str, query: bool = False) -> int:
         return len(self.tokenizer(self._format(text, query), add_special_tokens=True, truncation=False)["input_ids"])
@@ -80,14 +90,27 @@ class TransformerEmbedder:
                 "chunk_id": f"{chunk.doc_id}:{chunk.offset + start}:{len(text)}"})
             yield from self.segments(sub)
 
+    def segments_many(self, chunks):
+        """Tokenize one group at once; only split the rare overlong chunk."""
+        if not chunks:
+            return []
+        encoded = self.tokenizer([self._format(c.text, False) for c in chunks], truncation=False, padding=False)
+        out = []
+        for chunk, ids in zip(chunks, encoded["input_ids"]):
+            if len(ids) <= self.max_length:
+                out.append(chunk)
+            else:
+                out.extend(self.segments(chunk))
+        return out
+
     def encode(self, texts: list[str], query: bool = False) -> np.ndarray:
         if not texts:
             return np.empty((0, self.dimension), dtype="float32")
         formatted = [self._format(text, query) for text in texts]
-        lengths = [len(self.tokenizer(text, truncation=False)["input_ids"]) for text in formatted]
-        if max(lengths) > self.max_length:
+        batch = self.tokenizer(formatted, padding=True, truncation=True, max_length=self.max_length, return_tensors="pt")
+        if int(batch["attention_mask"].sum(dim=1).max()) > self.max_length:
             raise ValueError(f"Input exceeds {self.max_length} tokens; shorten query or segment documents")
-        batch = self.tokenizer(formatted, padding=True, truncation=False, return_tensors="pt").to(self.device)
+        batch = batch.to(self.device)
         with self.torch.inference_mode():
             hidden = self.model(**batch).last_hidden_state
             mask = batch["attention_mask"]
@@ -95,7 +118,7 @@ class TransformerEmbedder:
                 hidden = hidden.masked_fill(~mask[..., None].bool(), 0.0)
                 vectors = hidden.sum(dim=1) / mask.sum(dim=1)[..., None]
             else:
-                # Qwen3 tokenizer uses left padding, so the last column is the final real token.
-                vectors = hidden[:, -1]
+                idx = mask.sum(dim=1) - 1
+                vectors = hidden[self.torch.arange(hidden.size(0), device=hidden.device), idx]
             vectors = self.torch.nn.functional.normalize(vectors.float(), p=2, dim=1)
         return vectors.cpu().numpy().astype("float32", copy=False)

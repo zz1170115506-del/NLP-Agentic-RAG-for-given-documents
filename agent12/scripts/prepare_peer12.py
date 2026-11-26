@@ -13,7 +13,7 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from search_agent.peer import import_peer
+from search_agent.peer import import_peer  # noqa: E402 - requires the local package path above
 
 
 def prepare(project_dir, output_dir):

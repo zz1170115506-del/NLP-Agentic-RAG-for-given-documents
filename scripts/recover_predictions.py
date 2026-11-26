@@ -1,7 +1,9 @@
 """Resume missing or course-ineligible records, preserving valid abstentions.
 
 Unlike --rerun-failed (which also retries unanswered questions), this recovery
-route uses the formal per-record audit, never reference answers. All new answers
+route uses the selected live per-record audit, never reference answers. Official
+compatibility runs keep the same HTTP/usage checks without claiming course-model
+identity. All new answers
 come from the same production runner. Old attempts are archived without edits.
 """
 import argparse
@@ -12,7 +14,7 @@ from pathlib import Path
 from rag_agent.config import Settings
 from rag_agent.evaluation.batch import _append, _atomic_text, _exclusive_lock, _invalid_result, _uncaught_failure
 from rag_agent.evaluation.io import dump_line, file_sha256, iter_jsonl, read_predictions, read_questions
-from rag_agent.evaluation.validate import validate_predictions, validate_record
+from rag_agent.evaluation.validate import run_metadata, validate_predictions, validate_record
 from rag_agent.identity import runtime_identity
 from rag_agent.runtime import make_runtime, run_question
 from rag_agent.schemas import Prediction
@@ -23,6 +25,7 @@ def recover(input_path, output_path, settings, *, dry_run=False, limit=None, run
         raise ValueError("limit must be positive")
     input_path, output_path = Path(input_path), Path(output_path)
     questions = read_questions(input_path)
+    audit = {"official_compat": True} if settings.model_policy == "official_compat" else {"formal": True}
     manifest = {"schema_version": 2, "source_sha256": file_sha256(input_path), "config_id": settings.config_id,
                 "mode": settings.mode, "input_count": len(questions), "runtime_identity": runtime_identity(settings)}
     metadata = output_path.with_suffix(output_path.suffix + ".meta.json")
@@ -39,8 +42,10 @@ def recover(input_path, output_path, settings, *, dry_run=False, limit=None, run
         for row in previous:
             if row.id in by_id or expected.get(row.id) != row.question:
                 raise ValueError("Existing records contain duplicate or mismatched question IDs")
+            if run_metadata(row)[0].get("config_id") != settings.config_id:
+                raise ValueError("Existing record configuration identity does not match recovery settings")
             by_id[row.id] = row
-        valid = {row.id for row in previous if not validate_record(row, formal=True)}
+        valid = {row.id for row in previous if not validate_record(row, **audit)}
         pending = [q for q in questions if q.id not in valid]
         initial = {"valid_existing": len(valid), "pending": len(pending),
                    "missing": sum(q.id not in by_id for q in pending),
@@ -91,7 +96,8 @@ def recover(input_path, output_path, settings, *, dry_run=False, limit=None, run
                 _atomic_text(output_path, "".join(dump_line(by_id[q.id]) for q in questions if q.id in by_id))
                 path.unlink()  # Only after the new real record has been durably committed.
                 status = prediction.trajectory[-1].get("status") if prediction.trajectory else "invalid"
-                if status in {"provider_error", "api_error", "model_mismatch", "missing_usage", "uncaught_error"}:
+                if status in {"provider_error", "api_error", "model_mismatch", "model_identity_unverified",
+                              "missing_usage", "uncaught_error", "invalid_trajectory"}:
                     break
         finally:
             if store is not None:
@@ -99,7 +105,7 @@ def recover(input_path, output_path, settings, *, dry_run=False, limit=None, run
             if search is not None:
                 search.close()
     return {**initial, "attempted_this_run": attempted, "journal_results_reused": journal_reused,
-            "validation": validate_predictions(input_path, output_path, formal=True),
+            "validation": validate_predictions(input_path, output_path, **audit),
             "attempt_archive": str(archive) if archive.exists() else None}
 
 

@@ -83,6 +83,7 @@ def _trajectory(raw: list[dict], http_events: dict[int, list[dict]]):
 
 def run_agent12(question: Question, settings: Settings, *, search: SearchService, on_event=None) -> RunResult:
     client = _Client(settings) if settings.mode == "live" else None
+    official_compat = bool(client and settings.model_policy == "official_compat")
     try:
         backend = PeerRetrievalBackend(PeerBackend(settings, search=search), settings,
                                        project_dir=".", config_path="application settings")
@@ -91,6 +92,7 @@ def run_agent12(question: Question, settings: Settings, *, search: SearchService
             model=settings.llm_model, api_key=os.getenv("LLM_API_KEY", "") if client else "",
             base_url=settings.llm_base_url, expected_model_id=settings.llm_model if client else None,
             provider="openai-compatible" if client else "demo", strict_model_identity=bool(client),
+            development_only=official_compat, accept_official_model_aliases=official_compat,
             max_steps=settings.max_steps, max_tool_calls=settings.max_tool_calls,
             max_tokens=settings.max_total_tokens, max_output_tokens=settings.max_output_tokens,
             max_retries=settings.max_retries, search_method=settings.method, top_k=settings.top_k,
@@ -124,6 +126,7 @@ def run_agent12(question: Question, settings: Settings, *, search: SearchService
     trajectory = [
         {"event": "run_start", "audit_version": 2, "mode": settings.mode, "provider": "http" if client else "demo",
          "injected_provider": False, "engine": "agent12", "model": settings.llm_model,
+         "model_policy": settings.model_policy,
          "config_id": settings.config_id, "config": settings.model_dump(),
          "model_verified": settings.model_verified, "model_verification_note": settings.model_verification_note},
         {"role": "user", "content": question.question},
@@ -138,7 +141,7 @@ def run_agent12(question: Question, settings: Settings, *, search: SearchService
     except ValueError as exc:
         resolved, grounding_errors = [], [str(exc)]
     trajectory.insert(-1, {"event": "evidence_resolution", "citations": resolved, "errors": grounding_errors})
-    eligible = bool(client and raw["status"] in {"completed", "unresolved"}
+    eligible = bool(client and not official_compat and raw["status"] in {"completed", "unresolved"}
                     and raw["model_identity_verified"] and trajectory[-1]["usage_complete"] and raw["tool_calls"])
     trajectory[-1]["eligible"] = eligible
     prediction = Prediction(id=question.id, question=question.question, answer=raw["answer"],

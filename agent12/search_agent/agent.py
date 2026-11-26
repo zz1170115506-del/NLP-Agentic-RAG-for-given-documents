@@ -40,6 +40,7 @@ class AgentConfig:
     expected_model_id: str | None = None
     strict_model_identity: bool = False
     development_only: bool = False
+    accept_official_model_aliases: bool = False
     require_evidence: bool = False
     auto_select_skills: bool = False
     graceful_finalization: bool = False
@@ -58,6 +59,12 @@ class AgentConfig:
             raise ValueError("Unknown model provider.")
         if self.demo:
             self.provider = "demo"
+        if self.accept_official_model_aliases and (
+                not self.development_only
+                or self.base_url.rstrip("/") not in {"https://api.deepseek.com", "https://api.deepseek.com/v1"}
+                or self.model != "deepseek-v4-flash"
+                or self.provider == "demo"):
+            raise ValueError("Official model aliases require development-only DeepSeek official V4 Flash execution.")
 
 
 TOOLS = [
@@ -253,7 +260,8 @@ class SearchAgent:
                     if self.model_mismatch:
                         self._record_rejected_calls(response, step, "Unexpected model identity; no tools executed.")
                         return self._finish("model_mismatch", "", error=self.model_mismatch)
-                    if self.config.strict_model_identity and self.identity_unknown and self.config.provider != "demo":
+                    if ((self.config.strict_model_identity or self.config.accept_official_model_aliases)
+                            and self.identity_unknown and self.config.provider != "demo"):
                         self._record_rejected_calls(response, step, "Model identity was not returned; no tools executed.")
                         return self._finish("model_identity_unverified", "", error="Provider omitted response.model.")
                     message = self._validate_response(response)
@@ -446,13 +454,16 @@ class SearchAgent:
                        arguments=None, raw_arguments=function.get("arguments"),
                        rejected_envelope=True, raw_call=call)
             self._emit("tool_result", step=step, tool_call_id=call_id, name=name,
-                       result={"error": reason})
+                       provider_tool_call_id=provider_call_id, result={"error": reason})
 
     def _model_identity(self, actual: Any) -> str:
         if not isinstance(actual, str) or not actual.strip():
             self.identity_unknown = True
             return "unverified"
         self.observed_models.append(actual)
+        if self.config.accept_official_model_aliases:
+            # Observe official alias routing without claiming original course-model identity.
+            return "observed"
         if self.config.expected_model_id is not None:
             if actual == self.config.expected_model_id:
                 return "verified"
@@ -683,12 +694,16 @@ class SearchAgent:
         while len(turns) > 1 and self._size(messages + [item for turn in turns for item in turn]) > self.config.context_chars:
             turns.pop(0)
             self.context_stats["pruned_history_turns"] += 1
+        # Reject groups that cannot fit even without the evidence snapshot first.
+        # Otherwise pruning evidence to make room for a huge parallel-search turn,
+        # then dropping that turn too, leaves the model blind to all observations.
+        mandatory = [messages[0], {**messages[1], "content": json.dumps({**state, "evidence": []}, ensure_ascii=False)}]
+        while turns and self._size(mandatory + [item for turn in turns for item in turn]) > self.config.context_chars:
+            turns.pop(0)
+            self.context_stats["pruned_history_turns"] += 1
         while state["evidence"] and self._size(messages + [item for turn in turns for item in turn]) > self.config.context_chars:
             state["evidence"].pop(0)
             messages[1]["content"] = json.dumps(state, ensure_ascii=False)
-        if turns and self._size(messages + turns[0]) > self.config.context_chars:
-            turns.pop(0)
-            self.context_stats["pruned_history_turns"] += 1
         messages.extend(item for turn in turns for item in turn)
         if self._size(messages) > self.config.context_chars:
             # Never silently cut the question or loaded instructions.
@@ -772,7 +787,8 @@ class SearchAgent:
                 "active_subqueries": self.active_subqueries, "callback_errors": self.callback_errors,
                 "token_metrics_complete": self.usage_complete,
                 "model_identity_verified": (bool(self.observed_models) and not self.identity_unknown
-                                             and not self.model_mismatch and self.config.provider != "demo"),
+                                             and not self.model_mismatch and self.config.provider != "demo"
+                                             and not self.config.accept_official_model_aliases),
                 "observed_models": self.observed_models,
                 "state": {"question": self.question, "queries": self.queries,
                           "stalled_searches": self.stalled_searches, "search_feedback": self.search_feedback,
