@@ -31,6 +31,10 @@ It is a research snapshot, not the official course submission package.
   Overleaf PDF.
 - `figures/` — architecture, validation outcomes, failure taxonomy, UI.
 - `Video-script.md` — 4:45 demo shot list.
+- `code-README.md` — submission-facing code README (environment, reproduction,
+  API key handling, model identity, audit commands).
+- `evidence/` — small audit JSONs and checksums; the large prediction JSONLs
+  stay in the `final-group18-20261122` release and the local submission bundle.
 - `VERIFY.md`, `CHECKLIST.md` — audit notes and submission checklist.
 
 ## Reproduction

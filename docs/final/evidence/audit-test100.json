@@ -1,0 +1,18 @@
+{
+  "valid": true,
+  "formal": false,
+  "official_compat": true,
+  "strict_grounding": false,
+  "errors": [],
+  "records": 100,
+  "expected": 100,
+  "completed": 85,
+  "failed": 15,
+  "citation_passed": 100,
+  "citation_errors": {},
+  "tool_calls": 991,
+  "total_tokens": 7040451,
+  "config_ids": [
+    "af985bb241f6ca07"
+  ]
+}
